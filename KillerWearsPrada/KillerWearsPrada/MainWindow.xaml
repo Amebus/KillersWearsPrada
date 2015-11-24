@@ -4,8 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KillerWearsPrada"
-        mc:Ignorable="d" Height="350" Width="525" Title="{StaticResource ResourceKey=ApplicationTitle}">
-    <Grid>
-        
-    </Grid>
+        mc:Ignorable="d" Height="381.886" Width="534.64" Title="{StaticResource ResourceKey=ApplicationTitle}">
+    
+    <Image Source="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"></Image>
+    
 </Window>
+
+<!--<Style x:Key="Back" TargetType="Window">
+    <Setter Property="Backgorund">
+        <Setter.Value>
+            <Image Source="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"></Image>
+        </Setter.Value>
+    </Setter>
+</Style>-->

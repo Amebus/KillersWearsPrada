@@ -11,6 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB_Test", "DB_Test", "{6FCC
 		KillerWearsPrada\DB_Test\KWP_DB_Test.mdb = KillerWearsPrada\DB_Test\KWP_DB_Test.mdb
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5622C086-9192-499D-AC42-B464C38C38E6}"
+	ProjectSection(SolutionItems) = preProject
+		KillerWearsPrada\Images\Application_Start.png = KillerWearsPrada\Images\Application_Start.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

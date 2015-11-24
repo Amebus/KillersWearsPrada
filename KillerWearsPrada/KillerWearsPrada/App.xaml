@@ -7,5 +7,7 @@
     <Application.Resources>
         <sys:String x:Key="ApplicationTitle">Killer Wears Prada</sys:String>
 
+
+        <sys:String x:Key="Application_Start_Image">./images/Application_Start.png</sys:String>
     </Application.Resources>
 </Application>
