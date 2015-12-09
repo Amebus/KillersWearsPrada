@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KillerWearsPrada"
-        mc:Ignorable="d" Height="381.886" Width="534.64" Title="{StaticResource ResourceKey=ApplicationTitle}">
-    
-    <Image Source="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"></Image>
-    
+        mc:Ignorable="d" Height="381.886" Width="534.64" Title="{StaticResource ResourceKey=ApplicationTitle}" Visibility="Visible" Foreground="#00000000" Loaded="Window_Loaded" Initialized="Window_Initialized">
+    <Window.Background>
+        <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"/>
+    </Window.Background>
+    <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441" Visibility="Hidden"/>
+
+
+
 </Window>
 
 <!--<Style x:Key="Back" TargetType="Window">

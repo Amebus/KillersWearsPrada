@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+
 
 namespace KillerWearsPrada
 {
@@ -22,7 +24,23 @@ namespace KillerWearsPrada
     {
         public MainWindow()
         {
+
+            Helpers.ResourcesHelper.SaveCurrentDirectory();
+            Helpers.ResourcesHelper.ModifyMainBackgroundPath();
+            //txtDisplay.AppendText(dir_ok);
             InitializeComponent();
+
+        }
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtDisplay.Text = Application.Current.Resources["Application_Start_Image"].ToString();
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+           
         }
     }
 }
