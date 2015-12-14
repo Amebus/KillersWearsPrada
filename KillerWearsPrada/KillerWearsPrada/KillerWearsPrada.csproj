@@ -47,6 +47,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,6 +67,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cestino.cs" />
+    <Compile Include="Giocatore.cs" />
+    <Compile Include="Helpers\DBHelper.cs" />
+    <Compile Include="Indizio.cs" />
+    <Compile Include="Ingresso.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Ingresso.Designer.cs">
+      <DependentUpon>Ingresso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario.cs" />
+    <Compile Include="KinectInterrogator.cs" />
+    <Compile Include="Stanza.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +103,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Partita.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
