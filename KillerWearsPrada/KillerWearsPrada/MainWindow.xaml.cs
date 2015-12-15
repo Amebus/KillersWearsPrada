@@ -35,7 +35,16 @@ namespace KillerWearsPrada
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            txtDisplay.Text = Application.Current.Resources["Application_Start_Image"].ToString();
+            //txtDisplay.Text = Application.Current.Resources["Application_Start_Image"].ToString();
+            txtDisplay.Visibility = Visibility.Visible;
+            //txtDisplay.AppendText(@"\n\r");
+            String s;
+            Boolean b;
+            Helpers.QRReaderHelper.IndirizzoImmagine = @"C:\Users\Monica\Downloads\2\DSC_0011.jpg";
+            s = Helpers.QRReaderHelper.BarCode(out b);
+            
+            txtDisplay.Text = s;
+
         }
 
         private void Window_Initialized(object sender, EventArgs e)
