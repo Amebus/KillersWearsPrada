@@ -49,14 +49,14 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         public static void ModifyMainBackgroundPath ()
         {
-            String dir_ok = "";
-            String dir = CurrentDirectory;
-
+            String dir_ok = CurrentDirectory;
+            //String dir = CurrentDirectory;
+            /*
             String[] dirs = dir.Split('\\');
             dir_ok = dirs[0];
             for (int i = 1; i < dirs.Length - 2; i++)
                 dir_ok = dir_ok + "\\" + dirs[i];
-
+            */
             dir_ok += CreatePath(Application.Current.Resources["Images"].ToString());
             dir_ok += CreatePath(Application.Current.Resources["Application_Start_Image"].ToString());
             Application.Current.Resources["Application_Start_Image"] = dir_ok;
