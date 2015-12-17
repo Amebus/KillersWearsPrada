@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada
 {
+    /// <summary>
+    /// <see cref="Giocatore"/>
+    /// </summary>
     class Cestino
     {
+
     }
 }
