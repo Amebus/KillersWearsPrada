@@ -38,18 +38,24 @@ namespace KillerWearsPrada
             //txtDisplay.Text = Application.Current.Resources["Application_Start_Image"].ToString();
             txtDisplay.Visibility = Visibility.Visible;
             //txtDisplay.AppendText(@"\n\r");
-            String s;
+            /*String s;
             Boolean b;
             Helpers.QRReaderHelper.IndirizzoImmagine = @"C:\Users\Monica\Downloads\2\DSC_0011.jpg";
             s = Helpers.QRReaderHelper.BarCode(out b);
             
-            txtDisplay.Text = s;
+            txtDisplay.Text = s;*/
 
         }
 
         private void Window_Initialized(object sender, EventArgs e)
         {
            
+        }
+
+        private void btnTestDB_Click(object sender, RoutedEventArgs e)
+        {
+            Helpers.DBHelper DBH = new Helpers.DBHelper();
+            txtDisplay.Text = DBH.TestConnection(); 
         }
     }
 }

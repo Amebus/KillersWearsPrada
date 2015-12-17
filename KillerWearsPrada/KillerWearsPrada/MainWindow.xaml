@@ -8,7 +8,11 @@
     <Window.Background>
         <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"/>
     </Window.Background>
-    <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441" Visibility="Hidden"/>
+    <Grid HorizontalAlignment="Left" Height="335" Margin="10,10,-8,0" VerticalAlignment="Top" Width="525">
+        <Button x:Name="btnTestDB" Content="Prova connessione DB" HorizontalAlignment="Left" Margin="87,264,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="btnTestDB_Click"/>
+        <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441" Visibility="Hidden"/>
+
+    </Grid>
 
 
 
