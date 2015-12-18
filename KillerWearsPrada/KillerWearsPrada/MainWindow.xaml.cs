@@ -25,6 +25,8 @@ namespace KillerWearsPrada
     /// </summary>
     public partial class MainWindow : Window
     {
+        Controller.KinectInterrogator kinectInterrogator;
+
         public MainWindow()
         {
 
@@ -41,13 +43,15 @@ namespace KillerWearsPrada
             // Use the default sensor
             this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
 
+            kinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor);
+
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //txtDisplay.Text = Application.Current.Resources["Application_Start_Image"].ToString();
-            txtDisplay.Visibility = Visibility.Visible;
+            //txtDisplay.Visibility = Visibility.Visible;
             //txtDisplay.AppendText(@"\n\r");
             /*String s;
             Boolean b;

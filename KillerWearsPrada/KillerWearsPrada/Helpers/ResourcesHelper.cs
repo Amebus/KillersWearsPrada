@@ -35,6 +35,11 @@ namespace KillerWearsPrada.Helpers
             get { return Application.Current.Resources["CurrentDirectory"].ToString(); }
         }
 
+        public static String ImagesDirectory
+        {
+            get { return Application.Current.Resources["ImagesDir"].ToString(); }
+        }
+
         /// <summary>
         /// Salva la directory corrente nella risorsa ["CurrentDirectory"]
         /// </summary>
@@ -57,7 +62,7 @@ namespace KillerWearsPrada.Helpers
             for (int i = 1; i < dirs.Length - 2; i++)
                 dir_ok = dir_ok + "\\" + dirs[i];
             */
-            dir_ok += CreatePath(Application.Current.Resources["Images"].ToString());
+            dir_ok += CreatePath(Application.Current.Resources["ImagesDir"].ToString());
             dir_ok += CreatePath(Application.Current.Resources["Application_Start_Image"].ToString());
             Application.Current.Resources["Application_Start_Image"] = dir_ok;
         }

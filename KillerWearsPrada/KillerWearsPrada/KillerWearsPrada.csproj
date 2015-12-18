@@ -117,7 +117,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\IGrabImage.cs" />
+    <Compile Include="Helpers\GrabImage.cs" />
     <Compile Include="Helpers\KinectHelper.cs" />
     <Compile Include="Helpers\QRReaderHelper.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />

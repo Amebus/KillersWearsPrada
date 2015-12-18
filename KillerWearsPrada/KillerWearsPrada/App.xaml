@@ -7,7 +7,7 @@
     <Application.Resources>
         <sys:String x:Key="CurrentDirectory">s</sys:String>
 
-        <sys:String x:Key="Images">\Images</sys:String>
+        <sys:String x:Key="ImagesDir">\Images</sys:String>
 
         <sys:String x:Key="Application_Start_Image">Application_Start.png</sys:String>
 
