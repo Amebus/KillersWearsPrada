@@ -11,5 +11,9 @@ namespace KillerWearsPrada.Controller
     /// </summary>
     class KinectInterrogator
     {
+
+
+
+
     }
 }

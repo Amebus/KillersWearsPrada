@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 
+using Microsoft.Kinect;
+using Microsoft.Kinect.Wpf.Controls;
+
 
 namespace KillerWearsPrada
 {
@@ -29,6 +32,14 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyMainBackgroundPath();
             //txtDisplay.AppendText(dir_ok);
             InitializeComponent();
+
+            KinectRegion.SetKinectRegion(this, kinectRegion);
+
+            App app = ((App)Application.Current);
+            app.KinectRegion = kinectRegion;
+
+            // Use the default sensor
+            this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
 
         }
 

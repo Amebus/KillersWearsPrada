@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Kinect.Wpf.Controls;
 
 namespace KillerWearsPrada
 {
@@ -13,5 +14,6 @@ namespace KillerWearsPrada
     /// </summary>
     public partial class App : Application
     {
+        internal KinectRegion KinectRegion;
     }
 }
