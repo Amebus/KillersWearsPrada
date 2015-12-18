@@ -1,6 +1,7 @@
 ﻿<Window x:Class="KillerWearsPrada.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:k="http://schemas.microsoft.com/kinect/2014"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KillerWearsPrada"
@@ -8,12 +9,13 @@
     <Window.Background>
         <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"/>
     </Window.Background>
-    <Grid HorizontalAlignment="Left" Height="335" Margin="10,10,-8,0" VerticalAlignment="Top" Width="525">
-        <Button x:Name="btnDebug" Content="Apri finestra debug" HorizontalAlignment="Left" Margin="167,269,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="btnDebug_Click"/>
-        <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
+    <k:KinectRegion x:Name="kinectRegion">
+        <Grid HorizontalAlignment="Left" Height="335" Margin="10,10,-8,0" VerticalAlignment="Top" Width="525">
+            <Button x:Name="btnDebug" Content="Apri finestra debug" HorizontalAlignment="Left" Margin="167,269,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="btnDebug_Click"/>
+            <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
 
-    </Grid>
-
+        </Grid>
+    </k:KinectRegion>
 
 
 </Window>

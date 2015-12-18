@@ -54,7 +54,9 @@ namespace KillerWearsPrada
 
         private void btnDebug_Click(object sender, RoutedEventArgs e)
         {
-            ///sistemare per avviare finestra di debug
+            Window debug = new UC.DebugWindow();
+            debug.Show();
+            //sistemare per avviare finestra di debug
         }
     }
 }

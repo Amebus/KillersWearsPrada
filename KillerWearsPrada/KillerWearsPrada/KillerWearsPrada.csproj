@@ -92,13 +92,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Cestino.cs" />
-    <Compile Include="Model\Giocatore.cs" />
+    <Compile Include="Controller\GameController.cs" />
+    <Compile Include="Model\TrashBin.cs" />
+    <Compile Include="Model\Player.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
-    <Compile Include="Model\Indizio.cs" />
-    <Compile Include="Model\Inventario.cs" />
+    <Compile Include="Model\Clue.cs" />
+    <Compile Include="Model\Inventory.cs" />
     <Compile Include="Controller\KinectInterrogator.cs" />
-    <Compile Include="Model\Stanza.cs" />
+    <Compile Include="Model\Room.cs" />
     <Compile Include="UC\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
@@ -143,7 +144,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Partita.cs" />
+    <Compile Include="Model\Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

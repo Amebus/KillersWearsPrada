@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KillerWearsPrada.Model
+namespace KillerWearsPrada.Controller
 {
-    class Giocatore
+    class GameController
     {
     }
 }

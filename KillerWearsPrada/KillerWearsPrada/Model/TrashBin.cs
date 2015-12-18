@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Model
 {
-    class Indizio
+    /// <summary>
+    /// <see cref="Player"/>
+    /// </summary>
+    class TrashBin
     {
+
     }
 }
