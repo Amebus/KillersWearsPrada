@@ -52,10 +52,9 @@ namespace KillerWearsPrada
            
         }
 
-        private void btnTestDB_Click(object sender, RoutedEventArgs e)
+        private void btnDebug_Click(object sender, RoutedEventArgs e)
         {
-            Helpers.DBHelper DBH = new Helpers.DBHelper();
-            txtDisplay.Text = DBH.TestConnection(); 
+            ///sistemare per avviare finestra di debug
         }
     }
 }

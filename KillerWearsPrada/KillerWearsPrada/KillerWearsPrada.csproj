@@ -92,19 +92,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Cestino.cs" />
-    <Compile Include="Giocatore.cs" />
+    <Compile Include="Model\Cestino.cs" />
+    <Compile Include="Model\Giocatore.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
-    <Compile Include="Indizio.cs" />
-    <Compile Include="Ingresso.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Model\Indizio.cs" />
+    <Compile Include="Model\Inventario.cs" />
+    <Compile Include="Controller\KinectInterrogator.cs" />
+    <Compile Include="Model\Stanza.cs" />
+    <Compile Include="UC\DebugWindow.xaml.cs">
+      <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ingresso.Designer.cs">
-      <DependentUpon>Ingresso.cs</DependentUpon>
+    <Compile Include="UC\Room.xaml.cs">
+      <DependentUpon>Room.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Inventario.cs" />
-    <Compile Include="KinectInterrogator.cs" />
-    <Compile Include="Stanza.cs" />
+    <Compile Include="UC\StartingRoom.xaml.cs">
+      <DependentUpon>StartingRoom.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,9 +129,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UC\DebugWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\Room.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\StartingRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Partita.cs" />
+    <Compile Include="Model\Partita.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

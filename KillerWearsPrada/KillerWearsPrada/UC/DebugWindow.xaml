@@ -1,0 +1,14 @@
+﻿<Window x:Class="KillerWearsPrada.UC.DebugWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KillerWearsPrada.UC"
+        mc:Ignorable="d"
+        Title="DebugWindow" Height="310.805" Width="508.475">
+    <Grid>
+        <Button x:Name="btnTestDB" Content="Prova connessione DB" HorizontalAlignment="Left" Margin="158,225,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="btnTestDB_Click"/>
+        <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="186" Margin="28,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
+
+    </Grid>
+</Window>
