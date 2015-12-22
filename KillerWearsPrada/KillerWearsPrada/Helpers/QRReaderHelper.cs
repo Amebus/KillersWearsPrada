@@ -16,7 +16,7 @@ namespace KillerWearsPrada.Helpers
         /// <summary>
         /// Da vedere se riposizionare nei singoli metodi
         /// </summary>
-        private static String indirizzoImmagine;
+        private static String attImagePath;
         #endregion
         
 
@@ -24,9 +24,9 @@ namespace KillerWearsPrada.Helpers
         /// Imposta indirizzo immagine da cui estrarre BarCode e QRCode
         /// NB: indirizzo deve essere ASSOLUTO
         /// </summary>
-        public  static String IndirizzoImmagine
+        public  static String ImagePath
         {
-            set { indirizzoImmagine = value; }
+            set { attImagePath = value; }
         }
 
         /// <summary>
@@ -35,11 +35,11 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         public static String BarCode (out Boolean BarCodeFound)
         {
-            Bitmap immagine;
-            BarcodeReader barCodeReader;
+            Bitmap wvImage;
+            BarcodeReader wvBarCodeReader;
 
-            List<BarcodeFormat> br_list = new List<BarcodeFormat>();
-            br_list.Add(BarcodeFormat.All_1D);
+            List<BarcodeFormat> wvBarCodesList = new List<BarcodeFormat>();
+            wvBarCodesList.Add(BarcodeFormat.All_1D);
             /*for (int i = 1; i< 65536; i*=2)
             {
                 BarcodeFormat.
@@ -50,14 +50,14 @@ namespace KillerWearsPrada.Helpers
             br_list.Add(BarcodeFormat.);
 
             */
-            barCodeReader = new BarcodeReader { AutoRotate = true };
-            barCodeReader.Options.PossibleFormats = br_list;
-            barCodeReader.Options.TryHarder = true;
-            barCodeReader.TryInverted = true;
+            wvBarCodeReader = new BarcodeReader { AutoRotate = true };
+            wvBarCodeReader.Options.PossibleFormats = wvBarCodesList;
+            wvBarCodeReader.Options.TryHarder = true;
+            wvBarCodeReader.TryInverted = true;
 
             Result r;
-            immagine = (Bitmap)Image.FromFile(indirizzoImmagine, true);
-            r = barCodeReader.Decode(immagine);
+            wvImage = (Bitmap)Image.FromFile(attImagePath, true);
+            r = wvBarCodeReader.Decode(wvImage);
 
             if (r==null)
             {
@@ -65,7 +65,7 @@ namespace KillerWearsPrada.Helpers
                 return "BarCodeFound=False";
             }
 
-            immagine.Dispose();
+            wvImage.Dispose();
             BarCodeFound = true;
             return r.Text.ToString();
           
@@ -78,20 +78,20 @@ namespace KillerWearsPrada.Helpers
         /// <returns></returns>
         public static String QRCode(out Boolean QRCodeFound)
         {
-            Bitmap immagine;
-            BarcodeReader qrCodeReader;
+            Bitmap wvImage;
+            BarcodeReader wvQRCodeReader;
 
-            List<BarcodeFormat> qr_list = new List<BarcodeFormat>();
-            qr_list.Add(BarcodeFormat.QR_CODE);
+            List<BarcodeFormat> wvQRlist = new List<BarcodeFormat>();
+            wvQRlist.Add(BarcodeFormat.QR_CODE);
 
-            qrCodeReader = new BarcodeReader { AutoRotate = true };
-            qrCodeReader.Options.PossibleFormats = qr_list;
-            qrCodeReader.Options.TryHarder = true;
-            qrCodeReader.TryInverted = true;
+            wvQRCodeReader = new BarcodeReader { AutoRotate = true };
+            wvQRCodeReader.Options.PossibleFormats = wvQRlist;
+            wvQRCodeReader.Options.TryHarder = true;
+            wvQRCodeReader.TryInverted = true;
 
             Result r;
-            immagine = (Bitmap)Image.FromFile(indirizzoImmagine, true);
-            r = qrCodeReader.Decode(immagine);
+            wvImage = (Bitmap)Image.FromFile(attImagePath, true);
+            r = wvQRCodeReader.Decode(wvImage);
 
             if (r == null)
             {
@@ -99,21 +99,21 @@ namespace KillerWearsPrada.Helpers
                 return "ERRORE";
             }
 
-            immagine.Dispose();
+            wvImage.Dispose();
             QRCodeFound = true;
             return r.Text.ToString();
 
         }
 
-        public static void GenerateQRCode (String Testo)
+        public static void GenerateQRCode (String Text)
         {
-            Bitmap immagine;
-            BarcodeWriter qrCodeWriter = new BarcodeWriter();
-            qrCodeWriter.Format = BarcodeFormat.QR_CODE;
+            Bitmap wvImage;
+            BarcodeWriter wvQRCodeWriter = new BarcodeWriter();
+            wvQRCodeWriter.Format = BarcodeFormat.QR_CODE;
             ZXing.Common.EncodingOptions encOptions = new ZXing.Common.EncodingOptions() { Width = 500, Height = 500, Margin = 1 };
-            qrCodeWriter.Options = encOptions;
+            wvQRCodeWriter.Options = encOptions;
 
-            immagine = qrCodeWriter.Write(Testo);
+            wvImage = wvQRCodeWriter.Write(Text);
 
             ///implementare per il salvataggio/stampa del QRCode
 

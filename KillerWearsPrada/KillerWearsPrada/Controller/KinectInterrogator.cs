@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Threading;
+
 
 namespace KillerWearsPrada.Controller
 {
@@ -18,53 +20,102 @@ namespace KillerWearsPrada.Controller
     /// </summary>
     class KinectInterrogator
     {
-        private const string screen = "screenshot.png";
-        KinectSensor kinectSensor;
-        WriteableBitmap colorBitmap;
 
-        ColorFrameReader colorFrameReader;
+        //TODO Scatenare l'evento qundo viene salvato uno screenshot e si riconosce il giocatore 
+        private const String attScreen = "screenshot.png";
+        private String attSavePath;
+        private Int32 attWaitingTime;
 
-        public KinectInterrogator(KinectSensor ks)
+        private KinectSensor attKinectSensor;
+        private WriteableBitmap attColorBitmap;
+
+        private ColorFrameReader attColorFrameReader;
+
+        private Boolean attRunThread;
+        private Thread attScreenshotSaver;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Sensor">The Kinect Sensor to use</param>
+        /// <param name="WaitingTime">Reppresent the time, in milliseconnds, to wait before taking another screenshot</param>
+        public KinectInterrogator(KinectSensor Sensor, Int32 WaitingTime)
         {
-            kinectSensor = ks;
-            colorBitmap = null;
-            colorFrameReader = ks.ColorFrameSource.OpenReader();
-            colorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
+            attRunThread = true;
+            attWaitingTime = WaitingTime;
+            attSavePath = "";
+            this.attKinectSensor = Sensor;
+            attColorBitmap = null;
+            attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
+            attColorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
+            attScreenshotSaver = new Thread(new ThreadStart(TakeScreenshot));
         }
 
-
-        public bool IsKinectConnected
+        /// <summary>
+        /// Return a value that indicate if the KinectSensor is connected
+        /// </summary>
+        public Boolean IsKinectConnected
         {
-            get { return Helpers.KinectHelper.IsKinectConected; }
+            get { return attKinectSensor.IsAvailable; }
         }
 
-
-
-        public String TakeScreenshot(KinectSensor ks)
+        /// <summary>
+        /// Set a property that allow or not the periodic saving of a screenshot
+        /// </summary>
+        public Boolean AllowRun
         {
-            //butta il thread per lo screenshot
+            set { attRunThread = value; }
+        }
 
-            if (this.colorBitmap != null)
+        /// <summary>
+        /// Start the thread that take periodic screenshot for the kinect sensor
+        /// </summary>
+        public void StartTakingScreenshot()
+        {
+            attRunThread = true;
+            attScreenshotSaver.Start();
+        }
+
+        /// <summary>
+        /// Stop the thread that take periodic screenshot for the kinect sensor
+        /// </summary>
+        public void StoptakingScreenshot()
+        {
+            attRunThread = false;
+            attScreenshotSaver.Abort();
+        }
+
+        /// <summary>
+        /// Save teh screeenshot on a file 
+        /// </summary>
+        private void TakeScreenshot()
+        {
+            while (attRunThread)
             {
+                //butta il thread per lo screenshot
+                if (this.attColorBitmap == null)
+                    continue;
+
+            
                 // create a png bitmap encoder which knows how to save a .png file
-                BitmapEncoder encoder = new PngBitmapEncoder();
+                BitmapEncoder wvEncoder = new PngBitmapEncoder();
 
                 // create frame from the writable bitmap and add to encoder
-                encoder.Frames.Add(BitmapFrame.Create(this.colorBitmap));
+                wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
 
 
                 // create frame from the writable bitmap and add to encoder
-                encoder.Frames.Add(BitmapFrame.Create(this.colorBitmap));
+                wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
 
-                String path = Helpers.ResourcesHelper.CurrentDirectory + Helpers.ResourcesHelper.ImagesDirectory + "\\" + screen;
+                attSavePath = Helpers.ResourcesHelper.CurrentDirectory + Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
 
                 // write the new file to disk
                 try
                 {
                     // FileStream is IDisposable
-                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    using (FileStream fs = new FileStream(attSavePath, FileMode.Create))
                     {
-                        encoder.Save(fs);
+                        wvEncoder.Save(fs);
                     }
 
                     //this.StatusText = string.Format(Properties.Resources.SavedScreenshotStatusTextFormat, path);
@@ -73,41 +124,43 @@ namespace KillerWearsPrada.Controller
                 {
                     //this.StatusText = string.Format(Properties.Resources.FailedScreenshotStatusTextFormat, path);
                 }
-                return path;
-            }
 
-            return null;
+                Thread.Sleep(attWaitingTime);
+            }
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Reader_ColorFrameArrived(object sender, ColorFrameArrivedEventArgs e)
         {
-            using (ColorFrame colorFrame = e.FrameReference.AcquireFrame())
+            ColorFrame wvColorFrame = e.FrameReference.AcquireFrame();
+
+            if (wvColorFrame == null)
+                return;
+            
+            FrameDescription colorFrameDescription = wvColorFrame.FrameDescription;
+
+            KinectBuffer wvColorBuffer = wvColorFrame.LockRawImageBuffer();
+            
+            this.attColorBitmap.Lock();
+
+            // verify data and write the new color frame data to the display bitmap
+            if ((colorFrameDescription.Width == this.attColorBitmap.PixelWidth) && (colorFrameDescription.Height == this.attColorBitmap.PixelHeight))
             {
-                if (colorFrame != null)
-                {
-                    FrameDescription colorFrameDescription = colorFrame.FrameDescription;
+                wvColorFrame.CopyConvertedFrameDataToIntPtr(
+                    this.attColorBitmap.BackBuffer,
+                    (uint)(colorFrameDescription.Width * colorFrameDescription.Height * 4),
+                    ColorImageFormat.Bgra);
 
-                    using (KinectBuffer colorBuffer = colorFrame.LockRawImageBuffer())
-                    {
-                        this.colorBitmap.Lock();
-
-                        // verify data and write the new color frame data to the display bitmap
-                        if ((colorFrameDescription.Width == this.colorBitmap.PixelWidth) && (colorFrameDescription.Height == this.colorBitmap.PixelHeight))
-                        {
-                            colorFrame.CopyConvertedFrameDataToIntPtr(
-                                this.colorBitmap.BackBuffer,
-                                (uint)(colorFrameDescription.Width * colorFrameDescription.Height * 4),
-                                ColorImageFormat.Bgra);
-
-                            this.colorBitmap.AddDirtyRect(new Int32Rect(0, 0, this.colorBitmap.PixelWidth, this.colorBitmap.PixelHeight));
-                        }
-
-                        this.colorBitmap.Unlock();
-                    }
-                }
+                this.attColorBitmap.AddDirtyRect(new Int32Rect(0, 0, this.attColorBitmap.PixelWidth, this.attColorBitmap.PixelHeight));
             }
 
+            this.attColorBitmap.Unlock();
+            
         }
 
     }

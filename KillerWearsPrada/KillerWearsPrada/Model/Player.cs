@@ -8,5 +8,20 @@ namespace KillerWearsPrada.Model
 {
     class Player
     {
+        private String attName;
+        private String attID;
+
+
+        private String Name
+        {
+            get { return attName; }
+        }
+
+
+        public String ID
+        {
+            get { return attID; }
+        }
+
     }
 }

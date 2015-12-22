@@ -19,12 +19,12 @@ namespace KillerWearsPrada.Helpers
         /// <returns></returns>
         private static String CreatePath(String Directory)
         {
-            String path = Directory;
+            String wvPath = Directory;
 
             if (Directory[0]!=('\\'))
-                path = "\\" + Directory;
+                wvPath = "\\" + Directory;
 
-            return path;
+            return wvPath;
         }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         public static void SaveCurrentDirectory()
         {
-            String dir = Directory.GetCurrentDirectory().ToString();
-            Application.Current.Resources["CurrentDirectory"] = dir;
+            String wvDir = Directory.GetCurrentDirectory().ToString();
+            Application.Current.Resources["CurrentDirectory"] = wvDir;
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         public static void ModifyMainBackgroundPath ()
         {
-            String dir_ok = CurrentDirectory;
+            String wvRightPath = CurrentDirectory;
             //String dir = CurrentDirectory;
             /*
             String[] dirs = dir.Split('\\');
@@ -62,9 +62,9 @@ namespace KillerWearsPrada.Helpers
             for (int i = 1; i < dirs.Length - 2; i++)
                 dir_ok = dir_ok + "\\" + dirs[i];
             */
-            dir_ok += CreatePath(Application.Current.Resources["ImagesDir"].ToString());
-            dir_ok += CreatePath(Application.Current.Resources["Application_Start_Image"].ToString());
-            Application.Current.Resources["Application_Start_Image"] = dir_ok;
+            wvRightPath += CreatePath(Application.Current.Resources["ImagesDir"].ToString());
+            wvRightPath += CreatePath(Application.Current.Resources["Application_Start_Image"].ToString());
+            Application.Current.Resources["Application_Start_Image"] = wvRightPath;
         }
 
     }

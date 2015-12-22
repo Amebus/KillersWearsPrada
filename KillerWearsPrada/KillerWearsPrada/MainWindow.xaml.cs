@@ -19,12 +19,14 @@ using Microsoft.Kinect.Wpf.Controls;
 
 
 namespace KillerWearsPrada
-{
+{   
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        const Int32 REFRESH_TIME = 1000;
+
         Controller.KinectInterrogator kinectInterrogator;
 
         public MainWindow()
@@ -37,19 +39,21 @@ namespace KillerWearsPrada
 
             KinectRegion.SetKinectRegion(this, kinectRegion);
 
-            App app = ((App)Application.Current);
-            app.KinectRegion = kinectRegion;
+            App wvApp = ((App)Application.Current);
+            wvApp.KinectRegion = kinectRegion;
 
             // Use the default sensor
             this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
 
-            kinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor);
+            kinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor, REFRESH_TIME);
 
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Window wvDebug = new UC.DebugWindow();
+            wvDebug.Show();
             //txtDisplay.Text = Application.Current.Resources["Application_Start_Image"].ToString();
             //txtDisplay.Visibility = Visibility.Visible;
             //txtDisplay.AppendText(@"\n\r");
@@ -69,9 +73,7 @@ namespace KillerWearsPrada
 
         private void btnDebug_Click(object sender, RoutedEventArgs e)
         {
-            Window debug = new UC.DebugWindow();
-            debug.Show();
-            //sistemare per avviare finestra di debug
+            
         }
     }
 }
