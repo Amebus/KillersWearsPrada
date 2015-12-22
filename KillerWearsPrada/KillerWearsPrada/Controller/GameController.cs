@@ -30,7 +30,7 @@ namespace KillerWearsPrada.Controller
         {
             String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
             wvPath += ("\\" + attGame.PlayerID);
-            attStream = new FileStream(wvPath, FileMode.Create);
+            attStream = new FileStream(wvPath, FileMode.Create, FileAccess.Write);
             attSerializer.Serialize(attStream, attGame);
             attStream.Close();
         }
@@ -42,7 +42,7 @@ namespace KillerWearsPrada.Controller
         {
             String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
             //sistemare la logica per creare il path giusto
-            attStream = new (wvPath, FileMode.Open);
+            attStream = new FileStream(wvPath, FileMode.Open, FileAccess.Read);
             attGame = (Model.Game)attSerializer.Deserialize(attStream);
             attStream.Close();
         }

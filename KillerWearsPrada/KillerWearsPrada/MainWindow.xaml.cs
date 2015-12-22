@@ -27,7 +27,9 @@ namespace KillerWearsPrada
     {
         const Int32 REFRESH_TIME = 1000;
 
-        Controller.KinectInterrogator kinectInterrogator;
+
+        Controller.KinectInterrogator attKinectInterrogator;
+        Window attDebug;
 
         public MainWindow()
         {
@@ -45,15 +47,15 @@ namespace KillerWearsPrada
             // Use the default sensor
             this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
 
-            kinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor, REFRESH_TIME);
+            attKinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor, REFRESH_TIME);
 
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Window wvDebug = new UC.DebugWindow();
-            wvDebug.Show();
+            attDebug = new UC.DebugWindow();
+            attDebug.Show();
             //txtDisplay.Text = Application.Current.Resources["Application_Start_Image"].ToString();
             //txtDisplay.Visibility = Visibility.Visible;
             //txtDisplay.AppendText(@"\n\r");
@@ -73,7 +75,21 @@ namespace KillerWearsPrada
 
         private void btnDebug_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                attDebug.Show();
+            }
+            catch (Exception ex)
+            {
+                attDebug = new UC.DebugWindow();
+                attDebug.Show();
+            }
             
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            attDebug.Close();
         }
     }
 }
