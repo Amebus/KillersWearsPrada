@@ -28,7 +28,7 @@ namespace KillerWearsPrada
         const Int32 REFRESH_TIME = 1000;
 
 
-        Controller.KinectInterrogator attKinectInterrogator;
+        //Controller.KinectInterrogator attKinectInterrogator;
         Window attDebug;
 
         public MainWindow()
