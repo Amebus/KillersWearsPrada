@@ -28,18 +28,21 @@ namespace KillerWearsPrada.Controller
 
         private KinectSensor attKinectSensor;
         private WriteableBitmap attColorBitmap;
+        private Bitmap attImage;
 
         private ColorFrameReader attColorFrameReader;
 
         private Boolean attRunThread;
         private Thread attScreenshotSaver;
 
+        private PlayerChecker attPlayerChecker;
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="Sensor">The Kinect Sensor to use</param>
         /// <param name="WaitingTime">Reppresent the time, in milliseconnds, to wait before taking another screenshot</param>
-        public KinectInterrogator(KinectSensor Sensor, Int32 WaitingTime)
+        public KinectInterrogator(KinectSensor Sensor, Int32 WaitingTime) 
         {
             attRunThread = true;
             attWaitingTime = WaitingTime;
@@ -49,6 +52,7 @@ namespace KillerWearsPrada.Controller
             attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
             attColorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
             attScreenshotSaver = new Thread(new ThreadStart(TakeScreenshot));
+            attPlayerChecker = new PlayerChecker();
         }
 
         /// <summary>
@@ -82,7 +86,6 @@ namespace KillerWearsPrada.Controller
         public void StoptakingScreenshot()
         {
             attRunThread = false;
-            attScreenshotSaver.Abort();
         }
 
         /// <summary>
@@ -109,15 +112,22 @@ namespace KillerWearsPrada.Controller
 
                 attSavePath = Helpers.ResourcesHelper.CurrentDirectory + Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
 
+                //creao uno stream per convertire writablebitmap in bitmap, in questo modo posso usare subito l'immagine
+                Stream wvMemoryImege = new MemoryStream();
+                wvEncoder.Save(wvMemoryImege);
+
+
+                attImage = new Bitmap(wvMemoryImege);
+
+                wvMemoryImege.Close();
+
                 // write the new file to disk
                 try
                 {
                     // FileStream is IDisposable
-                    using (FileStream fs = new FileStream(attSavePath, FileMode.Create))
-                    {
-                        wvEncoder.Save(fs);
-                    }
-
+                    FileStream fs = new FileStream(attSavePath, FileMode.Create);
+                    wvEncoder.Save(fs);
+                    fs.Close();
                     //this.StatusText = string.Format(Properties.Resources.SavedScreenshotStatusTextFormat, path);
                 }
                 catch (IOException)

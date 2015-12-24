@@ -10,23 +10,29 @@ namespace KillerWearsPrada.Controller
 {
     class GameController
     {
+        private const Int32 REFRESH_TIME = 1000;
         private Model.Game attGame;
         private BinaryFormatter attSerializer;
         private Stream attStream;
+        private KinectInterrogator attKinectInterrogator;
 
+        private PlayerChecker.PlayerStillOnKinectSensor attPlayerStillOnKinectSensor;
+        
         /// <summary>
         /// 
         /// </summary>
-        public GameController()
+        public GameController(Microsoft.Kinect.KinectSensor KinectSensor)
         {
+            attPlayerStillOnKinectSensor = new PlayerChecker.PlayerStillOnKinectSensor();
+            PlayerChecker.PlayerStillOnKinectSensor.PlayerStillOnKinectSensorChanged += new PlayerChecker.PlayerStillOnKinectSensor.PlayerStillOnKinectSensorEventHandler(HandlePlayerChange);
             attSerializer = new BinaryFormatter();
+            attKinectInterrogator = new KinectInterrogator( KinectSensor, REFRESH_TIME);
         }
-
 
         /// <summary>
         /// Save the status of the game in binary format
         /// </summary>
-        public void SaveStatus()
+        public void SaveGame()
         {
             String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
             wvPath += ("\\" + attGame.PlayerID);
@@ -38,7 +44,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Resume the status of a specified game saved in binary format
         /// </summary>
-        public void ResumeStatus()
+        public void ResumeGame()
         {
             String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
             //sistemare la logica per creare il path giusto
@@ -46,5 +52,11 @@ namespace KillerWearsPrada.Controller
             attGame = (Model.Game)attSerializer.Deserialize(attStream);
             attStream.Close();
         }
+
+        public void HandlePlayerChange(object sender, PlayerChecker.PlayerStillOnKinectSensorArgs e)
+        {
+            //TODO Implementare gestione del cambio di giocatore
+        }
+
     }
 }
