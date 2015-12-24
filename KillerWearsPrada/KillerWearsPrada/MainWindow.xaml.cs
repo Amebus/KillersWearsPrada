@@ -29,7 +29,11 @@ namespace KillerWearsPrada
 
 
         //Controller.KinectInterrogator attKinectInterrogator;
+        Controller.GameController attGameController;
+
+
         Window attDebug;
+
 
         public MainWindow()
         {
@@ -46,8 +50,8 @@ namespace KillerWearsPrada
 
             // Use the default sensor
             this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
-
-            attKinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor, REFRESH_TIME);
+            attGameController = new Controller.GameController(this.kinectRegion.KinectSensor);
+            //attKinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor, REFRESH_TIME);
 
         }
 
