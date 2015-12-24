@@ -5,8 +5,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KillerWearsPrada.UC"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Doors_Image}}"/>
+        
+    </UserControl.Background>
     <Grid>
-            
+        <!--
+        <Button x:Name ="button" Click="button_Click" MouseLeave="button_L" Grid.RowSpan="3" Grid.ColumnSpan="3" >
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image Name="image1"
+                Source="shirt acqua.png"
+                Stretch="Uniform"
+                Visibility="Collapsed"  Margin="790,392,249,0" RenderTransformOrigin="-0.127,1.066" Height="108" />
+                        <Image Name="image2"
+                Source="shirt on bed white.png"
+                Stretch="Uniform"
+                Visibility="Visible"  Margin="790,392,249,0" RenderTransformOrigin="-0.127,1.066" Height="108" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                  Value="true">
+                            <Setter TargetName="image1"
+                  Property="Visibility"
+                  Value="Visible" />
+                            <Setter TargetName="image2"
+                  Property="Visibility"
+                  Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+
+
+
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" To="CadetBlue"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+-->
+
     </Grid>
 </UserControl>
