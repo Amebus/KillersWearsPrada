@@ -34,17 +34,105 @@
     </UserControl.Resources>
 
 
-
-    <UserControl.Background>
-        <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Doors_Image}}"/>
-        
-    </UserControl.Background>
     <Canvas>
         <Canvas.Background>
             <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Doors_Image}}"/>
         </Canvas.Background>
 
-        <Button x:Name="Close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" Margin="1555,101,-1245,0" VerticalAlignment="Top" Width="215" Height="93" FontSize="32"></Button>
+
+        <Button x:Name ="sxDoorButton" Click="livingroom_Click" Height="677" Canvas.Top="82" Width="405" Canvas.Left="221" >
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Image x:Name="sxDoor" Source="C:\Users\Monica\Documents\Visual Studio 2015\Projects\OurWpf\OurWpf\Images\doorSXok.png"  RenderTransformOrigin="0.5,0.5">
+                        <Image.Effect>
+                            <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
+                        </Image.Effect>
+                        <Image.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Storyboard="{StaticResource startRedBlink}" />
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Storyboard="{StaticResource stopRedBlink}" />
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Image.Triggers>
+                    </Image>
+
+
+                </ControlTemplate>
+
+
+            </Button.Template>
+
+        </Button>
+
+
+        <Button x:Name ="centerDoorButton" Click="kitchen_Click" Height="533" Canvas.Top="101" Width="325" Canvas.Left="910" >
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Image x:Name="centerDoor" Source="C:\Users\Monica\Documents\Visual Studio 2015\Projects\OurWpf\OurWpf\Images\doorCENTERok.png"  RenderTransformOrigin="0.5,0.5">
+                        <Image.Effect>
+                            <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
+                        </Image.Effect>
+                        <Image.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Storyboard="{StaticResource startRedBlink}" />
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Storyboard="{StaticResource stopRedBlink}" />
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Image.Triggers>
+                    </Image>
+
+
+                </ControlTemplate>
+
+
+            </Button.Template>
+
+        </Button>
+
+        <Button x:Name ="dxDoorButton" Click="bedroom_Click" Height="634" Canvas.Top="89" Width="331" Canvas.Left="1310" >
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Image x:Name="dxDoor" Source="C:\Users\Monica\Documents\Visual Studio 2015\Projects\OurWpf\OurWpf\Images\doorDXok.png"  RenderTransformOrigin="0.5,0.5">
+                        <Image.Effect>
+                            <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
+                        </Image.Effect>
+                        <Image.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Storyboard="{StaticResource startRedBlink}" />
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard Storyboard="{StaticResource stopRedBlink}" />
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Image.Triggers>
+                    </Image>
+
+
+                </ControlTemplate>
+
+
+            </Button.Template>
+
+        </Button>
+
+
+        <Button x:Name="Close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="910" Canvas.Top="819"/>
 
     </Canvas>
 </UserControl>

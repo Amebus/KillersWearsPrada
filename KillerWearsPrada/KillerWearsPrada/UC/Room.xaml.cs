@@ -20,9 +20,56 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class Room : UserControl
     {
+        private ImageBrush ib;
+
+
+        public Room(String roomID)
+        {
+            // roomID contiene l'ID della stanza che devo caricare
+            // in questa prova contiene il nome dell'immagine di sfondo della stanza che devo caricare
+            // viene passata nel momento del click sulla relativa porta (e quindi creazione)
+            
+            InitializeComponent();
+
+            setBackgroundCanvas(Application.Current.Resources[roomID].ToString());
+
+            //    setBackgroundCanvas(roomID);
+
+
+        }
+
         public Room()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Set canvas background acconrdingly to the door selected
+        /// </summary>
+        /// <param name="roomImagePath"></param>
+        private void setBackgroundCanvas(String roomImagePath)
+        {
+            ib = new ImageBrush();
+            ib.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
+            room_Canvas.Background = ib;
+        }
+
+        private void close_button(object sender, RoutedEventArgs e)
+        {
+
+            Application.Current.Windows[0].Close();
+
+        }
+
+        private void back_button(object sender, RoutedEventArgs e)
+        {
+
+            StartingRoom ucstart = new StartingRoom();
+            Window parentWindow = Window.GetWindow(this);
+            Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
+            maingrid.Children.Remove(this);
+            maingrid.Children.Add(ucstart);
+
         }
     }
 }

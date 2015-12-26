@@ -21,9 +21,17 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class StartingRoom : UserControl
     {
+     //   private static int ok = 0;
+
         public StartingRoom()
         {
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Doors_Image");
+            /*
+            if(ok==0)
+            {
+                Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Doors_Image");
+                ok =  1;
+            } */
+               
             InitializeComponent();
         }
 
@@ -32,6 +40,40 @@ namespace KillerWearsPrada.UC
 
             Application.Current.Windows[0].Close();
 
+        }
+
+        /// <summary>
+        /// ad ognuno dei metodi qui sotto bisognerebbe passare l'ID che identifica la stanza su cui si è premuto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void livingroom_Click(object sender, RoutedEventArgs e)
+        {
+            Room ucroom = new Room("Livingroom_Image");
+            Window parentWindow = Window.GetWindow(this);
+            Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
+            maingrid.Children.Remove(this);
+            maingrid.Children.Add(ucroom);
+
+
+        }
+
+        private void kitchen_Click(object sender, RoutedEventArgs e)
+        {
+            Room ucroom = new Room("Kitchen_Image");
+            Window parentWindow = Window.GetWindow(this);
+            Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
+            maingrid.Children.Remove(this);
+            maingrid.Children.Add(ucroom);
+        }
+
+        private void bedroom_Click(object sender, RoutedEventArgs e)
+        {
+            Room ucroom = new Room("Bedroom_Image");
+            Window parentWindow = Window.GetWindow(this);
+            Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
+            maingrid.Children.Remove(this);
+            maingrid.Children.Add(ucroom);
         }
     }
 }
