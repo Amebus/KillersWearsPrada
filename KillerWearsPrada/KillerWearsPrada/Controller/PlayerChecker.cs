@@ -11,18 +11,14 @@ namespace KillerWearsPrada.Controller
     /// </summary>
     class PlayerChecker
     {
-        private PlayerStillOnKinectSensor attPlayerStillOnKinectSensorManager;
 
         private String attIDCurrentPalyer;
-        private Boolean attPlayreStillOnKinectSensor;
 
 
 
         public PlayerChecker()
         {
-            attPlayerStillOnKinectSensorManager = new PlayerStillOnKinectSensor();
-            attIDCurrentPalyer = "";
-            attPlayreStillOnKinectSensor = false;
+            
             //TODO finire il costruttore e implementare la chiamata per scatenare l'evento di cambiamento di giocatore
         }
 
@@ -34,77 +30,132 @@ namespace KillerWearsPrada.Controller
             get { return attIDCurrentPalyer; }
         }
 
-        /// <summary>
-        /// Return a <see cref="Boolean"/> value that indicate if the <see cref="Model.Player"/> is still in on screen
-        /// </summary>
-        public Boolean IsPlayerStillOnScreen
-        {
-            get { return attPlayreStillOnKinectSensor; }
-        }
 
         /// <summary>
-        /// Manage the generation of the event PlayerStillOnScreenChange that occure when change the status of the <see cref="Model.Player"/>.
-        /// If the <see cref="Model.Player"/> enter or leave <see cref="Microsoft.Kinect.KinectSensor"/>
+        /// Manage the generation of the event PlayerEnterKinectSensor that occure when a <see cref="Model.Player"/> 
+        /// enter the KinectSensor region and is recognized by the game.
         /// </summary>
-        public class PlayerStillOnKinectSensor
+        public class PlayerEnterKinectSensor
         {
+            /*
             /// <summary>
-            /// Delegate that handle the event raised by <see cref="PlayerStillOnKinectSensor"/>
+            /// Delegate that handle the event raised by <see cref="PlayerEnterKinectSensor"/>
             /// </summary>
             /// <param name="sender"></param>
             /// <param name="e"></param>
-            public delegate void PlayerStillOnKinectSensorEventHandler(object sender, PlayerStillOnKinectSensorArgs e);
+            public delegate void PlayerStillOnKinectSensorEventHandler(object sender, PlayerEnterKinectSensorArgs e);
+            */
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public event EventHandler<Args> RaisePlayerEnterKinectSensor;
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="e"></param>
+            protected virtual void OnPlayerEnterKinectSensor(Args e)
+            {
+                EventHandler<Args> wvHendeler = RaisePlayerEnterKinectSensor;
+                if (wvHendeler != null)
+                {
+                    wvHendeler(this, e);
+                }
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public void RaiseEvent()
+            {
+                //TODO mettere l'ID del giocatore entrato
+                Args wvParameters = new Args("");
 
 
+                OnPlayerEnterKinectSensor(wvParameters);
+            }
+
+            /*
             /// <summary>
             /// Instance of the delegate
             /// </summary>
             public static PlayerStillOnKinectSensorEventHandler PlayerStillOnKinectSensorChanged;
+            */
 
-
+            /*
             /// <summary>
             /// Raise the Event associated to the <see cref="PlayerStillOnKinectSensorEventHandler"/> delegate
             /// </summary>
             /// <param name="e"></param>
-            public void RaiseEventPlayerStillOnKinectSensorChanged(PlayerStillOnKinectSensorArgs e)
+            public void RaiseEventPlayerStillOnKinectSensorChanged(PlayerEnterKinectSensorArgs e)
             {
                 if (PlayerStillOnKinectSensorChanged != null)
                 {
                     PlayerStillOnKinectSensorChanged(this, e);
                 }
+            }*/
+
+            /// <summary>
+            /// Contains information used by the event <see cref="PlayerEnterKinectSensor"/>
+            /// </summary>
+            public class Args : EventArgs
+            {
+
+                private String attID;
+
+                public Args(String ID) : base()
+                {
+                    attID = ID;
+                }
+
+                public String ID
+                {
+                    get { return attID; }
+                }
+
+
             }
 
         }
 
-
-        /// <summary>
-        /// Contains information used by the event <see cref="PlayerStillOnKinectSensor"/>
-        /// </summary>
-        public class PlayerStillOnKinectSensorArgs : EventArgs
+        public class PlayerLeaveKinectSensor
         {
+            /// <summary>
+            /// 
+            /// </summary>
+            public event EventHandler<Args> RaisePlayerLeaveKinectSensor;
 
-            private String attNewID;
-            private String attPreviousID;
-
-
-            public PlayerStillOnKinectSensorArgs(String PreviousID, String NewID) : base()
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="e"></param>
+            protected virtual void OnPlayerLeaveKinectSensor(Args e)
             {
-                attNewID = NewID;
-                attPreviousID = PreviousID;
+                EventHandler<Args> wvHendeler = RaisePlayerLeaveKinectSensor;
+                if (wvHendeler != null)
+                {
+                    wvHendeler(this, e);
+                }
             }
 
-            public String PreviousID
+            public void RaiseEvent()
             {
-                get { return attPreviousID; }
+                //TODO completare i parametri
+                Args wvParameters = new Args();
+
+
+                OnPlayerLeaveKinectSensor(wvParameters);
             }
 
-            public String NewID
+            public class Args : EventArgs
             {
-                get { return attNewID; }
+
             }
-
-
         }
+
+        
+        
 
     }
 }
