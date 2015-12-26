@@ -6,7 +6,29 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Model
 {
-    class Clue
+    [Serializable]
+    class Clue : Serializable
     {
+
     }
+
+    //da ricontrollare
+    enum Color
+    {
+        ARANCIONE,
+        BLU,
+        GIALLO,
+        ROSSO,
+        VERDE,
+        VIOLA
+    }
+
+    enum Gradiation
+    {
+        CHIARO,
+        SCURO
+    }
+
+
+
 }

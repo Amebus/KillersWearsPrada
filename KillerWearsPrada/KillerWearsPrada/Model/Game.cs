@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Game
+    class Game : Serializable
     {
 
         #region Attributes
@@ -17,15 +17,24 @@ namespace KillerWearsPrada.Model
         #endregion
 
 
-        public Game ()
+        public Game (String ID, String PlayerName)
         {
-
+            attPlayer = new Player(ID, PlayerName);
         }
 
-        public string PlayerID
+        public String PlayerID
         {
             get { return attPlayer.ID; }
         }
 
+        public String PlayerName
+        {
+            get { return PlayerName; }
+        }
+
+        public void prova()
+        {
+            attRooms[0].Items[0].Clue.ToString();    
+        }
     }
 }

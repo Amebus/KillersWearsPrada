@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Model
 {
-    class Room
+    [Serializable]
+    class Room : Serializable
     {
+        private List<Item> attItems;
+        
+        public Room(List<Item> Items)
+        {
+            attItems = Items;
+        } 
+
+        public List<Item> Items
+        {
+            get { return attItems; }
+        }
+
     }
 }

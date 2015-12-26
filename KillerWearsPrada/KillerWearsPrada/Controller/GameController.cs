@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Controller
 {
@@ -12,7 +7,6 @@ namespace KillerWearsPrada.Controller
     {
         private const Int32 REFRESH_TIME = 1000;
         private Model.Game attGame;
-        private BinaryFormatter attSerializer;
         private Stream attStream;
         private KinectInterrogator attKinectInterrogator;
 
@@ -27,7 +21,6 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public GameController(Microsoft.Kinect.KinectSensor KinectSensor)
         {
-            attSerializer = new BinaryFormatter();
             attKinectInterrogator = new KinectInterrogator( KinectSensor, REFRESH_TIME);
 
             attResumeGame = new ResumeGame();
@@ -64,8 +57,8 @@ namespace KillerWearsPrada.Controller
         /// <param name="Parameters"></param>
         private void HandlePlayerEnterKinectSensor(object Sender, PlayerChecker.PlayerEnterKinectSensor.Args Parameters)
         {
-            throw new NotImplementedException();
-            //TODO gestire l'evento aggiungendo i delegati anche nella grafica
+            throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore viene riconosciuto");
+            
 
 
             LoadGame(Parameters.ID);
@@ -79,8 +72,8 @@ namespace KillerWearsPrada.Controller
         /// <param name="e"></param>
         private void HandlePlayerLeaveKinectSensor(object Sender, PlayerChecker.PlayerLeaveKinectSensor.Args Parameters)
         {
-            throw new NotImplementedException();
-            //TODO gestire l'evento aggiungendo i delegati anche nella grafica
+            throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore lascia la postazione");
+            
 
             SaveGame();
             attUnloadGame.RaiseEvent();
@@ -94,9 +87,7 @@ namespace KillerWearsPrada.Controller
         {
             String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
             wvPath += ("\\" + attGame.PlayerID);
-            attStream = new FileStream(wvPath, FileMode.Create, FileAccess.Write);
-            attSerializer.Serialize(attStream, attGame);
-            attStream.Close();
+            Helpers.SerializerHelper.Serialize(wvPath, attGame);
         }
 
         /// <summary>
@@ -104,13 +95,28 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public void LoadGame(String ID)
         {
-            String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
-            //sistemare la logica per creare il path giusto
-            attStream = new FileStream(wvPath, FileMode.Open, FileAccess.Read);
-            attGame = (Model.Game)attSerializer.Deserialize(attStream);
-            attStream.Close();
+            String wvPath = Helpers.ResourcesHelper.CurrentDirectory + "\\" + ID;
+            attGame = (Model.Game)Helpers.SerializerHelper.Deserialize(wvPath);
         }
         
+        /// <summary>
+        /// Create a new <see cref="Model.Game"/> and a new <see cref="Model.Player"/> and save them into a file
+        /// </summary>
+        /// <param name="PlayerName">Name of the <see cref="Model.Player"/></param>
+        public static void CreateGameAndPlayer(String PlayerName)
+        {
+            String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
+            String wvID = DateTime.Now.ToString();
+
+            wvID = wvID.Replace(' ', '-');
+            wvID += ("-" + PlayerName);
+            Model.Game wvGame = new Model.Game(wvID, PlayerName);
+
+            wvPath += wvID;
+            Helpers.SerializerHelper.Serialize(wvPath, wvGame);
+
+            throw new NotImplementedException("Implementare qui la stampa dei QRCODE");
+        }
 
         /// <summary>
         /// Event that occur when the game is resumed

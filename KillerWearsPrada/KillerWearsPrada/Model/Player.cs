@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Model
 {
-    class Player
+    [Serializable]
+    class Player : Serializable
     {
         private String attName;
         private String attID;
 
+
+        public Player (String ID, String Name)
+        {
+            attID = ID;
+            attName = Name;
+        }
 
         private String Name
         {

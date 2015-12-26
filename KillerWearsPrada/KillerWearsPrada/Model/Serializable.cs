@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Model
 {
-    [Serializable]
-    /// <summary>
-    /// <see cref="Player"/>
-    /// </summary>
-    class TrashBin : Serializable
-    {
 
+    interface Serializable
+    {
     }
 }

@@ -97,6 +97,9 @@
     </ApplicationDefinition>
     <Compile Include="Controller\GameController.cs" />
     <Compile Include="Controller\PlayerChecker.cs" />
+    <Compile Include="Helpers\SerializerHelper.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\Serializable.cs" />
     <Compile Include="Model\TrashBin.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
