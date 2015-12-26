@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="DebugWindow" Height="310.805" Width="508.475">
     <Grid>
-        <Button x:Name="btnTestDB" Content="Prova connessione DB" HorizontalAlignment="Left" Margin="28,226,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="btnTestDB_Click"/>
-        <Button x:Name="entrance" Content="Vai a Entrata Casa" HorizontalAlignment="Left" Margin="295,226,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="goToEntrance_Click"/>
+        <Button x:Name="btnTestDB" Content="Prova connessione DB" HorizontalAlignment="Left" Margin="158,223,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="btnTestDB_Click"/>
+        
         <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="186" Margin="28,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
 
     </Grid>

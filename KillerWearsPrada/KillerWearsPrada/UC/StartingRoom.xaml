@@ -44,7 +44,7 @@
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
 
-                    <Image x:Name="sxDoor" Source="C:\Users\Monica\Documents\Visual Studio 2015\Projects\OurWpf\OurWpf\Images\doorSXok.png"  RenderTransformOrigin="0.5,0.5">
+                    <Image x:Name="sxDoor" Source="{Binding Mode=OneWay, Source={StaticResource SXdoor_Image}}"  RenderTransformOrigin="0.5,0.5">
                         <Image.Effect>
                             <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
                         </Image.Effect>
@@ -75,7 +75,7 @@
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
 
-                    <Image x:Name="centerDoor" Source="C:\Users\Monica\Documents\Visual Studio 2015\Projects\OurWpf\OurWpf\Images\doorCENTERok.png"  RenderTransformOrigin="0.5,0.5">
+                    <Image x:Name="centerDoor" Source="{Binding Mode=OneWay, Source={StaticResource CENTERdoor_Image}}"  RenderTransformOrigin="0.5,0.5">
                         <Image.Effect>
                             <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
                         </Image.Effect>
@@ -105,7 +105,7 @@
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
 
-                    <Image x:Name="dxDoor" Source="C:\Users\Monica\Documents\Visual Studio 2015\Projects\OurWpf\OurWpf\Images\doorDXok.png"  RenderTransformOrigin="0.5,0.5">
+                    <Image x:Name="dxDoor" Source="{Binding Mode=OneWay, Source={StaticResource DXdoor_Image}}"  RenderTransformOrigin="0.5,0.5">
                         <Image.Effect>
                             <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
                         </Image.Effect>

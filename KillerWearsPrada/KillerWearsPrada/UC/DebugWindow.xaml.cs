@@ -31,10 +31,7 @@ namespace KillerWearsPrada.UC
             txtDisplay.Text = db.TestConnection();
         }
 
-        private void goToEntrance_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
     }
 }

@@ -121,6 +121,10 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Kitchen_Image");
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Bedroom_Image");
 
+            //path delle immagini delle porte
+            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("SXdoor_Image");
+            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("CENTERdoor_Image");
+            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("DXdoor_Image");
         }
         
 

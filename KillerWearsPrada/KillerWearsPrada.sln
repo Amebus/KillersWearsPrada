@@ -15,7 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5622C0
 	ProjectSection(SolutionItems) = preProject
 		KillerWearsPrada\Images\Application_Start.png = KillerWearsPrada\Images\Application_Start.png
 		KillerWearsPrada\Images\bedroom1.jpg = KillerWearsPrada\Images\bedroom1.jpg
+		KillerWearsPrada\Images\doorCENTERok.png = KillerWearsPrada\Images\doorCENTERok.png
+		KillerWearsPrada\Images\doorDXok.png = KillerWearsPrada\Images\doorDXok.png
 		KillerWearsPrada\Images\doors3empty1.jpg = KillerWearsPrada\Images\doors3empty1.jpg
+		KillerWearsPrada\Images\doorSXok.png = KillerWearsPrada\Images\doorSXok.png
 		KillerWearsPrada\Images\kitchen1.jpg = KillerWearsPrada\Images\kitchen1.jpg
 		KillerWearsPrada\Images\livingroom1.jpg = KillerWearsPrada\Images\livingroom1.jpg
 	EndProjectSection
