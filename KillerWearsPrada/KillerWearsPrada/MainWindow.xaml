@@ -5,13 +5,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KillerWearsPrada"
-        mc:Ignorable="d" Height="381.886" Width="534.64" Title="{StaticResource ResourceKey=ApplicationTitle}" Visibility="Visible" Foreground="#00000000" Loaded="Window_Loaded" Initialized="Window_Initialized" Closing="Window_Closing">
+        mc:Ignorable="d" 
+        Height="1080" 
+        Width="1920" 
+        Title="{StaticResource ResourceKey=ApplicationTitle}" 
+        Visibility="Visible" 
+        Foreground="#00000000" 
+        Loaded="Window_Loaded" 
+        Initialized="Window_Initialized" 
+        Closing="Window_Closing"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        Name="start_Window">
     <Window.Background>
         <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"/>
     </Window.Background>
     <k:KinectRegion x:Name="kinectRegion">
-        <Grid HorizontalAlignment="Left" Height="335" Margin="10,10,-8,0" VerticalAlignment="Top" Width="525">
+        <Grid HorizontalAlignment="Left" Height="1080" Margin="0,-31,-8,0" VerticalAlignment="Top" Width="1920" Name="mainGrid">
+
+
             <Button x:Name="btnDebug" Content="Apri finestra debug" HorizontalAlignment="Left" Margin="167,269,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="btnDebug_Click"/>
+
+            <Button x:Name="btnRoom" Content="Go to Entrance" HorizontalAlignment="Left" Margin="403,269,0,0" VerticalAlignment="Top" Width="93" Height="25" Click="btnEntrance_Click"/>
+
+            <Button x:Name="Close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" Margin="1555,101,-1245,0" VerticalAlignment="Top" Width="215" Height="93" FontSize="32"></Button>
+
             <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
 
         </Grid>

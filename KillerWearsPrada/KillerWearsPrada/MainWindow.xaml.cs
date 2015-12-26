@@ -16,7 +16,7 @@ using System.IO;
 
 using Microsoft.Kinect;
 using Microsoft.Kinect.Wpf.Controls;
-
+using KillerWearsPrada.UC;
 
 namespace KillerWearsPrada
 {   
@@ -91,9 +91,28 @@ namespace KillerWearsPrada
             
         }
 
+        //Dovrebbe passare alla user control StartingRoom ma non lo fa e non so perchè
+        private void btnEntrance_Click(object sender, RoutedEventArgs e)
+        {
+            StartingRoom startRoom = new StartingRoom();
+
+            mainGrid.Children.Add(startRoom);
+
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             attDebug.Close();
         }
+
+        private void close_button(object sender, RoutedEventArgs e)
+        {
+
+           this.Close();
+        }
+
+        
+
+    
     }
 }

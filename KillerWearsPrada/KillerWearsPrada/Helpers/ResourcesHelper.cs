@@ -67,5 +67,22 @@ namespace KillerWearsPrada.Helpers
             Application.Current.Resources["Application_Start_Image"] = wvRightPath;
         }
 
+
+        public static void ModifyRoomBackgroundPath(String roomImage)
+        {
+            String wvRightPath = CurrentDirectory;
+            //String dir = CurrentDirectory;
+            /*
+            String[] dirs = dir.Split('\\');
+            dir_ok = dirs[0];
+            for (int i = 1; i < dirs.Length - 2; i++)
+                dir_ok = dir_ok + "\\" + dirs[i];
+            */
+            wvRightPath += CreatePath(Application.Current.Resources["ImagesDir"].ToString());
+            wvRightPath += CreatePath(Application.Current.Resources[roomImage].ToString());
+            Application.Current.Resources[roomImage] = wvRightPath;
+        }
+        
+
     }
 }

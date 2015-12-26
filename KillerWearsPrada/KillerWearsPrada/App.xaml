@@ -11,7 +11,13 @@
 
         <sys:String x:Key="Application_Start_Image">Application_Start.png</sys:String>
 
-        <sys:String x:Key="Doors_Image">doors3new.png</sys:String>
+        <sys:String x:Key="Doors_Image">doors3empty1.jpg</sys:String>
+
+        <sys:String x:Key="Bedroom_Image">bedroom1.jpg</sys:String>
+
+        <sys:String x:Key="Kitchen_Image">kitchen1.jpg</sys:String>
+
+        <sys:String x:Key="Livingroom_Image">livingroom1.jpg</sys:String>
 
 
         <sys:String x:Key="ApplicationTitle">Killer Wears Prada</sys:String>

@@ -23,7 +23,15 @@ namespace KillerWearsPrada.UC
     {
         public StartingRoom()
         {
+            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Doors_Image");
             InitializeComponent();
+        }
+
+        private void close_button(object sender, RoutedEventArgs e)
+        {
+
+            Application.Current.Windows[0].Close();
+
         }
     }
 }
