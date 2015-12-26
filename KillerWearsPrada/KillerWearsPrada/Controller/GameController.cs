@@ -81,6 +81,9 @@ namespace KillerWearsPrada.Controller
         {
             throw new NotImplementedException();
             //TODO gestire l'evento aggiungendo i delegati anche nella grafica
+
+            SaveGame();
+            attUnloadGame.RaiseEvent();
         }
 
 
