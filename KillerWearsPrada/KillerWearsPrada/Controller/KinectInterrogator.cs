@@ -1,15 +1,15 @@
 ﻿using Microsoft.Kinect;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using System.Threading;
-
 
 namespace KillerWearsPrada.Controller
 {
@@ -32,27 +32,40 @@ namespace KillerWearsPrada.Controller
 
         private ColorFrameReader attColorFrameReader;
 
-        private Boolean attRunThread;
-        private Thread attScreenshotSaver;
-
         private PlayerChecker attPlayerChecker;
+
+        private Timer attTimerScreenshots;
+        private BackgroundWorker attScreenshotWorker;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="Sensor">The Kinect Sensor to use</param>
         /// <param name="WaitingTime">Reppresent the time, in milliseconnds, to wait before taking another screenshot</param>
+        /// <param name="Checker"></param>
         public KinectInterrogator(KinectSensor Sensor, Int32 WaitingTime) 
         {
-            attRunThread = true;
+            attPlayerChecker = new PlayerChecker();
             attWaitingTime = WaitingTime;
             attSavePath = "";
             this.attKinectSensor = Sensor;
             attColorBitmap = null;
             attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
             attColorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
-            attScreenshotSaver = new Thread(new ThreadStart(TakeScreenshot));
-            attPlayerChecker = new PlayerChecker();
+            //attScreenshotSaver = new Thread(new ThreadStart(TakeScreenshot));
+
+            attTimerScreenshots = new Timer(WaitingTime);
+            attTimerScreenshots.Elapsed += TimerScreenshotsTick;
+
+            SetBackgroundWorker();
+        }
+
+        private void SetBackgroundWorker ()
+        {
+            attScreenshotWorker = new BackgroundWorker();
+            attScreenshotWorker.WorkerReportsProgress = true;
+            attScreenshotWorker.WorkerSupportsCancellation = true;
+            attScreenshotWorker.DoWork += worker_DoWork;
         }
 
         /// <summary>
@@ -63,12 +76,24 @@ namespace KillerWearsPrada.Controller
             get { return attKinectSensor.IsAvailable; }
         }
 
-        /// <summary>
-        /// Set a property that allow or not the periodic saving of a screenshot
-        /// </summary>
-        public Boolean AllowRun
+        public ProgressChangedEventHandler ScreenshotWorkerProgressChanged
         {
-            set { attRunThread = value; }
+            set { attScreenshotWorker.ProgressChanged += value; }
+        }
+
+        public RunWorkerCompletedEventHandler ScreenshotWorkerCompleted
+        {
+            set { attScreenshotWorker.RunWorkerCompleted += value; }
+        } 
+
+        public EventHandler<PlayerChecker.PlayerEnterKinectSensor.Args> RaisePlayerEnterKinectSensor
+        {
+            set { attPlayerChecker.RaisePlayerEnterKinectSensor += value; }
+        }
+
+        public EventHandler<PlayerChecker.PlayerLeaveKinectSensor.Args> RaisePlayerLeaveKinectSensor
+        {
+            set { attPlayerChecker.RaisePlayerLeaveKinectSensor += value; }
         }
 
         /// <summary>
@@ -76,68 +101,95 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public void StartTakingScreenshot()
         {
-            attRunThread = true;
-            attScreenshotSaver.Start();
+            attTimerScreenshots.Start();
         }
 
         /// <summary>
         /// Stop the thread that take periodic screenshot for the kinect sensor
         /// </summary>
-        public void StoptakingScreenshot()
+        public void StopTakingScreenshot()
         {
-            attRunThread = false;
+            if(attScreenshotWorker.IsBusy)
+            {
+                attScreenshotWorker.CancelAsync();
+            }
+            attTimerScreenshots.Stop();
         }
 
-        /// <summary>
-        /// Save teh screeenshot on a file 
-        /// </summary>
-        private void TakeScreenshot()
+        private void TimerScreenshotsTick(object sender, ElapsedEventArgs e)
         {
-            while (attRunThread)
+            if (!attScreenshotWorker.IsBusy)
             {
-                //butta il thread per lo screenshot
-                if (this.attColorBitmap == null)
-                    continue;
+                attScreenshotWorker.RunWorkerAsync(new BackgroundWorkerParameters());
+            }
+        }
 
+        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //butta il thread per lo screenshot
+            if (this.attColorBitmap == null)
+                return;
+
+            BackgroundWorkerParameters wvBWP = (BackgroundWorkerParameters)e.Argument;
+
+            BitmapEncoder wvEncoder;
+            Boolean wvQRCodeFound;
             
-                // create a png bitmap encoder which knows how to save a .png file
-                BitmapEncoder wvEncoder = new PngBitmapEncoder();
 
-                // create frame from the writable bitmap and add to encoder
-                wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
+            // create a png bitmap encoder which knows how to save a .png file
+            wvEncoder = new PngBitmapEncoder();
 
-
-                // create frame from the writable bitmap and add to encoder
-                wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
-
-                attSavePath = Helpers.ResourcesHelper.CurrentDirectory + Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
-
-                //creao uno stream per convertire writablebitmap in bitmap, in questo modo posso usare subito l'immagine
-                Stream wvMemoryImege = new MemoryStream();
-                wvEncoder.Save(wvMemoryImege);
+            // create frame from the writable bitmap and add to encoder
+            wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
 
 
-                attImage = new Bitmap(wvMemoryImege);
+            // create frame from the writable bitmap and add to encoder
+            wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
 
-                wvMemoryImege.Close();
+            attSavePath = Helpers.ResourcesHelper.CurrentDirectory + Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
 
-                // write the new file to disk
-                try
-                {
-                    // FileStream is IDisposable
-                    FileStream fs = new FileStream(attSavePath, FileMode.Create);
-                    wvEncoder.Save(fs);
-                    fs.Close();
-                    //this.StatusText = string.Format(Properties.Resources.SavedScreenshotStatusTextFormat, path);
-                }
-                catch (IOException)
-                {
-                    //this.StatusText = string.Format(Properties.Resources.FailedScreenshotStatusTextFormat, path);
-                }
+            //creao uno stream per convertire writablebitmap in bitmap, in questo modo posso usare subito l'immagine
+            Stream wvMemoryImege = new MemoryStream();
+            wvEncoder.Save(wvMemoryImege);
+            attImage = new Bitmap(wvMemoryImege);
 
-                Thread.Sleep(attWaitingTime);
+            attPlayerChecker.CheckPlayer(Helpers.QRReaderHelper.QRCode(out wvQRCodeFound, attImage));
+            
+            wvMemoryImege.Close();
+
+            // write the new file to disk
+            try
+            {
+                // FileStream is IDisposable
+                FileStream fs = new FileStream(attSavePath, FileMode.Create);
+                wvEncoder.Save(fs);
+                fs.Close();
+                //this.StatusText = string.Format(Properties.Resources.SavedScreenshotStatusTextFormat, path);
+            }
+            catch (IOException)
+            {
+                //this.StatusText = string.Format(Properties.Resources.FailedScreenshotStatusTextFormat, path);
             }
 
+            throw new NotImplementedException("Mettere i controlli sul kinect disponibile");
+            /*codice utile per scatenare gli eventi del backgroundworker
+            int max = (int)e.Argument;
+            int result = 0;
+            for (int i = 0; i < max; i++)
+            {
+                int progressPercentage = Convert.ToInt32(((double)i / max) * 100);
+                if (i % 42 == 0)
+                {
+                    result++;
+                    (sender as BackgroundWorker).ReportProgress(progressPercentage, i);
+                }
+                else
+                    (sender as BackgroundWorker).ReportProgress(progressPercentage);
+                System.Threading.Thread.Sleep(1);
+
+            }
+            e.Result = result;
+            */
         }
 
         /// <summary>
@@ -171,6 +223,11 @@ namespace KillerWearsPrada.Controller
 
             this.attColorBitmap.Unlock();
             
+        }
+
+        public class BackgroundWorkerParameters
+        {
+
         }
 
     }

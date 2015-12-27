@@ -11,15 +11,22 @@ namespace KillerWearsPrada.Controller
     /// </summary>
     class PlayerChecker
     {
-
+        
         private String attIDCurrentPalyer;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler<PlayerEnterKinectSensor.Args> RaisePlayerEnterKinectSensor;
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler<PlayerLeaveKinectSensor.Args> RaisePlayerLeaveKinectSensor;
 
         public PlayerChecker()
         {
+            attIDCurrentPalyer = null;
             
-            //TODO finire il costruttore e implementare la chiamata per scatenare l'evento di cambiamento di giocatore
         }
 
         /// <summary>
@@ -29,7 +36,105 @@ namespace KillerWearsPrada.Controller
         {
             get { return attIDCurrentPalyer; }
         }
+        
 
+        public void CheckPlayer(String ID)
+        {
+            Relation wvRel = CheckRelation(attIDCurrentPalyer, ID);
+
+            switch(wvRel)
+            {
+                case Relation.STILL_NOT_AVAILABLE:
+                    return;
+                case Relation.CP_NULL_NP_NULL:
+                    return;
+                case Relation.CP_NULL_NP_VALUE:
+                    attIDCurrentPalyer = ID;
+                    RaisePlayerEnterKinectSensorEvent(ID);
+                    break;
+                case Relation.CP_VALUE_NP_NULL:
+                    attIDCurrentPalyer = null;
+                    RaisePlayerLeaveKinectSensorEvent();
+                    break;
+                case Relation.CP_VALUE_NP_VALUE:
+                    throw new NotImplementedException("Implementare il cotnrollo per capire se c'è un cambio di utente");
+                    //break;
+                default:
+                    break;
+            }
+
+        }
+
+        private Relation CheckRelation(String ActualID, String NewID)
+        {
+            Relation wvRel;
+            if (ActualID == null)
+            { 
+                if (NewID == null)
+                    wvRel = Relation.CP_NULL_NP_NULL;
+                else
+                    wvRel = Relation.CP_NULL_NP_VALUE;
+            }
+            else
+            {
+                if (NewID == null)
+                    wvRel = Relation.CP_VALUE_NP_NULL;
+                else
+                    wvRel = Relation.CP_VALUE_NP_VALUE;
+            }
+            return wvRel;
+        }
+
+
+        #region Sezione per scatenare dell'evento PlayerEnterKinectSensor
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnPlayerEnterKinectSensor(PlayerEnterKinectSensor.Args e)
+        {
+            EventHandler<PlayerEnterKinectSensor.Args> wvHendeler = RaisePlayerEnterKinectSensor;
+            if (wvHendeler != null)
+            {
+                wvHendeler(this, e);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void RaisePlayerEnterKinectSensorEvent(String ID)
+        {
+            PlayerEnterKinectSensor.Args wvParameters = new PlayerEnterKinectSensor.Args(ID);
+
+
+            OnPlayerEnterKinectSensor(wvParameters);
+        }
+        #endregion
+
+        #region Sezione per scatenare dell'evento PlayerLeaveKinectSensor
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected virtual void OnPlayerLeaveKinectSensor(PlayerLeaveKinectSensor.Args e)
+        {
+            EventHandler<PlayerLeaveKinectSensor.Args> wvHendeler = RaisePlayerLeaveKinectSensor;
+            if (wvHendeler != null)
+            {
+                wvHendeler(this, e);
+            }
+        }
+
+        public void RaisePlayerLeaveKinectSensorEvent()
+        {
+            //TODO completare i parametri
+            PlayerLeaveKinectSensor.Args wvParameters = new PlayerLeaveKinectSensor.Args();
+
+
+            OnPlayerLeaveKinectSensor(wvParameters);
+        }
+        #endregion
 
         /// <summary>
         /// Manage the generation of the event PlayerEnterKinectSensor that occure when a <see cref="Model.Player"/> 
@@ -37,65 +142,6 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public class PlayerEnterKinectSensor
         {
-            /*
-            /// <summary>
-            /// Delegate that handle the event raised by <see cref="PlayerEnterKinectSensor"/>
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-            public delegate void PlayerStillOnKinectSensorEventHandler(object sender, PlayerEnterKinectSensorArgs e);
-            */
-
-            /// <summary>
-            /// 
-            /// </summary>
-            public event EventHandler<Args> RaisePlayerEnterKinectSensor;
-
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="e"></param>
-            protected virtual void OnPlayerEnterKinectSensor(Args e)
-            {
-                EventHandler<Args> wvHendeler = RaisePlayerEnterKinectSensor;
-                if (wvHendeler != null)
-                {
-                    wvHendeler(this, e);
-                }
-            }
-
-            /// <summary>
-            /// 
-            /// </summary>
-            public void RaiseEvent()
-            {
-                //TODO mettere l'ID del giocatore entrato
-                Args wvParameters = new Args("");
-
-
-                OnPlayerEnterKinectSensor(wvParameters);
-            }
-
-            /*
-            /// <summary>
-            /// Instance of the delegate
-            /// </summary>
-            public static PlayerStillOnKinectSensorEventHandler PlayerStillOnKinectSensorChanged;
-            */
-
-            /*
-            /// <summary>
-            /// Raise the Event associated to the <see cref="PlayerStillOnKinectSensorEventHandler"/> delegate
-            /// </summary>
-            /// <param name="e"></param>
-            public void RaiseEventPlayerStillOnKinectSensorChanged(PlayerEnterKinectSensorArgs e)
-            {
-                if (PlayerStillOnKinectSensorChanged != null)
-                {
-                    PlayerStillOnKinectSensorChanged(this, e);
-                }
-            }*/
-
             /// <summary>
             /// Contains information used by the event <see cref="PlayerEnterKinectSensor"/>
             /// </summary>
@@ -113,49 +159,27 @@ namespace KillerWearsPrada.Controller
                 {
                     get { return attID; }
                 }
-
-
+                
             }
 
         }
 
         public class PlayerLeaveKinectSensor
         {
-            /// <summary>
-            /// 
-            /// </summary>
-            public event EventHandler<Args> RaisePlayerLeaveKinectSensor;
-
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="e"></param>
-            protected virtual void OnPlayerLeaveKinectSensor(Args e)
-            {
-                EventHandler<Args> wvHendeler = RaisePlayerLeaveKinectSensor;
-                if (wvHendeler != null)
-                {
-                    wvHendeler(this, e);
-                }
-            }
-
-            public void RaiseEvent()
-            {
-                //TODO completare i parametri
-                Args wvParameters = new Args();
-
-
-                OnPlayerLeaveKinectSensor(wvParameters);
-            }
-
             public class Args : EventArgs
             {
 
             }
         }
 
+        public enum Relation
+        {
+            STILL_NOT_AVAILABLE=-1,
+            CP_NULL_NP_NULL=0,
+            CP_NULL_NP_VALUE=1,
+            CP_VALUE_NP_NULL=2,
+            CP_VALUE_NP_VALUE=4
+    }
         
-        
-
     }
 }

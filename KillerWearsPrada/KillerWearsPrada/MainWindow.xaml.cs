@@ -33,8 +33,8 @@ namespace KillerWearsPrada
         //Controller.KinectInterrogator attKinectInterrogator;
         Controller.GameController attGameController;
         #region Delegates for GameController events
-        private delegate void ResumeGameHandler(Controller.GameController.ResumeGame.Args Parameters);
-        private delegate void UnloadGameHandler(Controller.GameController.UnloadGame.Args Parameters);
+        private delegate void ResumeGameHandler(GameController.ResumeGame.Args Parameters);
+        private delegate void UnloadGameHandler(GameController.UnloadGame.Args Parameters);
 
         private ResumeGameHandler attResumeGameHandlerDelegate;
         private UnloadGameHandler attUnloadGameHandlerDelegate;
@@ -62,7 +62,7 @@ namespace KillerWearsPrada
 
             // Use the default sensor
             this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
-            attGameController = new Controller.GameController(this.kinectRegion.KinectSensor);
+            attGameController = new GameController(this.kinectRegion.KinectSensor);
             //attKinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor, REFRESH_TIME);
 
             attGameController.GetResumeGame.RaiseResumeGame += CaptureResumeGameEvent;
@@ -71,8 +71,16 @@ namespace KillerWearsPrada
             attResumeGameHandlerDelegate = new ResumeGameHandler(this.ResumeGame);
             attUnloadGameHandlerDelegate = new UnloadGameHandler(this.UnloadGame);
         }
+        
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            attDebug = new UC.DebugWindow();
+            attDebug.Show();
 
-        private void CaptureResumeGameEvent(object Sender, Controller.GameController.ResumeGame.Args Parameters)
+            //attGameController.StartTakingScreenShot()
+        }
+
+        private void CaptureResumeGameEvent(object Sender, GameController.ResumeGame.Args Parameters)
         {
             object[] wvParameters = new object[] { Parameters };
             //this.Invoke(d, new object[] { e });
@@ -88,7 +96,7 @@ namespace KillerWearsPrada
             }
         }
 
-        private void CaptureUnloadGameEvent(object Sender, Controller.GameController.UnloadGame.Args Parameters)
+        private void CaptureUnloadGameEvent(object Sender, GameController.UnloadGame.Args Parameters)
         {
             object[] wvParameters = new object[] { Parameters };
             if (this.Dispatcher.CheckAccess())
@@ -102,41 +110,25 @@ namespace KillerWearsPrada
         }
 
         /// <summary>
-        ///  Called by the delegate <see cref="ResumeGameHandler"/> to handle the event <see cref="Controller.GameController.ResumeGame"/> 
+        ///  Called by the delegate <see cref="ResumeGameHandler"/> to handle the event <see cref="GameController.ResumeGame"/> 
         /// that occure when the <see cref="Model.Game"/> must loaded
         /// </summary>
-        /// <param name="Parameters">Instance of an object repressenting the class <see cref="Controller.GameController.ResumeGame.Args"/> 
+        /// <param name="Parameters">Instance of an object repressenting the class <see cref="GameController.ResumeGame.Args"/> 
         /// which contains information passed by the event <see cref="Controller.GameController.ResumeGame"/></param>
-        private void ResumeGame(Controller.GameController.ResumeGame.Args Parameters)
+        private void ResumeGame(GameController.ResumeGame.Args Parameters)
         {
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume";
         }
 
         /// <summary>
-        /// Called by the delegate <see cref="UnloadGameHandler"/> to handle the event <see cref="Controller.GameController.UnloadGame"/> 
+        /// Called by the delegate <see cref="UnloadGameHandler"/> to handle the event <see cref="GameController.UnloadGame"/> 
         /// that occure when the <see cref="Model.Game"/> must be saved and unloaded
         /// </summary>
-        /// <param name="Parameters">Instance of an object repressenting the class <see cref="Controller.GameController.UnloadGame.Args"/> 
-        /// which contains information passed by the event <see cref="Controller.GameController.UnloadGame"/></param>
-        private void UnloadGame(Controller.GameController.UnloadGame.Args Parameters)
+        /// <param name="Parameters">Instance of an object repressenting the class <see cref="GameController.UnloadGame.Args"/> 
+        /// which contains information passed by the event <see cref="GameController.UnloadGame"/></param>
+        private void UnloadGame(GameController.UnloadGame.Args Parameters)
         {
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Unload";
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            attDebug = new UC.DebugWindow();
-            attDebug.Show();
-            //txtDisplay.Text = Application.Current.Resources["Application_Start_Image"].ToString();
-            //txtDisplay.Visibility = Visibility.Visible;
-            //txtDisplay.AppendText(@"\n\r");
-            /*String s;
-            Boolean b;
-            Helpers.QRReaderHelper.IndirizzoImmagine = @"C:\Users\Monica\Downloads\2\DSC_0011.jpg";
-            s = Helpers.QRReaderHelper.BarCode(out b);
-            
-            txtDisplay.Text = s;*/
-
         }
 
         private void Window_Initialized(object sender, EventArgs e)
@@ -150,9 +142,9 @@ namespace KillerWearsPrada
             {
                 attDebug.Show();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                attDebug = new UC.DebugWindow();
+                attDebug = new DebugWindow();
                 attDebug.Show();
             }
             
@@ -169,6 +161,7 @@ namespace KillerWearsPrada
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            attGameController.StopTakingScreenShot();
             attDebug.Close();
         }
 

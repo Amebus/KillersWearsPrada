@@ -1,17 +1,13 @@
 ﻿using System;
-using System.IO;
 
 namespace KillerWearsPrada.Controller
 {
     class GameController
     {
         private const Int32 REFRESH_TIME = 1000;
+        private const Int32 DEBUG_REFRESH_TIME = 10000;
         private Model.Game attGame;
-        private Stream attStream;
         private KinectInterrogator attKinectInterrogator;
-
-        private PlayerChecker.PlayerEnterKinectSensor attPlayerEnterKinectSensor;
-        private PlayerChecker.PlayerLeaveKinectSensor attPlayerLeaveKinectSensor;
 
         private ResumeGame attResumeGame;
         private UnloadGame attUnloadGame;
@@ -21,17 +17,14 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public GameController(Microsoft.Kinect.KinectSensor KinectSensor)
         {
-            attKinectInterrogator = new KinectInterrogator( KinectSensor, REFRESH_TIME);
+            attKinectInterrogator = new KinectInterrogator( KinectSensor, REFRESH_TIME );
 
             attResumeGame = new ResumeGame();
             attUnloadGame = new UnloadGame();
 
-            attPlayerEnterKinectSensor = new PlayerChecker.PlayerEnterKinectSensor();
-            attPlayerLeaveKinectSensor = new PlayerChecker.PlayerLeaveKinectSensor();
-
-            attPlayerEnterKinectSensor.RaisePlayerEnterKinectSensor += HandlePlayerEnterKinectSensor;
-            attPlayerLeaveKinectSensor.RaisePlayerLeaveKinectSensor += HandlePlayerLeaveKinectSensor;
-
+            attKinectInterrogator.RaisePlayerEnterKinectSensor = HandlePlayerEnterKinectSensor;
+            attKinectInterrogator.RaisePlayerLeaveKinectSensor = HandlePlayerLeaveKinectSensor;
+            
         }
         
         /// <summary>
@@ -57,10 +50,6 @@ namespace KillerWearsPrada.Controller
         /// <param name="Parameters"></param>
         private void HandlePlayerEnterKinectSensor(object Sender, PlayerChecker.PlayerEnterKinectSensor.Args Parameters)
         {
-            throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore viene riconosciuto");
-            
-
-
             LoadGame(Parameters.ID);
             attResumeGame.RaiseEvent();
         }
@@ -73,7 +62,6 @@ namespace KillerWearsPrada.Controller
         private void HandlePlayerLeaveKinectSensor(object Sender, PlayerChecker.PlayerLeaveKinectSensor.Args Parameters)
         {
             throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore lascia la postazione");
-            
 
             SaveGame();
             attUnloadGame.RaiseEvent();
@@ -99,6 +87,16 @@ namespace KillerWearsPrada.Controller
             attGame = (Model.Game)Helpers.SerializerHelper.Deserialize(wvPath);
         }
         
+        public void StartTakingScreenShot()
+        {
+            attKinectInterrogator.StartTakingScreenshot();
+        }
+
+        public void StopTakingScreenShot()
+        {
+            attKinectInterrogator.StopTakingScreenshot();
+        }
+
         /// <summary>
         /// Create a new <see cref="Model.Game"/> and a new <see cref="Model.Player"/> and save them into a file
         /// </summary>
