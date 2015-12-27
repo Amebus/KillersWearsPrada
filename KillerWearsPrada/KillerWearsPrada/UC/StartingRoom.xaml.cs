@@ -75,5 +75,15 @@ namespace KillerWearsPrada.UC
             maingrid.Children.Remove(this);
             maingrid.Children.Add(ucroom);
         }
+
+        private void inventory_button(object sender, RoutedEventArgs e)
+        {
+            InventoryUC ucinventory = new InventoryUC(this);
+            Window parentWindow = Window.GetWindow(this);
+            Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
+            maingrid.Children.Remove(this);
+            maingrid.Children.Add(ucinventory);
+        }
+       
     }
 }

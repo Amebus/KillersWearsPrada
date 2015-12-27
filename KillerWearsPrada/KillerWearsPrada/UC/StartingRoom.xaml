@@ -134,5 +134,7 @@
 
         <Button x:Name="Close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="910" Canvas.Top="819"/>
 
+        <Button x:Name="inventory_btn" Click="inventory_button" Content="Inventory" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="1484" Canvas.Top="819"/>
+
     </Canvas>
 </UserControl>

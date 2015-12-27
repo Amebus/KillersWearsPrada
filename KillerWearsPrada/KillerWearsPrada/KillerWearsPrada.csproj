@@ -110,6 +110,9 @@
     <Compile Include="UC\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UC\InventoryUC.xaml.cs">
+      <DependentUpon>InventoryUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UC\Room.xaml.cs">
       <DependentUpon>Room.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UC\DebugWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\InventoryUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
