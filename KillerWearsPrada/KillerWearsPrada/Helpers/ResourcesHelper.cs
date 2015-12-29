@@ -66,44 +66,44 @@ namespace KillerWearsPrada.Helpers
         #region Resource specific getter
         private static String GetResource(E_Direcetories ResourceName)
         {
-            return Application.Current.Resources[ResourceName.ToString()].ToString();
+            return GetResource(ResourceName.ToString()).ToString();
         }
 
         private static String GetResource(E_GenericImages ResourceName)
         {
-            return Application.Current.Resources[ResourceName.ToString()].ToString();
+            return GetResource(ResourceName.ToString()).ToString();
         }
 
         private static String GetResource(E_DoorsImages ResourceName)
         {
-            return Application.Current.Resources[ResourceName.ToString()].ToString();
+            return GetResource(ResourceName.ToString()).ToString();
         }
 
         private static String GetResource(E_RoomsImages ResourceName)
         {
-            return Application.Current.Resources[ResourceName.ToString()].ToString();
+            return GetResource(ResourceName.ToString()).ToString();
         }
         #endregion
 
         #region Resource specifc setters
         private static void SetResource(E_Direcetories ResourceName, String Value)
         {
-            Application.Current.Resources[ResourceName.ToString()] = Value;
+            SetResource(ResourceName.ToString(), Value);
         }
 
         private static void SetResource(E_GenericImages ResourceName, String Value)
         {
-            Application.Current.Resources[ResourceName.ToString()] = Value;
+            SetResource(ResourceName.ToString(), Value);
         }
 
         private static void SetResource(E_DoorsImages ResourceName, String Value)
         {
-            Application.Current.Resources[ResourceName.ToString()] = Value;
+            SetResource(ResourceName.ToString(), Value);
         }
 
         private static void SetResource(E_RoomsImages ResourceName, String Value)
         {
-            Application.Current.Resources[ResourceName.ToString()] = Value;
+            SetResource(ResourceName.ToString(), Value);
         }
         #endregion
 
