@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Item : Serializable
+    class Item : ISerializable
     {
         private Clue attClue;
 

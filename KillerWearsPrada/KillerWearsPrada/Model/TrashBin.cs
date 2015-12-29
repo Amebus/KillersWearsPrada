@@ -10,7 +10,7 @@ namespace KillerWearsPrada.Model
     /// <summary>
     /// <see cref="Player"/>
     /// </summary>
-    class TrashBin : Serializable
+    class TrashBin : ISerializable
     {
 
     }

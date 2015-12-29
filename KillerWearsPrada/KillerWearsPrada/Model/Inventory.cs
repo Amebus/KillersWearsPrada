@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Inventory : Serializable
+    class Inventory : ISerializable
     {
     }
 }

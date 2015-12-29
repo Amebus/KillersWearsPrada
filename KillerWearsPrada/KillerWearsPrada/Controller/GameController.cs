@@ -67,14 +67,18 @@ namespace KillerWearsPrada.Controller
             attUnloadGame.RaiseEvent();
         }
 
+        private string CombinePath(String Path1, String Path2)
+        {
+            return System.IO.Path.Combine(Path1, Path2);
+        }
 
         /// <summary>
         /// Save the status of the game in binary format
         /// </summary>
         public void SaveGame()
         {
-            String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
-            wvPath += ("\\" + attGame.PlayerID);
+            String wvPath = Helpers.ResourcesHelper.SavesDirectory;
+            wvPath = CombinePath(wvPath, attGame.PlayerID);
             Helpers.SerializerHelper.Serialize(wvPath, attGame);
         }
 
@@ -83,7 +87,7 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public void LoadGame(String ID)
         {
-            String wvPath = Helpers.ResourcesHelper.CurrentDirectory + "\\" + ID;
+            String wvPath = CombinePath(Helpers.ResourcesHelper.SavesDirectory, ID);
             attGame = (Model.Game)Helpers.SerializerHelper.Deserialize(wvPath);
         }
         
@@ -103,17 +107,26 @@ namespace KillerWearsPrada.Controller
         /// <param name="PlayerName">Name of the <see cref="Model.Player"/></param>
         public static void CreateGameAndPlayer(String PlayerName)
         {
-            String wvPath = Helpers.ResourcesHelper.CurrentDirectory;
+            String wvPath = Helpers.ResourcesHelper.SavesDirectory;
             String wvID = DateTime.Now.ToString();
 
             wvID = wvID.Replace(' ', '-');
             wvID += ("-" + PlayerName);
             Model.Game wvGame = new Model.Game(wvID, PlayerName);
-
-            wvPath += wvID;
+            
+            wvPath = System.IO.Path.Combine(wvPath, wvID);
             Helpers.SerializerHelper.Serialize(wvPath, wvGame);
 
             throw new NotImplementedException("Implementare qui la stampa dei QRCODE");
+        }
+
+        public static void DeleteAllGames()
+        {
+            System.IO.DirectoryInfo wvDirInfo = new System.IO.DirectoryInfo(Helpers.ResourcesHelper.SavesDirectory);
+            System.IO.FileInfo[] wvFileInfos = wvDirInfo.GetFiles();
+
+            foreach (System.IO.FileInfo wvFile in wvFileInfos)
+                wvFile.Delete();
         }
 
         /// <summary>

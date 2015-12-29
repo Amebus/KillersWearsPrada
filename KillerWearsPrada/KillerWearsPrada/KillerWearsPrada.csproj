@@ -99,7 +99,7 @@
     <Compile Include="Controller\PlayerChecker.cs" />
     <Compile Include="Helpers\SerializerHelper.cs" />
     <Compile Include="Model\Item.cs" />
-    <Compile Include="Model\Serializable.cs" />
+    <Compile Include="Model\ISerializable.cs" />
     <Compile Include="Model\TrashBin.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
@@ -128,7 +128,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\GrabImage.cs" />
-    <Compile Include="Helpers\KinectHelper.cs" />
     <Compile Include="Helpers\QRReaderHelper.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="KWP_DB_TestDataSet.Designer.cs">
@@ -208,6 +207,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SavedGames\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

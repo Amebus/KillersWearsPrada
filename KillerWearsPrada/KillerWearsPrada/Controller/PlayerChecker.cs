@@ -37,12 +37,14 @@ namespace KillerWearsPrada.Controller
             get { return attIDCurrentPalyer; }
         }
         
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ID"></param>
         public void CheckPlayer(String ID)
         {
             Relation wvRel = CheckRelation(attIDCurrentPalyer, ID);
-
-            switch(wvRel)
+            switch (wvRel)
             {
                 case Relation.STILL_NOT_AVAILABLE:
                     return;

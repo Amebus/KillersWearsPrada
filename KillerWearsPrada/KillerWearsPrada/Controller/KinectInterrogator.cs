@@ -1,19 +1,15 @@
 ﻿using Microsoft.Kinect;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace KillerWearsPrada.Controller
 {
-    
+
 
     /// <summary>
     /// Implementa il thread per il polling sul kinect
@@ -146,7 +142,7 @@ namespace KillerWearsPrada.Controller
             // create frame from the writable bitmap and add to encoder
             wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
 
-            attSavePath = Helpers.ResourcesHelper.CurrentDirectory + Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
+            attSavePath = Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
 
             //creao uno stream per convertire writablebitmap in bitmap, in questo modo posso usare subito l'immagine
             Stream wvMemoryImege = new MemoryStream();
@@ -171,7 +167,7 @@ namespace KillerWearsPrada.Controller
                 //this.StatusText = string.Format(Properties.Resources.FailedScreenshotStatusTextFormat, path);
             }
 
-            throw new NotImplementedException("Mettere i controlli sul kinect disponibile");
+            throw new NotImplementedException("Mettere i controlli sulla disponibilità del kinect");
             /*codice utile per scatenare gli eventi del backgroundworker
             int max = (int)e.Argument;
             int result = 0;

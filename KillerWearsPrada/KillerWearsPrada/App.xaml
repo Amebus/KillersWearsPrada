@@ -5,12 +5,20 @@
              xmlns:local="clr-namespace:KillerWearsPrada"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <!--#region Directories Paths and subPaths-->
         <sys:String x:Key="CurrentDirectory">s</sys:String>
-
+        
         <sys:String x:Key="ImagesDir">\Images</sys:String>
 
+        <sys:String x:Key="SavesDir">\SavedGames</sys:String>
+        <!--#endregion-->
+        
+        <!--#region Immagini Generiche-->
         <sys:String x:Key="Application_Start_Image">Application_Start.png</sys:String>
 
+        <sys:String x:Key="Inventory_Background">Investigation.jpg</sys:String>
+        
+        <!--#region Immagini Porte-->
         <sys:String x:Key="Doors_Image">doors3empty1.jpg</sys:String>
 
         <sys:String x:Key="Bedroom_Image">bedroom1.jpg</sys:String>
@@ -18,16 +26,15 @@
         <sys:String x:Key="Kitchen_Image">kitchen1.jpg</sys:String>
 
         <sys:String x:Key="Livingroom_Image">livingroom1.jpg</sys:String>
+        <!--#endregion-->
 
-        <sys:String x:Key="Inventory_Background">Investigation.jpg</sys:String> 
-
-        <!-- Nomi delle immagini delle porte -->
+        <!--#region Nomi delle immagini delle porte -->
         <sys:String x:Key="SXdoor_Image">doorSXok.png</sys:String>
 
         <sys:String x:Key="CENTERdoor_Image">doorCENTERok.png</sys:String>
 
         <sys:String x:Key="DXdoor_Image">doorDXok.png</sys:String>
-
+        <!--#endregion-->
 
         <sys:String x:Key="ApplicationTitle">Killer Wears Prada</sys:String>
     </Application.Resources>

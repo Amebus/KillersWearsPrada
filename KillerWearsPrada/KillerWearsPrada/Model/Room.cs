@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Room : Serializable
+    class Room : ISerializable
     {
         private List<Item> attItems;
         

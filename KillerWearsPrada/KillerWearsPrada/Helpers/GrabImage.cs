@@ -13,7 +13,7 @@ namespace KillerWearsPrada.Helpers
         /// <summary>
         /// Restituisce un'implementazione della classe astratta <see cref="GrabImage"/> a seconda del parametro passato
         /// </summary>
-        /// <param name="AsKinect">Se <code>True</code> ritorna implementazione che si interfaccia col kinect, altrimenti ritorna implementazione come test <param>
+        /// <param name="AsKinect">Se <code>true</code> ritorna implementazione che si interfaccia col kinect, altrimenti ritorna implementazione come test <param>
         /// <returns></returns>
         public static GrabImage GrabImageAsKinect(Boolean AsKinect)
         {

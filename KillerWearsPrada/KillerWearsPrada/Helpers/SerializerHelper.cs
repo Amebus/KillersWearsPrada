@@ -13,7 +13,7 @@ namespace KillerWearsPrada.Helpers
     class SerializerHelper
     {
 
-        public static void Serialize(String Path, Model.Serializable Obj)
+        public static void Serialize(String Path, Model.ISerializable Obj)
         {
             BinaryFormatter wvSerializer = new BinaryFormatter();
             Stream wvStream = new FileStream(Path, FileMode.Create, FileAccess.Write);
@@ -21,12 +21,12 @@ namespace KillerWearsPrada.Helpers
             wvStream.Close();
         }
 
-        public static Model.Serializable Deserialize(String Path)
+        public static Model.ISerializable Deserialize(String Path)
         {
-            Model.Serializable wvSerializedObject;
+            Model.ISerializable wvSerializedObject;
             BinaryFormatter wvSerializer = new BinaryFormatter();
             Stream wvStream = new FileStream(Path, FileMode.Open, FileAccess.Read);
-            wvSerializedObject = (Model.Serializable)wvSerializer.Deserialize(wvStream);
+            wvSerializedObject = (Model.ISerializable)wvSerializer.Deserialize(wvStream);
             wvStream.Close();
             return wvSerializedObject;
         }

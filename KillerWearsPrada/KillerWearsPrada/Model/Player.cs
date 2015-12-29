@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Player : Serializable
+    class Player : ISerializable
     {
         private String attName;
         private String attID;

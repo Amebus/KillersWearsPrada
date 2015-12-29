@@ -1,15 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace KillerWearsPrada.Helpers
 {
     static public class ResourcesHelper
     {
+        public enum E_Direcetories
+        {
+            CurrentDirectory,
+            ImagesDir,
+            SavesDir
+        }
+
+        public enum E_GenericImages
+        {
+            Application_Start_Image,
+            Inventory_Background
+        }
+
+        public enum E_RoomsImages
+        {
+            Doors_Image,
+            Bedroom_Image,
+            Kitchen_Image,
+            Livingroom_Image
+        }
+
+        public enum E_DoorsImages
+        {
+            SXdoor_Image,
+            CENTERdoor_Image,
+            DXdoor_Image
+        }
+
         /// <summary>
         /// Aggiungo \ davanti al path se non presente
         /// 
@@ -27,17 +51,94 @@ namespace KillerWearsPrada.Helpers
             return wvPath;
         }
 
+        #region Resource generic getter and setter
+        private static object GetResource(String ResourceName)
+        {
+            return Application.Current.Resources[ResourceName.ToString()];
+        }
+
+        private static void SetResource(String ResourceName, object Value)
+        {
+            Application.Current.Resources[ResourceName] = Value;
+        }
+        #endregion
+
+        #region Resource specific getter
+        private static String GetResource(E_Direcetories ResourceName)
+        {
+            return Application.Current.Resources[ResourceName.ToString()].ToString();
+        }
+
+        private static String GetResource(E_GenericImages ResourceName)
+        {
+            return Application.Current.Resources[ResourceName.ToString()].ToString();
+        }
+
+        private static String GetResource(E_DoorsImages ResourceName)
+        {
+            return Application.Current.Resources[ResourceName.ToString()].ToString();
+        }
+
+        private static String GetResource(E_RoomsImages ResourceName)
+        {
+            return Application.Current.Resources[ResourceName.ToString()].ToString();
+        }
+        #endregion
+
+        #region Resource specifc setters
+        private static void SetResource(E_Direcetories ResourceName, String Value)
+        {
+            Application.Current.Resources[ResourceName.ToString()] = Value;
+        }
+
+        private static void SetResource(E_GenericImages ResourceName, String Value)
+        {
+            Application.Current.Resources[ResourceName.ToString()] = Value;
+        }
+
+        private static void SetResource(E_DoorsImages ResourceName, String Value)
+        {
+            Application.Current.Resources[ResourceName.ToString()] = Value;
+        }
+
+        private static void SetResource(E_RoomsImages ResourceName, String Value)
+        {
+            Application.Current.Resources[ResourceName.ToString()] = Value;
+        }
+        #endregion
+
         /// <summary>
         /// Ottiene la Directory di lavoro corrente del programma come stringa
         /// </summary>
         public static String CurrentDirectory
         {
-            get { return Application.Current.Resources["CurrentDirectory"].ToString(); }
+            get { return GetResource(E_Direcetories.CurrentDirectory); }
         }
 
+        /// <summary>
+        /// Return a <see cref="String "/> which represent the absolute path of the <see cref="E_Direcetories.ImagesDir"/> directory
+        /// </summary>
         public static String ImagesDirectory
         {
-            get { return Application.Current.Resources["ImagesDir"].ToString(); }
+            get
+            {
+                String wvPath = GetResource(E_Direcetories.CurrentDirectory);
+                wvPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+                return wvPath;
+            }
+        }
+
+        /// <summary>
+        /// Return a <see cref="String "/> which represent the absolute path of the <see cref="E_Direcetories.SavesDir"/> directory
+        /// </summary>
+        public static String SavesDirectory
+        {
+            get
+            {
+                String wvPath = GetResource(E_Direcetories.CurrentDirectory);
+                wvPath += CreatePath(GetResource(E_Direcetories.SavesDir));
+                return wvPath;
+            }
         }
 
         /// <summary>
@@ -46,7 +147,7 @@ namespace KillerWearsPrada.Helpers
         public static void SaveCurrentDirectory()
         {
             String wvDir = Directory.GetCurrentDirectory().ToString();
-            Application.Current.Resources["CurrentDirectory"] = wvDir;
+            SetResource(E_Direcetories.CurrentDirectory, wvDir);
         }
 
         /// <summary>
@@ -62,16 +163,18 @@ namespace KillerWearsPrada.Helpers
             for (int i = 1; i < dirs.Length - 2; i++)
                 dir_ok = dir_ok + "\\" + dirs[i];
             */
-            wvRightPath += CreatePath(Application.Current.Resources["ImagesDir"].ToString());
-            wvRightPath += CreatePath(Application.Current.Resources["Application_Start_Image"].ToString());
-            Application.Current.Resources["Application_Start_Image"] = wvRightPath;
+            wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+            wvRightPath += CreatePath(GetResource(E_GenericImages.Application_Start_Image));
+            SetResource(E_GenericImages.Application_Start_Image, wvRightPath);
         }
+        
+
 
 
         public static void ModifyRoomBackgroundPath(String roomImage)
         {
                 String wvRightPath = CurrentDirectory;
-                wvRightPath += CreatePath(Application.Current.Resources["ImagesDir"].ToString());
+                wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
                 wvRightPath += CreatePath(Application.Current.Resources[roomImage].ToString());
                 Application.Current.Resources[roomImage] = wvRightPath;
         }
