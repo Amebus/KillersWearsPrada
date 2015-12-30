@@ -29,6 +29,19 @@ namespace KillerWearsPrada.Model
         SCURO
     }
 
+    enum Shape
+    {
+        CORTO,
+        LUNGO
+    }
 
+    enum Texture
+    {
+        FANTASIA,
+        PUA,
+        RIGHE,
+        SCACCHI,
+        TINTA_UNITA
+    }
 
 }
