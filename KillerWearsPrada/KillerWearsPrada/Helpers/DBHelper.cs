@@ -44,66 +44,75 @@ namespace KillerWearsPrada.Helpers
         /// <summary>
         /// This methods implements a query over the db that given some parameters returns a random item
         /// </summary>
-        /// <param name="shortVSlong"> boolean, true = short, false = long</param>
-        /// <param name="dark">boolean, true = dark, false = light </param>
-        /// <param name="plainColor"> boolean, true = plaincolor</param>
-        /// <param name="texture"> string containing the kind of texture needed</param>
+        /// <param name="long1"> boolean, true = long, false = short</param>
+        /// <param name="light">boolean, true = dark, false = light </param>
+        /// <param name="texture"> string containing the kind of texture needed - look Clue enum Texture -</param>
         /// <returns> an OleDbDataReader object that contains, in order : 
         ///         1. Item code
         ///         2. Barcode
         ///         3. Item Name
         ///         4. Item Price
-        ///         5. Item Reparto
-        ///         6. Item Description
+        ///         5. Item Description
+        ///         6. Item Reparto
         ///         7. Texture file name
         ///         8. Mask file name
         /// </returns>
-        public OleDbDataReader getItemFromClues(bool shortVSlong, bool dark, bool plainColor, string texture)
-        {
+        public OleDbDataReader GetItemFromClues(bool long1, bool light, string texture){
 
             DBConnection.Open();
-            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName FROM Capo C,DatiNegozio D, Grafica G,Texture T, Maschera M   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND D.Disponibilità > 10 AND  ORDER BY rnd(C.ID); ";
+            // note : we want items of which we have more than 10 available 
+            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName FROM Capo C,DatiNegozio D, Grafica G,Texture T, Maschera M   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND D.Disponibilità > 10 AND (((D.[Lungo/Corto])=@p1)) AND (((T.[Chiaro/Scuro])=@p2)) AND T.TipoTexture = @p3 ORDER BY rnd(C.ID); ";
 
             OleDbCommand command = new OleDbCommand(query, DBConnection);
+            // add parameters
+            // long parameter - @p1
+            if (long1) {
+                command.Parameters.Add("@p1",OleDbType.Char,4).Value="Yes";
+            }
+            else
+            {
+                command.Parameters.Add("@p1",OleDbType.Char,4).Value="No";
+            }
+            // dark parameter - @p2
+            if (light)
+            {
+                command.Parameters.Add("@p2", OleDbType.Char, 4).Value = "Yes";
+            }
+            else
+            {
+                command.Parameters.Add("@p2", OleDbType.Char, 4).Value = "No";
+            }
+            // texture parameter - @p3
+
+            command.Parameters.Add("@p3", OleDbType.VarChar, 20).Value = texture;
+
 
             OleDbDataReader result = command.ExecuteReader();
 
+            DBConnection.Close();
+
             return result;
         }
-        // le informazioni le ho prese da questo sito : http://www.dotnetperls.com/sqlparameter 
 
-
-        /*parametrized query v2
-        private static void UpdateDemographics(Int32 customerID,
-        string demoXml, string connectionString)
+        /// <summary>
+        /// this method updates the DB adding a score to a player
+        /// </summary>
+        /// <param name="player">integer, player ID</param>
+        /// <param name="score">integer, player's score</param>
+        public void SaveScoreForPlayer (int player, int score)
         {
-        // Update the demographics for a store, which is stored 
-        // in an xml column. 
-        string commandText = "UPDATE Sales.Store SET Demographics = @demographics "
-            + "WHERE CustomerID = @ID;";
+            DBConnection.Open();
+            
+            string query = "UPDATE Utente SET Punteggio = @value WHERE ID = @id;";
+            OleDbCommand command = new OleDbCommand(query, DBConnection);
+            command.Parameters.Add("@value", OleDbType.Integer).Value = score;
+            command.Parameters.Add("@id", OleDbType.Integer).Value = player;
 
-        using (SqlConnection connection = new SqlConnection(connectionString))
-        {
-            SqlCommand command = new SqlCommand(commandText, connection);
-            command.Parameters.Add("@ID", SqlDbType.Int);
-            command.Parameters["@ID"].Value = customerID;
+            command.ExecuteNonQuery();
 
-            // Use AddWithValue to assign Demographics.
-            // SQL Server will implicitly convert strings into XML.
-            command.Parameters.AddWithValue("@demographics", demoXml);
+            DBConnection.Close();
 
-            try
-            {
-                connection.Open();
-                Int32 rowsAffected = command.ExecuteNonQuery();
-                Console.WriteLine("RowsAffected: {0}", rowsAffected);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
         }
-        }
-        */
+        
     }
 }
