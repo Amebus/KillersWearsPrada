@@ -35,12 +35,12 @@ namespace KillerWearsPrada.Model
         LUNGO
     }
 
-    enum Texture
+    enum Texture //can be taken from DB table TipoTexture
     {
         FANTASIA,
-        PUA,
+        POIS,
         RIGHE,
-        SCACCHI,
+        SCOZZESE,
         TINTA_UNITA
     }
 

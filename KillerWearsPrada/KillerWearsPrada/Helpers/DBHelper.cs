@@ -1,103 +1,109 @@
 ﻿using System;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 
 namespace KillerWearsPrada.Helpers
 {
     /// <summary>
-    /// Questa classe serve per gestire la comunicazione tra DB e programma
+    /// This class managest the communication between Application and DataBase
     /// </summary>
     class DBHelper
     {
         private String connectionString;
-        private OleDbConnection DBConection;
-        
+        private OleDbConnection DBConnection;
+
         public DBHelper()
         {
             connectionString = Properties.Settings.Default.KWP_DB_Test_Connection;
 
-            DBConection = new OleDbConnection(connectionString);
+            DBConnection = new OleDbConnection(connectionString);
 
         }
 
         /// <summary>
-        /// Metodo che testa la connessione al DB
+        /// This method tests the connectivity
         /// </summary>
-        /// <returns>stringa che indica se il test è andato a buon fine</returns>
+        /// <returns>string that states the result of the try ("Succesfull cnnection" vs exception message)</returns>
         public String TestConnection()
         {
             try
             {
-                DBConection.Open();
+                DBConnection.Open();
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return e.Message;
             }
 
-            DBConection.Close();
-            return "Connessione avvenuta con successo";
+            DBConnection.Close();
+            return "Successfull connection";
         }
-    }
 
-    class Queries
-    {
-        public const String q1 = "query";
-    }
 
-    /* parametrized query v1
-    using (AdventureWorksEntities context =
-    new AdventureWorksEntities())
-    {
-    // Create a query that takes two parameters.
-    string queryString =
-        @"SELECT VALUE Contact FROM AdventureWorksEntities.Contacts 
-                AS Contact WHERE Contact.LastName = @ln AND
-                Contact.FirstName = @fn";
-
-    ObjectQuery<Contact> contactQuery =
-        new ObjectQuery<Contact>(queryString, context);
-
-    // Add parameters to the collection.
-    contactQuery.Parameters.Add(new ObjectParameter("ln", "Adams"));
-    contactQuery.Parameters.Add(new ObjectParameter("fn", "Frances"));
-
-    // Iterate through the collection of Contact items.
-    foreach (Contact result in contactQuery)
-        Console.WriteLine("Last Name: {0}; First Name: {1}",
-        result.LastName, result.FirstName);
-    }
-    */
-    /*parametrized query v2
-    private static void UpdateDemographics(Int32 customerID,
-    string demoXml, string connectionString)
-    {
-    // Update the demographics for a store, which is stored 
-    // in an xml column. 
-    string commandText = "UPDATE Sales.Store SET Demographics = @demographics "
-        + "WHERE CustomerID = @ID;";
-
-    using (SqlConnection connection = new SqlConnection(connectionString))
-    {
-        SqlCommand command = new SqlCommand(commandText, connection);
-        command.Parameters.Add("@ID", SqlDbType.Int);
-        command.Parameters["@ID"].Value = customerID;
-
-        // Use AddWithValue to assign Demographics.
-        // SQL Server will implicitly convert strings into XML.
-        command.Parameters.AddWithValue("@demographics", demoXml);
-
-        try
+        /// <summary>
+        /// This methods implements a query over the db that given some parameters returns a random item
+        /// </summary>
+        /// <param name="shortVSlong"> boolean, true = short, false = long</param>
+        /// <param name="dark">boolean, true = dark, false = light </param>
+        /// <param name="plainColor"> boolean, true = plaincolor</param>
+        /// <param name="texture"> string containing the kind of texture needed</param>
+        /// <returns> an OleDbDataReader object that contains, in order : 
+        ///         1. Item code
+        ///         2. Barcode
+        ///         3. Item Name
+        ///         4. Item Price
+        ///         5. Item Reparto
+        ///         6. Item Description
+        ///         7. Texture file name
+        ///         8. Mask file name
+        /// </returns>
+        public OleDbDataReader getItemFromClues(bool shortVSlong, bool dark, bool plainColor, string texture)
         {
-            connection.Open();
-            Int32 rowsAffected = command.ExecuteNonQuery();
-            Console.WriteLine("RowsAffected: {0}", rowsAffected);
+
+            DBConnection.Open();
+            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName FROM Capo C,DatiNegozio D, Grafica G,Texture T, Maschera M   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND D.Disponibilità > 10 AND  ORDER BY rnd(C.ID); ";
+
+            OleDbCommand command = new OleDbCommand(query, DBConnection);
+
+            OleDbDataReader result = command.ExecuteReader();
+
+            return result;
         }
-        catch (Exception ex)
+        // le informazioni le ho prese da questo sito : http://www.dotnetperls.com/sqlparameter 
+
+
+        /*parametrized query v2
+        private static void UpdateDemographics(Int32 customerID,
+        string demoXml, string connectionString)
         {
-            Console.WriteLine(ex.Message);
+        // Update the demographics for a store, which is stored 
+        // in an xml column. 
+        string commandText = "UPDATE Sales.Store SET Demographics = @demographics "
+            + "WHERE CustomerID = @ID;";
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            SqlCommand command = new SqlCommand(commandText, connection);
+            command.Parameters.Add("@ID", SqlDbType.Int);
+            command.Parameters["@ID"].Value = customerID;
+
+            // Use AddWithValue to assign Demographics.
+            // SQL Server will implicitly convert strings into XML.
+            command.Parameters.AddWithValue("@demographics", demoXml);
+
+            try
+            {
+                connection.Open();
+                Int32 rowsAffected = command.ExecuteNonQuery();
+                Console.WriteLine("RowsAffected: {0}", rowsAffected);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+        }
+        */
     }
-    }
-    */
 }
