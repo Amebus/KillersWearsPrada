@@ -9,7 +9,11 @@ namespace KillerWearsPrada.Model
     [Serializable]
     class Clue : ISerializable
     {
-
+        private String color;
+        private bool gradiation;
+        private bool shape;
+        private String texture;
+        private String itemKind;
     }
 
     //da ricontrollare
@@ -42,6 +46,17 @@ namespace KillerWearsPrada.Model
         RIGHE,
         SCOZZESE,
         TINTA_UNITA
+    }
+
+    enum ItemKind // can be taken from DB table TipoCapo
+    {
+        CAPPELLO,
+        CAMICIA,
+        PANTALONI,
+        MAGLIETTA,
+        MAGLIONE,
+        GONNA,
+        CAPPELLINO
     }
 
 }

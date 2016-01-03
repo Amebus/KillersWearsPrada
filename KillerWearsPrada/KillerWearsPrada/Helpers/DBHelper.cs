@@ -2,6 +2,8 @@
 using System.Data.OleDb;
 using System.Data.SqlClient;
 
+using KillerWearsPrada.Model;
+
 namespace KillerWearsPrada.Helpers
 {
     /// <summary>
@@ -47,7 +49,7 @@ namespace KillerWearsPrada.Helpers
         /// <param name="long1"> boolean, true = long, false = short</param>
         /// <param name="light">boolean, true = dark, false = light </param>
         /// <param name="texture"> string containing the kind of texture needed - look Clue enum Texture -</param>
-        /// <returns> an OleDbDataReader object that contains, in order : 
+        /// <returns> an Item object that contains, in order : 
         ///         1. Item code
         ///         2. Barcode
         ///         3. Item Name
@@ -57,29 +59,30 @@ namespace KillerWearsPrada.Helpers
         ///         7. Texture file name
         ///         8. Mask file name
         /// </returns>
-        public OleDbDataReader GetItemFromClues(bool long1, bool light, string texture){
+        public Item GetItemFromClues(bool long1, bool light, string texture, string itemKind){
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName FROM Capo as C,DatiNegozio as D, Grafica as G,Texture as T, Maschera as M   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND D.Disponibilità > 10 AND (((D.[Lungo/Corto])=@p1)) AND (((T.[Chiaro/Scuro])=@p2)) AND T.TipoTexture = @p3 ORDER BY rnd(C.ID); ";
+            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName FROM Capo AS C,DatiNegozio AS D, Grafica AS G,Texture AS T, Maschera AS M, TipoCapo AS TC   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND TC.ID = C.Tipo AND D.Disponibilità > 10 AND (((D.[Lungo/Corto])=@p1)) AND (((T.[Chiaro/Scuro])=@p2)) AND T.TipoTexture = @p3 AND TC.Tipo = @p4 ORDER BY rnd(C.ID); ";
             //string query = "SELECT * FROM Capo";
             OleDbCommand command = new OleDbCommand(query, DBConnection);
             // add parameters
-            // long parameter - @p1
-            
+            // long parameter - @p1            
             command.Parameters.Add("@p1", OleDbType.Boolean).Value = long1;
             // dark parameter - @p2
-
             command.Parameters.Add("@p2", OleDbType.Boolean).Value = light;
             // texture parameter - @p3
-
             command.Parameters.Add("@p3", OleDbType.VarChar, 255).Value = texture;
-            
+            // item kind parameter -@p4
+            command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind;
+
             OleDbDataReader result = command.ExecuteReader();
+
+            Item i = new Item((int)result.GetValue(0),(int)result.GetValue(1), result.GetValue(2).ToString(), (float)result.GetValue(3), result.GetValue(4).ToString(), result.GetValue(5).ToString(), result.GetValue(6).ToString(), result.GetValue(7).ToString());
 
             DBConnection.Close();
 
-            return result;
+            return i;
         }
 
         /// <summary>
