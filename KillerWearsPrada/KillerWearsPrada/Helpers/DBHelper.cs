@@ -61,32 +61,20 @@ namespace KillerWearsPrada.Helpers
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName FROM Capo C,DatiNegozio D, Grafica G,Texture T, Maschera M   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND D.Disponibilità > 10 AND (((D.[Lungo/Corto])=@p1)) AND (((T.[Chiaro/Scuro])=@p2)) AND T.TipoTexture = @p3 ORDER BY rnd(C.ID); ";
-
+            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName FROM Capo as C,DatiNegozio as D, Grafica as G,Texture as T, Maschera as M   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND D.Disponibilità > 10 AND (((D.[Lungo/Corto])=@p1)) AND (((T.[Chiaro/Scuro])=@p2)) AND T.TipoTexture = @p3 ORDER BY rnd(C.ID); ";
+            //string query = "SELECT * FROM Capo";
             OleDbCommand command = new OleDbCommand(query, DBConnection);
             // add parameters
             // long parameter - @p1
-            if (long1) {
-                command.Parameters.Add("@p1",OleDbType.Char,4).Value="Yes";
-            }
-            else
-            {
-                command.Parameters.Add("@p1",OleDbType.Char,4).Value="No";
-            }
+            
+            command.Parameters.Add("@p1", OleDbType.Boolean).Value = long1;
             // dark parameter - @p2
-            if (light)
-            {
-                command.Parameters.Add("@p2", OleDbType.Char, 4).Value = "Yes";
-            }
-            else
-            {
-                command.Parameters.Add("@p2", OleDbType.Char, 4).Value = "No";
-            }
+
+            command.Parameters.Add("@p2", OleDbType.Boolean).Value = light;
             // texture parameter - @p3
 
-            command.Parameters.Add("@p3", OleDbType.VarChar, 20).Value = texture;
-
-
+            command.Parameters.Add("@p3", OleDbType.VarChar, 255).Value = texture;
+            
             OleDbDataReader result = command.ExecuteReader();
 
             DBConnection.Close();
