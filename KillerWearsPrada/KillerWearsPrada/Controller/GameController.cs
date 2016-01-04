@@ -7,6 +7,7 @@ namespace KillerWearsPrada.Controller
         private const Int32 REFRESH_TIME = 1000;
         private const Int32 DEBUG_REFRESH_TIME = 10000;
         private Model.Game attGame;
+        private Helpers.DBHelper attDataBase;
         private KinectInterrogator attKinectInterrogator;
 
         private ResumeGame attResumeGame;
@@ -18,6 +19,8 @@ namespace KillerWearsPrada.Controller
         public GameController(Microsoft.Kinect.KinectSensor KinectSensor)
         {
             attKinectInterrogator = new KinectInterrogator( KinectSensor, REFRESH_TIME );
+
+            attDataBase = new Helpers.DBHelper();  
 
             attResumeGame = new ResumeGame();
             attUnloadGame = new UnloadGame();

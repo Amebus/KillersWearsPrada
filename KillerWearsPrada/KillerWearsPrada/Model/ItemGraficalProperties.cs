@@ -8,7 +8,7 @@ namespace KillerWearsPrada.Model
 {
 
     //da ricontrollare
-    enum Color
+    enum E_Color
     {
         ARANCIONE,
         BLU,
@@ -18,19 +18,19 @@ namespace KillerWearsPrada.Model
         VIOLA
     }
 
-    enum Gradiation
+    enum E_Gradiation
     {
         CHIARO,
         SCURO
     }
 
-    enum Shape
+    enum E_Shape
     {
         CORTO,
         LUNGO
     }
 
-    enum Texture //can be taken from DB table TipoTexture
+    enum E_Texture //can be taken from DB table TipoTexture
     {
         FANTASIA,
         POIS,
@@ -39,7 +39,7 @@ namespace KillerWearsPrada.Model
         TINTA_UNITA
     }
 
-    enum ItemKind // can be taken from DB table TipoCapo
+    enum E_ItemKind // can be taken from DB table TipoCapo
     {
         CAPPELLO,
         CAMICIA,
