@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,26 +20,28 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class DebugWindow : Window
     {
+        Helpers.DBHelper db;
         public DebugWindow()
         {
             InitializeComponent();
+            db = new Helpers.DBHelper();
         }
 
         private void btnTestDB_Click(object sender, RoutedEventArgs e)
         {
-            Helpers.DBHelper db = new Helpers.DBHelper();
+            db = new Helpers.DBHelper();
             txtDisplay.Text = db.TestConnection();
         }
 
         private void btnQueryProva_Click(object sender, RoutedEventArgs e)
         {
             string r;
-            Helpers.DBHelper db = new Helpers.DBHelper();
+            db = new Helpers.DBHelper();
             try
             {
-                db.GetItemFromClues(true, true, Model.Texture.RIGHE.ToString()).Read().ToString();
+                db.GetItemFromClues(true, true, Model.Texture.RIGHE.ToString(), Model.ItemKind.CAPPELLO.ToString());
             }
-            catch (OleDbException ex)
+            catch (Exception ex)
             {
                 txtDisplay.Text = ex.Message;
             }

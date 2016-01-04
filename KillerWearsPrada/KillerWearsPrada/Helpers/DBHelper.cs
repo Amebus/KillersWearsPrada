@@ -78,7 +78,9 @@ namespace KillerWearsPrada.Helpers
 
             OleDbDataReader result = command.ExecuteReader();
 
-            Item i = new Item((int)result.GetValue(0),(int)result.GetValue(1), result.GetValue(2).ToString(), (float)result.GetValue(3), result.GetValue(4).ToString(), result.GetValue(5).ToString(), result.GetValue(6).ToString(), result.GetValue(7).ToString());
+            Item i = new Item((int)result.GetValue(0),(int)result.GetValue(1), result.GetValue(2).ToString(), 
+                (float)result.GetValue(3), result.GetValue(4).ToString(), result.GetValue(5).ToString(), 
+                result.GetValue(6).ToString(), result.GetValue(7).ToString());
 
             DBConnection.Close();
 
