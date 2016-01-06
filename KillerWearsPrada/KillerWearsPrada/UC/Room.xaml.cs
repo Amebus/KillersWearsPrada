@@ -31,7 +31,7 @@ namespace KillerWearsPrada.UC
             
             InitializeComponent();
 
-            setBackgroundCanvas(Application.Current.Resources[roomID].ToString());
+       //     setBackgroundCanvas(Application.Current.Resources[roomID].ToString());
 
             //    setBackgroundCanvas(roomID);
 
@@ -47,7 +47,7 @@ namespace KillerWearsPrada.UC
         /// Set canvas background acconrdingly to the door selected
         /// </summary>
         /// <param name="roomImagePath"></param>
-        private void setBackgroundCanvas(String roomImagePath)
+        public void setBackgroundCanvas(String roomImagePath)
         {
             ib = new ImageBrush();
             ib.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
@@ -63,12 +63,16 @@ namespace KillerWearsPrada.UC
 
         private void back_button(object sender, RoutedEventArgs e)
         {
-
+            /*
             StartingRoom ucstart = new StartingRoom();
             Window parentWindow = Window.GetWindow(this);
             Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
             maingrid.Children.Remove(this);
-            maingrid.Children.Add(ucstart);
+            maingrid.Children.Add(ucstart); */
+
+            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
+            yourParentWindow.Room.Visibility = Visibility.Hidden;
+            yourParentWindow.StartRoom.Visibility = Visibility.Visible;
 
         }
     }

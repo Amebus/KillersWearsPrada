@@ -55,6 +55,8 @@ namespace KillerWearsPrada.Helpers
         private static object GetResource(String ResourceName)
         {
             return Application.Current.Resources[ResourceName.ToString()];
+
+
         }
 
         private static void SetResource(String ResourceName, object Value)
@@ -171,14 +173,35 @@ namespace KillerWearsPrada.Helpers
 
 
 
-        public static void ModifyRoomBackgroundPath(String roomImage)
+        public static void ModifyRoomBackgroundPath(E_RoomsImages ResourceName)
         {
                 String wvRightPath = CurrentDirectory;
                 wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
-                wvRightPath += CreatePath(Application.Current.Resources[roomImage].ToString());
-                Application.Current.Resources[roomImage] = wvRightPath;
+                wvRightPath += CreatePath(GetResource(ResourceName));
+                SetResource(ResourceName, wvRightPath);
+       //     Application.Current.Resources[roomImage] = wvRightPath;
         }
-        
+
+        public static void ModifyDoorsPath(E_DoorsImages ResourceName)
+        {
+            String wvRightPath = CurrentDirectory;
+            wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+            wvRightPath += CreatePath(GetResource(ResourceName));
+            SetResource(ResourceName, wvRightPath);
+            //     Application.Current.Resources[roomImage] = wvRightPath;
+        }
+
+        public static void ModifyGenericImagesPath(E_GenericImages ResourceName)
+        {
+            String wvRightPath = CurrentDirectory;
+            wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+            wvRightPath += CreatePath(GetResource(ResourceName));
+            SetResource(ResourceName, wvRightPath);
+            //     Application.Current.Resources[roomImage] = wvRightPath;
+        }
+
+
+
 
     }
 }

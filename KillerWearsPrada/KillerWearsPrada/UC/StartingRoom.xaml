@@ -40,7 +40,7 @@
         </Canvas.Background>
 
 
-        <Button x:Name ="sxDoorButton" Click="livingroom_Click" Height="677" Canvas.Top="82" Width="405" Canvas.Left="221" >
+        <Button x:Name ="sxDoorButton" Click="door_Click" Height="677" Canvas.Top="82" Width="405" Canvas.Left="221"  Foreground="{x:Null}" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
 
@@ -71,7 +71,7 @@
         </Button>
 
 
-        <Button x:Name ="centerDoorButton" Click="kitchen_Click" Height="533" Canvas.Top="101" Width="325" Canvas.Left="910" >
+        <Button x:Name ="centerDoorButton" Click="door_Click" Height="533" Canvas.Top="101" Width="325" Canvas.Left="910" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
 
@@ -101,7 +101,7 @@
 
         </Button>
 
-        <Button x:Name ="dxDoorButton" Click="bedroom_Click" Height="634" Canvas.Top="89" Width="331" Canvas.Left="1310" >
+        <Button x:Name ="dxDoorButton" Click="door_Click" Height="634" Canvas.Top="89" Width="331" Canvas.Left="1310" >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
 

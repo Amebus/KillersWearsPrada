@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Kinect;
+using static KillerWearsPrada.Helpers.ResourcesHelper;
 
 namespace KillerWearsPrada.UC
 {
@@ -33,6 +34,12 @@ namespace KillerWearsPrada.UC
             } */
                
             InitializeComponent();
+
+            //metti i contenuti dei bottoni!!!
+            sxDoorButton.Content = E_RoomsImages.Livingroom_Image;
+            centerDoorButton.Content = E_RoomsImages.Kitchen_Image;
+            dxDoorButton.Content = E_RoomsImages.Bedroom_Image;
+
         }
 
         private void close_button(object sender, RoutedEventArgs e)
@@ -42,21 +49,35 @@ namespace KillerWearsPrada.UC
 
         }
 
+
+        // Unico metodo per il click dei bottoni delle porte
+        //manda nelle varie stanze a seconda del contenuto del bottone
+
+
         /// <summary>
-        /// ad ognuno dei metodi qui sotto bisognerebbe passare l'ID che identifica la stanza su cui si è premuto
+        /// Unico metodo che gestisce la stanza in cui si va a seconda del bottone premuto
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void livingroom_Click(object sender, RoutedEventArgs e)
+        private void door_Click(object sender, RoutedEventArgs e)
         {
+            /*
             Room ucroom = new Room("Livingroom_Image");
             Window parentWindow = Window.GetWindow(this);
             Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
             maingrid.Children.Remove(this);
-            maingrid.Children.Add(ucroom);
+            maingrid.Children.Add(ucroom); */
 
+            Button b = (Button)sender;
+            
+            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
+            yourParentWindow.StartRoom.Visibility = Visibility.Hidden;
+            yourParentWindow.Room.Visibility = Visibility.Visible;
+            yourParentWindow.Room.setBackgroundCanvas(Application.Current.Resources[b.Content.ToString()].ToString());
 
         }
+
+        /*
 
         private void kitchen_Click(object sender, RoutedEventArgs e)
         {
@@ -76,13 +97,20 @@ namespace KillerWearsPrada.UC
             maingrid.Children.Add(ucroom);
         }
 
+
+    */
         private void inventory_button(object sender, RoutedEventArgs e)
         {
+            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
+            yourParentWindow.StartRoom.Visibility = Visibility.Hidden;
+            yourParentWindow.Inventory.Visibility = Visibility.Visible;
+
+            /*
             InventoryUC ucinventory = new InventoryUC(this);
             Window parentWindow = Window.GetWindow(this);
             Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
             maingrid.Children.Remove(this);
-            maingrid.Children.Add(ucinventory);
+            maingrid.Children.Add(ucinventory); */
         }
        
     }

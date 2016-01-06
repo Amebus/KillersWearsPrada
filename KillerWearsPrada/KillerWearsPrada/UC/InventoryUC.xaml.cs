@@ -25,8 +25,13 @@ namespace KillerWearsPrada.UC
         {
             provenienza = ucProvenienza;
             InitializeComponent();
-            txtDisplay.Text = provenienza.ToString();
+          //  txtDisplay.Text = provenienza.ToString();
 
+        }
+
+        public InventoryUC()
+        {
+            InitializeComponent();
         }
 
         private void close_button(object sender, RoutedEventArgs e)
@@ -38,12 +43,16 @@ namespace KillerWearsPrada.UC
 
         private void back_button(object sender, RoutedEventArgs e)
         {
-
+            /*
             StartingRoom ucstart = new StartingRoom();
             Window parentWindow = Window.GetWindow(this);
             Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
             maingrid.Children.Remove(this);
-            maingrid.Children.Add(ucstart);
+            maingrid.Children.Add(ucstart); */
+
+            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
+            yourParentWindow.Inventory.Visibility = Visibility.Hidden;
+            yourParentWindow.StartRoom.Visibility = Visibility.Visible;
 
         }
     }

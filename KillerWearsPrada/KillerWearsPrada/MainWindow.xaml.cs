@@ -19,6 +19,7 @@ using Microsoft.Kinect.Wpf.Controls;
 using KillerWearsPrada.UC;
 using KillerWearsPrada.Controller;
 using System.Threading;
+using static KillerWearsPrada.Helpers.ResourcesHelper;
 
 namespace KillerWearsPrada
 {   
@@ -40,6 +41,13 @@ namespace KillerWearsPrada
         private UnloadGameHandler attUnloadGameHandlerDelegate;
         #endregion
 
+        #region User Controls
+        private StartingRoom startRoom;
+        private Room room;
+        private InventoryUC inventory;
+        private SelectionDisplay selection_Display;
+        #endregion
+
         Window attDebug;
 
 
@@ -54,6 +62,9 @@ namespace KillerWearsPrada
 
             //imposta già tutti i path giusti, di tutte le immagini, forse è da mettere altrove
             modifyAllPath();
+
+            // This method load all usercontrols and put their visibility to hidden
+            allocate_All_UC();
 
             KinectRegion.SetKinectRegion(this, kinectRegion);
 
@@ -153,9 +164,18 @@ namespace KillerWearsPrada
         //Dovrebbe passare alla user control StartingRoom ma non lo fa e non so perchè
         private void btnEntrance_Click(object sender, RoutedEventArgs e)
         {
-            StartingRoom startRoom = new StartingRoom();
+            // modificare
+            //   startRoom = new StartingRoom();
 
-            mainGrid.Children.Add(startRoom);
+            //   mainGrid.Children.Add(startRoom);
+
+            //  mainGrid.Background.Opacity = 0;
+            this.Background.Opacity = 0;
+
+            startRoom.Visibility = Visibility.Visible;
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
 
         }
 
@@ -172,17 +192,68 @@ namespace KillerWearsPrada
         }
 
         private void modifyAllPath() {
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Doors_Image");
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Livingroom_Image");
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Kitchen_Image");
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Bedroom_Image");
+            // path delle stanze
+            Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Doors_Image);
+            Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Livingroom_Image);
+            Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Kitchen_Image);
+            Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Bedroom_Image);
 
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Inventory_Background");
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Inventory_Background);
 
             //path delle immagini delle porte
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("SXdoor_Image");
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("CENTERdoor_Image");
-            Helpers.ResourcesHelper.ModifyRoomBackgroundPath("DXdoor_Image");
+            Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.SXdoor_Image);
+            Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.CENTERdoor_Image);
+            Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.DXdoor_Image);
+        }
+
+        #region getter of user controls
+        public StartingRoom StartRoom
+        {
+            get { return startRoom; }
+        }
+
+        public Room Room
+        {
+            get { return room; }
+        }
+
+        public InventoryUC Inventory
+        {
+            get { return inventory; }
+        }
+
+        public SelectionDisplay Get_SelectionDisplay
+        {
+            get { return selection_Display; }
+        }
+        #endregion
+
+        private void allocate_All_UC()
+        {
+            startRoom = new StartingRoom();
+
+            // ma qui cosa imposto???
+            room = new Room();
+
+            //qui ci vorrebbe lo user control di provenienza?
+            inventory = new InventoryUC();
+
+            //qui l'id della maglietta di provenienza? non credo più...
+            selection_Display = new SelectionDisplay();
+            
+
+            // se uso hidden al posto di collapsed carica prima!
+            startRoom.Visibility = Visibility.Hidden;
+            room.Visibility = Visibility.Hidden;
+            inventory.Visibility = Visibility.Hidden;
+            selection_Display.Visibility = Visibility.Hidden;
+
+            // aggiungo tutti gli usercontrol come figli della mainGrid
+            mainGrid.Children.Add(startRoom);
+            mainGrid.Children.Add(room);
+            mainGrid.Children.Add(inventory);
+            mainGrid.Children.Add(selection_Display);
+            
         }
         
 
