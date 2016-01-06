@@ -46,6 +46,7 @@ namespace KillerWearsPrada
         private Room room;
         private InventoryUC inventory;
         private SelectionDisplay selection_Display;
+        String backgroundPath;
         #endregion
 
         Window attDebug;
@@ -57,11 +58,11 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.SaveCurrentDirectory();
             Helpers.ResourcesHelper.ModifyMainBackgroundPath();
 
-            //txtDisplay.AppendText(dir_ok);
-            InitializeComponent();
-
             //imposta già tutti i path giusti, di tutte le immagini, forse è da mettere altrove
             modifyAllPath();
+
+            //txtDisplay.AppendText(dir_ok);
+            InitializeComponent();
 
             // This method load all usercontrols and put their visibility to hidden
             allocate_All_UC();
@@ -81,6 +82,9 @@ namespace KillerWearsPrada
 
             attResumeGameHandlerDelegate = new ResumeGameHandler(this.ResumeGame);
             attUnloadGameHandlerDelegate = new UnloadGameHandler(this.UnloadGame);
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -172,11 +176,25 @@ namespace KillerWearsPrada
             //  mainGrid.Background.Opacity = 0;
             this.Background.Opacity = 0;
 
+            disable_Buttons_Labels();
+
             startRoom.Visibility = Visibility.Visible;
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
 
+        }
+
+        private void disable_Buttons_Labels()
+        {
+            title_game.Visibility = Visibility.Hidden;
+            name_player.Visibility = Visibility.Hidden;
+            rules.Visibility = Visibility.Hidden;
+            Welcome.Visibility = Visibility.Hidden;
+            goToEntrance.Visibility = Visibility.Hidden;
+            goToEntrance.IsEnabled = false;
+            exit.Visibility = Visibility.Hidden;
+            exit.IsEnabled = false;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -191,6 +209,34 @@ namespace KillerWearsPrada
            this.Close();
         }
 
+        private ImageBrush ib;
+
+        private void homepage(object sender, RoutedEventArgs e)
+        {
+            backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
+            ib = new ImageBrush();
+            ib.ImageSource = new BitmapImage(new Uri(@backgroundPath, UriKind.Absolute));
+            this.Background = ib;
+
+            
+            txtDisplay.Visibility = Visibility.Collapsed;
+            recognise.IsEnabled = false;
+            recognise.Visibility = Visibility.Collapsed;
+
+            Enable_Welcome_Obj();
+        }
+
+        private void Enable_Welcome_Obj()
+        {
+            name_player.Visibility = Visibility.Visible;
+            rules.Visibility = Visibility.Visible;
+            Welcome.Visibility = Visibility.Visible;
+            goToEntrance.Visibility = Visibility.Visible;
+            goToEntrance.IsEnabled = true;
+
+        }
+
+
         private void modifyAllPath() {
             // path delle stanze
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Doors_Image);
@@ -198,12 +244,22 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Kitchen_Image);
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Bedroom_Image);
 
+            // background welcome e inventary
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Inventory_Background);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Background);
+
+            
 
             //path delle immagini delle porte
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.SXdoor_Image);
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.CENTERdoor_Image);
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.DXdoor_Image);
+
+            //immagini della welcome page
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Start_Image);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartOver_Image);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartPressed_Image);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Image);
         }
 
         #region getter of user controls
@@ -255,8 +311,13 @@ namespace KillerWearsPrada
             mainGrid.Children.Add(selection_Display);
             
         }
-        
 
-    
+        private void EnterKeyCommand(object sender, EventArgs e)
+        {
+            ((TextBox)sender).SelectionLength = 0;
+        }
+
+
+
     }
 }

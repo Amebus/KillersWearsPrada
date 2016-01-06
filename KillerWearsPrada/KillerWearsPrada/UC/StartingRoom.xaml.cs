@@ -68,13 +68,19 @@ namespace KillerWearsPrada.UC
             maingrid.Children.Remove(this);
             maingrid.Children.Add(ucroom); */
 
+
+
             Button b = (Button)sender;
             
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
-            yourParentWindow.StartRoom.Visibility = Visibility.Hidden;
-            yourParentWindow.Room.Visibility = Visibility.Visible;
+
             yourParentWindow.Room.setBackgroundCanvas(Application.Current.Resources[b.Content.ToString()].ToString());
 
+            yourParentWindow.StartRoom.Visibility = Visibility.Hidden;
+            yourParentWindow.Room.Visibility = Visibility.Visible;
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         /*

@@ -20,7 +20,9 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class Room : UserControl
     {
-        private ImageBrush ib;
+        private ImageBrush ib1;
+        private ImageBrush ib2;
+        private ImageBrush ib3;
 
 
         public Room(String roomID)
@@ -49,9 +51,28 @@ namespace KillerWearsPrada.UC
         /// <param name="roomImagePath"></param>
         public void setBackgroundCanvas(String roomImagePath)
         {
-            ib = new ImageBrush();
-            ib.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
-            room_Canvas.Background = ib;
+            ib1 = new ImageBrush();
+            ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
+            room_Canvas.Background = ib1;
+        }
+
+
+        public void setImageBrush1(String roomImagePath)
+        {
+            ib1 = new ImageBrush();
+            ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
+        }
+
+        public void setImageBrush2(String roomImagePath)
+        {
+            ib1 = new ImageBrush();
+            ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
+        }
+
+        public void setImageBrush3(String roomImagePath)
+        {
+            ib1 = new ImageBrush();
+            ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
         }
 
         private void close_button(object sender, RoutedEventArgs e)
@@ -74,6 +95,8 @@ namespace KillerWearsPrada.UC
             yourParentWindow.Room.Visibility = Visibility.Hidden;
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;
 
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
     }
 }

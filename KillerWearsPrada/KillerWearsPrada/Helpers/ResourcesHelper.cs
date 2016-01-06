@@ -16,7 +16,13 @@ namespace KillerWearsPrada.Helpers
         public enum E_GenericImages
         {
             Application_Start_Image,
-            Inventory_Background
+            Inventory_Background,
+            Welcome_Background,
+
+            Start_Image,
+            StartOver_Image,
+            StartPressed_Image,
+            Welcome_Image
         }
 
         public enum E_RoomsImages
@@ -33,6 +39,16 @@ namespace KillerWearsPrada.Helpers
             CENTERdoor_Image,
             DXdoor_Image
         }
+
+        /*
+        public enum E_WelcomeImages
+        {
+            Start_Image,
+            StartOver_Image,
+            StartPressed_Image,
+            Welcome_Image
+        }
+        */
 
         /// <summary>
         /// Aggiungo \ davanti al path se non presente

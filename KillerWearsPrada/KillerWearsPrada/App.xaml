@@ -17,7 +17,9 @@
         <sys:String x:Key="Application_Start_Image">Application_Start.png</sys:String>
 
         <sys:String x:Key="Inventory_Background">Investigation.jpg</sys:String>
-        
+
+        <sys:String x:Key="Welcome_Background">blood_knife.jpg</sys:String>
+
         <!--#region Immagini Porte-->
         <sys:String x:Key="Doors_Image">doors3empty1.jpg</sys:String>
 
@@ -36,6 +38,51 @@
         <sys:String x:Key="DXdoor_Image">doorDXok.png</sys:String>
         <!--#endregion-->
 
+        <!--#region Nomi delle immagini del pulsante start -->
+        <sys:String x:Key="Start_Image">start.png</sys:String>
+
+        <sys:String x:Key="StartOver_Image">startover.png</sys:String>
+
+        <sys:String x:Key="StartPressed_Image">startpressed.png</sys:String>
+        <!--#endregion-->
+
+        <!--#region Nomi della welcome image -->
+        <sys:String x:Key="Welcome_Image">welcome0.png</sys:String>
+        <sys:String x:Key="Player_Name">Nome del giocatore!</sys:String>
+        <sys:String x:Key="Rules" xml:space="preserve">Rules of the game:
+            
+Paene insularum, Sirmio, insularumque
+Ocelle, quascumque in liquentibus stagnis
+Marique vasto fert uterque Neptunus,
+Quam te libenter quamque laetus inviso,
+Vix mi ipse Thyniam atque Bithynos
+Liquisse campos et videre te in tuto.
+O quid solutis est beatius curis,
+Cum mens onus reponit, ac preregrino
+Labore fessi venimus larem ad nostrum
+Desideratoque acquiescimus lecto.
+Hoc est, quod unumst pro laboribus tantis.
+Salve, o venusta Sirmio, atque ero gaude:
+Gaudete Vosque, o Lydiae lacus undae:
+Ridete, quidquid est domi cachinnorum.
+        
+Vivamus mea Lesbia, atque amemus,
+rumoresque senum seueriorum
+omnes unius aestimemus assis!
+soles occidere et redire possunt:
+nobis cum semel occidit breuis lux,
+nox est perpetua una dormienda.
+da mi basia mille, deinde centum,
+dein mille altera, dein secunda centum,
+deinde usque altera mille, deinde centum.
+dein, cum milia multa fecerimus,
+conturbabimus illa, ne sciamus,
+aut ne quis malus inuidere possit,
+cum tantum sciat esse basiorum. </sys:String>
+        <!--#endregion-->
+
         <sys:String x:Key="ApplicationTitle">Killer Wears Prada</sys:String>
+        <sys:String x:Key="ApplicationTitleMaiusc">THE KILLER WEARS PRADA</sys:String>
+        
     </Application.Resources>
 </Application>

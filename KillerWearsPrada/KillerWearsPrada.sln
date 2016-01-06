@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5622C0
 	ProjectSection(SolutionItems) = preProject
 		KillerWearsPrada\Images\Application_Start.png = KillerWearsPrada\Images\Application_Start.png
 		KillerWearsPrada\Images\bedroom1.jpg = KillerWearsPrada\Images\bedroom1.jpg
+		KillerWearsPrada\Images\blood_knife.jpg = KillerWearsPrada\Images\blood_knife.jpg
 		KillerWearsPrada\Images\doorCENTERok.png = KillerWearsPrada\Images\doorCENTERok.png
 		KillerWearsPrada\Images\doorDXok.png = KillerWearsPrada\Images\doorDXok.png
 		KillerWearsPrada\Images\doors3empty1.jpg = KillerWearsPrada\Images\doors3empty1.jpg
@@ -22,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5622C0
 		KillerWearsPrada\Images\Investigation.jpg = KillerWearsPrada\Images\Investigation.jpg
 		KillerWearsPrada\Images\kitchen1.jpg = KillerWearsPrada\Images\kitchen1.jpg
 		KillerWearsPrada\Images\livingroom1.jpg = KillerWearsPrada\Images\livingroom1.jpg
+		KillerWearsPrada\Images\start.png = KillerWearsPrada\Images\start.png
+		KillerWearsPrada\Images\startover.png = KillerWearsPrada\Images\startover.png
+		KillerWearsPrada\Images\startpressed.png = KillerWearsPrada\Images\startpressed.png
+		KillerWearsPrada\Images\welcome0.png = KillerWearsPrada\Images\welcome0.png
 	EndProjectSection
 EndProject
 Global
