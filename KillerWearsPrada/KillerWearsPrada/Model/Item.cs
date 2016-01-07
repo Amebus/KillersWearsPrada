@@ -26,6 +26,18 @@ namespace KillerWearsPrada.Model
             attClue = new Clue();
         }
 
+        /// <summary>
+        /// constructor which initiates an Item object with parameters
+        /// It's the only way to set the attributes
+        /// </summary>
+        /// <param name="c">integer representig the item code</param>
+        /// <param name="bc"> integer representing the barcode</param>
+        /// <param name="name">string representing the item name</param>
+        /// <param name="p">float representing the price</param>
+        /// <param name="descr">string representing the description</param>
+        /// <param name="rep">string representing the Reparto</param>
+        /// <param name="texture">string representing the texture file name</param>
+        /// <param name="mask">string representing the mask file name</param>
         public Item(int c, int bc, String name, float p, String descr, String rep, String texture, String mask)
         {
             attClue = new Clue();
