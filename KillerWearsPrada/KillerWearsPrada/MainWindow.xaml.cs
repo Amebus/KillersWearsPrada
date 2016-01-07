@@ -210,8 +210,11 @@ namespace KillerWearsPrada
 
         private void close_button(object sender, RoutedEventArgs e)
         {
-
-           this.Close();
+            MessageBoxResult result = MessageBox.Show("Do you really want to exit this game?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Application.Current.Windows[0].Close();
+            }
         }
 
         private ImageBrush ib;
@@ -251,11 +254,12 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Kitchen_Image);
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Bedroom_Image);
 
-            // background welcome e inventary
+            // background welcome e inventary e selection display
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Inventory_Background);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Background);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Crime);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Background);
 
-            
 
             //path delle immagini delle porte
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.SXdoor_Image);
@@ -267,6 +271,9 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartOver_Image);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartPressed_Image);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Image);
+
+            //cappelli
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Hat1);
         }
 
         #region getter of user controls
@@ -301,8 +308,9 @@ namespace KillerWearsPrada
             //qui ci vorrebbe lo user control di provenienza?
             inventory = new InventoryUC();
 
+            String a = "-";
             //qui l'id della maglietta di provenienza? non credo più...
-            selection_Display = new SelectionDisplay();
+            selection_Display = new SelectionDisplay(a);
             
 
             // se uso hidden al posto di collapsed carica prima!

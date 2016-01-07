@@ -79,10 +79,14 @@ namespace KillerWearsPrada.UC
 
             */
 
-        private void close_button(object sender, RoutedEventArgs e)
+        private void exit_button(object sender, RoutedEventArgs e)
         {
 
-            Application.Current.Windows[0].Close();
+            MessageBoxResult result = MessageBox.Show("Do you really want to exit this game?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Application.Current.Windows[0].Close();
+            }
 
         }
 
@@ -106,5 +110,35 @@ namespace KillerWearsPrada.UC
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
+
+        private void hat1_btn(object sender, RoutedEventArgs e)
+        {
+            SelectionDisplay selectionDisplay = new SelectionDisplay(hat1.Content as string);
+            room_Canvas.Children.Add(selectionDisplay);
+
+
+            // Selection dialog covers the entire interact-able area, so the current press interaction
+            // should be completed. Otherwise hover capture will allow the button to be clicked again within
+            // the same interaction (even whilst no longer visible).
+            selectionDisplay.Focus();
+
+            disable_buttons();
+        }
+
+        private void inventory_button(object sender, RoutedEventArgs e)
+        {
+            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
+            yourParentWindow.Room.Visibility = Visibility.Hidden;
+            yourParentWindow.Inventory.Visibility = Visibility.Visible;
+
+            
+        }
+
+        private void disable_buttons()
+        {
+            hat1.IsEnabled = false;
+            
+        }
+
     }
 }

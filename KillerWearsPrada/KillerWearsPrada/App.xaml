@@ -20,6 +20,10 @@
 
         <sys:String x:Key="Welcome_Background">blood_knife.jpg</sys:String>
 
+        <sys:String x:Key="Selection_Crime">crime-scene-silhouette.jpg</sys:String>
+
+        <sys:String x:Key="Selection_Background">grey4.jpg</sys:String>
+
         <!--#region Immagini Porte-->
         <sys:String x:Key="Doors_Image">doors3empty1.jpg</sys:String>
 
@@ -50,6 +54,8 @@
         <sys:String x:Key="Welcome_Image">welcome0.png</sys:String>
         <sys:String x:Key="Player_Name">Nome del giocatore!</sys:String>
         <sys:String x:Key="Rules" xml:space="preserve">Rules of the game:
+         
+            
             
 Paene insularum, Sirmio, insularumque
 Ocelle, quascumque in liquentibus stagnis
@@ -79,6 +85,11 @@ dein, cum milia multa fecerimus,
 conturbabimus illa, ne sciamus,
 aut ne quis malus inuidere possit,
 cum tantum sciat esse basiorum. </sys:String>
+        <!--#endregion-->
+
+        <!--#region Nomi cappelli -->
+        <sys:String x:Key="Hat1">hat_1meleOk.png</sys:String>
+        
         <!--#endregion-->
 
         <sys:String x:Key="ApplicationTitle">Killer Wears Prada</sys:String>

@@ -22,7 +22,12 @@ namespace KillerWearsPrada.Helpers
             Start_Image,
             StartOver_Image,
             StartPressed_Image,
-            Welcome_Image
+            Welcome_Image,
+
+            Selection_Crime,
+            Selection_Background,
+            //momentaneo
+            Hat1
         }
 
         public enum E_RoomsImages
@@ -39,6 +44,12 @@ namespace KillerWearsPrada.Helpers
             CENTERdoor_Image,
             DXdoor_Image
         }
+
+        /*
+        public enum E_KitchenImages
+        {
+            Hat1
+        } */
 
         /*
         public enum E_WelcomeImages

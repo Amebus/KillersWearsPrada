@@ -47,11 +47,14 @@ namespace KillerWearsPrada.UC
             dxDoorButton.Content = E_RoomsImages.Bedroom_Image;
         }
 
-        private void close_button(object sender, RoutedEventArgs e)
+        private void exit_button(object sender, RoutedEventArgs e)
         {
-
-            Application.Current.Windows[0].Close();
-
+            MessageBoxResult result = MessageBox.Show("Do you really want to exit this game?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                Application.Current.Windows[0].Close();
+            }
+            
         }
 
 

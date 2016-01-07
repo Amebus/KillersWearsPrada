@@ -20,9 +20,45 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class SelectionDisplay : UserControl
     {
-        public SelectionDisplay()
+        public SelectionDisplay(string itemId)
         {
             InitializeComponent();
+
+            messageTextBlock.Text = "Hello Baby!!!";
+        }
+
+        /// <summary>
+        /// Called when the OnLoaded storyboard completes.
+        /// </summary>
+        /// <param name="sender">Event sender</param>
+        /// <param name="e">Event arguments</param>
+        private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
+        {
+            
+
+            var parentGrid = (Panel)this.Parent;
+            Canvas parent = (Canvas)parentGrid.FindName("room_Canvas");
+
+            Button bnt1 = (Button)parent.FindName("hat1");
+            bnt1.IsEnabled = true;
+     /*       Button bnt2 = (Button)parent.FindName("hat2");
+            bnt2.IsEnabled = true;
+            Button bnt3 = (Button)parent.FindName("hat3");
+            bnt3.IsEnabled = true;
+            Button bnt4 = (Button)parent.FindName("hat4");
+            bnt4.IsEnabled = true;
+            Button bnt5 = (Button)parent.FindName("hat5");
+            bnt5.IsEnabled = true;
+            Button bnt6 = (Button)parent.FindName("hat6");
+            bnt6.IsEnabled = true;
+            */
+
+            parentGrid.Children.Remove(this);
+
+
+
+
+
         }
     }
 }
