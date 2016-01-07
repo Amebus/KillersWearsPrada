@@ -26,6 +26,32 @@
 
     <Canvas Name="room_Canvas">
 
+        <!--
+        <Canvas.Background>
+            <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
+        </Canvas.Background>
+-->
+        <Canvas x:Name="Livingroom_Image" Width="1920" Height="1080" Visibility="Hidden">
+
+            <Button x:Name="backliv" Click="back_button" Content="Go Back from Livingroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>
+            <!--     <Canvas.Background>
+                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
+            </Canvas.Background>  -->
+        </Canvas>
+        <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Hidden">
+
+            <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>
+            <!--      <Canvas.Background>
+                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Kitchen_Image}}"/>
+            </Canvas.Background> -->
+        </Canvas>
+        <Canvas x:Name="Bedroom_Image"  Width="1920" Height="1080" Visibility="Hidden">
+
+            <Button x:Name="backbed" Click="back_button" Content="Go Back from Bedroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>
+            <!--     <Canvas.Background>
+                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Bedroom_Image}}"/>
+            </Canvas.Background> -->
+        </Canvas>
 
         <Button x:Name="close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="910" Canvas.Top="819"/>
 

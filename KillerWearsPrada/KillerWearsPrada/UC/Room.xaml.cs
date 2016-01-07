@@ -45,6 +45,8 @@ namespace KillerWearsPrada.UC
             InitializeComponent();
         }
 
+        
+
         /// <summary>
         /// Set canvas background acconrdingly to the door selected
         /// </summary>
@@ -56,7 +58,7 @@ namespace KillerWearsPrada.UC
             room_Canvas.Background = ib1;
         }
 
-
+        /*
         public void setImageBrush1(String roomImagePath)
         {
             ib1 = new ImageBrush();
@@ -75,6 +77,8 @@ namespace KillerWearsPrada.UC
             ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
         }
 
+            */
+
         private void close_button(object sender, RoutedEventArgs e)
         {
 
@@ -91,6 +95,10 @@ namespace KillerWearsPrada.UC
             maingrid.Children.Remove(this);
             maingrid.Children.Add(ucstart); */
 
+            Livingroom_Image.Visibility = Visibility.Hidden;
+            Kitchen_Image.Visibility = Visibility.Hidden;
+            Bedroom_Image.Visibility = Visibility.Hidden;
+            
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
             yourParentWindow.Room.Visibility = Visibility.Hidden;
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;

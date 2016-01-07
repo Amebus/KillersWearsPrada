@@ -36,10 +36,15 @@ namespace KillerWearsPrada.UC
             InitializeComponent();
 
             //metti i contenuti dei bottoni!!!
+            /*
             sxDoorButton.Content = E_RoomsImages.Livingroom_Image;
             centerDoorButton.Content = E_RoomsImages.Kitchen_Image;
             dxDoorButton.Content = E_RoomsImages.Bedroom_Image;
+            */
 
+            sxDoorButton.Content = E_RoomsImages.Livingroom_Image;
+            centerDoorButton.Content = E_RoomsImages.Kitchen_Image;
+            dxDoorButton.Content = E_RoomsImages.Bedroom_Image;
         }
 
         private void close_button(object sender, RoutedEventArgs e)
@@ -74,11 +79,48 @@ namespace KillerWearsPrada.UC
             
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
 
-            yourParentWindow.Room.setBackgroundCanvas(Application.Current.Resources[b.Content.ToString()].ToString());
+            // if(b.Content.ToString() == "Livingroom_Image")
+            
+             
+             
+            /*
+           Canvas prepareRoom = (Canvas)yourParentWindow.Room.FindName(b.Content.ToString());
+           prepareRoom.Visibility = Visibility.Visible; */
+
+            String button_content = b.Content.ToString();
+            yourParentWindow.Room.setBackgroundCanvas(Application.Current.Resources[button_content].ToString());
+/*
+            if(button_content != "Livingroom_Canvas" && button_content != "Kitchen_Canvas")
+            {
+                Canvas prepareRoom1;
+                prepareRoom1 = (Canvas)yourParentWindow.Room.FindName("Livingroom_Canvas");
+                prepareRoom1.Visibility = Visibility.Hidden;
+                prepareRoom1 = (Canvas)yourParentWindow.Room.FindName("Kitchen_Canvas");
+                prepareRoom1.Visibility = Visibility.Hidden;
+
+            } else if (button_content != "Livingroom_Canvas" && button_content != "Bedroom_Canvas")
+            {
+                Canvas prepareRoom2;
+                prepareRoom2 = (Canvas)yourParentWindow.Room.FindName("Livingroom_Canvas");
+                prepareRoom2.Visibility = Visibility.Hidden;
+                prepareRoom2 = (Canvas)yourParentWindow.Room.FindName("Bedroom_Canvas");
+                prepareRoom2.Visibility = Visibility.Hidden;
+            } else
+            {
+                Canvas prepareRoom3;
+                prepareRoom3 = (Canvas)yourParentWindow.Room.FindName("Kitchen_Canvas");
+                prepareRoom3.Visibility = Visibility.Hidden;
+                prepareRoom3 = (Canvas)yourParentWindow.Room.FindName("Bedroom_Canvas");
+                prepareRoom3.Visibility = Visibility.Hidden;
+            }
+*/
+            // questo va cmq bene, credo
+            Canvas prepareRoom = (Canvas)yourParentWindow.Room.FindName(button_content);
+            prepareRoom.Visibility = Visibility.Visible;
 
             yourParentWindow.StartRoom.Visibility = Visibility.Hidden;
             yourParentWindow.Room.Visibility = Visibility.Visible;
-
+            
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }

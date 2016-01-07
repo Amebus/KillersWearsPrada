@@ -174,7 +174,9 @@ namespace KillerWearsPrada
             //   mainGrid.Children.Add(startRoom);
 
             //  mainGrid.Background.Opacity = 0;
+            // vorrei disallocare questo sfondo ???
             this.Background.Opacity = 0;
+
 
             disable_Buttons_Labels();
 
@@ -195,6 +197,9 @@ namespace KillerWearsPrada
             goToEntrance.IsEnabled = false;
             exit.Visibility = Visibility.Hidden;
             exit.IsEnabled = false;
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -234,6 +239,8 @@ namespace KillerWearsPrada
             goToEntrance.Visibility = Visibility.Visible;
             goToEntrance.IsEnabled = true;
 
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
 
@@ -300,7 +307,7 @@ namespace KillerWearsPrada
 
             // se uso hidden al posto di collapsed carica prima!
             startRoom.Visibility = Visibility.Hidden;
-            room.Visibility = Visibility.Hidden;
+            room.Visibility = Visibility.Collapsed;
             inventory.Visibility = Visibility.Hidden;
             selection_Display.Visibility = Visibility.Hidden;
 
@@ -309,7 +316,10 @@ namespace KillerWearsPrada
             mainGrid.Children.Add(room);
             mainGrid.Children.Add(inventory);
             mainGrid.Children.Add(selection_Display);
-            
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
         }
 
         private void EnterKeyCommand(object sender, EventArgs e)
