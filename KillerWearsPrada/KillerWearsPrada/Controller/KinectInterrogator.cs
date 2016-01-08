@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Timers;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace KillerWearsPrada.Controller
@@ -23,7 +24,7 @@ namespace KillerWearsPrada.Controller
         private Int32 attWaitingTime;
 
         private KinectSensor attKinectSensor;
-        private WriteableBitmap attColorBitmap;
+        private WriteableBitmap attColorBitmap = null;
         private Bitmap attImage;
 
         private ColorFrameReader attColorFrameReader;
@@ -45,7 +46,8 @@ namespace KillerWearsPrada.Controller
             attWaitingTime = WaitingTime;
             attSavePath = "";
             this.attKinectSensor = Sensor;
-            attColorBitmap = null;
+            FrameDescription wvColorFrameDescription = this.attKinectSensor.ColorFrameSource.CreateFrameDescription(ColorImageFormat.Bgra);
+            attColorBitmap = new WriteableBitmap(wvColorFrameDescription.Width, wvColorFrameDescription.Height, 96.0, 96.0, PixelFormats.Bgr32, null);
             attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
             attColorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
             //attScreenshotSaver = new Thread(new ThreadStart(TakeScreenshot));
@@ -204,6 +206,7 @@ namespace KillerWearsPrada.Controller
 
             KinectBuffer wvColorBuffer = wvColorFrame.LockRawImageBuffer();
             
+
             this.attColorBitmap.Lock();
 
             // verify data and write the new color frame data to the display bitmap
