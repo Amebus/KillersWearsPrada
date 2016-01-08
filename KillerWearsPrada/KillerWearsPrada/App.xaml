@@ -92,6 +92,47 @@ NOTICE that you can leave anytime simply by submitting an
     right spot, then open the hand 
             
  </sys:String>
+
+        <sys:String x:Key="Regole" xml:space="preserve">Rules of the game:
+         
+Questo gioco è un "cerca l'indizio" ambientato in 
+casa di un designer di moda
+Dalla prima stanza, l'ingresso, si può visitare una
+stanza premendo con il cursore su una porta
+Ogni stanza contine 6 Capi, ognuno dei quali corrisponde
+a un capo reale nel negozio
+Premendo un Capo lo si seleziona,mostrando i suoi dati e un Indizio
+Ogni Capo rivela un Indizio, e la combinazione di Indizi
+permette di scegliere 2 Capi, quelli che più corrispondono 
+Quindi si devono cercare nel negozio i 2 capi reali che 
+corrispondono a Capi nella stanza
+Portarli davanti al Kinect e lasciare che lui li riconosca
+mostrandolgi il codice a barre del capo
+Capi riconosciuti sono aggiunti nell'inventario
+Si può accedere all'inventario liberamente
+NOTA Non si pò accedree ad una stanza se non si è 
+ portato almeno un capo della stanza precedente
+Quando tutti e 2 i capi corretti per una stanza sono
+stati aggiunti, un ulteriore Indizio viene rivelato
+Questo indizio sarà risolutivo in un'altra stanza
+Quando tutti i capi sono stati raccolti, accedere all'Inventario
+e vestire il manichino seguendo gli Indizi, trascinando i capi
+Quindi inviare l'Identikit : più questo è accurato maggiore
+ sarà lo sconto assegnato
+NOTA si può lasciare il gioco in ogni momento inviando un Identikit
+ (anche incompleto)
+            
+ - Interazioni :
+1. Per selezionare qualcosa, premerlo con il cursore
+   Mimare una semplice pressione con la mano
+2. Per scorrere una lista, usare lo scroll
+   Chiudere la mano e muoverla in alto o in basso
+3. Per vestire un Capo al manichino o buttarlo nel cestino
+    usare il drag and drop
+  Chiudere la mano con il cursore sopra il Capo, muoverlo
+   nella posizione desiderata, riaprire la mano
+            
+ </sys:String>
         <!--#endregion-->
 
         <!--#region Nomi cappelli -->
