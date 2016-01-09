@@ -123,6 +123,10 @@
     <Compile Include="UC\StartingRoom.xaml.cs">
       <DependentUpon>StartingRoom.xaml</DependentUpon>
     </Compile>
+    <Resource Include="Helpers\GraphicStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

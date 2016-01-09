@@ -5,6 +5,8 @@
              xmlns:local="clr-namespace:KillerWearsPrada"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        
+        
         <!--#region Directories Paths and subPaths-->
         <sys:String x:Key="CurrentDirectory">s</sys:String>
         
@@ -40,6 +42,13 @@
         <sys:String x:Key="CENTERdoor_Image">doorCENTERok.png</sys:String>
 
         <sys:String x:Key="DXdoor_Image">doorDXok.png</sys:String>
+
+        <sys:String x:Key="SXdoorDisabled_Image">doorSXdisabled.png</sys:String>
+
+        <sys:String x:Key="CENTERdoorDisabled_Image">doorCENTERdisabled.png</sys:String>
+
+        <sys:String x:Key="DXdoorDisabled_Image">doorDXdisabled.png</sys:String>
+
         <!--#endregion-->
 
         <!--#region Nomi delle immagini del pulsante start -->

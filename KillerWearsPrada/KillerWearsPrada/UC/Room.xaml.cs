@@ -106,6 +106,10 @@ namespace KillerWearsPrada.UC
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
             yourParentWindow.Room.Visibility = Visibility.Hidden;
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;
+            // abilito i bottoni delle 3 porte
+            yourParentWindow.StartRoom.sxDoorButton.IsEnabled = true;
+            yourParentWindow.StartRoom.centerDoorButton.IsEnabled = true;
+            yourParentWindow.StartRoom.dxDoorButton.IsEnabled = true;
 
             GC.Collect();
             GC.WaitForPendingFinalizers();

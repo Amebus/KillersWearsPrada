@@ -42,7 +42,10 @@ namespace KillerWearsPrada.Helpers
         {
             SXdoor_Image,
             CENTERdoor_Image,
-            DXdoor_Image
+            DXdoor_Image,
+            SXdoorDisabled_Image,
+            CENTERdoorDisabled_Image,
+            DXdoorDisabled_Image
         }
 
         /*

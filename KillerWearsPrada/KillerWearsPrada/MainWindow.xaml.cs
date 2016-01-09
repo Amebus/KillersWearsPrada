@@ -265,6 +265,9 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.SXdoor_Image);
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.CENTERdoor_Image);
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.DXdoor_Image);
+            Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.SXdoorDisabled_Image);
+            Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.CENTERdoorDisabled_Image);
+            Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.DXdoorDisabled_Image);
 
             //immagini della welcome page
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Start_Image);
@@ -335,7 +338,9 @@ namespace KillerWearsPrada
             ((TextBox)sender).SelectionLength = 0;
         }
 
+        private void prova_Click(object sender, RoutedEventArgs e)
+        {
 
-
+        }
     }
 }

@@ -15,119 +15,35 @@
     <!-- Servono Height e Width non design affinchè mantenga le giuste misure!!!-->
 
     <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/KillerWearsPrada;component/Helpers/GraphicStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
         <!-- Completed="OnLoadedStoryboardCompleted" -->
-        <Storyboard x:Key="OnLoadedStoryboard"  >
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
-
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
-
-            </DoubleAnimationUsingKeyFrames>
-            <!--      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
-                <DiscreteObjectKeyFrame KeyTime="0:0:2.4" Value="{x:Static Visibility.Hidden}"/>
-            </ObjectAnimationUsingKeyFrames>  -->
-        </Storyboard>
-        <Storyboard x:Key="closeUC" Completed="OnClosedStoryboardCompleted">
-            <!--  KeyTime="0:0:2.4"  -->
-
-
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
-
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
-
-
-            </DoubleAnimationUsingKeyFrames>
-
-
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid" >
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
-            </ObjectAnimationUsingKeyFrames>
-        </Storyboard>
-        <!--      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
-                <DiscreteObjectKeyFrame KeyTime="0:0:2.4" Value="{x:Static Visibility.Hidden}"/>
-            </ObjectAnimationUsingKeyFrames>  -->
-
-        <ControlTemplate x:Key="GlassButton" TargetType="{x:Type Button}">
-            <ControlTemplate.Resources>
-                <Storyboard x:Key="Timeline1">
-                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
-                    </DoubleAnimationUsingKeyFrames>
-                </Storyboard>
-                <Storyboard x:Key="Timeline2">
-                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
-                    </DoubleAnimationUsingKeyFrames>
-                </Storyboard>
-            </ControlTemplate.Resources>
-            <Border BorderBrush="#FFFFFFFF" BorderThickness="1,1,1,1" CornerRadius="4,4,4,4">
-                <Border x:Name="border" Background="#7F000000" BorderBrush="#FF000000" BorderThickness="1,1,1,1" CornerRadius="4,4,4,4">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.507*"/>
-                            <RowDefinition Height="0.493*"/>
-                        </Grid.RowDefinitions>
-                        <Border Opacity="0" HorizontalAlignment="Stretch" x:Name="glow" Width="Auto" Grid.RowSpan="2" CornerRadius="4,4,4,4">
-                            <Border.Background>
-                                <RadialGradientBrush>
-                                    <RadialGradientBrush.RelativeTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform ScaleX="1.702" ScaleY="2.243"/>
-                                            <SkewTransform AngleX="0" AngleY="0"/>
-                                            <RotateTransform Angle="0"/>
-                                            <TranslateTransform X="-0.368" Y="-0.152"/>
-                                        </TransformGroup>
-                                    </RadialGradientBrush.RelativeTransform>
-                                    <GradientStop Color="#B28DBDFF" Offset="0"/>
-                                    <GradientStop Color="#008DBDFF" Offset="1"/>
-                                </RadialGradientBrush>
-                            </Border.Background>
-                        </Border>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Grid.RowSpan="2"/>
-                        <Border HorizontalAlignment="Stretch" Margin="0,0,0,0" x:Name="shine" Width="Auto" CornerRadius="4,4,0,0">
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.494,0.889" StartPoint="0.494,0.028">
-                                    <GradientStop Color="#99FFFFFF" Offset="0"/>
-                                    <GradientStop Color="#33FFFFFF" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                        </Border>
-                    </Grid>
-                </Border>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Opacity" TargetName="shine" Value="0.4"/>
-                    <Setter Property="Background" TargetName="border" Value="#CC000000"/>
-                    <Setter Property="Visibility" TargetName="glow" Value="Hidden"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
     </UserControl.Resources>
 
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard x:Name="OnLoadedStoryboard_BeginStoryboard" Storyboard="{StaticResource OnLoadedStoryboard}"/>
+            <BeginStoryboard x:Name="OnLoadedStoryboard_BeginStoryboard">
+                <Storyboard Name="OnLoadedStoryboard"  >
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
+
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
+
+                    </DoubleAnimationUsingKeyFrames>
+                    <!--      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0:0:2.4" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>  -->
+                </Storyboard>
+            </BeginStoryboard>
         </EventTrigger>
         <!--
         <EventTrigger RoutedEvent="Mouse.MouseDown">
@@ -148,8 +64,6 @@
                 <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Mode=OneWay, Source={StaticResource Selection_Crime}}"/>
             </Grid.Background>
 
-
-
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -160,16 +74,10 @@
             </Grid.RenderTransform>
             <TextBlock x:Name="messageTextBlock" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">You selected item #14</TextBlock>
 
-            <!--         <Button Name="CloseSelectedItem" Margin="-323,-70,1216,747" Height="123" Width="307" Content="Back to the room" FontSize="40" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontFamily="Palatino Linotype" >
-                <Button.Triggers>
-                    <EventTrigger RoutedEvent="Button.Click">
-                        <BeginStoryboard x:Name="ChiusuraBox" Storyboard="{StaticResource closeUC}"/>
-                    </EventTrigger>
-                </Button.Triggers>
-
-            </Button>
--->
-            <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Template="{DynamicResource GlassButton}" HorizontalAlignment="Right" Margin="-352,-50,1254,725">
+            <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-352,-50,1254,725">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
 
 
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
@@ -179,13 +87,35 @@
 
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
-                        <BeginStoryboard x:Name="ChiusuraBox" Storyboard="{StaticResource closeUC}"/>
+                        <BeginStoryboard x:Name="ChiusuraBox">
+                            <Storyboard Name="closeUC" Completed="OnClosedStoryboardCompleted">
+                            <!--  KeyTime="0:0:2.4"  -->
+
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+
+                            </DoubleAnimationUsingKeyFrames>
+
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid" >
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <!--      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0:0:2.4" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>  -->
+
+                        </BeginStoryboard>
                     </EventTrigger>
                 </Button.Triggers>
             </Button>
 
         </Grid>
-
 
     </Grid>
 

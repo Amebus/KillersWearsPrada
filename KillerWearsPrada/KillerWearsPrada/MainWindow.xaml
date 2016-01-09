@@ -19,134 +19,13 @@
         Name="start_Window">
 
     <Window.Resources>
-        <ControlTemplate x:Key="GlassButton" TargetType="{x:Type Button}">
-            <ControlTemplate.Resources>
-                <Storyboard x:Key="Timeline1">
-                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
-                    </DoubleAnimationUsingKeyFrames>
-                </Storyboard>
-                <Storyboard x:Key="Timeline2">
-                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
-                    </DoubleAnimationUsingKeyFrames>
-                </Storyboard>
-
-                <!-- forse non serve più -->
-                <Storyboard x:Key="blurred">
-                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
-                    </DoubleAnimationUsingKeyFrames>
-                </Storyboard>
-
-
-            </ControlTemplate.Resources>
-            <Border BorderBrush="#FFFFFFFF" BorderThickness="1,1,1,1" CornerRadius="4,4,4,4">
-                <Border x:Name="border" Background="#7F000000" BorderBrush="#FF000000" BorderThickness="1,1,1,1" CornerRadius="4,4,4,4">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.507*"/>
-                            <RowDefinition Height="0.493*"/>
-                        </Grid.RowDefinitions>
-                        <Border Opacity="0" HorizontalAlignment="Stretch" x:Name="glow" Width="Auto" Grid.RowSpan="2" CornerRadius="4,4,4,4">
-                            <Border.Background>
-                                <RadialGradientBrush>
-                                    <RadialGradientBrush.RelativeTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform ScaleX="1.702" ScaleY="2.243"/>
-                                            <SkewTransform AngleX="0" AngleY="0"/>
-                                            <RotateTransform Angle="0"/>
-                                            <TranslateTransform X="-0.368" Y="-0.152"/>
-                                        </TransformGroup>
-                                    </RadialGradientBrush.RelativeTransform>
-                                    <GradientStop Color="#B28DBDFF" Offset="0"/>
-                                    <GradientStop Color="#008DBDFF" Offset="1"/>
-                                </RadialGradientBrush>
-                            </Border.Background>
-                        </Border>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Grid.RowSpan="2"/>
-                        <Border HorizontalAlignment="Stretch" Margin="0,0,0,0" x:Name="shine" Width="Auto" CornerRadius="4,4,0,0">
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.494,0.889" StartPoint="0.494,0.028">
-                                    <GradientStop Color="#99FFFFFF" Offset="0"/>
-                                    <GradientStop Color="#33FFFFFF" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                        </Border>
-                    </Grid>
-                </Border>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Opacity" TargetName="shine" Value="0.4"/>
-                    <Setter Property="Background" TargetName="border" Value="#CC000000"/>
-                    <Setter Property="Visibility" TargetName="glow" Value="Hidden"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
-        <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBox}">
-            <Setter Property="Background" Value="{x:Null}" />
-            <Setter Property="BorderBrush" Value="{x:Null}" />
-            <Setter Property="BorderThickness" Value="0" />
-
-            <Setter Property="IsReadOnly" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="SnapsToDevicePixels" Value="True" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="Padding" Value="10,0,0,0" />
-            <Style.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="{x:Null}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-
-
-        <Style TargetType="{x:Type Button}" x:Key="AButtonStyle">
-            <Setter Property="Button.Background">
-                <Setter.Value>
-                    <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Start_Image}}" />
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-
-                <Trigger Property="Button.IsMouseOver" Value="True">
-                    <Setter Property="Button.Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource StartOver_Image}}" />
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-
-
-
-
-                <Trigger Property="Button.IsPressed" Value="True">
-                    <Setter Property="Button.Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource StartPressed_Image}}" />
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-
-
-
-
-
-            </Style.Triggers>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Helpers/GraphicStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
+    
 
     <Window.Background>
         <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"/>
@@ -182,21 +61,8 @@
                 </Label.Background>
             </Label>
 
-            <Button x:Name="goToEntrance" Click="btnEntrance_Click" Margin="1386,878,10,10" Style="{StaticResource AButtonStyle}" IsEnabled="False" Visibility="Collapsed">
-                <Button.Template >
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Ellipse Stroke="Black" StrokeThickness="2" Fill="{TemplateBinding Background}"></Ellipse>
-                            <ContentPresenter HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <Button x:Name="goToEntrance" Click="btnEntrance_Click" Margin="1386,878,10,10" Style="{StaticResource KinectButton}" IsEnabled="False" Visibility="Hidden"/>
 
-        <!--    <Button x:Name="btnRoom" Content="Go to Entrance" HorizontalAlignment="Left" Margin="403,269,0,0" VerticalAlignment="Top" Width="93" Height="25" Click="btnEntrance_Click"/>  -->
-
-        <!--    <Button x:Name="Close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" Margin="1555,101,-1245,0" VerticalAlignment="Top" Width="215" Height="93" FontSize="32"></Button>  -->
 
             <TextBox x:Name="rules" Margin="823,228,69,269" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBlockStyle}" Height="583" MouseDoubleClick="EnterKeyCommand"  MouseLeftButtonDown="EnterKeyCommand"  
                   SelectionOpacity="0" FontFamily="Freestyle Script" FontSize="50" FontWeight="Bold" Text="{StaticResource ResourceKey=Rules}" Visibility="Hidden" >
@@ -209,13 +75,15 @@
             <Button x:Name="recognise" Click="homepage" Content="Giocatore &#xD;&#xA;Riconosciuto" HorizontalAlignment="Left" Margin="989,560,0,0" VerticalAlignment="Top" Width="215" Height="93" FontSize="32"/>
 
             
+            
             <!-- Per ora lo lascio attivo anche qui -->
-            <Button Name="exit"  Click="close_button" Canvas.Left="1693" Foreground="#FFF3FF00" Template="{DynamicResource GlassButton}" Margin="48,902,1599,40" >
+            <Button Name="exit"  Click="close_button" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Margin="81,889,1566,53" >
                 <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
-                    <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
+                    
                 </StackPanel>
             </Button>
+
 
         </Grid>
     </k:KinectRegion>
@@ -223,10 +91,3 @@
 
 </Window>
 
-<!--<Style x:Key="Back" TargetType="Window">
-    <Setter Property="Backgorund">
-        <Setter.Value>
-            <Image Source="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"></Image>
-        </Setter.Value>
-    </Setter>
-</Style>-->

@@ -8,86 +8,11 @@
              d:DesignHeight="1080" d:DesignWidth="1920">
 
     <UserControl.Resources>
-
-        <ControlTemplate x:Key="GlassButton" TargetType="{x:Type Button}">
-            <ControlTemplate.Resources>
-                <Storyboard x:Key="Timeline1">
-                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
-                    </DoubleAnimationUsingKeyFrames>
-                </Storyboard>
-                <Storyboard x:Key="Timeline2">
-                    <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="glow" Storyboard.TargetProperty="(UIElement.Opacity)">
-                        <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
-                    </DoubleAnimationUsingKeyFrames>
-                </Storyboard>
-            </ControlTemplate.Resources>
-            <Border BorderBrush="#FFFFFFFF" BorderThickness="1,1,1,1" CornerRadius="4,4,4,4">
-                <Border x:Name="border" Background="#7F000000" BorderBrush="#FF000000" BorderThickness="1,1,1,1" CornerRadius="4,4,4,4">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.507*"/>
-                            <RowDefinition Height="0.493*"/>
-                        </Grid.RowDefinitions>
-                        <Border Opacity="0" HorizontalAlignment="Stretch" x:Name="glow" Width="Auto" Grid.RowSpan="2" CornerRadius="4,4,4,4">
-                            <Border.Background>
-                                <RadialGradientBrush>
-                                    <RadialGradientBrush.RelativeTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform ScaleX="1.702" ScaleY="2.243"/>
-                                            <SkewTransform AngleX="0" AngleY="0"/>
-                                            <RotateTransform Angle="0"/>
-                                            <TranslateTransform X="-0.368" Y="-0.152"/>
-                                        </TransformGroup>
-                                    </RadialGradientBrush.RelativeTransform>
-                                    <GradientStop Color="#B28DBDFF" Offset="0"/>
-                                    <GradientStop Color="#008DBDFF" Offset="1"/>
-                                </RadialGradientBrush>
-                            </Border.Background>
-                        </Border>
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Grid.RowSpan="2"/>
-                        <Border HorizontalAlignment="Stretch" Margin="0,0,0,0" x:Name="shine" Width="Auto" CornerRadius="4,4,0,0">
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.494,0.889" StartPoint="0.494,0.028">
-                                    <GradientStop Color="#99FFFFFF" Offset="0"/>
-                                    <GradientStop Color="#33FFFFFF" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                        </Border>
-                    </Grid>
-                </Border>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Opacity" TargetName="shine" Value="0.4"/>
-                    <Setter Property="Background" TargetName="border" Value="#CC000000"/>
-                    <Setter Property="Visibility" TargetName="glow" Value="Hidden"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard Storyboard="{StaticResource Timeline1}"/>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard x:Name="Timeline2_BeginStoryboard" Storyboard="{StaticResource Timeline2}"/>
-                    </Trigger.ExitActions>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
-        <!-- This storyboard will make the image grow to double its size in 0.2 seconds -->
-        <Storyboard x:Key="expandStoryboard">
-            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
-        To="1.5" Duration="0:0:0.2" />
-            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
-        To="1.5" Duration="0:0:0.2" />
-        </Storyboard>
-        <!-- This storyboard will make the image revert to its original size -->
-        <Storyboard x:Key="shrinkStoryboard">
-            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
-        To="1" Duration="0:0:0.2" />
-            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
-        To="1" Duration="0:0:0.2" />
-        </Storyboard>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/KillerWearsPrada;component/Helpers/GraphicStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <Canvas Name="room_Canvas">
@@ -104,12 +29,12 @@
                 <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
             </Canvas.Background>  -->
         </Canvas>
-        <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Hidden" Canvas.Top="-10">
+        <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Visible" Canvas.Top="-10">
 
             <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>
 
-            <Button x:Name ="hat1" Click="hat1_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234">
-                <Button.Template>
+            <Button x:Name ="hat1" Click="hat1_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoom}">
+                <!--       <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Hat1}}" RenderTransformOrigin="0.5,0.5">
                             <Image.Triggers>
@@ -125,7 +50,7 @@
                             </Image.RenderTransform>
                         </Image>
                     </ControlTemplate>
-                </Button.Template>
+                </Button.Template>  -->
             </Button>
 
             <!--      <Canvas.Background>
@@ -140,7 +65,7 @@
             </Canvas.Background> -->
         </Canvas>
 
-        <Button Name="exit"  Click="exit_button" Height="116" Width="227" Canvas.Left="1693" Foreground="#FFF3FF00" Template="{DynamicResource GlassButton}">
+        <Button Name="exit"  Click="exit_button" Height="116" Width="227" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
@@ -151,7 +76,7 @@
 
         <Button x:Name="back" Click="back_button" Content="Go Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="220" Canvas.Top="819"/>
 
-        <Button x:Name="inventory_btn" Width="425" Foreground="#FFFFFFFF" Template="{DynamicResource GlassButton}"  Click="inventory_button" Canvas.Left="1460" Canvas.Top="914" Height="134">
+        <Button x:Name="inventory_btn" Width="425" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}"  Click="inventory_button" Canvas.Left="1460" Canvas.Top="914" Height="134">
             <StackPanel HorizontalAlignment="Center" Width="429" Height="138" Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="70" Text="Inventory" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="422" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->

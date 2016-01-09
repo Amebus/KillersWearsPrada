@@ -122,6 +122,9 @@ namespace KillerWearsPrada.UC
             prepareRoom.Visibility = Visibility.Visible;
 
             yourParentWindow.StartRoom.Visibility = Visibility.Hidden;
+            sxDoorButton.IsEnabled = false;
+            dxDoorButton.IsEnabled = false;
+            centerDoorButton.IsEnabled = false;
             yourParentWindow.Room.Visibility = Visibility.Visible;
             
             GC.Collect();
