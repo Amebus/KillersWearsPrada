@@ -34,29 +34,37 @@ namespace KillerWearsPrada.UC
             InitializeComponent();
         }
 
-        private void close_button(object sender, RoutedEventArgs e)
+        
+
+   
+
+        private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
 
-            MessageBoxResult result = MessageBox.Show("Do you really want to exit this game?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                Application.Current.Windows[0].Close();
-            }
 
-        }
+            var parentGrid = (Panel)this.Parent;
+            Canvas parent = (Canvas)parentGrid.FindName("room_Canvas");
 
-        private void back_button(object sender, RoutedEventArgs e)
-        {
-            /*
-            StartingRoom ucstart = new StartingRoom();
-            Window parentWindow = Window.GetWindow(this);
-            Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
-            maingrid.Children.Remove(this);
-            maingrid.Children.Add(ucstart); */
 
-            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
-            yourParentWindow.Inventory.Visibility = Visibility.Hidden;
-            yourParentWindow.StartRoom.Visibility = Visibility.Visible;
+      //      Button bnt1 = (Button)parent.FindName("hat1");
+     //       bnt1.IsEnabled = true;
+            /*       Button bnt2 = (Button)parent.FindName("hat2");
+                   bnt2.IsEnabled = true;
+                   Button bnt3 = (Button)parent.FindName("hat3");
+                   bnt3.IsEnabled = true;
+                   Button bnt4 = (Button)parent.FindName("hat4");
+                   bnt4.IsEnabled = true;
+                   Button bnt5 = (Button)parent.FindName("hat5");
+                   bnt5.IsEnabled = true;
+                   Button bnt6 = (Button)parent.FindName("hat6");
+                   bnt6.IsEnabled = true;
+                   */
+
+            parentGrid.Children.Remove(this);
+
+
+
+
 
         }
     }

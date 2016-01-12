@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:KillerWearsPrada.Helpers">
 
-    <Style x:Key="RedBlinkSx" TargetType="{x:Type Button}">
+    <Style x:Key="BlinkBase" TargetType="{x:Type Button}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -13,8 +13,8 @@
                                 <VisualState x:Name="Normal" >
                                     <Storyboard x:Name="stopRedBlink2">
                                         <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetName="dropShadow"
-                Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
                                             <LinearDoubleKeyFrame Value="1"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -22,10 +22,10 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard x:Name="startRedBlink2">
                                         <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetName="dropShadow"
-                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
-                Duration="0:0:1"
-                RepeatBehavior="Forever">
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
+                                                Duration="0:0:1"
+                                                RepeatBehavior="Forever">
                                             <LinearDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
                                             <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
                                             <LinearDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
@@ -43,9 +43,60 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+    </Style>
+    
+    <Style x:Key="RedBlinkSx" TargetType="{x:Type Button}" BasedOn="{StaticResource BlinkBase}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" >
+                                    <Storyboard x:Name="stopRedBlink2">
+                                        <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
+                                            <LinearDoubleKeyFrame Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard x:Name="startRedBlink2">
+                                        <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
+                                                Duration="0:0:1"
+                                                RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+
+                                </VisualState> 
+                                <!-- Posso cambiare l'immagine della porta con una scura -->
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard Name="disabled" >
+                                        <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
+                                        <ColorAnimation Duration="0" Storyboard.TargetName="dropShadow" Storyboard.TargetProperty="Color" To="Red"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups> 
                         <Image x:Name="sxDoor" Source="{Binding Mode=OneWay, Source={StaticResource SXdoor_Image}}"  RenderTransformOrigin="0.5,0.5" >
                             <Image.Effect>
-                                <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
+                                <DropShadowEffect Color="{DynamicResource BlinkColor}" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
                             </Image.Effect>
                         </Image>
 
@@ -58,7 +109,8 @@
         </Setter>
     </Style>
 
-    <Style x:Key="RedBlinkCenter" TargetType="{x:Type Button}">
+    <!--basedOn!! -->
+    <Style x:Key="RedBlinkCenter" TargetType="{x:Type Button}" >
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -69,8 +121,8 @@
                                 <VisualState x:Name="Normal" >
                                     <Storyboard x:Name="stopRedBlink2">
                                         <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetName="dropShadow"
-                Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
+                                            Storyboard.TargetName="dropShadow"
+                                            Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
                                             <LinearDoubleKeyFrame Value="1"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -78,10 +130,10 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard x:Name="startRedBlink2">
                                         <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetName="dropShadow"
-                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
-                Duration="0:0:1"
-                RepeatBehavior="Forever">
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
+                                                Duration="0:0:1"
+                                                RepeatBehavior="Forever">
                                             <LinearDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
                                             <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
                                             <LinearDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
@@ -93,15 +145,20 @@
                                 </VisualState>
                                 <!-- Posso cambiare l'immagine della porta con una scura -->
                                 <VisualState x:Name="Disabled">
-                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image4" >
+                                <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
+                                    
+                                        <ColorAnimation Duration="0" Storyboard.TargetName="dropShadow" Storyboard.TargetProperty="Color" To="Red"/>
                                     </Storyboard>
                                 </VisualState>
+                                
+                                <!-- nuovo stato del bottone -->
+                                
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Image x:Name="sxDoor" Source="{Binding Mode=OneWay, Source={StaticResource CENTERdoor_Image}}"  RenderTransformOrigin="0.5,0.5" >
                             <Image.Effect>
-                                <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
+                                <DropShadowEffect Color="{DynamicResource BlinkColor}" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
                             </Image.Effect>
                         </Image>
                         <Image x:Name="doorDisabled" Source="{Binding Mode=OneWay, Source={StaticResource CENTERdoorDisabled_Image}}" Opacity="0"  />
@@ -112,7 +169,10 @@
         </Setter>
     </Style>
 
-    <Style x:Key="RedBlinkDx" TargetType="{x:Type Button}">
+   
+
+
+   <Style x:Key="RedBlinkDx" TargetType="{x:Type Button}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -123,8 +183,8 @@
                                 <VisualState x:Name="Normal" >
                                     <Storyboard x:Name="stopRedBlink2">
                                         <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetName="dropShadow"
-                Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
                                             <LinearDoubleKeyFrame Value="1"/>
                                         </DoubleAnimationUsingKeyFrames>
                                     </Storyboard>
@@ -132,10 +192,10 @@
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard x:Name="startRedBlink2">
                                         <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetName="dropShadow"
-                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
-                Duration="0:0:1"
-                RepeatBehavior="Forever">
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
+                                                Duration="0:0:1"
+                                                RepeatBehavior="Forever">
                                             <LinearDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
                                             <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
                                             <LinearDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
@@ -144,18 +204,20 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
 
-                                </VisualState>
+                                </VisualState> 
                                 <!-- Posso cambiare l'immagine della porta con una scura -->
                                 <VisualState x:Name="Disabled">
-                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image4" >
+                                    <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
+
+                                        <ColorAnimation Duration="0" Storyboard.TargetName="dropShadow" Storyboard.TargetProperty="Color" To="Red"/>
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Image x:Name="sxDoor" Source="{Binding Mode=OneWay, Source={StaticResource DXdoor_Image}}"  RenderTransformOrigin="0.5,0.5" >
                             <Image.Effect>
-                                <DropShadowEffect Color="Red" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
+                                <DropShadowEffect Color="{DynamicResource BlinkColor}" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
                             </Image.Effect>
                         </Image>
                         <Image x:Name="doorDisabled" Source="{Binding Mode=OneWay, Source={StaticResource DXdoor_Image}}" Opacity="0"  />
@@ -164,10 +226,28 @@
             </Setter.Value>
 
         </Setter>
-    </Style>
+    </Style> 
 
-    
-    <Style x:Key="KinectButtonZoom" TargetType="{x:Type Button}" >
+  <!--  <Style x:Key="RedBlink" TargetType="{x:Type Button}" BasedOn="{StaticResource RedBlinkCenter}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Image x:Name="centerDoor" Source="{Binding Mode=OneWay, Source={StaticResource DXdoor_Image}}"  RenderTransformOrigin="0.5,0.5" >
+                            <Image.Effect>
+                                <DropShadowEffect Color="{DynamicResource BlinkColor}" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
+                            </Image.Effect>
+                        </Image>
+                        <Image x:Name="doorDisabled" Source="{Binding Mode=OneWay, Source={StaticResource DXdoor_Image}}" Opacity="0"  />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+    </Style> -->
+
+
+        <Style x:Key="KinectButtonZoom" TargetType="{x:Type Button}" >
         <Setter Property="Background">
             <Setter.Value>
                 <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Hat1}}"/>

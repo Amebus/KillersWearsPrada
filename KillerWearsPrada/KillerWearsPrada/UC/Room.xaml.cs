@@ -92,6 +92,11 @@ namespace KillerWearsPrada.UC
 
         private void back_button(object sender, RoutedEventArgs e)
         {
+            // cambio colore ora
+           
+   /*         Color c = new Color();
+            c = Color.FromRgb(0, 255, 255);
+            Application.Current.Resources["BlinkColor"] = c; */
             /*
             StartingRoom ucstart = new StartingRoom();
             Window parentWindow = Window.GetWindow(this);
@@ -105,11 +110,16 @@ namespace KillerWearsPrada.UC
             
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
             yourParentWindow.Room.Visibility = Visibility.Hidden;
+
+ //           yourParentWindow.StartRoom.UpdateLayout(); // <---------------------------------------------QUI
+
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;
             // abilito i bottoni delle 3 porte
             yourParentWindow.StartRoom.sxDoorButton.IsEnabled = true;
             yourParentWindow.StartRoom.centerDoorButton.IsEnabled = true;
             yourParentWindow.StartRoom.dxDoorButton.IsEnabled = true;
+           
+            
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -131,11 +141,10 @@ namespace KillerWearsPrada.UC
 
         private void inventory_button(object sender, RoutedEventArgs e)
         {
-            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
-            yourParentWindow.Room.Visibility = Visibility.Hidden;
-            yourParentWindow.Inventory.Visibility = Visibility.Visible;
-
-            
+            InventoryUC inventory = new InventoryUC();
+            room_Canvas.Children.Add(inventory);
+            inventory.Focus();
+            disable_buttons();
         }
 
         private void disable_buttons()

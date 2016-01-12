@@ -155,17 +155,11 @@ namespace KillerWearsPrada.UC
     */
         private void inventory_button(object sender, RoutedEventArgs e)
         {
-            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
-            yourParentWindow.StartRoom.Visibility = Visibility.Hidden;
-            yourParentWindow.Inventory.Visibility = Visibility.Visible;
-
-            /*
-            InventoryUC ucinventory = new InventoryUC(this);
-            Window parentWindow = Window.GetWindow(this);
-            Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
-            maingrid.Children.Remove(this);
-            maingrid.Children.Add(ucinventory); */
+            InventoryUC inventory = new InventoryUC();
+            room_Canvas.Children.Add(inventory);
+            inventory.Focus();
+            
         }
-       
+
     }
 }

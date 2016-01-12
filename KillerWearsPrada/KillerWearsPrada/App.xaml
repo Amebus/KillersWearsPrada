@@ -5,8 +5,9 @@
              xmlns:local="clr-namespace:KillerWearsPrada"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
-        
+
+        <Color x:Key="BlinkColor">#00FF00</Color>
+
         <!--#region Directories Paths and subPaths-->
         <sys:String x:Key="CurrentDirectory">s</sys:String>
         

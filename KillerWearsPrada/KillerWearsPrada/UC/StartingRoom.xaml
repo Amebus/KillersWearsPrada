@@ -13,9 +13,11 @@
                 <ResourceDictionary Source="pack://application:,,,/KillerWearsPrada;component/Helpers/GraphicStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        
+        
     </UserControl.Resources>
 
-    <Canvas>
+    <Canvas Name="room_Canvas">
         <Canvas.Background>
             <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Doors_Image}}"/>
         </Canvas.Background>

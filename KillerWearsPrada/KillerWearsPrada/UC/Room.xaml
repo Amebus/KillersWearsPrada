@@ -24,14 +24,14 @@
 -->
         <Canvas x:Name="Livingroom_Image" Width="1920" Height="1080" Visibility="Hidden">
 
-            <Button x:Name="backliv" Click="back_button" Content="Go Back from Livingroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>
+    <!--        <Button x:Name="backliv" Click="back_button" Content="Go Back from Livingroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>  -->
             <!--     <Canvas.Background>
                 <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
             </Canvas.Background>  -->
         </Canvas>
-        <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Visible" Canvas.Top="-10">
+        <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Hidden" >
 
-            <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>
+      <!--      <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
 
             <Button x:Name ="hat1" Click="hat1_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoom}">
                 <!--       <Button.Template>
@@ -59,10 +59,8 @@
         </Canvas>
         <Canvas x:Name="Bedroom_Image"  Width="1920" Height="1080" Visibility="Hidden">
 
-            <Button x:Name="backbed" Click="back_button" Content="Go Back from Bedroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>
-            <!--     <Canvas.Background>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Bedroom_Image}}"/>
-            </Canvas.Background> -->
+       <!--     <Button x:Name="backbed" Click="back_button" Content="Go Back from Bedroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
+          
         </Canvas>
 
         <Button Name="exit"  Click="exit_button" Height="116" Width="227" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}">
@@ -72,10 +70,15 @@
             </StackPanel>
         </Button>
 
-   <!--     <Button x:Name="close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="1678" Canvas.Top="22"/>  -->
+        <!--     <Button x:Name="close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="1678" Canvas.Top="22"/>  -->
 
-        <Button x:Name="back" Click="back_button" Content="Go Back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="220" Canvas.Top="819"/>
-
+        <Button x:Name="back" Click="back_button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="48" Canvas.Left="75" Canvas.Top="914" Style="{StaticResource GlassButtonKinect}" Foreground="#FFE8FF00">
+            <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Margin="5,10,50,8" FontSize="40" Text="Go Back" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
+                <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
+            </StackPanel>
+        </Button>
+        
         <Button x:Name="inventory_btn" Width="425" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}"  Click="inventory_button" Canvas.Left="1460" Canvas.Top="914" Height="134">
             <StackPanel HorizontalAlignment="Center" Width="429" Height="138" Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="70" Text="Inventory" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="422" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />

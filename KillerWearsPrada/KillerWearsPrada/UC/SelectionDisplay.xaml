@@ -37,21 +37,10 @@
                         <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
-
                     </DoubleAnimationUsingKeyFrames>
-                    <!--      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
-                <DiscreteObjectKeyFrame KeyTime="0:0:2.4" Value="{x:Static Visibility.Hidden}"/>
-            </ObjectAnimationUsingKeyFrames>  -->
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
-        <!--
-        <EventTrigger RoutedEvent="Mouse.MouseDown">
-            <BeginStoryboard x:Name="OnClosedStoryboard_BeginStoryboard" Storyboard="{StaticResource closeUC}"/>
-        </EventTrigger>
--->
-
-
     </UserControl.Triggers>
 
     <UserControl.Background>
