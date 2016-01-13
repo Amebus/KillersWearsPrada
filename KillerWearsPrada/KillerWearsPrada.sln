@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KillerWearsPrada", "KillerWearsPrada\KillerWearsPrada.csproj", "{C46FAFB1-7165-4411-B23D-373A1A7FD239}"
 EndProject
@@ -41,6 +41,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5622C0
 		KillerWearsPrada\Images\welcome0.png = KillerWearsPrada\Images\welcome0.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "textures", "textures", "{BF096C2A-5FD6-4EB6-8ACF-7077D3ECC0CE}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Advanced User Interfaces\textures\black.jpg = ..\..\Advanced User Interfaces\textures\black.jpg
+		..\..\Advanced User Interfaces\textures\blueTartan.jpg = ..\..\Advanced User Interfaces\textures\blueTartan.jpg
+		..\..\Advanced User Interfaces\textures\darkBlue.jpg = ..\..\Advanced User Interfaces\textures\darkBlue.jpg
+		..\..\Advanced User Interfaces\textures\darkBrown.jpg = ..\..\Advanced User Interfaces\textures\darkBrown.jpg
+		..\..\Advanced User Interfaces\textures\darkGreen.jpg = ..\..\Advanced User Interfaces\textures\darkGreen.jpg
+		..\..\Advanced User Interfaces\textures\darkRed.jpg = ..\..\Advanced User Interfaces\textures\darkRed.jpg
+		..\..\Advanced User Interfaces\textures\greenPois.jpg = ..\..\Advanced User Interfaces\textures\greenPois.jpg
+		..\..\Advanced User Interfaces\textures\grey.jpg = ..\..\Advanced User Interfaces\textures\grey.jpg
+		..\..\Advanced User Interfaces\textures\lightBlue.jpg = ..\..\Advanced User Interfaces\textures\lightBlue.jpg
+		..\..\Advanced User Interfaces\textures\lightBrown.jpg = ..\..\Advanced User Interfaces\textures\lightBrown.jpg
+		..\..\Advanced User Interfaces\textures\lightGreen.jpg = ..\..\Advanced User Interfaces\textures\lightGreen.jpg
+		..\..\Advanced User Interfaces\textures\pink.jpg = ..\..\Advanced User Interfaces\textures\pink.jpg
+		..\..\Advanced User Interfaces\textures\purple.jpg = ..\..\Advanced User Interfaces\textures\purple.jpg
+		..\..\Advanced User Interfaces\textures\redBlueStripes.jpg = ..\..\Advanced User Interfaces\textures\redBlueStripes.jpg
+		..\..\Advanced User Interfaces\textures\redTartan.jpg = ..\..\Advanced User Interfaces\textures\redTartan.jpg
+		..\..\Advanced User Interfaces\textures\redYellowFlowers.jpg = ..\..\Advanced User Interfaces\textures\redYellowFlowers.jpg
+		..\..\Advanced User Interfaces\textures\yellow.jpg = ..\..\Advanced User Interfaces\textures\yellow.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,5 +78,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BF096C2A-5FD6-4EB6-8ACF-7077D3ECC0CE} = {5622C086-9192-499D-AC42-B464C38C38E6}
 	EndGlobalSection
 EndGlobal
