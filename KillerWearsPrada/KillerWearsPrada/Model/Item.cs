@@ -21,6 +21,11 @@ namespace KillerWearsPrada.Model
         private String textureFileName;
         private String maskFileName;
 
+
+        private Boolean attTrashed;
+        private Boolean attInInventory;
+        private Boolean attDressed;
+
         public Item ()
         {
             attClue = new Clue();
@@ -49,6 +54,10 @@ namespace KillerWearsPrada.Model
             reparto = rep;
             textureFileName = texture;
             maskFileName = mask;
+
+            attTrashed = false;
+            attInInventory = false;
+            attDressed = false;
         }
 
         public Clue Clue
@@ -94,6 +103,21 @@ namespace KillerWearsPrada.Model
         public String MaskFileName
         {
             get { return maskFileName; }
+        }
+
+        public Boolean IsTrashed
+        {
+            get { return attTrashed; }
+        }
+
+        public Boolean IsInInventory
+        {
+            get { return attInInventory; }
+        }
+
+        public Boolean IsDressed
+        {
+            get { return attDressed; }
         }
     }
 }

@@ -101,11 +101,9 @@
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\ISerializable.cs" />
     <Compile Include="Model\ItemGraficalProperties.cs" />
-    <Compile Include="Model\TrashBin.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Model\Clue.cs" />
-    <Compile Include="Model\Inventory.cs" />
     <Compile Include="Controller\KinectInterrogator.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="UC\DebugWindow.xaml.cs">

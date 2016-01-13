@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="DebugWindow" Height="310.805" Width="508.475">
     <Grid>
-        <Button x:Name="btnTestDB" Content="Prova connessione DB" HorizontalAlignment="Left" Margin="158,201,0,0" VerticalAlignment="Top" Width="174" Height="25" Click="btnTestDB_Click"/>
-        
-        <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="186" Margin="28,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
-        <Button x:Name="btnQueryProva" Content="Esegui query di prova" HorizontalAlignment="Left" Margin="158,231,0,0" VerticalAlignment="Top" Width="174" Click="btnQueryProva_Click"/>
+        <Button x:Name="btnTestDB" Content="Prova connessione DB" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="282" Height="25" Click="btnTestDB_Click" RenderTransformOrigin="0.5,0.5"/>
+
+        <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="88" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="282"/>
+        <Button x:Name="btnQueryProva" Content="Esegui query di prova" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Width="282" Click="btnQueryProva_Click"/>
 
     </Grid>
 </Window>

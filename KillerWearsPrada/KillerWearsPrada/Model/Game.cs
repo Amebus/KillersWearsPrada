@@ -13,7 +13,9 @@ namespace KillerWearsPrada.Model
         #region Attributes
         private Player attPlayer;
         private List<Room> attRooms;
+        private Int32 attActualRoom;
 
+        private Int32 attScore;
         #endregion
 
 
@@ -30,6 +32,11 @@ namespace KillerWearsPrada.Model
         public String PlayerName
         {
             get { return PlayerName; }
+        }
+
+        public Room ActualRoom
+        {
+            get { return attRooms[attActualRoom]; }
         }
 
         public void prova()
