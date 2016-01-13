@@ -38,10 +38,21 @@ namespace KillerWearsPrada.Model
         {
             get { return attRooms[attActualRoom]; }
         }
-
-        public void prova()
+        
+        public List<Item> GetRoomItems(Int32 RoomIndex)
         {
-            attRooms[0].Items[0].Clue.ToString();    
+            return attRooms[RoomIndex].
         }
+
+        public Item GetItemByCode (Int32 Room, Int32 ItemCode)
+        {
+            return attRooms[Room].GetItemByCode(ItemCode);
+        }
+
+        public Item GetItemByBarCode(Int32 Room, Int32 ItemBarCode)
+        {
+            return attRooms[Room].GetItemByCode(ItemBarCode);
+        }
+
     }
 }

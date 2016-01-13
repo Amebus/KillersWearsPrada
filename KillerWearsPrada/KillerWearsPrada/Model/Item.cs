@@ -26,7 +26,7 @@ namespace KillerWearsPrada.Model
         private Boolean attInInventory;
         private Boolean attDressed;
 
-        public Item ()
+        public Item()
         {
             attClue = new Clue();
         }
@@ -60,6 +60,7 @@ namespace KillerWearsPrada.Model
             attDressed = false;
         }
 
+        #region Properties
         public Clue Clue
         {
             get { return attClue; }
@@ -119,5 +120,53 @@ namespace KillerWearsPrada.Model
         {
             get { return attDressed; }
         }
+        #endregion
+
+        #region Methods
+        public Boolean SetAsTrashed()
+        {
+            if (!this.IsInInventory)
+                return false;
+            attTrashed = true;
+            attDressed = false;
+
+            return true;
+        }
+
+        public Boolean RestoreFromTrash()
+        {
+            if (!this.IsTrashed)
+                return false;
+            attTrashed = false;
+            return true;
+        }
+
+        public void SetAsInInventory()
+        {
+            attInInventory = true;
+        }
+
+        public Boolean Dress()
+        {
+            if (!this.IsInInventory || this.IsTrashed)
+                return false;
+            bool b = this.Undress();
+            attDressed = true;
+            return true;
+        }
+
+        /// <summary>
+        /// It allows to undress an item
+        /// </summary>
+        /// <returns>true if the it has been undressed, false otherwise</returns>
+        public Boolean Undress()
+        {
+            if (!this.IsDressed)
+                return false;
+
+            attDressed = false;
+            return true;
+        }
+        #endregion
     }
 }

@@ -21,5 +21,26 @@ namespace KillerWearsPrada.Model
             get { return attItems; }
         }
 
+        public Item GetItemByBarCode (Int32 BarCode)
+        {
+            foreach(Item it in attItems)
+            {
+                if (it.BarCode == BarCode)
+                    return it;
+            }
+
+            return null;
+        }
+
+        public Item GetItemByCode(Int32 Code)
+        {
+            foreach (Item it in attItems)
+            {
+                if (it.Code == Code)
+                    return it;
+            }
+
+            return null;
+        }
     }
 }
