@@ -41,25 +41,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5622C0
 		KillerWearsPrada\Images\welcome0.png = KillerWearsPrada\Images\welcome0.png
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "textures", "textures", "{BF096C2A-5FD6-4EB6-8ACF-7077D3ECC0CE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "textures", "textures", "{71D66EBD-2ED8-4FF8-AAF4-CA21BDD5CA19}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\Advanced User Interfaces\textures\black.jpg = ..\..\Advanced User Interfaces\textures\black.jpg
-		..\..\Advanced User Interfaces\textures\blueTartan.jpg = ..\..\Advanced User Interfaces\textures\blueTartan.jpg
-		..\..\Advanced User Interfaces\textures\darkBlue.jpg = ..\..\Advanced User Interfaces\textures\darkBlue.jpg
-		..\..\Advanced User Interfaces\textures\darkBrown.jpg = ..\..\Advanced User Interfaces\textures\darkBrown.jpg
-		..\..\Advanced User Interfaces\textures\darkGreen.jpg = ..\..\Advanced User Interfaces\textures\darkGreen.jpg
-		..\..\Advanced User Interfaces\textures\darkRed.jpg = ..\..\Advanced User Interfaces\textures\darkRed.jpg
-		..\..\Advanced User Interfaces\textures\greenPois.jpg = ..\..\Advanced User Interfaces\textures\greenPois.jpg
-		..\..\Advanced User Interfaces\textures\grey.jpg = ..\..\Advanced User Interfaces\textures\grey.jpg
-		..\..\Advanced User Interfaces\textures\lightBlue.jpg = ..\..\Advanced User Interfaces\textures\lightBlue.jpg
-		..\..\Advanced User Interfaces\textures\lightBrown.jpg = ..\..\Advanced User Interfaces\textures\lightBrown.jpg
-		..\..\Advanced User Interfaces\textures\lightGreen.jpg = ..\..\Advanced User Interfaces\textures\lightGreen.jpg
-		..\..\Advanced User Interfaces\textures\pink.jpg = ..\..\Advanced User Interfaces\textures\pink.jpg
-		..\..\Advanced User Interfaces\textures\purple.jpg = ..\..\Advanced User Interfaces\textures\purple.jpg
-		..\..\Advanced User Interfaces\textures\redBlueStripes.jpg = ..\..\Advanced User Interfaces\textures\redBlueStripes.jpg
-		..\..\Advanced User Interfaces\textures\redTartan.jpg = ..\..\Advanced User Interfaces\textures\redTartan.jpg
-		..\..\Advanced User Interfaces\textures\redYellowFlowers.jpg = ..\..\Advanced User Interfaces\textures\redYellowFlowers.jpg
-		..\..\Advanced User Interfaces\textures\yellow.jpg = ..\..\Advanced User Interfaces\textures\yellow.jpg
+		KillerWearsPrada\Images\textures\black.jpg = KillerWearsPrada\Images\textures\black.jpg
+		KillerWearsPrada\Images\textures\blueTartan.jpg = KillerWearsPrada\Images\textures\blueTartan.jpg
+		KillerWearsPrada\Images\textures\darkBlue.jpg = KillerWearsPrada\Images\textures\darkBlue.jpg
+		KillerWearsPrada\Images\textures\darkBrown.jpg = KillerWearsPrada\Images\textures\darkBrown.jpg
+		KillerWearsPrada\Images\textures\darkGreen.jpg = KillerWearsPrada\Images\textures\darkGreen.jpg
+		KillerWearsPrada\Images\textures\darkRed.jpg = KillerWearsPrada\Images\textures\darkRed.jpg
+		KillerWearsPrada\Images\textures\greenPois.jpg = KillerWearsPrada\Images\textures\greenPois.jpg
+		KillerWearsPrada\Images\textures\grey.jpg = KillerWearsPrada\Images\textures\grey.jpg
+		KillerWearsPrada\Images\textures\lightBlue.jpg = KillerWearsPrada\Images\textures\lightBlue.jpg
+		KillerWearsPrada\Images\textures\lightBrown.jpg = KillerWearsPrada\Images\textures\lightBrown.jpg
+		KillerWearsPrada\Images\textures\lightGreen.jpg = KillerWearsPrada\Images\textures\lightGreen.jpg
+		KillerWearsPrada\Images\textures\pink.jpg = KillerWearsPrada\Images\textures\pink.jpg
+		KillerWearsPrada\Images\textures\purple.jpg = KillerWearsPrada\Images\textures\purple.jpg
+		KillerWearsPrada\Images\textures\redBlueStripes.jpg = KillerWearsPrada\Images\textures\redBlueStripes.jpg
+		KillerWearsPrada\Images\textures\redTartan.jpg = KillerWearsPrada\Images\textures\redTartan.jpg
+		KillerWearsPrada\Images\textures\redYellowFlowers.jpg = KillerWearsPrada\Images\textures\redYellowFlowers.jpg
+		KillerWearsPrada\Images\textures\yellow.jpg = KillerWearsPrada\Images\textures\yellow.jpg
 	EndProjectSection
 EndProject
 Global
@@ -80,6 +80,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{BF096C2A-5FD6-4EB6-8ACF-7077D3ECC0CE} = {5622C086-9192-499D-AC42-B464C38C38E6}
+		{71D66EBD-2ED8-4FF8-AAF4-CA21BDD5CA19} = {5622C086-9192-499D-AC42-B464C38C38E6}
 	EndGlobalSection
 EndGlobal

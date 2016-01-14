@@ -20,6 +20,7 @@ namespace KillerWearsPrada.Model
         private String reparto;
         private String textureFileName;
         private String maskFileName;
+        private String imageFileName;
 
 
         private Boolean attTrashed;
@@ -43,7 +44,8 @@ namespace KillerWearsPrada.Model
         /// <param name="rep">string representing the Reparto</param>
         /// <param name="texture">string representing the texture file name</param>
         /// <param name="mask">string representing the mask file name</param>
-        public Item(int c, int bc, String name, float p, String descr, String rep, String texture, String mask)
+        /// <param name="image">string representing the item image file name</param>
+        public Item(int c, int bc, String name, float p, String descr, String rep, String texture, String mask, String image)
         {
             attClue = new Clue();
             code = c;
@@ -54,6 +56,7 @@ namespace KillerWearsPrada.Model
             reparto = rep;
             textureFileName = texture;
             maskFileName = mask;
+            imageFileName = image;
 
             attTrashed = false;
             attInInventory = false;
@@ -104,6 +107,11 @@ namespace KillerWearsPrada.Model
         public String MaskFileName
         {
             get { return maskFileName; }
+        }
+
+        public String ImageFileName
+        {
+            get { return imageFileName; }
         }
 
         public Boolean IsTrashed
