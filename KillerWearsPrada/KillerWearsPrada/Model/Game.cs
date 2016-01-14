@@ -12,18 +12,49 @@ namespace KillerWearsPrada.Model
 
         #region Attributes
         private Player attPlayer;
+        /// <summary>
+        /// Rappresenta la lista di stanze incluso l'ingresso
+        /// </summary>
         private List<Room> attRooms;
+        /// <summary>
+        /// rappresenta la stanza in cui si trova il giocatore
+        /// </summary>
         private Int32 attActualRoom;
 
         private Int32 attScore;
+        private Solution attSolution;
         #endregion
 
-
-        public Game (String ID, String PlayerName)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="PlayerName"></param>
+        /// <param name="Rooms">Number of Rooms in the game</param>
+        /// <param name="ItemsPerRoom">Number of items in each room</param>
+        public Game (String ID, String PlayerName, Int32 Rooms, Int32 ItemsPerRoom)
         {
+            attSolution = new Solution();
             attPlayer = new Player(ID, PlayerName);
+            attScore = 0;
+            attActualRoom = 0;
+
+            attRooms = new List<Room>(Rooms);
+
+            //creo singole stanze
+            attRooms[0] = null;
+
+            for(int i = 1; i < Rooms; i++)
+            {
+                attRooms[i] = new Room(CreateItems(ItemsPerRoom));
+            }
+
+            //
+
+
         }
 
+        #region Properties
         public String PlayerID
         {
             get { return attPlayer.ID; }
@@ -41,7 +72,7 @@ namespace KillerWearsPrada.Model
         
         public List<Item> GetRoomItems(Int32 RoomIndex)
         {
-            return attRooms[RoomIndex].
+            return attRooms[RoomIndex].Items;
         }
 
         public Item GetItemByCode (Int32 Room, Int32 ItemCode)
@@ -53,6 +84,39 @@ namespace KillerWearsPrada.Model
         {
             return attRooms[Room].GetItemByCode(ItemBarCode);
         }
+        #endregion
 
+        #region Methods
+
+        private List<Item> CreateItems(Int32 NumberOfItems)
+        {
+            Helpers.DBHelper wvDB = new Helpers.DBHelper();
+            List<Item> wvItems = new List<Item>();
+            //Random wvRND = new Random(NumberOfItems);
+
+            if(!attSolution.CheckItemKind(E_ItemKind.Cappello))
+            {
+                attSolution.AddItemKind(E_ItemKind.Cappello);
+            }
+            else if(!attSolution.CheckItemKind(E_ItemKind.Maglietta))
+            {
+                attSolution.AddItemKind(E_ItemKind.Maglietta);
+            }
+            else if (!attSolution.CheckItemKind(E_ItemKind.Pantaloni))
+            {
+                attSolution.AddItemKind(E_ItemKind.Pantaloni);
+            }
+
+
+            //Il primo è quello giusto
+            wvItems.Add(wvDB.GetItemByGradation(true, attSolution.LastItemKind.ToString()));
+            NumberOfItems--;
+            //mi faccio dare gli altri (per ora sola il secondo)
+            wvItems.Add(wvDB.GetItemByGradation(false, attSolution.LastItemKind.ToString()));
+
+            return wvItems;
+        }
+
+        #endregion
     }
 }

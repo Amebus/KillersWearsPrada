@@ -42,5 +42,6 @@ namespace KillerWearsPrada.Model
 
             return null;
         }
+
     }
 }

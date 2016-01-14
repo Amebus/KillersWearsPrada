@@ -10,6 +10,7 @@ namespace KillerWearsPrada.Model
     //da ricontrollare
     enum E_Color
     {
+        NULL,
         ARANCIONE,
         BLU,
         GIALLO,
@@ -20,18 +21,21 @@ namespace KillerWearsPrada.Model
 
     enum E_Gradiation
     {
+        NULL,
         CHIARO,
         SCURO
     }
 
     enum E_Shape
     {
+        NULL,
         CORTO,
         LUNGO
     }
 
     enum E_Texture //can be taken from DB table TipoTexture
     {
+        NULL,
         FANTASIA,
         POIS,
         RIGHE,
@@ -41,13 +45,15 @@ namespace KillerWearsPrada.Model
 
     enum E_ItemKind // can be taken from DB table TipoCapo
     {
-        CAPPELLO,
-        CAMICIA,
-        PANTALONI,
-        MAGLIETTA,
-        MAGLIONE,
-        GONNA,
-        CAPPELLINO
+        NULL,
+        Cappello,
+        Cappelino,
+        Camicia,
+        Pantaloni,
+        Maglietta,
+        Maglione,
+        Gonna
+        
     }
     
 }

@@ -115,7 +115,7 @@ namespace KillerWearsPrada.Controller
 
             wvID = wvID.Replace(' ', '-');
             wvID += ("-" + PlayerName);
-            Model.Game wvGame = new Model.Game(wvID, PlayerName);
+            Model.Game wvGame = new Model.Game(wvID, PlayerName, 3, 2);//<------------- occhio che va sistemato sostituendolo con una costante
             
             wvPath = System.IO.Path.Combine(wvPath, wvID);
             Helpers.SerializerHelper.Serialize(wvPath, wvGame);

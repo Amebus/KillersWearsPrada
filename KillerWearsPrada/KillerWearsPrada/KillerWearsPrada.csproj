@@ -106,6 +106,7 @@
     <Compile Include="Model\Clue.cs" />
     <Compile Include="Controller\KinectInterrogator.cs" />
     <Compile Include="Model\Room.cs" />
+    <Compile Include="Model\Solution.cs" />
     <Compile Include="UC\DebugWindow.xaml.cs">
       <DependentUpon>DebugWindow.xaml</DependentUpon>
     </Compile>

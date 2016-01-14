@@ -90,7 +90,7 @@ namespace KillerWearsPrada.Helpers
 
         // test method
         /// <summary>
-        /// This methods implements a query over the db that given the cloath shape (long vs short) returns a random item
+        /// This methods implements a query over the db that given the item shape (long vs short) returns a random item
         /// </summary>
         /// <param name="long1"> boolean, true = long, false = short</param>        
         /// <param name="itemKind"> string containing the kind of item you need</param>
@@ -133,7 +133,7 @@ namespace KillerWearsPrada.Helpers
 
         // test method
         /// <summary>
-        /// This methods implements a query over the db that given the gradation (light vs dark) returns a random item
+        /// This methods implements a query over the db that given the item's gradation (light vs dark) returns a random item
         /// </summary>
         /// <param name="light">boolean, true = dark, false = light </param>
         /// <param name="itemKind"> string containing the kind of item you need</param>

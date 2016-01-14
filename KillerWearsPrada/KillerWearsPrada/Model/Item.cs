@@ -11,6 +11,7 @@ namespace KillerWearsPrada.Model
     class Item : ISerializable
     {
         private Clue attClue;
+        // dovrebbero essere 3 clues
 
         private int code;
         private int barcode;
@@ -27,11 +28,6 @@ namespace KillerWearsPrada.Model
         private Boolean attInInventory;
         private Boolean attDressed;
 
-        public Item()
-        {
-            attClue = new Clue();
-        }
-
         /// <summary>
         /// constructor which initiates an Item object with parameters
         /// It's the only way to set the attributes
@@ -47,7 +43,6 @@ namespace KillerWearsPrada.Model
         /// <param name="image">string representing the item image file name</param>
         public Item(int c, int bc, String name, float p, String descr, String rep, String texture, String mask, String image)
         {
-            attClue = new Clue();
             code = c;
             barcode = bc;
             itemName = name;
@@ -67,6 +62,7 @@ namespace KillerWearsPrada.Model
         public Clue Clue
         {
             get { return attClue; }
+            set { attClue = value; }
         }
 
         public int Code
