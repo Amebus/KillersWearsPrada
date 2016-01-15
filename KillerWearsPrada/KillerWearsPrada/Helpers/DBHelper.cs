@@ -60,7 +60,7 @@ namespace KillerWearsPrada.Helpers
         ///         7. Texture file name
         ///         8. Mask file name
         /// </returns>
-        public Item GetItemFromClues(bool long1, bool light, string texture, string itemKind){
+        public Item GetItemFromClues(E_Shape long1, E_Gradiation light, E_Texture texture, E_ItemKind itemKind){
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
@@ -68,18 +68,26 @@ namespace KillerWearsPrada.Helpers
             //string query = "SELECT * FROM Capo";
             OleDbCommand command = new OleDbCommand(query, DBConnection);
             // add parameters
-            // long parameter - @p1            
-            command.Parameters.Add("@p1", OleDbType.Boolean).Value = long1;
+            // long parameter - @p1  
+            Boolean shape = false;
+            if (long1 == E_Shape.LUNGO)
+                shape = true; 
+                    
+            command.Parameters.Add("@p1", OleDbType.Boolean).Value = shape;
             // dark parameter - @p2
-            command.Parameters.Add("@p2", OleDbType.Boolean).Value = light;
+            Boolean grad = false;
+            if (light == E_Gradiation.CHIARO)
+                grad = true;
+
+            command.Parameters.Add("@p2", OleDbType.Boolean).Value = grad;
             // texture parameter - @p3
-            command.Parameters.Add("@p3", OleDbType.VarChar, 255).Value = texture;
+            command.Parameters.Add("@p3", OleDbType.VarChar, 255).Value = texture.ToString();
             // item kind parameter -@p4
-            command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind;
+            command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind.ToString();
 
             OleDbDataReader result = command.ExecuteReader();
 
-            Item i = new Item((int)result.GetValue(0),(int)result.GetValue(1), result.GetValue(2).ToString(), 
+            Item i = new Item((int)result.GetValue(0),result.GetValue(1).ToString(), result.GetValue(2).ToString(), 
                 (float)result.GetValue(3), result.GetValue(4).ToString(), result.GetValue(5).ToString(), 
                 result.GetValue(6).ToString(), result.GetValue(7).ToString(),result.GetValue(8).ToString());
 
@@ -92,8 +100,8 @@ namespace KillerWearsPrada.Helpers
         /// <summary>
         /// This methods implements a query over the db that given the item shape (long vs short) returns a random item
         /// </summary>
-        /// <param name="long1"> boolean, true = long, false = short</param>        
-        /// <param name="itemKind"> string containing the kind of item you need</param>
+        /// <param name="long1"> tells if an item il LONG or SHORT</param>        
+        /// <param name="itemKind">  containing the kind of item you need</param>
         /// <returns> an Item object that contains, in order : 
         ///         1. Item code
         ///         2. Barcode
@@ -104,7 +112,7 @@ namespace KillerWearsPrada.Helpers
         ///         7. Texture file name
         ///         8. Mask file name
         /// </returns>
-        public Item GetItemByShape(bool long1, string itemKind)
+        public Item GetItemByShape(E_Shape long1, E_ItemKind itemKind)
         {
 
             DBConnection.Open();
@@ -113,15 +121,18 @@ namespace KillerWearsPrada.Helpers
             //string query = "SELECT * FROM Capo";
             OleDbCommand command = new OleDbCommand(query, DBConnection);
             // add parameters
-            // long parameter - @p1            
-            command.Parameters.Add("@p1", OleDbType.Boolean).Value = long1;
+            // long parameter - @p1    
+            Boolean shape = false;
+            if (long1 == E_Shape.LUNGO)
+                shape = true;      
+            command.Parameters.Add("@p1", OleDbType.Boolean).Value = shape;
             
             // item kind parameter -@p4
-            command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind;
+            command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind.ToString();
 
             OleDbDataReader result = command.ExecuteReader();
 
-            Item i = new Item((int)result.GetValue(0), (int)result.GetValue(1), result.GetValue(2).ToString(),
+            Item i = new Item((int)result.GetValue(0), result.GetValue(1).ToString(), result.GetValue(2).ToString(),
                 (float)result.GetValue(3), result.GetValue(4).ToString(), result.GetValue(5).ToString(),
                 result.GetValue(6).ToString(), result.GetValue(7).ToString(),result.GetValue(8).ToString());
 
@@ -135,8 +146,8 @@ namespace KillerWearsPrada.Helpers
         /// <summary>
         /// This methods implements a query over the db that given the item's gradation (light vs dark) returns a random item
         /// </summary>
-        /// <param name="light">boolean, true = dark, false = light </param>
-        /// <param name="itemKind"> string containing the kind of item you need</param>
+        /// <param name="light">tells if an item is DARK or LIGHT </param>
+        /// <param name="itemKind"> containing the kind of item you need</param>
         /// <returns> an Item object that contains, in order : 
         ///         1. Item code
         ///         2. Barcode
@@ -147,7 +158,7 @@ namespace KillerWearsPrada.Helpers
         ///         7. Texture file name
         ///         8. Mask file name
         /// </returns>
-        public Item GetItemByGradation(bool light, string itemKind)
+        public Item GetItemByGradation(E_Gradiation light, E_ItemKind itemKind)
         {
 
             DBConnection.Open();
@@ -157,14 +168,17 @@ namespace KillerWearsPrada.Helpers
             OleDbCommand command = new OleDbCommand(query, DBConnection);
             // add parameters
             // dark parameter - @p2
-            command.Parameters.Add("@p2", OleDbType.Boolean).Value = light;
+            Boolean grad = false;
+            if (light == E_Gradiation.CHIARO)
+                grad = true;
+            command.Parameters.Add("@p2", OleDbType.Boolean).Value = grad;
             
             // item kind parameter -@p4
-            command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind;
+            command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind.ToString();
 
             OleDbDataReader result = command.ExecuteReader();
 
-            Item i = new Item((int)result.GetValue(0), (int)result.GetValue(1), result.GetValue(2).ToString(),
+            Item i = new Item((int)result.GetValue(0), result.GetValue(1).ToString(), result.GetValue(2).ToString(),
                 (float)result.GetValue(3), result.GetValue(4).ToString(), result.GetValue(5).ToString(),
                 result.GetValue(6).ToString(), result.GetValue(7).ToString(), result.GetValue(8).ToString());
 

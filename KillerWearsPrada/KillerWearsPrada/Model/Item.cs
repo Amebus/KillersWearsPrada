@@ -14,7 +14,7 @@ namespace KillerWearsPrada.Model
         // dovrebbero essere 3 clues
 
         private int code;
-        private int barcode;
+        private String barcode;
         private String itemName;
         private float price;
         private String description;
@@ -41,7 +41,7 @@ namespace KillerWearsPrada.Model
         /// <param name="texture">string representing the texture file name</param>
         /// <param name="mask">string representing the mask file name</param>
         /// <param name="image">string representing the item image file name</param>
-        public Item(int c, int bc, String name, float p, String descr, String rep, String texture, String mask, String image)
+        public Item(int c, String bc, String name, float p, String descr, String rep, String texture, String mask, String image)
         {
             code = c;
             barcode = bc;
@@ -70,7 +70,7 @@ namespace KillerWearsPrada.Model
             get { return code; }
         }
 
-        public int BarCode
+        public String BarCode
         {
             get { return barcode; }
         }
