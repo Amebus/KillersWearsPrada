@@ -259,16 +259,24 @@ namespace KillerWearsPrada.Helpers
             
             string query = "UPDATE Utente SET Punteggio = @value WHERE ID = @id;";
 
-            
-            OleDbCommand command = new OleDbCommand(query, DBConnection);
+
+            /*OleDbCommand command = new OleDbCommand(query, DBConnection);
             command.Parameters.Add("@value", OleDbType.Integer).Value = score;
-            command.Parameters.Add("@id", OleDbType.Integer).Value = player;
+            command.Parameters.Add("@id", OleDbType.Integer).Value = player;*/
+
+            query = query.Replace("@value", score.ToString());
+            query = query.Replace("@id", player.ToString());
+
+
+            OleDbCommand command = new OleDbCommand(query, DBConnection);
 
             command.ExecuteNonQuery();
 
             DBConnection.Close();
 
         }
+
+
         
     }
 }

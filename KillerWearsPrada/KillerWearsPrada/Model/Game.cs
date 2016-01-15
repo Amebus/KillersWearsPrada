@@ -110,8 +110,63 @@ namespace KillerWearsPrada.Model
             Helpers.DBHelper wvDB = new Helpers.DBHelper();
             List<Item> wvItems = new List<Item>();
             //Random wvRND = new Random(NumberOfItems);
+            /*
+            per prima cosa estraggo le caratteristiche che userò per la ricerca del capo
+            sicuramente avremo come indizi shape e gradation (sono  facili da gestire)
+            randGradiation = .. 
+            randPositive1 = .. 
+            randShape = ..
+            randPositive2 = ..
+            rand1 = .. <-- decide se estrarre come risolutivo Texture o Color
+            rand2 = .. <-- estare a caso da Texture o Color
+            randPositive3 = ..
+           
 
-            if(!attSolution.CheckItemKind(E_ItemKind.Cappello))
+             qui estraiamo i valori casuali e li salviamo
+             ...
+             in pratica vorrei che si potesse salvare in delle variabli l'E_xyz.random corretto per ogni caso
+            Boolean positive1 = true;
+            if(!randPositive1%3)
+            {
+                positive1 = false;
+            }
+            Boolean positive2 = true;
+            if(!randPositive2%3)
+            {
+                positive2 = false;
+            }
+            Boolean positive3 = true;
+            if(!randPositive3%3)
+            {
+                positive3 = false;
+            }
+             ...
+
+            //aggiungiamo le nuove clues alla stanza
+            al posto di E_xyz sostituiamo il valore rand corretto ed il resto va a NULL
+            //la prima clue è per gradation
+            Clue c1 = new Clue(positive1, E_Gradiation.CHIARO, E_Shape.NULL, E_Color.NULL, E_Texture.NULL); ;
+            this.ActualRoom.AddClue(c1);
+            // la seconda è per shape 
+            Clue c2 = new Clue(positive2, NULL, E_Shape.LUNGO, E_Color.NULL, E_Texture.NULL); ;
+            this.ActualRoom.AddClue(c2);
+            // la terza dipende da rand1
+            Clue c3 = new Clue(positive3, E_Gradiation.NULL, E_Shape.NULL, E_Color.x, E_Texture.y); ;
+            this.ActualRoom.AddClue(c3);
+
+            1° capo -quello giusto - corrisponde a 3 indizi - gradation + shape + 3°
+            wvItems.Add(wvDB.GetItemFromClues(GetNotNULLValueFromClue(c1), attSolution.LastItemKind));
+            2° capo - corrisponde a 2 indizi gradation + shape
+            wvItems.Add(wvDB.GetItemByGradation(GetNotNULLValueFromClue(c1), attSolution.LastItemKind));
+            3° e 4° capo  - solo gradation
+            wvItems.Add(wvDB.GetItemByGradation(GetNotNULLValueFromClue(c1), attSolution.LastItemKind));
+            5° e 6° capo -solo shape
+            
+            */
+
+
+
+            if (!attSolution.CheckItemKind(E_ItemKind.Cappello))
             {
                 attSolution.AddItemKind(E_ItemKind.Cappello);
             }
@@ -127,20 +182,11 @@ namespace KillerWearsPrada.Model
 
             //Il primo è quello giusto
             wvItems.Add(wvDB.GetItemByGradation(E_Gradiation.CHIARO, attSolution.LastItemKind));
-            /*// qui aggiungo la clue dell'Item
-            Clue c1 = new Clue(true,E_Gradiation.CHIARO,E_Shape.NULL,E_Color.NULL,E_Texture.NULL); ;
-            wvItems.Last().Clue = c1;
-            // qui salvo la clue per la stanza
-            this.ActualRoom.AddClue(c1);*/
+           
             NumberOfItems--;
             //mi faccio dare gli altri (per ora sola il secondo)
             wvItems.Add(wvDB.GetItemByGradation(E_Gradiation.SCURO, attSolution.LastItemKind));
-            /*// qui aggiungo la clue dell'Item
-            Clue c2 = new Clue(true, E_Gradiation.SCURO, E_Shape.NULL, E_Color.NULL, E_Texture.NULL); ;
-            wvItems.Last().Clue = c2;
-            // qui salvo la clue per la stanza
-            this.ActualRoom.AddClue(c2);*/
-
+            
             return wvItems;
         }
 
