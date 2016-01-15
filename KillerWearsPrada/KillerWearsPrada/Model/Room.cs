@@ -10,16 +10,33 @@ namespace KillerWearsPrada.Model
     class Room : ISerializable
     {
         private List<Item> attItems;
+
+        private  List<Clue> attClues;
         
         public Room(List<Item> Items)
         {
             attItems = Items;
+            // ogni stanza contnene anche le clues che verranno mostate nelle finestre degli item
+            // più una Clue che sarà risolutiva per un'altra stanza
+            // attClues = new List<Clue>();
         } 
-
+        
         public List<Item> Items
         {
             get { return attItems; }
         }
+
+        public void AddClue(Clue c)
+        {
+            attClues.Add(c);
+        }
+        
+            
+        public List<Clue> Clues 
+        {
+            get { return attClues; }
+        }
+        
 
         public Item GetItemByBarCode (String BarCode)
         {

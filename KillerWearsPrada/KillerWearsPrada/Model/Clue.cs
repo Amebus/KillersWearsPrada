@@ -16,7 +16,7 @@ namespace KillerWearsPrada.Model
         private E_Gradiation attGradiation;
         private E_Shape attShape;
         private E_Texture attTexture;
-        private E_ItemKind attItemKind;
+        // non serve private E_ItemKind attItemKind;
         //private String color;
         //private bool gradiation;
         //private bool shape;
@@ -34,7 +34,7 @@ namespace KillerWearsPrada.Model
         /// <param name="Texture"></param>
         /// <param name="ItemKind"></param>
         /// 
-        public Clue(Boolean Positive, E_Gradiation Gradiation, E_Shape Shape, E_Color Color, E_Texture Texture, E_ItemKind ItemKind)
+        public Clue(Boolean Positive, E_Gradiation Gradiation, E_Shape Shape, E_Color Color, E_Texture Texture) //, E_ItemKind ItemKind)
         {
             attPositive = Positive;
 
@@ -43,7 +43,7 @@ namespace KillerWearsPrada.Model
 
             attColor = Color;
             attTexture = Texture;
-            attItemKind = ItemKind;
+            //attItemKind = ItemKind;
             
             //attColor = (E_Color) Enum.Parse(typeof(E_Color), Color.ToUpper());
             //attTexture = (E_Texture)Enum.Parse(typeof(E_Texture), Texture.ToUpper());

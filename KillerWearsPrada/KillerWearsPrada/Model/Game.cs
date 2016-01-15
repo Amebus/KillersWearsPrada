@@ -127,9 +127,19 @@ namespace KillerWearsPrada.Model
 
             //Il primo è quello giusto
             wvItems.Add(wvDB.GetItemByGradation(E_Gradiation.CHIARO, attSolution.LastItemKind));
+            /*// qui aggiungo la clue dell'Item
+            Clue c1 = new Clue(true,E_Gradiation.CHIARO,E_Shape.NULL,E_Color.NULL,E_Texture.NULL); ;
+            wvItems.Last().Clue = c1;
+            // qui salvo la clue per la stanza
+            this.ActualRoom.AddClue(c1);*/
             NumberOfItems--;
             //mi faccio dare gli altri (per ora sola il secondo)
             wvItems.Add(wvDB.GetItemByGradation(E_Gradiation.SCURO, attSolution.LastItemKind));
+            /*// qui aggiungo la clue dell'Item
+            Clue c2 = new Clue(true, E_Gradiation.SCURO, E_Shape.NULL, E_Color.NULL, E_Texture.NULL); ;
+            wvItems.Last().Clue = c2;
+            // qui salvo la clue per la stanza
+            this.ActualRoom.AddClue(c2);*/
 
             return wvItems;
         }
