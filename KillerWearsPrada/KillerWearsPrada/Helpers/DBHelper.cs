@@ -45,10 +45,11 @@ namespace KillerWearsPrada.Helpers
         /// <summary>
         /// This methods implements a query over the db that given some parameters returns a random item
         /// </summary>
-        /// <param name="long1"> boolean, true = long, false = short</param>
-        /// <param name="light">boolean, true = dark, false = light </param>
-        /// <param name="texture"> string containing the kind of texture needed - look Clue enum Texture -</param>
-        /// <param name="itemKind"> string containing the kind of item you need</param>
+        /// <param name="long1"> contains the shape  - look Enum</param>
+        /// <param name="light">contains the gradiation - look Enum </param>
+        /// <param name="textureKind"> contains the kind of texture needed - look Enum -</param>
+        /// <param name="itemKind"> contains the kind of item you need - look Enum </param>
+        /// <param name="color"> contains the predominant color - look Enum </param>
         /// <returns> an Item object that contains, in order : 
         ///         1. Item code
         ///         2. Barcode
@@ -59,14 +60,14 @@ namespace KillerWearsPrada.Helpers
         ///         7. Texture file name
         ///         8. Mask file name
         /// </returns>
-        public Item GetItemFromClues(E_Shape long1, E_Gradiation light, E_Texture textureKind, E_ItemKind itemKind){
+        public Item GetItemFromClues(E_Shape long1, E_Gradiation light, E_Texture textureKind, E_Color color, E_ItemKind itemKind){
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
             string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName, D.Immagine";
             query += " FROM Capo AS C,DatiNegozio AS D, Grafica AS G,Texture AS T, Maschera AS M, TipoCapo AS TC, TipoTexture AS TT";
             query += " WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND TC.ID=D.Tipo";
-            query += " AND T.TipoTexture = TT.ID D.Disponibili > 10 AND D.Lungo=@p1 AND T.Chiaro=@p2 AND  TT.Nome = @p3 AND TC.Tipo = @p4 ORDER BY rnd(C.ID)";
+            query += " AND T.TipoTexture = TT.ID D.Disponibili > 10 AND D.Lungo=@p1 AND T.Chiaro=@p2 AND  TT.Nome = @p3 AND T.ColoreDominante = @p4 AND TC.Tipo = @p5 ORDER BY rnd(C.ID)";
 
             // parameter @p1 - shape
             if (long1 == E_Shape.LUNGO)
@@ -91,8 +92,13 @@ namespace KillerWearsPrada.Helpers
             // parameter @p3 - texture kind 
             query = query.Replace("@p3", "\'" + textureKind.ToString() + "\'");
 
-            // parameter @p4 - item kind 
-            query = query.Replace("@p4", "\'" + itemKind.ToString() + "\'");
+            // parameter @p4 - dominant color 
+            query = query.Replace("@p4", "\'" + color.ToString() + "\'");
+
+            // parameter @p5 - item kind 
+            query = query.Replace("@p5", "\'" + itemKind.ToString() + "\'");
+
+
 
             OleDbCommand command = new OleDbCommand(query, DBConnection);
 
