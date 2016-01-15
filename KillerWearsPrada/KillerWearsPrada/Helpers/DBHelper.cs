@@ -17,7 +17,7 @@ namespace KillerWearsPrada.Helpers
         public DBHelper()
         {
             connectionString = Properties.Settings.Default.KWP_DB_Test_Connection;
-            //connectionString += "KWP_DB_Test.mdb";
+            
             DBConnection = new OleDbConnection(connectionString);
         }
 
@@ -115,7 +115,7 @@ namespace KillerWearsPrada.Helpers
             String texture = result.GetString(6);
             String mask = result.GetString(7);
             String image = result.GetString(8);
-            //throw new NotImplementedException("sistemare queries");
+            
 
             Item i = new Item(codice, barcode, name, price, descr, rep, texture, mask, image);
 
@@ -180,7 +180,7 @@ namespace KillerWearsPrada.Helpers
             String texture = result.GetString(6);
             String mask = result.GetString(7);
             String image = result.GetString(8);
-            //throw new NotImplementedException("sistemare queries");
+            
 
             Item i = new Item(codice, barcode, name, price , descr, rep, texture , mask, image);
 
@@ -245,7 +245,7 @@ namespace KillerWearsPrada.Helpers
             String texture = result.GetString(6);
             String mask = result.GetString(7);
             String image = result.GetString(8);
-            //throw new NotImplementedException("sistemare queries");
+            
 
             Item i = new Item(codice, barcode, name, price, descr, rep, texture, mask, image);
 
