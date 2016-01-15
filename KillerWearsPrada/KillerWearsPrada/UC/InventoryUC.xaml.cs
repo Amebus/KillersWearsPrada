@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KillerWearsPrada.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,52 +21,78 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class InventoryUC : UserControl
     {
-        private UserControl provenienza;
-        public InventoryUC(UserControl ucProvenienza)
+        #region da eliminare
+  /*      private UserControl provenienza;
+        private Canvas cprov;
+
+        public InventoryUC(ref Canvas canvas)
         {
-            provenienza = ucProvenienza;
-            InitializeComponent();
-          //  txtDisplay.Text = provenienza.ToString();
+            cprov = canvas;
+            
+            
+            prova.Text = cprov.Name;
 
         }
 
+        public InventoryUC(ref UserControl ucProvenienza)
+        {
+            
+            provenienza = ucProvenienza;
+            InitializeComponent();
+            //  txtDisplay.Text = provenienza.ToString();
+            prova.Text = provenienza.GetType().ToString();
+
+        }*/
+        #endregion
         public InventoryUC()
         {
             InitializeComponent();
         }
-
         
-
-   
-
         private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
+            
 
+            Canvas p = (Canvas)this.Parent;
 
-            var parentGrid = (Panel)this.Parent;
-            Canvas parent = (Canvas)parentGrid.FindName("room_Canvas");
+            enable_Right_Buttons(ref p);
 
-
-            Button bnt1 = (Button)parent.FindName("hat1");
-            bnt1.IsEnabled = true;
-            /*       Button bnt2 = (Button)parent.FindName("hat2");
-                   bnt2.IsEnabled = true; */
-                   Button bnt3 = (Button)parent.FindName("hat3");
-                   bnt3.IsEnabled = true;
-          /*          Button bnt4 = (Button)parent.FindName("hat4");
-                   bnt4.IsEnabled = true;
-                   Button bnt5 = (Button)parent.FindName("hat5");
-                   bnt5.IsEnabled = true;
-                   Button bnt6 = (Button)parent.FindName("hat6");
-                   bnt6.IsEnabled = true;
-                   */
-
-            parentGrid.Children.Remove(this);
-
-
-
-
-
+            p.Children.Remove(this);
+       
         }
+
+        /// <summary>
+        /// Enable only the buttons in the room in which inventory was opened
+        /// </summary>
+        /// <param name="p"></param>
+        private void enable_Right_Buttons(ref Canvas p)
+        {
+            MainWindow i = (MainWindow)Application.Current.Windows[0];
+            switch (p.Name.ToString())
+            {
+                case "room_Canvas":
+                    i.StartRoom.change_Buttons_Status(true);
+                    break;
+                case "Kitchen_Image":
+                    {
+                        i.Room.change_KitchenButtons_Status(true);
+                        i.Room.change_CommonButtons_Status(true);
+                    }
+                    break;
+                case "Livingroom_Image":
+                    {
+                        i.Room.change_LivingroomButtons_Status(true);
+                        i.Room.change_CommonButtons_Status(true);
+                    }
+                    break;
+                default:
+                    {
+                        i.Room.change_BedroomButtons_Status(true);
+                        i.Room.change_CommonButtons_Status(true);
+                    }
+                    break;
+            }
+        }
+        
     }
 }

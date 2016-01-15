@@ -2,7 +2,7 @@
 
 namespace KillerWearsPrada.Controller
 {
-    class GameController
+    public class GameController
     {
         private const Int32 REFRESH_TIME = 1000;
         private const Int32 DEBUG_REFRESH_TIME = 10000;

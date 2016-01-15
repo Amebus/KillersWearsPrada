@@ -81,6 +81,7 @@ namespace KillerWearsPrada.UC
 
         private void exit_button(object sender, RoutedEventArgs e)
         {
+          //  disable_buttons();
 
             MessageBoxResult result = MessageBox.Show("Do you really want to exit this game?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
@@ -88,21 +89,25 @@ namespace KillerWearsPrada.UC
                 Application.Current.Windows[0].Close();
             }
 
+
+
         }
 
         private void back_button(object sender, RoutedEventArgs e)
         {
             // cambio colore ora
-           
-   /*         Color c = new Color();
-            c = Color.FromRgb(0, 255, 255);
-            Application.Current.Resources["BlinkColor"] = c; */
+
+            /*         Color c = new Color();
+                     c = Color.FromRgb(0, 255, 255);
+                     Application.Current.Resources["BlinkColor"] = c; */
             /*
             StartingRoom ucstart = new StartingRoom();
             Window parentWindow = Window.GetWindow(this);
             Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
             maingrid.Children.Remove(this);
             maingrid.Children.Add(ucstart); */
+
+            disable_buttons();
 
             Livingroom_Image.Visibility = Visibility.Hidden;
             Kitchen_Image.Visibility = Visibility.Hidden;
@@ -114,23 +119,23 @@ namespace KillerWearsPrada.UC
  //           yourParentWindow.StartRoom.UpdateLayout(); // <---------------------------------------------QUI
 
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;
-            // abilito i bottoni delle 3 porte
-            yourParentWindow.StartRoom.sxDoorButton.IsEnabled = true;
-            yourParentWindow.StartRoom.centerDoorButton.IsEnabled = true;
-            yourParentWindow.StartRoom.dxDoorButton.IsEnabled = true;
-           
+
+            // abilito i bottoni delle 3 porte e gli altri
+            yourParentWindow.StartRoom.change_Buttons_Status(true);
             
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
 
-        private void hat1_btn(object sender, RoutedEventArgs e)
+        private void hat_btn(object sender, RoutedEventArgs e)
         {
-            Button s = (Button)sender;
+            disable_buttons();
 
-            SelectionDisplay selectionDisplay = new SelectionDisplay(s.Content as string);
-            room_Canvas.Children.Add(selectionDisplay);
+            var myValue = ((Button)sender).Tag;
+
+            SelectionDisplay selectionDisplay = new SelectionDisplay(myValue.ToString());
+            Kitchen_Image.Children.Add(selectionDisplay);
 
 
             // Selection dialog covers the entire interact-able area, so the current press interaction
@@ -138,36 +143,76 @@ namespace KillerWearsPrada.UC
             // the same interaction (even whilst no longer visible).
             selectionDisplay.Focus();
 
-            disable_buttons();
+            
         }
 
         private void inventory_button(object sender, RoutedEventArgs e)
         {
-            InventoryUC inventory = new InventoryUC();
-            room_Canvas.Children.Add(inventory);
+
+            InventoryUC inventory;
+            inventory = new InventoryUC();
+            if (Livingroom_Image.Visibility == Visibility.Visible)
+            
+                Livingroom_Image.Children.Add(inventory);
+            else if(Kitchen_Image.Visibility == Visibility.Visible)
+                Kitchen_Image.Children.Add(inventory);
+            else
+                Bedroom_Image.Children.Add(inventory);
+                
             inventory.Focus();
             disable_buttons();
         }
 
         private void disable_buttons()
         {
-            hat1.IsEnabled = false;
-            hat3.IsEnabled = false;
-            
+            change_BedroomButtons_Status(false);
+            change_CommonButtons_Status(false);
+            change_KitchenButtons_Status(false);
+            change_LivingroomButtons_Status(false);
         }
 
-        private void hat3_btn(object sender, RoutedEventArgs e)
+        public void change_KitchenButtons_Status(Boolean b)
         {
-            Button s = (Button)sender;
-            
-            SelectionDisplay selectionDisplay = new SelectionDisplay(s.Content as string);
-            room_Canvas.Children.Add(selectionDisplay);
-            selectionDisplay.Focus();
+            hat1.IsEnabled = b;
+            hat3.IsEnabled = b;
+        }
+
+        public void change_LivingroomButtons_Status(Boolean b)
+        {
+            trousers1.IsEnabled = b;
+            trousers3.IsEnabled = b;
+        }
+
+        public void change_BedroomButtons_Status(Boolean b)
+        {
+            shirt3.IsEnabled = b;
+            shirt4.IsEnabled = b;
+        }
+
+        public void change_CommonButtons_Status(Boolean b)
+        {
+            inventory_btn.IsEnabled = b;
+            exit.IsEnabled = b;
+            back.IsEnabled = b;
+        }
+
+        private void trousers_btn(object sender, RoutedEventArgs e)
+        {
             disable_buttons();
+            var myValue = ((Button)sender).Tag;
+            SelectionDisplay selectionDisplay = new SelectionDisplay(myValue.ToString());
+            Livingroom_Image.Children.Add(selectionDisplay);
+            selectionDisplay.Focus();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void shirt_btn(object sender, RoutedEventArgs e)
         {
+            disable_buttons();
+            var myValue = ((Button)sender).Tag;
+            SelectionDisplay selectionDisplay = new SelectionDisplay(myValue.ToString());
+            Bedroom_Image.Children.Add(selectionDisplay);
+            selectionDisplay.Focus();
+
 
         }
     }

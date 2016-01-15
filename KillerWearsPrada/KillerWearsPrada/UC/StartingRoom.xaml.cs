@@ -54,9 +54,9 @@ namespace KillerWearsPrada.UC
             {
                 Application.Current.Windows[0].Close();
             }
-            
-        }
 
+
+        }
 
         // Unico metodo per il click dei bottoni delle porte
         //manda nelle varie stanze a seconda del contenuto del bottone
@@ -92,45 +92,75 @@ namespace KillerWearsPrada.UC
 
             String button_content = b.Content.ToString();
             yourParentWindow.Room.setBackgroundCanvas(Application.Current.Resources[button_content].ToString());
-/*
-            if(button_content != "Livingroom_Canvas" && button_content != "Kitchen_Canvas")
-            {
-                Canvas prepareRoom1;
-                prepareRoom1 = (Canvas)yourParentWindow.Room.FindName("Livingroom_Canvas");
-                prepareRoom1.Visibility = Visibility.Hidden;
-                prepareRoom1 = (Canvas)yourParentWindow.Room.FindName("Kitchen_Canvas");
-                prepareRoom1.Visibility = Visibility.Hidden;
+            /*
+                        if(button_content != "Livingroom_Canvas" && button_content != "Kitchen_Canvas")
+                        {
+                            Canvas prepareRoom1;
+                            prepareRoom1 = (Canvas)yourParentWindow.Room.FindName("Livingroom_Canvas");
+                            prepareRoom1.Visibility = Visibility.Hidden;
+                            prepareRoom1 = (Canvas)yourParentWindow.Room.FindName("Kitchen_Canvas");
+                            prepareRoom1.Visibility = Visibility.Hidden;
 
-            } else if (button_content != "Livingroom_Canvas" && button_content != "Bedroom_Canvas")
-            {
-                Canvas prepareRoom2;
-                prepareRoom2 = (Canvas)yourParentWindow.Room.FindName("Livingroom_Canvas");
-                prepareRoom2.Visibility = Visibility.Hidden;
-                prepareRoom2 = (Canvas)yourParentWindow.Room.FindName("Bedroom_Canvas");
-                prepareRoom2.Visibility = Visibility.Hidden;
-            } else
-            {
-                Canvas prepareRoom3;
-                prepareRoom3 = (Canvas)yourParentWindow.Room.FindName("Kitchen_Canvas");
-                prepareRoom3.Visibility = Visibility.Hidden;
-                prepareRoom3 = (Canvas)yourParentWindow.Room.FindName("Bedroom_Canvas");
-                prepareRoom3.Visibility = Visibility.Hidden;
-            }
-*/
+                        } else if (button_content != "Livingroom_Canvas" && button_content != "Bedroom_Canvas")
+                        {
+                            Canvas prepareRoom2;
+                            prepareRoom2 = (Canvas)yourParentWindow.Room.FindName("Livingroom_Canvas");
+                            prepareRoom2.Visibility = Visibility.Hidden;
+                            prepareRoom2 = (Canvas)yourParentWindow.Room.FindName("Bedroom_Canvas");
+                            prepareRoom2.Visibility = Visibility.Hidden;
+                        } else
+                        {
+                            Canvas prepareRoom3;
+                            prepareRoom3 = (Canvas)yourParentWindow.Room.FindName("Kitchen_Canvas");
+                            prepareRoom3.Visibility = Visibility.Hidden;
+                            prepareRoom3 = (Canvas)yourParentWindow.Room.FindName("Bedroom_Canvas");
+                            prepareRoom3.Visibility = Visibility.Hidden;
+                        }
+            */
+            
+            
+
             // questo va cmq bene, credo
             Canvas prepareRoom = (Canvas)yourParentWindow.Room.FindName(button_content);
             prepareRoom.Visibility = Visibility.Visible;
 
+            enable_RightRoom_Buttons(ref prepareRoom);
             yourParentWindow.StartRoom.Visibility = Visibility.Hidden;
-            sxDoorButton.IsEnabled = false;
-            dxDoorButton.IsEnabled = false;
-            centerDoorButton.IsEnabled = false;
+
+            change_Buttons_Status(false);
+
             yourParentWindow.Room.Visibility = Visibility.Visible;
             
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
 
+        private void enable_RightRoom_Buttons(ref Canvas prepareRoom)
+        {
+            MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
+            switch (prepareRoom.Name.ToString())
+            {
+                case "Kitchen_Image":
+                    {
+                        yourParentWindow.Room.change_KitchenButtons_Status(true);
+                        yourParentWindow.Room.change_CommonButtons_Status(true);
+                    }
+                    break;
+                case "Livingroom_Image":
+                    {
+                        yourParentWindow.Room.change_LivingroomButtons_Status(true);
+                        yourParentWindow.Room.change_CommonButtons_Status(true);
+                    }
+
+                    break;
+                default:
+                    {
+                        yourParentWindow.Room.change_BedroomButtons_Status(true);
+                        yourParentWindow.Room.change_CommonButtons_Status(true);
+                    }
+                    break;
+            }
+        }
         /*
 
         private void kitchen_Click(object sender, RoutedEventArgs e)
@@ -155,10 +185,25 @@ namespace KillerWearsPrada.UC
     */
         private void inventory_button(object sender, RoutedEventArgs e)
         {
+            //Disable all buttons
+            change_Buttons_Status(false);
             InventoryUC inventory = new InventoryUC();
             room_Canvas.Children.Add(inventory);
             inventory.Focus();
-            
+        }
+
+        /// <summary>
+        /// Change the status of the buttons, accondingly to the model
+        /// i.e. which room is accessible to that player
+        /// </summary>
+        public void change_Buttons_Status(Boolean b)
+        {
+            // abilito solo i bottoni delle stanze che posso abilitare
+            sxDoorButton.IsEnabled = b;
+            centerDoorButton.IsEnabled = b;
+            dxDoorButton.IsEnabled = b;
+            exit.IsEnabled = b;
+            inventory_btn.IsEnabled = b;
         }
 
     }

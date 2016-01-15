@@ -17,41 +17,6 @@
 
     <Canvas Name="room_Canvas">
 
-        <!--
-        <Canvas.Background>
-            <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
-        </Canvas.Background>
--->
-        <Canvas x:Name="Livingroom_Image" Width="1920" Height="1080" Visibility="Hidden">
-
-            <Button x:Name ="trousers1" Click="button_Click" Height="155" Canvas.Top="503" Width="265" Canvas.Left="260" Style="{StaticResource KinectButtonZoomTrousers1}" />
-
-
-
-            <Button x:Name ="trousers3" Click="button_Click" Height="167" Canvas.Top="580" Width="381" Canvas.Left="755" Style="{StaticResource KinectButtonZoomTrousers3}"/>
-
-
-
-            <!--        <Button x:Name="backliv" Click="back_button" Content="Go Back from Livingroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>  -->
-            <!--     <Canvas.Background>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
-            </Canvas.Background>  -->
-        </Canvas>
-        <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Hidden" >
-
-      <!--      <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
-
-            <Button x:Name ="hat1" Click="hat1_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoom}"/>
-            <Button x:Name ="hat3" Click="hat3_btn"  Height="105" Canvas.Left="1421" Canvas.Top="518" Width="162" Style="{StaticResource KinectButtonZoomHat3}"/>
-
-        </Canvas>
-        <Canvas x:Name="Bedroom_Image"  Width="1920" Height="1080" Visibility="Hidden">
-
-            <Button x:Name ="shirt3" Click="button_Click"  Height="140" Canvas.Left="1166" Canvas.Top="556" Width="177" Style="{StaticResource KinectButtonZoomShirt3}"/>
-            <Button x:Name ="shirt4" Click="button_Click" Canvas.Left="320" Canvas.Top="328" Height="319" Width="214"  Style="{StaticResource KinectButtonZoomShirt4}"/>
-
-        </Canvas>
-
         <Button Name="exit"  Click="exit_button" Height="116" Width="227" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
@@ -67,14 +32,43 @@
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
             </StackPanel>
         </Button>
-        
+
         <Button x:Name="inventory_btn" Width="425" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}"  Click="inventory_button" Canvas.Left="1460" Canvas.Top="914" Height="134">
             <StackPanel HorizontalAlignment="Center" Width="429" Height="138" Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="70" Text="Inventory" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="422" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
             </StackPanel>
         </Button>
+        <!--
+        <Canvas.Background>
+            <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
+        </Canvas.Background>
+-->
+        <Canvas x:Name="Livingroom_Image" Width="1920" Height="1080" Visibility="Hidden">
+
+            <Button x:Name ="trousers1" Click="trousers_btn" Height="155" Canvas.Top="503" Width="265" Canvas.Left="260" Style="{StaticResource KinectButtonZoomTrousers1}" Tag="trousers1"/>
+            <Button x:Name ="trousers3" Click="trousers_btn" Height="167" Canvas.Top="580" Width="381" Canvas.Left="755" Style="{StaticResource KinectButtonZoomTrousers3}" Tag="trousers3"/>
 
 
+
+            <!--        <Button x:Name="backliv" Click="back_button" Content="Go Back from Livingroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>  -->
+            <!--     <Canvas.Background>
+                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
+            </Canvas.Background>  -->
+        </Canvas>
+        <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Hidden" >
+
+      <!--      <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
+
+            <Button x:Name ="hat1" Click="hat_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoom}" Tag="hat1"/>
+            <Button x:Name ="hat3" Click="hat_btn"  Height="105" Canvas.Left="1421" Canvas.Top="518" Width="162" Style="{StaticResource KinectButtonZoomHat3}" Tag="hat3"/>
+
+        </Canvas>
+        <Canvas x:Name="Bedroom_Image"  Width="1920" Height="1080" Visibility="Hidden">
+
+            <Button x:Name ="shirt3" Click="shirt_btn"  Height="140" Canvas.Left="1166" Canvas.Top="556" Width="177" Style="{StaticResource KinectButtonZoomShirt3}" Tag="shirt3"/>
+            <Button x:Name ="shirt4" Click="shirt_btn" Canvas.Left="320" Canvas.Top="328" Height="319" Width="214"  Style="{StaticResource KinectButtonZoomShirt4}" Tag="shirt4"/>
+
+        </Canvas>
     </Canvas>
 </UserControl>

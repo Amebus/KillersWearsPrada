@@ -24,7 +24,7 @@ namespace KillerWearsPrada.UC
         {
             InitializeComponent();
 
-            messageTextBlock.Text = "Hello Baby!!!";
+            messageTextBlock.Text = itemId.ToString();
         }
 
         /// <summary>
@@ -34,31 +34,35 @@ namespace KillerWearsPrada.UC
         /// <param name="e">Event arguments</param>
         private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
-            
+            Canvas parent = (Canvas)this.Parent;
+            enable_Right_Buttons(ref parent);
+            parent.Children.Remove(this);
+        }
 
-            var parentGrid = (Panel)this.Parent;
-            Canvas parent = (Canvas)parentGrid.FindName("room_Canvas");
-
-            Button bnt1 = (Button)parent.FindName("hat1");
-            bnt1.IsEnabled = true;
-     /*       Button bnt2 = (Button)parent.FindName("hat2");
-            bnt2.IsEnabled = true; */
-            Button bnt3 = (Button)parent.FindName("hat3");
-            bnt3.IsEnabled = true;
- /*           Button bnt4 = (Button)parent.FindName("hat4");
-            bnt4.IsEnabled = true;
-            Button bnt5 = (Button)parent.FindName("hat5");
-            bnt5.IsEnabled = true;
-            Button bnt6 = (Button)parent.FindName("hat6");
-            bnt6.IsEnabled = true;
-            */
-
-            parentGrid.Children.Remove(this);
-
-
-
-
-
+        private void enable_Right_Buttons(ref Canvas p)
+        {
+            MainWindow i = (MainWindow)Application.Current.Windows[0];
+            switch (p.Name.ToString())
+            {
+                case "Kitchen_Image":
+                    {
+                        i.Room.change_KitchenButtons_Status(true);
+                        i.Room.change_CommonButtons_Status(true);
+                    }
+                    break;
+                case "Livingroom_Image":
+                    {
+                        i.Room.change_LivingroomButtons_Status(true);
+                        i.Room.change_CommonButtons_Status(true);
+                    }
+                    break;
+                default:
+                    {
+                        i.Room.change_BedroomButtons_Status(true);
+                        i.Room.change_CommonButtons_Status(true);
+                    }
+                    break;
+            }
         }
     }
 }

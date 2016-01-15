@@ -59,6 +59,8 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
+
+            <TextBox Name="prova" Margin="428,323,718,288" ></TextBox>
            
             <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-58,-39,1440,789">
                 <Button.Background>
