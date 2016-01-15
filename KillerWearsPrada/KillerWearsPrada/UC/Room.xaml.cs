@@ -165,5 +165,10 @@ namespace KillerWearsPrada.UC
             selectionDisplay.Focus();
             disable_buttons();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

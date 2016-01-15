@@ -278,6 +278,14 @@ namespace KillerWearsPrada
             //cappelli
             Helpers.ResourcesHelper.ModifyKitchenImagesPath(E_KitchenImages.Hat1);
             Helpers.ResourcesHelper.ModifyKitchenImagesPath(E_KitchenImages.Hat3);
+
+            //shirts
+            Helpers.ResourcesHelper.ModifyBedroomImagesPath(E_BedroomImages.Shirt3);
+            Helpers.ResourcesHelper.ModifyBedroomImagesPath(E_BedroomImages.Shirt4);
+
+            //trousers
+            Helpers.ResourcesHelper.ModifyLivingroomImagesPath(E_LivingroomImages.Trousers1);
+            Helpers.ResourcesHelper.ModifyLivingroomImagesPath(E_LivingroomImages.Trousers3);
         }
 
         #region getter of user controls

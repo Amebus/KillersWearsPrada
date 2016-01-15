@@ -51,7 +51,19 @@ namespace KillerWearsPrada.Helpers
         {
             Hat1,
             Hat3
-        } 
+        }
+
+        public enum E_LivingroomImages
+        {
+            Trousers1,
+            Trousers3
+        }
+
+        public enum E_BedroomImages
+        {
+            Shirt3,
+            Shirt4
+        }
 
         /*
         public enum E_WelcomeImages
@@ -119,6 +131,16 @@ namespace KillerWearsPrada.Helpers
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
+
+        private static String GetResource(E_LivingroomImages ResourceName)
+        {
+            return GetResource(ResourceName.ToString()).ToString();
+        }
+
+        private static String GetResource(E_BedroomImages ResourceName)
+        {
+            return GetResource(ResourceName.ToString()).ToString();
+        }
         #endregion
 
         #region Resource specifc setters
@@ -138,6 +160,16 @@ namespace KillerWearsPrada.Helpers
         }
 
         private static void SetResource(E_RoomsImages ResourceName, String Value)
+        {
+            SetResource(ResourceName.ToString(), Value);
+        }
+
+        private static void SetResource(E_LivingroomImages ResourceName, String Value)
+        {
+            SetResource(ResourceName.ToString(), Value);
+        }
+
+        private static void SetResource(E_BedroomImages ResourceName, String Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
@@ -241,6 +273,24 @@ namespace KillerWearsPrada.Helpers
 
         
         public static void ModifyKitchenImagesPath(E_KitchenImages ResourceName)
+        {
+            String wvRightPath = CurrentDirectory;
+            wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+            wvRightPath += CreatePath(GetResource(ResourceName));
+            SetResource(ResourceName, wvRightPath);
+            //     Application.Current.Resources[roomImage] = wvRightPath;
+        }
+
+        public static void ModifyLivingroomImagesPath(E_LivingroomImages ResourceName)
+        {
+            String wvRightPath = CurrentDirectory;
+            wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+            wvRightPath += CreatePath(GetResource(ResourceName));
+            SetResource(ResourceName, wvRightPath);
+            //     Application.Current.Resources[roomImage] = wvRightPath;
+        }
+
+        public static void ModifyBedroomImagesPath(E_BedroomImages ResourceName)
         {
             String wvRightPath = CurrentDirectory;
             wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
