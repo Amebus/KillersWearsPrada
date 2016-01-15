@@ -151,6 +151,18 @@ NOTA si può lasciare il gioco in ogni momento inviando un Identikit
         
         <!--#endregion-->
 
+        <!--#region Nomi shirts -->
+        <sys:String x:Key="Shirt3">shirt_3bedOk.png</sys:String>
+        <sys:String x:Key="Shirt4">shirt_4armadiofuoriOk.png</sys:String>
+
+        <!--#endregion-->
+
+        <!--#region Nomi pantaloni -->
+        <sys:String x:Key="Trousers1">panta_1divanoOk.png</sys:String>
+        <sys:String x:Key="Trousers3">panta_3tableOk.png</sys:String>
+
+        <!--#endregion-->
+
         <sys:String x:Key="ApplicationTitle">Killer Wears Prada</sys:String>
         <sys:String x:Key="ApplicationTitleMaiusc">THE KILLER WEARS PRADA</sys:String>
         

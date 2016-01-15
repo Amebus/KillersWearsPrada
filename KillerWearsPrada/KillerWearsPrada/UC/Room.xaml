@@ -24,7 +24,15 @@
 -->
         <Canvas x:Name="Livingroom_Image" Width="1920" Height="1080" Visibility="Hidden">
 
-    <!--        <Button x:Name="backliv" Click="back_button" Content="Go Back from Livingroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>  -->
+            <Button x:Name ="trousers1" Click="button_Click" Height="155" Canvas.Top="503" Width="265" Canvas.Left="260" Style="{StaticResource KinectButtonZoomTrousers1}" />
+
+
+
+            <Button x:Name ="trousers3" Click="button_Click" Height="167" Canvas.Top="580" Width="381" Canvas.Left="755" Style="{StaticResource KinectButtonZoomTrousers3}"/>
+
+
+
+            <!--        <Button x:Name="backliv" Click="back_button" Content="Go Back from Livingroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/>  -->
             <!--     <Canvas.Background>
                 <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
             </Canvas.Background>  -->
@@ -33,40 +41,15 @@
 
       <!--      <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
 
-            <Button x:Name ="hat1" Click="hat1_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoom}">
-                <!--       <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Hat1}}" RenderTransformOrigin="0.5,0.5">
-                            <Image.Triggers>
-                                <EventTrigger RoutedEvent="UIElement.MouseEnter">
-                                    <BeginStoryboard Storyboard="{StaticResource expandStoryboard}" />
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="UIElement.MouseLeave">
-                                    <BeginStoryboard Storyboard="{StaticResource shrinkStoryboard}" />
-                                </EventTrigger>
-                            </Image.Triggers>
-                            <Image.RenderTransform>
-                                <ScaleTransform ScaleX="1" ScaleY="1"/>
-                            </Image.RenderTransform>
-                        </Image>
-                    </ControlTemplate>
-                </Button.Template>  -->
-            </Button>
-
+            <Button x:Name ="hat1" Click="hat1_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoom}"/>
             <Button x:Name ="hat3" Click="hat3_btn"  Height="105" Canvas.Left="1421" Canvas.Top="518" Width="162" Style="{StaticResource KinectButtonZoomHat3}"/>
 
-
-
-
-
-            <!--      <Canvas.Background>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Kitchen_Image}}"/>
-            </Canvas.Background> -->
         </Canvas>
         <Canvas x:Name="Bedroom_Image"  Width="1920" Height="1080" Visibility="Hidden">
 
-       <!--     <Button x:Name="backbed" Click="back_button" Content="Go Back from Bedroom" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
-          
+            <Button x:Name ="shirt3" Click="button_Click"  Height="140" Canvas.Left="1166" Canvas.Top="556" Width="177" Style="{StaticResource KinectButtonZoomShirt3}"/>
+            <Button x:Name ="shirt4" Click="button_Click" Canvas.Left="320" Canvas.Top="328" Height="319" Width="214"  Style="{StaticResource KinectButtonZoomShirt4}"/>
+
         </Canvas>
 
         <Button Name="exit"  Click="exit_button" Height="116" Width="227" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}">
