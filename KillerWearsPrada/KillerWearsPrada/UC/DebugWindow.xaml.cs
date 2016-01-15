@@ -39,7 +39,9 @@ namespace KillerWearsPrada.UC
             db = new Helpers.DBHelper();
             try
             {
-                db.GetItemFromClues(true, true, Model.E_Texture.RIGHE.ToString(), Model.E_ItemKind.Cappello.ToString());
+                //db.GetItemFromClues(Model.E_Shape.CORTO, Model.E_Gradiation.CHIARO, Model.E_Texture.SCOZZESE, Model.E_ItemKind.Cappello);
+                db.GetItemByShape(Model.E_Shape.LUNGO, Model.E_ItemKind.Maglietta);
+
             }
             catch (Exception ex)
             {

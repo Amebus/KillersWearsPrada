@@ -21,7 +21,7 @@ namespace KillerWearsPrada.Model
             get { return attItems; }
         }
 
-        public Item GetItemByBarCode (Int32 BarCode)
+        public Item GetItemByBarCode (String BarCode)
         {
             foreach(Item it in attItems)
             {

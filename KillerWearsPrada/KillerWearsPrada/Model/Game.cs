@@ -26,10 +26,10 @@ namespace KillerWearsPrada.Model
         #endregion
 
         /// <summary>
-        /// 
+        /// Inizialize a new game
         /// </summary>
-        /// <param name="ID"></param>
-        /// <param name="PlayerName"></param>
+        /// <param name="ID">ID of the Game</param>
+        /// <param name="PlayerName">Name of the player</param>
         /// <param name="Rooms">Number of Rooms in the game</param>
         /// <param name="ItemsPerRoom">Number of items in each room</param>
         public Game (String ID, String PlayerName, Int32 Rooms, Int32 ItemsPerRoom)
@@ -109,10 +109,10 @@ namespace KillerWearsPrada.Model
 
 
             //Il primo è quello giusto
-            wvItems.Add(wvDB.GetItemByGradation(true, attSolution.LastItemKind.ToString()));
+            wvItems.Add(wvDB.GetItemByGradation(E_Gradiation.CHIARO, attSolution.LastItemKind));
             NumberOfItems--;
             //mi faccio dare gli altri (per ora sola il secondo)
-            wvItems.Add(wvDB.GetItemByGradation(false, attSolution.LastItemKind.ToString()));
+            wvItems.Add(wvDB.GetItemByGradation(E_Gradiation.SCURO, attSolution.LastItemKind));
 
             return wvItems;
         }

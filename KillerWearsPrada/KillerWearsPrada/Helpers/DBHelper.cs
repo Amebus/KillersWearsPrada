@@ -122,10 +122,10 @@ namespace KillerWearsPrada.Helpers
             OleDbCommand command = new OleDbCommand(query, DBConnection);
             // add parameters
             // long parameter - @p1    
-            Boolean shape = false;
+            String shape = "no";
             if (long1 == E_Shape.LUNGO)
-                shape = true;      
-            command.Parameters.Add("@p1", OleDbType.Boolean).Value = shape;
+                shape = "yes";      
+            command.Parameters.Add("@p1", OleDbType.VarChar).Value = shape;
             
             // item kind parameter -@p4
             command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind.ToString();
@@ -163,7 +163,7 @@ namespace KillerWearsPrada.Helpers
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName, D.Immagine FROM Capo AS C,DatiNegozio AS D, Grafica AS G,Texture AS T, Maschera AS M, TipoCapo AS TC   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND TC.ID = C.Tipo AND D.Disponibilità > 10 AND (((T.[Chiaro/Scuro])=@p2)) TC.Tipo = @p4 ORDER BY rnd(C.ID); ";
+            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName, D.Immagine FROM Capo AS C,DatiNegozio AS D, Grafica AS G,Texture AS T, Maschera AS M, TipoCapo AS TC   WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND TC.ID = C.Tipo AND D.Disponibilità > 10 AND (((T.[Chiaro/Scuro])=@p2)) AND TC.Tipo = @p4 ORDER BY rnd(C.ID); ";
             //string query = "SELECT * FROM Capo";
             OleDbCommand command = new OleDbCommand(query, DBConnection);
             // add parameters

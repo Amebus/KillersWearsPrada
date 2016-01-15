@@ -6,6 +6,9 @@ namespace KillerWearsPrada.Controller
     {
         private const Int32 REFRESH_TIME = 1000;
         private const Int32 DEBUG_REFRESH_TIME = 10000;
+        private const Int32 ITEMS_PER_ROOM = 2;
+        private const Int32 NUMBER_OF_ROOMS = 3;
+
         private Model.Game attGame;
         private Helpers.DBHelper attDataBase;
         private KinectInterrogator attKinectInterrogator;
@@ -115,7 +118,7 @@ namespace KillerWearsPrada.Controller
 
             wvID = wvID.Replace(' ', '-');
             wvID += ("-" + PlayerName);
-            Model.Game wvGame = new Model.Game(wvID, PlayerName, 3, 2);//<------------- occhio che va sistemato sostituendolo con una costante
+            Model.Game wvGame = new Model.Game(wvID, PlayerName, NUMBER_OF_ROOMS, ITEMS_PER_ROOM);
             
             wvPath = System.IO.Path.Combine(wvPath, wvID);
             Helpers.SerializerHelper.Serialize(wvPath, wvGame);
