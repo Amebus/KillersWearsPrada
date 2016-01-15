@@ -16,7 +16,7 @@ namespace KillerWearsPrada.Model
         private int code;
         private String barcode;
         private String itemName;
-        private float price;
+        private Double price;
         private String description;
         private String reparto;
         private String textureFileName;
@@ -41,7 +41,7 @@ namespace KillerWearsPrada.Model
         /// <param name="texture">string representing the texture file name</param>
         /// <param name="mask">string representing the mask file name</param>
         /// <param name="image">string representing the item image file name</param>
-        public Item(int c, String bc, String name, float p, String descr, String rep, String texture, String mask, String image)
+        public Item(int c, String bc, String name, Double p, String descr, String rep, String texture, String mask, String image)
         {
             code = c;
             barcode = bc;
@@ -75,7 +75,7 @@ namespace KillerWearsPrada.Model
             get { return barcode; }
         }
 
-        public float Price
+        public Double Price
         {
             get { return price; }
         }

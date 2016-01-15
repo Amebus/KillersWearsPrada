@@ -98,6 +98,9 @@
     <Compile Include="Controller\GameController.cs" />
     <Compile Include="Controller\PlayerChecker.cs" />
     <Compile Include="Helpers\SerializerHelper.cs" />
+    <Compile Include="KWP_DB_TestDataSet.cs">
+      <DependentUpon>KWP_DB_TestDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\ISerializable.cs" />
     <Compile Include="Model\ItemGraficalProperties.cs" />

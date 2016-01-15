@@ -70,6 +70,11 @@ namespace KillerWearsPrada.Model
             get { return attRooms[attActualRoom]; }
         }
         
+        public Int32 Score
+        {
+            get { return attScore; }
+        }
+
         public List<Item> GetRoomItems(Int32 RoomIndex)
         {
             return attRooms[RoomIndex].Items;
@@ -87,7 +92,19 @@ namespace KillerWearsPrada.Model
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Compute player's score
+        /// </summary>
+        public void ComputeScore()
+        {
 
+        }
+
+        /// <summary>
+        /// Generate a list of <see cref="Item,"/> to be put in a <see cref="Room"/>
+        /// </summary>
+        /// <param name="NumberOfItems"></param>
+        /// <returns></returns>
         private List<Item> CreateItems(Int32 NumberOfItems)
         {
             Helpers.DBHelper wvDB = new Helpers.DBHelper();
