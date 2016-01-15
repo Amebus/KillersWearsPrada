@@ -26,8 +26,6 @@ namespace KillerWearsPrada.Helpers
 
             Selection_Crime,
             Selection_Background,
-            //momentaneo
-            Hat1
         }
 
         public enum E_RoomsImages
@@ -48,11 +46,12 @@ namespace KillerWearsPrada.Helpers
             DXdoorDisabled_Image
         }
 
-        /*
+        
         public enum E_KitchenImages
         {
-            Hat1
-        } */
+            Hat1,
+            Hat3
+        } 
 
         /*
         public enum E_WelcomeImages
@@ -115,6 +114,11 @@ namespace KillerWearsPrada.Helpers
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
+
+        private static String GetResource(E_KitchenImages ResourceName)
+        {
+            return GetResource(ResourceName.ToString()).ToString();
+        }
         #endregion
 
         #region Resource specifc setters
@@ -134,6 +138,11 @@ namespace KillerWearsPrada.Helpers
         }
 
         private static void SetResource(E_RoomsImages ResourceName, String Value)
+        {
+            SetResource(ResourceName.ToString(), Value);
+        }
+
+        private static void SetResource(E_KitchenImages ResourceName, String Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
@@ -230,8 +239,15 @@ namespace KillerWearsPrada.Helpers
             //     Application.Current.Resources[roomImage] = wvRightPath;
         }
 
-
-
+        
+        public static void ModifyKitchenImagesPath(E_KitchenImages ResourceName)
+        {
+            String wvRightPath = CurrentDirectory;
+            wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+            wvRightPath += CreatePath(GetResource(ResourceName));
+            SetResource(ResourceName, wvRightPath);
+            //     Application.Current.Resources[roomImage] = wvRightPath;
+        }
 
     }
 }

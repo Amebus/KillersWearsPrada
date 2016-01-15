@@ -127,7 +127,9 @@ namespace KillerWearsPrada.UC
 
         private void hat1_btn(object sender, RoutedEventArgs e)
         {
-            SelectionDisplay selectionDisplay = new SelectionDisplay(hat1.Content as string);
+            Button s = (Button)sender;
+
+            SelectionDisplay selectionDisplay = new SelectionDisplay(s.Content as string);
             room_Canvas.Children.Add(selectionDisplay);
 
 
@@ -150,8 +152,18 @@ namespace KillerWearsPrada.UC
         private void disable_buttons()
         {
             hat1.IsEnabled = false;
+            hat3.IsEnabled = false;
             
         }
 
+        private void hat3_btn(object sender, RoutedEventArgs e)
+        {
+            Button s = (Button)sender;
+            
+            SelectionDisplay selectionDisplay = new SelectionDisplay(s.Content as string);
+            room_Canvas.Children.Add(selectionDisplay);
+            selectionDisplay.Focus();
+            disable_buttons();
+        }
     }
 }

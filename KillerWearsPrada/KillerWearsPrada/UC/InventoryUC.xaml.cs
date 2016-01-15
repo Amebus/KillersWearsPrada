@@ -46,13 +46,13 @@ namespace KillerWearsPrada.UC
             Canvas parent = (Canvas)parentGrid.FindName("room_Canvas");
 
 
-      //      Button bnt1 = (Button)parent.FindName("hat1");
-     //       bnt1.IsEnabled = true;
+            Button bnt1 = (Button)parent.FindName("hat1");
+            bnt1.IsEnabled = true;
             /*       Button bnt2 = (Button)parent.FindName("hat2");
-                   bnt2.IsEnabled = true;
+                   bnt2.IsEnabled = true; */
                    Button bnt3 = (Button)parent.FindName("hat3");
                    bnt3.IsEnabled = true;
-                   Button bnt4 = (Button)parent.FindName("hat4");
+          /*          Button bnt4 = (Button)parent.FindName("hat4");
                    bnt4.IsEnabled = true;
                    Button bnt5 = (Button)parent.FindName("hat5");
                    bnt5.IsEnabled = true;

@@ -53,6 +53,12 @@
                 </Button.Template>  -->
             </Button>
 
+            <Button x:Name ="hat3" Click="hat3_btn"  Height="105" Canvas.Left="1421" Canvas.Top="518" Width="162" Style="{StaticResource KinectButtonZoomHat3}"/>
+
+
+
+
+
             <!--      <Canvas.Background>
                 <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Kitchen_Image}}"/>
             </Canvas.Background> -->

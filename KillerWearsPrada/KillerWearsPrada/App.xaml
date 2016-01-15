@@ -147,6 +147,7 @@ NOTA si può lasciare il gioco in ogni momento inviando un Identikit
 
         <!--#region Nomi cappelli -->
         <sys:String x:Key="Hat1">hat_1meleOk.png</sys:String>
+        <sys:String x:Key="Hat3">hat_3tablewhiteOk.png</sys:String>
         
         <!--#endregion-->
 
