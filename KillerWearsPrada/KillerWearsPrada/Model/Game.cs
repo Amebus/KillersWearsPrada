@@ -125,6 +125,12 @@ namespace KillerWearsPrada.Model
              qui estraiamo i valori casuali e li salviamo
              ...
              in pratica vorrei che si potesse salvare in delle variabli l'E_xyz.random corretto per ogni caso
+             ....
+             
+            clue1= E_Gradiation(rand)
+            clue2= E_Shape
+            clue3=...
+
             Boolean positive1 = true;
             if(!randPositive1%3)
             {
@@ -140,8 +146,7 @@ namespace KillerWearsPrada.Model
             {
                 positive3 = false;
             }
-             ...
-
+            
             //aggiungiamo le nuove clues alla stanza
             al posto di E_xyz sostituiamo il valore rand corretto ed il resto va a NULL
             //la prima clue è per gradation
@@ -155,13 +160,19 @@ namespace KillerWearsPrada.Model
             this.ActualRoom.AddClue(c3);
 
             1° capo -quello giusto - corrisponde a 3 indizi - gradation + shape + 3°
-            wvItems.Add(wvDB.GetItemFromClues(GetNotNULLValueFromClue(c1), attSolution.LastItemKind));
+            wvItems.Add(wvDB.GetItemFromClues(clue1,clue2,NULL,clue3,ItemKind));
             2° capo - corrisponde a 2 indizi gradation + shape
-            wvItems.Add(wvDB.GetItemByGradation(GetNotNULLValueFromClue(c1), attSolution.LastItemKind));
-            3° e 4° capo  - solo gradation
-            wvItems.Add(wvDB.GetItemByGradation(GetNotNULLValueFromClue(c1), attSolution.LastItemKind));
-            5° e 6° capo -solo shape
-            
+            wvItems.Add(wvDB.GetItemFromClues(clue1,clue2,NULL,!clue3,ItemKind));
+            3° e 4° capo  - solo shape
+            wvItems.Add(wvDB.GetItemFromClues(clue1,!clue2,NULL,!clue3,ItemKind));
+            wvItems.Add(wvDB.GetItemFromClues(clue1,!clue2,NULL,!clue3,ItemKind));
+            5° e 6° capo - solo gradiation
+            wvItems.Add(wvDB.GetItemFromClues(!clue1,clue2,NULL,!clue3,ItemKind));
+            wvItems.Add(wvDB.GetItemFromClues(!clue2,clue2,NULL,!clue3,ItemKind));
+
+            ora a parte la traduzione dei metodi e variabili finti in qualcosa di più reale
+            doremmo avere una stanza popolata, e clues nelle stanze
+
             */
 
 
