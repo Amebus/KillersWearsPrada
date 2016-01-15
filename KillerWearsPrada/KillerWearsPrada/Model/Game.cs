@@ -113,6 +113,7 @@ namespace KillerWearsPrada.Model
             /*
             per prima cosa estraggo le caratteristiche che userò per la ricerca del capo
             sicuramente avremo come indizi shape e gradation (sono  facili da gestire)
+                    ma non ha senso per i cappelli, per quelli ci vuole per forza colore + texture 
             randGradiation = .. 
             randPositive1 = .. 
             randShape = ..
