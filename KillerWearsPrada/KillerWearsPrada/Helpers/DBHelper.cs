@@ -122,11 +122,17 @@ namespace KillerWearsPrada.Helpers
             OleDbCommand command = new OleDbCommand(query, DBConnection);
             // add parameters
             // long parameter - @p1    
-            String shape = "no";
+            // shape = "no";
             if (long1 == E_Shape.LUNGO)
-                shape = "yes";      
-            command.Parameters.Add("@p1", OleDbType.VarChar).Value = shape;
-            
+            {
+                query = query.Replace("@p1", "Yes");
+            }
+                //shape = "yes";    
+                  
+            else
+                query = query.Replace("@p1", "No");
+            //command.Parameters.Add("@p1", OleDbType.VarChar).Value = shape;
+
             // item kind parameter -@p4
             command.Parameters.Add("@p4", OleDbType.VarChar, 255).Value = itemKind.ToString();
 
