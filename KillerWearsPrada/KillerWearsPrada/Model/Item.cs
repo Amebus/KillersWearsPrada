@@ -40,7 +40,7 @@ namespace KillerWearsPrada.Model
         /// <param name="texture">string representing the texture file name</param>
         /// <param name="mask">string representing the mask file name</param>
         /// <param name="image">string representing the item image file name</param>
-        public Item(int c, String bc, String name, Double p, String descr, String rep, String texture, String mask, String image, String ClueText)
+        public Item(int c, String bc, String name, Double p, String descr, String rep, String texture, String mask, String image)
         {
             code = c;
             barcode = bc;
@@ -51,7 +51,6 @@ namespace KillerWearsPrada.Model
             textureFileName = texture;
             maskFileName = mask;
             imageFileName = image;
-            attClueText = ClueText;
 
             attTrashed = false;
             attInInventory = false;
@@ -126,6 +125,10 @@ namespace KillerWearsPrada.Model
         #endregion
 
         #region Methods
+        public void SetClueText (String ClueText)
+        {
+            attClueText = ClueText;
+        }
         public Boolean SetAsTrashed()
         {
             if (!this.IsInInventory)
