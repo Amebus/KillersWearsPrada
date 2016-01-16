@@ -29,6 +29,9 @@ namespace KillerWearsPrada.Model
         DARK
     }
 
+    /// <summary>
+    /// If associated to hats Short=Cap and Long=Hat
+    /// </summary>
     public enum E_Shape
     {
         NULL,
@@ -50,12 +53,8 @@ namespace KillerWearsPrada.Model
     {
         NULL,
         hat,
-        shirt,
         t_shirt,
-        trousers,
-        skirt,
-        cap,
-        jumper
+        trousers
         
     }
     

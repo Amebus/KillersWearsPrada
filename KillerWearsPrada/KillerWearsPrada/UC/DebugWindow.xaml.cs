@@ -40,8 +40,8 @@ namespace KillerWearsPrada.UC
             try
             {
                 //db.GetItemFromClues(Model.E_Shape.CORTO, Model.E_Gradiation.CHIARO, Model.E_Texture.SCOZZESE, Model.E_ItemKind.Cappello);
-                db.GetItemByShape(Model.E_Shape.LONG, Model.E_ItemKind.t_shirt);
-
+                //txtDisplay.Text = db.GetItemByShape(Model.E_Shape.SHORT, Model.E_ItemKind.t_shirt).ToString();
+                txtDisplay.Text = db.GetItemByGradation(Model.E_Gradiation.LIGHT, Model.E_ItemKind.t_shirt).Code.ToString();
             }
             catch (Exception ex)
             {

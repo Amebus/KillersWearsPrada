@@ -50,6 +50,26 @@ namespace KillerWearsPrada.Model
             //attItemKind = (E_ItemKind)Enum.Parse(typeof(E_ItemKind), ItemKind.ToUpper());
         }
 
+        public E_Color Color
+        {
+            get { return attColor; }
+        }
+
+        public E_Gradiation Gradiation
+        {
+            get { return attGradiation; }
+        }
+
+        public E_Shape Shape
+        {
+            get { return attShape; }
+        }
+        
+        public E_Texture Texture
+        {
+            get { return attTexture; }
+        }
+
         public override string ToString()
         {
             string wvClue = BASE;
@@ -75,6 +95,20 @@ namespace KillerWearsPrada.Model
         private string RemoveUnderScore(string v)
         {
             return v.Replace('_', ' ');
+        }
+
+        public bool EqualsTo(Clue Clue)
+        {
+            if (Clue.attColor != this.attColor)
+                return false;
+            if (Clue.attGradiation != this.attGradiation)
+                return false;
+            if (Clue.attShape != this.attShape)
+                return false;
+            if (Clue.attTexture != this.attTexture)
+                return false;
+
+            return true;
         }
     }
 }

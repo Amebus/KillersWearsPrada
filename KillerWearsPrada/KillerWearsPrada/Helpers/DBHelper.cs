@@ -69,7 +69,7 @@ namespace KillerWearsPrada.Helpers
             query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
             query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
             query += " AND I.Available > 10 AND II.Long = @p1 AND T.Light = @p2 AND TK.TextureKind = @p3 AND T.MainColor = @p4 AND IK.ItemKind = @p5";
-            query += " ORDER BY rnd(C.ID)";
+            query += " ORDER BY Rnd(-(10000*I.ID)*Time())";
 
             // parameter @p1 - shape
             if (long1 == E_Shape.LONG)
@@ -153,8 +153,8 @@ namespace KillerWearsPrada.Helpers
             query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
             query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
             query += " AND I.Available > 10 AND II.Long = @shape AND IK.ItemKind = @kind";
-            query += " ORDER BY rnd(C.ID)";
-
+            query += " ORDER BY Rnd(-(10000*I.ID)*Time())";
+            
             // parameter @shape
             if (long1 == E_Shape.LONG)
             {
@@ -166,11 +166,13 @@ namespace KillerWearsPrada.Helpers
             }
                 
             // parameter @kind   - item kind
-            query = query.Replace("@kind", "\'" + itemKind.ToString() + "\'");
+            query = query.Replace("@kind", @"'" + itemKind.ToString().ToLower() + @"'");
             
             OleDbCommand command = new OleDbCommand(query, DBConnection);
 
             OleDbDataReader result = command.ExecuteReader();
+            if (!result.HasRows)
+                return null;
             result.Read();
 
             int codice = result.GetInt32(0);
@@ -214,11 +216,11 @@ namespace KillerWearsPrada.Helpers
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
+            string query = "SELECT I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
             query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
             query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
             query += " AND I.Available > 10 AND T.Light = @grad AND IK.ItemKind = @kind";
-            query += " ORDER BY rnd(C.ID)";
+            query += " ORDER BY Rnd(-(10000*I.ID)*Time())";
 
             // parameter @p2 - gradiation
             if (light == E_Gradiation.LIGHT)
