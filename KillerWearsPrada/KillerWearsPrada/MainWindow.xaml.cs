@@ -133,6 +133,9 @@ namespace KillerWearsPrada
         private void ResumeGame(GameController.ResumeGame.Args Parameters)
         {
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume";
+
+            // qui faccio allocare tutti gli user control?
+            allocate_All_UC();
         }
 
         /// <summary>
@@ -219,8 +222,97 @@ namespace KillerWearsPrada
 
         private ImageBrush ib;
 
+        private void ResumeGameFinto(String idUser)
+        {
+            // qui faccio allocare tutti gli user control?
+            // con i rispettivi oggetti giusti!!!
+            allocate_All_UC();
+
+            txtDisplay.Visibility = Visibility.Collapsed;
+            recognise.IsEnabled = false;
+            recognise.Visibility = Visibility.Collapsed;
+
+            //guardo se ha già iniziato a giocare o no
+            //quello giusto
+            //       if (attGameController.IsGameStarted == false)
+            //vai alla welcome home
+            //devo bindare lo username...
+            Boolean t = true;
+            if (t == false)
+            {
+                backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
+                ib = new ImageBrush();
+                ib.ImageSource = new BitmapImage(new Uri(@backgroundPath, UriKind.Absolute));
+                this.Background = ib;
+                Enable_Welcome_Obj();
+            }
+            else
+            {
+                this.Background.Opacity = 0;
+                disable_Buttons_Labels();
+
+                //guardo in che stanza era e carico quella, con le cose giuste...
+                loadRoom();
+            }
+        }
+
+        private void loadRoom()
+        {
+            string temp = "Livingroom";
+            //   switch (attGameController.ActualRoom.Name)
+            switch (temp)
+            {
+                case "StartingRoom":
+                    {
+                        startRoom.Visibility = Visibility.Visible;
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                    }
+                    break;
+                case "Kitchen":
+                    {
+                        room.Visibility = Visibility.Visible;
+                        room.Kitchen_Image.Visibility = Visibility;
+                        Room.setBackgroundCanvas(Application.Current.Resources[E_RoomsImages.Kitchen_Image.ToString()].ToString());
+
+                        //qui devo abilitare solo i giusti bottoni...
+                        Room.change_KitchenButtons_Status(true);
+                        Room.change_CommonButtons_Status(true);
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                    }
+                    break;
+                case "Livingroom":
+                    {
+                        room.Visibility = Visibility.Visible;
+                        room.Livingroom_Image.Visibility = Visibility;
+                        Room.setBackgroundCanvas(Application.Current.Resources[E_RoomsImages.Livingroom_Image.ToString()].ToString());
+
+                        Room.change_LivingroomButtons_Status(true);
+                        Room.change_CommonButtons_Status(true);
+
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                    }
+                    break;
+                default:
+                    {
+                        room.Visibility = Visibility.Visible;
+                        room.Bedroom_Image.Visibility = Visibility;
+                        Room.setBackgroundCanvas(Application.Current.Resources[E_RoomsImages.Bedroom_Image.ToString()].ToString());
+                        Room.change_BedroomButtons_Status(true);
+                        Room.change_CommonButtons_Status(true);
+                        GC.Collect();
+                        GC.WaitForPendingFinalizers();
+                    }
+                    break;
+            }
+        }
+
         private void homepage(object sender, RoutedEventArgs e)
         {
+            ResumeGameFinto("ciao");            /*
+
             backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
             ib = new ImageBrush();
             ib.ImageSource = new BitmapImage(new Uri(@backgroundPath, UriKind.Absolute));
@@ -232,6 +324,7 @@ namespace KillerWearsPrada
             recognise.Visibility = Visibility.Collapsed;
 
             Enable_Welcome_Obj();
+            */
         }
 
         private void Enable_Welcome_Obj()
@@ -313,33 +406,18 @@ namespace KillerWearsPrada
         private void allocate_All_UC()
         {
             startRoom = new StartingRoom();
-
-            // ma qui cosa imposto???
             room = new Room();
-
-            //qui ci vorrebbe lo user control di provenienza?
-            inventory = new InventoryUC();
-
-            string a = "-";
-            //qui l'id della maglietta di provenienza? non credo più...
-            selection_Display = new SelectionDisplay(a);
             
-
             // se uso hidden al posto di collapsed carica prima!
-            startRoom.Visibility = Visibility.Hidden;
+            startRoom.Visibility = Visibility.Collapsed;
             room.Visibility = Visibility.Collapsed;
-            inventory.Visibility = Visibility.Hidden;
-            selection_Display.Visibility = Visibility.Hidden;
 
             // aggiungo tutti gli usercontrol come figli della mainGrid
             mainGrid.Children.Add(startRoom);
             mainGrid.Children.Add(room);
-            mainGrid.Children.Add(inventory);
-            mainGrid.Children.Add(selection_Display);
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-
         }
 
         private void EnterKeyCommand(object sender, EventArgs e)
