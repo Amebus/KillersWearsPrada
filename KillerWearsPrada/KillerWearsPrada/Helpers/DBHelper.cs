@@ -64,10 +64,10 @@ namespace KillerWearsPrada.Helpers
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 C.ID, C.Barcode, C.Nome, C.Prezzo, C.Descrizione, C.Reparto, T.FileName, M.FileName, C.Immagine";
-            query += " FROM Capo AS C ,Texture AS T, Maschera AS M, TipoCapo AS TC, TipoTexture AS TT";
-            query += " WHERE C.Texture = T.ID AND C.Maschera = M.ID AND TC.ID = C.Tipo AND T.TipoTexture = TT.ID";
-            query += " AND C.Disponibili > 10 AND C.Lungo=@p1 AND T.Chiaro=@p2 AND TT.Nome = @p3 AND T.ColoreDominante = @p4 AND TC.Tipo = @p5";
+            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, M.FileName, I.Image";
+            query += " FROM Item AS I ,Texture AS T, Mask AS M, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
+            query += " WHERE II.ItemKind = IK.ID AND II.Mask = M.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
+            query += " AND I.Available > 10 AND II.Long = @p1 AND T.Light = @p2 AND TK.TextureKind = @p3 AND T.MainColor = @p4 AND IK.ItemKind = @p5";
             query += " ORDER BY rnd(C.ID)";
 
             // parameter @p1 - shape
@@ -93,7 +93,7 @@ namespace KillerWearsPrada.Helpers
             // parameter @p3 - texture kind 
             query = query.Replace("@p3", "\'" + textureKind.ToString() + "\'");
 
-            // parameter @p4 - dominant color 
+            // parameter @p4 - main color 
             query = query.Replace("@p4", "\'" + color.ToString() + "\'");
 
             // parameter @p5 - item kind 
@@ -149,13 +149,13 @@ namespace KillerWearsPrada.Helpers
 
             // note : we want items of which we have more than 10 available 
 
-            string query = "SELECT TOP 1 C.ID, C.Barcode, C.Nome, C.Prezzo, C.Descrizione, C.Reparto, T.FileName, M.FileName, C.Immagine";
-            query += " FROM Capo AS C ,Texture AS T, Maschera AS M, TipoCapo AS TC, TipoTexture AS TT";
-            query += " WHERE C.Texture = T.ID AND C.Maschera = M.ID AND TC.ID = C.Tipo AND T.TipoTexture = TT.ID";
-            query += " AND C.Disponibili > 10 AND C.Lungo=@shape AND TC.Tipo = @kind";
+            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, M.FileName, I.Image";
+            query += " FROM Item AS I ,Texture AS T, Mask AS M, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
+            query += " WHERE II.ItemKind = IK.ID AND II.Mask = M.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
+            query += " AND I.Available > 10 AND II.Long = @shape AND IK.ItemKind = @kind";
             query += " ORDER BY rnd(C.ID)";
 
-            // parameter @p1 - shape
+            // parameter @shape
             if (long1 == E_Shape.LUNGO)
             {
                 query = query.Replace("@shape", true.ToString());
@@ -165,7 +165,7 @@ namespace KillerWearsPrada.Helpers
                 query = query.Replace("@shape", false.ToString());
             }
                 
-            // parameter @p4 - item kind 
+            // parameter @kind   - item kind
             query = query.Replace("@kind", "\'" + itemKind.ToString() + "\'");
             
             OleDbCommand command = new OleDbCommand(query, DBConnection);
@@ -214,10 +214,10 @@ namespace KillerWearsPrada.Helpers
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 C.ID, C.Barcode, C.Nome, C.Prezzo, C.Descrizione, C.Reparto, T.FileName, M.FileName, C.Immagine";
-            query += " FROM Capo AS C ,Texture AS T, Maschera AS M, TipoCapo AS TC, TipoTexture AS TT";
-            query += " WHERE C.Texture = T.ID AND C.Maschera = M.ID AND TC.ID = C.Tipo AND T.TipoTexture = TT.ID";
-            query += " AND C.Disponibili > 10 AND T.Chiaro=@grad AND TC.Tipo = @kind";
+            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, M.FileName, I.Image";
+            query += " FROM Item AS I ,Texture AS T, Mask AS M, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
+            query += " WHERE II.ItemKind = IK.ID AND II.Mask = M.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
+            query += " AND I.Available > 10 AND T.Light = @grad AND IK.ItemKind = @kind";
             query += " ORDER BY rnd(C.ID)";
 
             // parameter @p2 - gradiation
@@ -230,7 +230,7 @@ namespace KillerWearsPrada.Helpers
                 query = query.Replace("@grad", false.ToString());
             }
 
-            // parameter @p4 - item kind 
+            // parameter @kind  - item kind 
             query = query.Replace("@kind", "\'" + itemKind.ToString() + "\'");
 
             OleDbCommand command = new OleDbCommand(query, DBConnection);
@@ -268,7 +268,7 @@ namespace KillerWearsPrada.Helpers
         {
             DBConnection.Open();
 
-            string query = "UPDATE Utente SET Punteggio = @value WHERE DateTime = @id;";
+            string query = "UPDATE Player SET Score = @value WHERE DateTime = @id;";
 
 
             /*OleDbCommand command = new OleDbCommand(query, DBConnection);
@@ -296,7 +296,7 @@ namespace KillerWearsPrada.Helpers
         {
             DBConnection.Open();
 
-            string query = "INSERT INTO Utente (NomeUtente,DateTime) VALUES (@username,@dateTime);";
+            string query = "INSERT INTO Player (Username,DateTime) VALUES (@username,@dateTime);";
             
             query = query.Replace("@username", username);
             query = query.Replace("@dateTime", dateTime);
@@ -317,7 +317,7 @@ namespace KillerWearsPrada.Helpers
         {
             DBConnection.Open();
             
-            string query = "DELETE * FROM  Utente  WHERE DateTime = @id;";
+            string query = "DELETE * FROM  Player  WHERE DateTime = @id;";
                           
             query = query.Replace("@id", player);
             
