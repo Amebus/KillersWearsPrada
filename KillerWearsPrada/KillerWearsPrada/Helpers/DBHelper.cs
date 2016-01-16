@@ -111,7 +111,7 @@ namespace KillerWearsPrada.Helpers
             int codice = result.GetInt32(0);
             string barcode = result.GetString(1);
             string name = result.GetString(2);
-            Double price = result.GetDouble(3);
+            double price = result.GetDouble(3);
             string descr = result.GetString(4);
             string rep = result.GetString(5);
             string texture = result.GetString(6);
@@ -176,7 +176,7 @@ namespace KillerWearsPrada.Helpers
             int codice = result.GetInt32(0);
             string barcode = result.GetString(1);
             string name = result.GetString(2);
-            Double price = result.GetDouble(3);
+            double price = result.GetDouble(3);
             string descr = result.GetString(4);
             string rep = result.GetString(5);
             string texture = result.GetString(6);
@@ -242,7 +242,7 @@ namespace KillerWearsPrada.Helpers
             int codice = result.GetInt32(0);
             string barcode = result.GetString(1);
             string name = result.GetString(2);
-            Double price = result.GetDouble(3);
+            double price = result.GetDouble(3);
             string descr = result.GetString(4);
             string rep = result.GetString(5);
             string texture = result.GetString(6);
