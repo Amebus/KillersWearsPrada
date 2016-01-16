@@ -13,10 +13,13 @@ namespace KillerWearsPrada.Model
 
         private  List<Clue> attClues;
 
+        private Int32 attNumberOfItemLooked;
         private String attRoomName;
         
         public Room(List<Item> Items, List<Clue> Clues, String Name)
         {
+            attNumberOfItemLooked = 0;
+
             attItems = Items;
             // ogni stanza contnene anche le clues che verranno mostate nelle finestre degli item
             // più una Clue che sarà risolutiva per un'altra stanza
@@ -31,6 +34,21 @@ namespace KillerWearsPrada.Model
         public List<Item> Items
         {
             get { return attItems; }
+        }
+
+        public Int32 NumberOfItemInInventory
+        {
+            get
+            {
+                int count = 0;
+                foreach(Item i in attItems)
+                {
+                    if (i.IsInInventory)
+                        count++;
+                }
+
+                return count;
+            }
         }
 
         public void AddClue(Clue c)

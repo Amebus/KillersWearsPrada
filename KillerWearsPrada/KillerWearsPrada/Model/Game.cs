@@ -97,6 +97,44 @@ namespace KillerWearsPrada.Model
             get { return attScore; }
         }
 
+        public List<Item> ItemsInInventory
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+
+                foreach(Room r in attRooms)
+                {
+                    foreach(Item i in r.Items)
+                    {
+                        if (i.IsInInventory)
+                            wvItems.Add(i);
+                    }
+                }
+
+                return wvItems;
+            }
+        }
+
+        public List<Item> ItemsIntrash
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+
+                foreach (Room r in attRooms)
+                {
+                    foreach (Item i in r.Items)
+                    {
+                        if (i.IsTrashed)
+                            wvItems.Add(i);
+                    }
+                }
+
+                return wvItems;
+            }
+        }
+
         public List<Room> Rooms
         {
             get { return attRooms; }

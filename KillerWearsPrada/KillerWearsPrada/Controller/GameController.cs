@@ -81,6 +81,16 @@ namespace KillerWearsPrada.Controller
             get { return attGame.Rooms; }
         }
 
+        public List<Model.Item> ItemsInInventory
+        {
+            get { return attGame.ItemsInInventory; }
+        }
+
+        public List<Model.Item> ItemsInTrash
+        {
+            get { return attGame.ItemsIntrash; }
+        }
+
         public void SetGameStarted ()
         {
             attGame.GameStarted = true;
