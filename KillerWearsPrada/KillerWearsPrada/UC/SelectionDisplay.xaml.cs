@@ -23,8 +23,32 @@ namespace KillerWearsPrada.UC
         public SelectionDisplay(string itemId)
         {
             InitializeComponent();
+            //Importantissimo!!!
+            //ma mi serve quello della mainwindow???
+            this.DataContext = this;
 
-            messageTextBlock.Text = itemId.ToString();
+            // switch per capire che bottone è e quindi che item con relativa clue devo mostrare... e le cose le devo prendere dal model ovviamente!
+            if (itemId == "hat1")
+            {
+                DisplayedImagePath = Application.Current.Resources[Helpers.ResourcesHelper.E_KitchenImages.Hat1.ToString()].ToString();
+                //       DisplayedImagePath=@"C:\Users\Monica\Documents\sketchup projects\JALIS BIANCO.JPG";
+                NomeCapo = "Cappello Fedora";
+                Prezzo = "33.50 €";
+                Descrizione = "Un fantastio cappello da indossare tutti i giorni,bianco come la neve";
+                Indizio = "Un testimone si è ricordato che il cappello era un fedora azzurro";
+            }
+
+            else {
+                //         DisplayedImagePath = @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\pergamena1.png";
+                DisplayedImagePath = Application.Current.Resources[Helpers.ResourcesHelper.E_BedroomImages.Shirt3.ToString()].ToString();
+                NomeCapo = "Cappello Fedora bordato";
+                Prezzo = "33.50 €";
+                Descrizione = "Un bellissimo cappello per coprire la pelata che avanza";
+                //    Indizio = "Un testimone si è ricordato che il cappello era un fedora con bordo nero";
+                Indizio = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM";
+            }
+
+            //     messageTextBlock.Text = itemId.ToString();
         }
 
         /// <summary>
@@ -63,6 +87,37 @@ namespace KillerWearsPrada.UC
                     }
                     break;
             }
+        }
+
+        // per scroll textbox...
+        private void EnterKeyCommand(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        public string DisplayedImagePath
+        {
+            get; set;
+        }
+
+        public string NomeCapo
+        {
+            get; set;
+        }
+
+        public string Prezzo
+        {
+            get; set;
+        }
+
+        public string Indizio
+        {
+            get; set;
+        }
+
+        public string Descrizione
+        {
+            get; set;
         }
     }
 }

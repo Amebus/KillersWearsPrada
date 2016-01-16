@@ -66,40 +66,24 @@
         <sys:String x:Key="Rules" xml:space="preserve">Rules of the game:
          
 This game is a "find a clue" in a fashion designer house
-From the initial room - the hall - you can visit other
-rooms by pressing on each door
-Every room is filled with 6 Items, each one of them represents 
-a real object in the shop
-By pressing on an Item you select it, revealing its
-data and a Clue
-Each Item reveals a Clue, and the combination of Clues
-allows you to choose 2 Items that best fit the Clues
-Then you should look for the 2 clothes in the shop
-which correspond to the Items in the room
-Bring them to the Kinect and let it recognize them 
-by showing the cloth's barcode
+From the initial room - the hall - you can visit other rooms by pressing on each door
+Every room is filled with 6 Items, each one of them represents  a real object in the shop
+By pressing on an Item you select it, revealing its data and a Clue
+Each Item reveals a Clue, and the combination of Clues allows you to choose 2 Items that best fit the Clues
+Then you should look for the 2 clothes in the shop which correspond to the Items in the room, bring them to the Kinect and let it recognize them by showing the cloth's barcode
 Recognized Items are added to the Inventory
 You can access the Inventory anytime
-NOTICE that you cannot visit a ne room until
- you bring at least one Item from the previous room
-When all right Item from a room had been added, you get 
-one more clue, which will be decisive for resolving 
-another room
-Once you get all the  correct Items, access the Inventory
- and dress the dummy according to the Clues
-Submit your Identikit : the more the Identikit is correct,
- the bigger your Discount will be
-NOTICE that you can leave anytime simply by submitting an
- Identkit  
+            
+NOTICE that you cannot visit a new room until you bring at least one Item from the previous room
+When all right Item from a room had been added, you get one more clue, which will be decisive for resolving  another room
+Once you get all the  correct Items, access the Inventory and dress the dummy according to the Clues
+Submit your Identikit : the more the Identikit is correct, the bigger your Discount will be
+NOTICE that you can leave anytime simply by submitting an Identkit  
             
  - Interaction :
-1. To select something, press on it with the cursor
-   Mimic a simple press with the hand
-2. In order to see a long list, scoll the cursor
-   Close the hand and move it up or down
-3. To add an Item in the Identikit, drag and drop it
-   Close the hand over the Item, then move it on the
-    right spot, then open the hand 
+1. To select something, press on it with the cursor mimic a simple press with the hand
+2. In order to see a long list, scoll the cursor close the hand and move it up or down
+3. To add an Item in the Identikit, drag and drop it close the hand over the Item, then move it on the right spot, then open the hand 
             
  </sys:String>
 

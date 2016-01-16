@@ -44,13 +44,10 @@
 
             </Label>
 
-            <Label Content="{StaticResource ResourceKey=Player_Name}" x:Name="name_player" Margin="10,417,1136,536" FontSize="80" FontFamily="AR DARLING" Visibility="Collapsed">
-                <Label.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0" Opacity="0.8">
-                        <GradientStop Color="White"/>
-                        <GradientStop Color="#FF6CE633" Offset="1"/>
-                    </LinearGradientBrush>
-                </Label.Background>
+            <Label Content="{StaticResource ResourceKey=Player_Name}" x:Name="name_player" Margin="10,417,1136,536" FontSize="80" FontFamily="AR DARLING" Visibility="Collapsed" Foreground="Wheat">
+                <Label.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Black"></DropShadowEffect>
+                </Label.Effect>
             </Label>
 
             <Button x:Name="btnDebug" Content="Apri finestra debug" HorizontalAlignment="Left" Margin="147,777,0,0" VerticalAlignment="Top" Width="174" Height="59" Click="btnDebug_Click"/>
@@ -64,11 +61,14 @@
             <Button x:Name="goToEntrance" Click="btnEntrance_Click" Margin="1386,878,10,10" Style="{StaticResource KinectButton}" IsEnabled="False" Visibility="Hidden"/>
 
 
-            <TextBox x:Name="rules" Margin="823,228,69,269" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBlockStyle}" Height="583" MouseDoubleClick="EnterKeyCommand"  MouseLeftButtonDown="EnterKeyCommand"  
-                  SelectionOpacity="0" FontFamily="Freestyle Script" FontSize="50" FontWeight="Bold" Text="{StaticResource ResourceKey=Rules}" Visibility="Hidden" >
+            <TextBox x:Name="rules" Margin="823,251,69,244" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBlockStyle}" Padding="10,5,0,5" VerticalAlignment="Center" Height="585" MouseDoubleClick="EnterKeyCommand"  MouseLeftButtonDown="EnterKeyCommand"  
+                 MouseLeftButtonUp="EnterKeyCommand" SelectionOpacity="0" FontFamily="AR ESSENCE" FontSize="50" FontWeight="Bold" Text="{StaticResource ResourceKey=Rules}" Visibility="Hidden" >
                 <TextBox.Background>
-                    <SolidColorBrush Color="#FF2466F3" Opacity="0.5"/>
-                </TextBox.Background> 
+                    <SolidColorBrush Color="White" Opacity="0.7"/>
+                </TextBox.Background>
+                <TextBox.Effect>
+                    <DropShadowEffect Color="Yellow" x:Name="dropShadow" ShadowDepth="1" BlurRadius="5" />
+                </TextBox.Effect>
             </TextBox>
 
             <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
