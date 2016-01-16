@@ -129,6 +129,7 @@ namespace KillerWearsPrada.Model
         {
             attClueText = ClueText;
         }
+
         public Boolean SetAsTrashed()
         {
             if (!this.IsInInventory)

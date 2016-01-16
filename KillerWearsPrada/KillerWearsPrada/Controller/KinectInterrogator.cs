@@ -97,7 +97,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Start the thread that take periodic screenshot for the kinect sensor
         /// </summary>
-        public void StartTakingScreenshot()
+        public void StartTakingScreenshots()
         {
             attTimerScreenshots.Start();
         }
@@ -105,7 +105,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Stop the thread that take periodic screenshot for the kinect sensor
         /// </summary>
-        public void StopTakingScreenshot()
+        public void StopTakingScreenshots()
         {
             if(attScreenshotWorker.IsBusy)
             {

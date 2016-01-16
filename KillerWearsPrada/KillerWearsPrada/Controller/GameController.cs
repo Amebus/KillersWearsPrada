@@ -20,6 +20,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="KinectSensor">The <see cref="Microsoft.Kinect.KinectSensor"/> associated to the game</param>
         public GameController(Microsoft.Kinect.KinectSensor KinectSensor)
         {
             attKinectInterrogator = new KinectInterrogator( KinectSensor, REFRESH_TIME );
@@ -35,7 +36,7 @@ namespace KillerWearsPrada.Controller
         }
         
         /// <summary>
-        /// 
+        /// The instannce of Class representing the Event ResumeGame
         /// </summary>
         public ResumeGame GetResumeGame
         {
@@ -43,54 +44,81 @@ namespace KillerWearsPrada.Controller
         }
 
         /// <summary>
-        /// 
+        /// The instannce of Class representing the Event UnloadGame
         /// </summary>
         public UnloadGame GetUnloadGame
         {
             get { return attUnloadGame; }
         }
 
+        /// <summary>
+        /// Representing the index of the room in which the player is investigating
+        /// </summary>
         public Int32 ActualRoomIndex
         {
             get { return attGame.ActualRoomIndex; }
             set { attGame.ActualRoomIndex = value; }
         }
-        
+
+        /// <summary>
+        /// Reperesent the <see cref="Model.Room"/> in which the player is investigating
+        /// </summary>
         public Model.Room ActualRoom
         {
             get { return attGame.ActualRoom; }
         }
         
+        /// <summary>
+        /// Represent a List of <see cref="Model.Item"/> items contained in the <see cref="Model.Room"/> in which the player is invastigating
+        /// </summary>
         public List<Model.Item> ActualRoomItems
         {
             get { return attGame.ActualRoom.Items; }
         }
 
+        /// <summary>
+        /// Represent a value which indicate if the game is alredy started
+        /// </summary>
         public Boolean IsGameStarted
         {
             get { return attGame.GameStarted; }
         }
 
+        /// <summary>
+        /// The name of the player
+        /// </summary>
         public String NamePlayer
         {
             get { return attGame.PlayerName; }
         }
 
+        /// <summary>
+        /// Represent the List of <see cref="Model.Room"/> defined in the actual game
+        /// </summary>
         public List<Model.Room> Rooms
         {
             get { return attGame.Rooms; }
         }
 
+        /// <summary>
+        /// Represent a List of <see cref="Model.Item"/> that are in the player's inventory
+        /// </summary>
         public List<Model.Item> ItemsInInventory
         {
             get { return attGame.ItemsInInventory; }
         }
 
+        /// <summary>
+        /// Represent a List of <see cref="Model.Item"/> that are in the player's tresh
+        /// </summary>
         public List<Model.Item> ItemsInTrash
         {
             get { return attGame.ItemsIntrash; }
         }
 
+        /// <summary>
+        /// Set a value that the Game has been started
+        /// </summary>
         public void SetGameStarted ()
         {
             attGame.GameStarted = true;
@@ -115,14 +143,20 @@ namespace KillerWearsPrada.Controller
             attGame = (Model.Game)Helpers.SerializerHelper.Deserialize(wvPath);
         }
         
-        public void StartTakingScreenShot()
+        /// <summary>
+        /// Start the routine which is in charge to taking screenshots to recognize whenever a palyer enter or leave the KinectSensor
+        /// </summary>
+        public void StartTakingScreenshots()
         {
-            attKinectInterrogator.StartTakingScreenshot();
+            attKinectInterrogator.StartTakingScreenshots();
         }
 
-        public void StopTakingScreenShot()
+        /// <summary>
+        /// Stop the routine which is in charge to taking screenshots to recognize whenever a palyer enter or leave the KinectSensor
+        /// </summary>
+        public void StopTakingScreenshots()
         {
-            attKinectInterrogator.StopTakingScreenshot();
+            attKinectInterrogator.StopTakingScreenshots();
         }
 
 

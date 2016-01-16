@@ -38,7 +38,6 @@ namespace KillerWearsPrada.Model
             attPlayer = new Player(ID, PlayerName);
             attScore = 0;
             attActualRoom = 0;
-            
 
         }
 
@@ -53,6 +52,11 @@ namespace KillerWearsPrada.Model
             get { return PlayerName; }
         }
 
+        /// <summary>
+        /// Get or set the Actual Room Index
+        /// If the passed value exceed the room count the Actual Room Index is setted to the maximum index available.
+        /// If the passed value is less than zero the Actual Room Index is setted to zero.
+        /// </summary>
         public Int32 ActualRoomIndex
         {
             get { return attActualRoom; }
@@ -67,22 +71,34 @@ namespace KillerWearsPrada.Model
             }
         }
 
+        /// <summary>
+        /// Get or Set a value that idicate if the Game is alredy started or not
+        /// </summary>
         public Boolean GameStarted
         {
             get { return attStarted; }
             set { attStarted = value; }
         }
 
+        /// <summary>
+        /// Represent the Actual Room
+        /// </summary>
         public Room ActualRoom
         {
             get { return attRooms[attActualRoom]; }
         }
-        
+
+        /// <summary>
+        /// Represent the player's score 
+        /// </summary>
         public Int32 Score
         {
             get { return attScore; }
         }
 
+        /// <summary>
+        /// Represent a List of the Items placed in the player's inventory
+        /// </summary>
         public List<Item> ItemsInInventory
         {
             get
@@ -102,6 +118,9 @@ namespace KillerWearsPrada.Model
             }
         }
 
+        /// <summary>
+        /// Represent a List of the Items placed in the player's trash
+        /// </summary>
         public List<Item> ItemsIntrash
         {
             get
@@ -120,13 +139,16 @@ namespace KillerWearsPrada.Model
                 return wvItems;
             }
         }
-
+        
         public List<Room> Rooms
         {
             get { return attRooms; }
             set { attRooms = value; }
         }
         
+        /// <summary>
+        /// Represent the solution of the game
+        /// </summary>
         public Solution Solution
         {
             get { return Solution; }
