@@ -7,20 +7,27 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Room : ISerializable
+    public class Room : ISerializable
     {
         private List<Item> attItems;
 
         private  List<Clue> attClues;
+
+        private String attRoomName;
         
-        public Room(List<Item> Items)
+        public Room(List<Item> Items, List<Clue> Clues, String Name)
         {
             attItems = Items;
             // ogni stanza contnene anche le clues che verranno mostate nelle finestre degli item
             // più una Clue che sarà risolutiva per un'altra stanza
-            // attClues = new List<Clue>();
+            attClues = Clues;
         } 
         
+        public String Name
+        {
+            get { return Name; }
+        }
+
         public List<Item> Items
         {
             get { return attItems; }

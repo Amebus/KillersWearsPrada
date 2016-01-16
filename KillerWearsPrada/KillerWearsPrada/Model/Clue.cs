@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Clue : ISerializable
+    public class Clue : ISerializable
     {
         private const string BASE = "Un testimone si ricorda che il capo ";
 

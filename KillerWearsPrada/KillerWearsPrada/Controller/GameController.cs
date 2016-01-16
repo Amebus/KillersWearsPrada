@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace KillerWearsPrada.Controller
 {
@@ -49,33 +50,40 @@ namespace KillerWearsPrada.Controller
             get { return attUnloadGame; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="Sender"></param>
-        /// <param name="Parameters"></param>
-        private void HandlePlayerEnterKinectSensor(object Sender, PlayerChecker.PlayerEnterKinectSensor.Args Parameters)
+        public Int32 ActualRoomIndex
         {
-            LoadGame(Parameters.ID);
-            attResumeGame.RaiseEvent();
+            get { return attGame.ActualRoomIndex; }
+            set { attGame.ActualRoomIndex = value; }
+        }
+        
+        public Model.Room ActualRoom
+        {
+            get { return attGame.ActualRoom; }
+        }
+        
+        public List<Model.Item> ActualRoomItems
+        {
+            get { return attGame.ActualRoom.Items; }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HandlePlayerLeaveKinectSensor(object Sender, PlayerChecker.PlayerLeaveKinectSensor.Args Parameters)
+        public Boolean IsGameStarted
         {
-            throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore lascia la postazione");
-
-            SaveGame();
-            attUnloadGame.RaiseEvent();
+            get { return attGame.GameStarted; }
         }
 
-        private string CombinePath(String Path1, String Path2)
+        public String NamePlayer
         {
-            return System.IO.Path.Combine(Path1, Path2);
+            get { return attGame.PlayerName; }
+        }
+
+        public List<Model.Room> Rooms
+        {
+            get { return attGame.Rooms; }
+        }
+
+        public void SetGameStarted ()
+        {
+            attGame.GameStarted = true;
         }
 
         /// <summary>
@@ -107,6 +115,8 @@ namespace KillerWearsPrada.Controller
             attKinectInterrogator.StopTakingScreenshot();
         }
 
+
+
         /// <summary>
         /// Create a new <see cref="Model.Game"/> and a new <see cref="Model.Player"/> and save them into a file
         /// </summary>
@@ -133,6 +143,36 @@ namespace KillerWearsPrada.Controller
 
             foreach (System.IO.FileInfo wvFile in wvFileInfos)
                 wvFile.Delete();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Sender"></param>
+        /// <param name="Parameters"></param>
+        private void HandlePlayerEnterKinectSensor(object Sender, PlayerChecker.PlayerEnterKinectSensor.Args Parameters)
+        {
+            LoadGame(Parameters.ID);
+            attResumeGame.RaiseEvent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HandlePlayerLeaveKinectSensor(object Sender, PlayerChecker.PlayerLeaveKinectSensor.Args Parameters)
+        {
+            throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore lascia la postazione");
+
+            SaveGame();
+            attUnloadGame.RaiseEvent();
+        }
+
+        private string CombinePath(String Path1, String Path2)
+        {
+            return System.IO.Path.Combine(Path1, Path2);
         }
 
         /// <summary>

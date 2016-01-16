@@ -8,7 +8,7 @@ namespace KillerWearsPrada.Model
 {
 
     //da ricontrollare
-    enum E_Color
+    public enum E_Color
     {
         NULL,
         ARANCIONE,
@@ -19,21 +19,21 @@ namespace KillerWearsPrada.Model
         VIOLA
     }
 
-    enum E_Gradiation
+    public enum E_Gradiation
     {
         NULL,
         CHIARO,
         SCURO
     }
 
-    enum E_Shape
+    public enum E_Shape
     {
         NULL,
         CORTO,
         LUNGO
     }
 
-    enum E_Texture //can be taken from DB table TipoTexture
+    public enum E_Texture //can be taken from DB table TipoTexture
     {
         NULL,
         FANTASIA,
@@ -43,7 +43,7 @@ namespace KillerWearsPrada.Model
         TINTA_UNITA
     }
 
-    enum E_ItemKind // can be taken from DB table TipoCapo
+    public enum E_ItemKind // can be taken from DB table TipoCapo
     {
         NULL,
         Cappello,

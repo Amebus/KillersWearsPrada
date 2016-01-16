@@ -12,7 +12,6 @@ namespace KillerWearsPrada.Model
         private String attName;
         private String attID;
 
-
         public Player (String ID, String Name)
         {
             attID = ID;

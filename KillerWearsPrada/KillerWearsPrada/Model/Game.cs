@@ -21,6 +21,7 @@ namespace KillerWearsPrada.Model
         /// </summary>
         private Int32 attActualRoom;
 
+        private Boolean attStarted;
         private Int32 attScore;
         private Solution attSolution;
         #endregion
@@ -34,6 +35,7 @@ namespace KillerWearsPrada.Model
         /// <param name="ItemsPerRoom">Number of items in each room</param>
         public Game (String ID, String PlayerName, Int32 Rooms, Int32 ItemsPerRoom)
         {
+            attStarted = false;
             attSolution = new Solution();
             attPlayer = new Player(ID, PlayerName);
             attScore = 0;
@@ -65,6 +67,26 @@ namespace KillerWearsPrada.Model
             get { return PlayerName; }
         }
 
+        public Int32 ActualRoomIndex
+        {
+            get { return attActualRoom; }
+            set
+            {
+                if (value >= attRooms.Count)
+                    attActualRoom = attRooms.Count - 1;
+                else if (value < 0)
+                    attActualRoom = 0;
+                else
+                    attActualRoom = value;
+            }
+        }
+
+        public Boolean GameStarted
+        {
+            get { return attStarted; }
+            set { attStarted = value; }
+        }
+
         public Room ActualRoom
         {
             get { return attRooms[attActualRoom]; }
@@ -73,6 +95,11 @@ namespace KillerWearsPrada.Model
         public Int32 Score
         {
             get { return attScore; }
+        }
+
+        public List<Room> Rooms
+        {
+            get { return attRooms; }
         }
 
         public List<Item> GetRoomItems(Int32 RoomIndex)

@@ -8,10 +8,8 @@ namespace KillerWearsPrada.Model
 {
     [Serializable]
     // this class represents the item in the game
-    class Item : ISerializable
+    public class Item : ISerializable
     {
-        private Clue attClue;
-        // dovrebbero essere 3 clues
 
         private int code;
         private String barcode;
@@ -23,6 +21,7 @@ namespace KillerWearsPrada.Model
         private String maskFileName;
         private String imageFileName;
 
+        private String attClueText;
 
         private Boolean attTrashed;
         private Boolean attInInventory;
@@ -41,7 +40,7 @@ namespace KillerWearsPrada.Model
         /// <param name="texture">string representing the texture file name</param>
         /// <param name="mask">string representing the mask file name</param>
         /// <param name="image">string representing the item image file name</param>
-        public Item(int c, String bc, String name, Double p, String descr, String rep, String texture, String mask, String image)
+        public Item(int c, String bc, String name, Double p, String descr, String rep, String texture, String mask, String image, String ClueText)
         {
             code = c;
             barcode = bc;
@@ -52,6 +51,7 @@ namespace KillerWearsPrada.Model
             textureFileName = texture;
             maskFileName = mask;
             imageFileName = image;
+            attClueText = ClueText;
 
             attTrashed = false;
             attInInventory = false;
@@ -59,12 +59,6 @@ namespace KillerWearsPrada.Model
         }
 
         #region Properties
-        public Clue Clue
-        {
-            get { return attClue; }
-            set { attClue = value; }
-        }
-
         public int Code
         {
             get { return code; }
@@ -124,6 +118,11 @@ namespace KillerWearsPrada.Model
         {
             get { return attDressed; }
         }
+
+        public String ClueText
+        {
+            get { return attClueText; }
+        }
         #endregion
 
         #region Methods
@@ -170,6 +169,11 @@ namespace KillerWearsPrada.Model
 
             attDressed = false;
             return true;
+        }
+
+        public override string ToString()
+        {
+            return attClueText;
         }
         #endregion
     }
