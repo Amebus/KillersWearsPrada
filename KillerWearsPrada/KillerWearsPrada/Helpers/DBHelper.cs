@@ -41,7 +41,7 @@ namespace KillerWearsPrada.Helpers
             return "Successfull connection";
         }
 
-
+        #region Items
         /// <summary>
         /// This methods implements a query over the db that given some parameters returns a random item
         /// </summary>
@@ -256,17 +256,19 @@ namespace KillerWearsPrada.Helpers
 
             return i;
         }
+        #endregion
 
+        #region Player
         /// <summary>
         /// this method updates the DB adding a score to a player
         /// </summary>
-        /// <param name="player">integer, player ID</param>
+        /// <param name="player">string, player ID (datetime)</param>
         /// <param name="score">integer, player's score</param>
-        public void SaveScoreForPlayer (int player, int score)
+        public void SaveScoreForPlayer(String player, int score)
         {
             DBConnection.Open();
-            
-            string query = "UPDATE Utente SET Punteggio = @value WHERE ID = @id;";
+
+            string query = "UPDATE Utente SET Punteggio = @value WHERE DateTime = @id;";
 
 
             /*OleDbCommand command = new OleDbCommand(query, DBConnection);
@@ -274,7 +276,7 @@ namespace KillerWearsPrada.Helpers
             command.Parameters.Add("@id", OleDbType.Integer).Value = player;*/
 
             query = query.Replace("@value", score.ToString());
-            query = query.Replace("@id", player.ToString());
+            query = query.Replace("@id", player);
 
 
             OleDbCommand command = new OleDbCommand(query, DBConnection);
@@ -285,7 +287,50 @@ namespace KillerWearsPrada.Helpers
 
         }
 
+        /// <summary>
+        /// this method inserts a new player in the DB
+        /// </summary>
+        /// <param name="dateTime">string, player ID (datetime)</param>
+        /// <param name="username">string, player's username</param>
+        public void AddPlayer(String dateTime, String username)
+        {
+            DBConnection.Open();
 
-        
+            string query = "INSERT INTO Utente (NomeUtente,DateTime) VALUES (@username,@dateTime);";
+            
+            query = query.Replace("@username", username);
+            query = query.Replace("@dateTime", dateTime);
+
+
+            OleDbCommand command = new OleDbCommand(query, DBConnection);
+
+            command.ExecuteNonQuery();
+
+            DBConnection.Close();
+
+        }
+        /// <summary>
+        /// this method removes a player from the DB
+        /// </summary>
+        /// <param name="player">string, player ID (datetime)</param>
+        public void RemovePlayer (String player)
+        {
+            DBConnection.Open();
+            
+            string query = "DELETE * FROM  Utente  WHERE DateTime = @id;";
+                          
+            query = query.Replace("@id", player);
+            
+            OleDbCommand command = new OleDbCommand(query, DBConnection);
+
+            command.ExecuteNonQuery();
+
+            DBConnection.Close();
+
+        }
+
+        #endregion
+
+
     }
 }
