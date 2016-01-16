@@ -88,7 +88,7 @@
                                 <!-- Posso cambiare l'immagine della porta con una scura -->
                                 <VisualState x:Name="Disabled">
                                     <Storyboard Name="disabled" >
-                                        <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
+                              <!--          <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/> -->
                                         <ColorAnimation Duration="0" Storyboard.TargetName="dropShadow" Storyboard.TargetProperty="Color" To="Red"/>
                                     </Storyboard>
                                 </VisualState>
@@ -100,7 +100,7 @@
                             </Image.Effect>
                         </Image>
 
-                        <Image x:Name="doorDisabled" Source="{Binding Mode=OneWay, Source={StaticResource SXdoorDisabled_Image}}" Opacity="0"  />
+                 <!--       <Image x:Name="doorDisabled" Source="{Binding Mode=OneWay, Source={StaticResource SXdoorDisabled_Image}}" Opacity="0"  /> -->
 
                     </Grid>
                 </ControlTemplate>
@@ -145,9 +145,7 @@
                                 </VisualState>
                                 <!-- Posso cambiare l'immagine della porta con una scura -->
                                 <VisualState x:Name="Disabled">
-                                <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
-                                    
+                                    <Storyboard>
                                         <ColorAnimation Duration="0" Storyboard.TargetName="dropShadow" Storyboard.TargetProperty="Color" To="Red"/>
                                     </Storyboard>
                                 </VisualState>
@@ -161,7 +159,6 @@
                                 <DropShadowEffect Color="{DynamicResource BlinkColor}" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
                             </Image.Effect>
                         </Image>
-                        <Image x:Name="doorDisabled" Source="{Binding Mode=OneWay, Source={StaticResource CENTERdoorDisabled_Image}}" Opacity="0"  />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -208,8 +205,6 @@
                                 <!-- Posso cambiare l'immagine della porta con una scura -->
                                 <VisualState x:Name="Disabled">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
-
                                         <ColorAnimation Duration="0" Storyboard.TargetName="dropShadow" Storyboard.TargetProperty="Color" To="Red"/>
                                     </Storyboard>
                                 </VisualState>
@@ -220,7 +215,6 @@
                                 <DropShadowEffect Color="{DynamicResource BlinkColor}" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
                             </Image.Effect>
                         </Image>
-                        <Image x:Name="doorDisabled" Source="{Binding Mode=OneWay, Source={StaticResource DXdoor_Image}}" Opacity="0"  />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
