@@ -58,20 +58,21 @@ namespace KillerWearsPrada.Helpers
         ///         5. Item Description
         ///         6. Item Reparto
         ///         7. Texture file name
-        ///         8. Mask file name
+        ///         8. Image file name
+        ///         9. item kind
         /// </returns>
         public Item GetItemFromClues(E_Shape long1, E_Gradiation light, E_Texture textureKind, E_Color color, E_ItemKind itemKind){
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, M.FileName, I.Image";
-            query += " FROM Item AS I ,Texture AS T, Mask AS M, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
-            query += " WHERE II.ItemKind = IK.ID AND II.Mask = M.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
+            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
+            query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
+            query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
             query += " AND I.Available > 10 AND II.Long = @p1 AND T.Light = @p2 AND TK.TextureKind = @p3 AND T.MainColor = @p4 AND IK.ItemKind = @p5";
             query += " ORDER BY rnd(C.ID)";
 
             // parameter @p1 - shape
-            if (long1 == E_Shape.LUNGO)
+            if (long1 == E_Shape.LONG)
             {
                 query = query.Replace("@p1", true.ToString());
             }
@@ -81,7 +82,7 @@ namespace KillerWearsPrada.Helpers
             }
 
             // parameter @p2 - gradiation
-            if (light == E_Gradiation.CHIARO)
+            if (light == E_Gradiation.LIGHT)
             {
                 query = query.Replace("@p2", true.ToString());
             }
@@ -114,11 +115,10 @@ namespace KillerWearsPrada.Helpers
             String descr = result.GetString(4);
             String rep = result.GetString(5);
             String texture = result.GetString(6);
-            String mask = result.GetString(7);
-            String image = result.GetString(8);
+            String image = result.GetString(7);
             
 
-            Item i = new Item(codice, barcode, name, price, descr, rep, texture, mask, image);
+            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, itemKind.ToString());
 
             DBConnection.Close();
 
@@ -139,8 +139,8 @@ namespace KillerWearsPrada.Helpers
         ///         5. Item Description
         ///         6. Item Reparto
         ///         7. Texture file name
-        ///         8. Mask file name
-        ///         9. Image file name
+        ///         8. Image file name
+        ///         9. item kind
         /// </returns>
         public Item GetItemByShape(E_Shape long1, E_ItemKind itemKind)
         {
@@ -149,14 +149,14 @@ namespace KillerWearsPrada.Helpers
 
             // note : we want items of which we have more than 10 available 
 
-            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, M.FileName, I.Image";
-            query += " FROM Item AS I ,Texture AS T, Mask AS M, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
-            query += " WHERE II.ItemKind = IK.ID AND II.Mask = M.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
+            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
+            query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
+            query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
             query += " AND I.Available > 10 AND II.Long = @shape AND IK.ItemKind = @kind";
             query += " ORDER BY rnd(C.ID)";
 
             // parameter @shape
-            if (long1 == E_Shape.LUNGO)
+            if (long1 == E_Shape.LONG)
             {
                 query = query.Replace("@shape", true.ToString());
             }
@@ -180,11 +180,11 @@ namespace KillerWearsPrada.Helpers
             String descr = result.GetString(4);
             String rep = result.GetString(5);
             String texture = result.GetString(6);
-            String mask = result.GetString(7);
-            String image = result.GetString(8);
+            String image = result.GetString(7);
+            
             
 
-            Item i = new Item(codice, barcode, name, price , descr, rep, texture , mask, image);
+            Item i = new Item(codice, barcode, name, price , descr, rep, texture , image, itemKind.ToString());
 
             DBConnection.Close();
 
@@ -206,22 +206,22 @@ namespace KillerWearsPrada.Helpers
         ///         5. Item Description
         ///         6. Item Reparto
         ///         7. Texture file name
-        ///         8. Mask file name
-        ///         9. Image file name
+        ///         8. Image file name
+        ///         9. item kind
         /// </returns>
         public Item GetItemByGradation(E_Gradiation light, E_ItemKind itemKind)
         {
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, M.FileName, I.Image";
-            query += " FROM Item AS I ,Texture AS T, Mask AS M, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
-            query += " WHERE II.ItemKind = IK.ID AND II.Mask = M.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
+            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
+            query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
+            query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
             query += " AND I.Available > 10 AND T.Light = @grad AND IK.ItemKind = @kind";
             query += " ORDER BY rnd(C.ID)";
 
             // parameter @p2 - gradiation
-            if (light == E_Gradiation.CHIARO)
+            if (light == E_Gradiation.LIGHT)
             {
                 query = query.Replace("@grad", true.ToString());
             }
@@ -246,11 +246,11 @@ namespace KillerWearsPrada.Helpers
             String descr = result.GetString(4);
             String rep = result.GetString(5);
             String texture = result.GetString(6);
-            String mask = result.GetString(7);
-            String image = result.GetString(8);
+            String image = result.GetString(7);
+            
             
 
-            Item i = new Item(codice, barcode, name, price, descr, rep, texture, mask, image);
+            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, itemKind.ToString());
 
             DBConnection.Close();
 

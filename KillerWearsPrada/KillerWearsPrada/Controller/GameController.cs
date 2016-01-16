@@ -266,26 +266,26 @@ namespace KillerWearsPrada.Controller
 
 
 
-            if (!wvSolution.CheckItemKind(Model.E_ItemKind.Cappello))
+            if (!wvSolution.CheckItemKind(Model.E_ItemKind.hat))
             {
-                wvSolution.AddItemKind(Model.E_ItemKind.Cappello);
+                wvSolution.AddItemKind(Model.E_ItemKind.hat);
             }
-            else if (!wvSolution.CheckItemKind(Model.E_ItemKind.Maglietta))
+            else if (!wvSolution.CheckItemKind(Model.E_ItemKind.t_shirt))
             {
-                wvSolution.AddItemKind(Model.E_ItemKind.Maglietta);
+                wvSolution.AddItemKind(Model.E_ItemKind.t_shirt);
             }
-            else if (!wvSolution.CheckItemKind(Model.E_ItemKind.Pantaloni))
+            else if (!wvSolution.CheckItemKind(Model.E_ItemKind.trousers))
             {
-                wvSolution.AddItemKind(Model.E_ItemKind.Pantaloni);
+                wvSolution.AddItemKind(Model.E_ItemKind.trousers);
             }
 
 
             //Il primo è quello giusto
-            wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.CHIARO, wvSolution.LastItemKind));
+            wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.LIGHT, wvSolution.LastItemKind));
 
             NumberOfItems--;
             //mi faccio dare gli altri (per ora sola il secondo)
-            wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.SCURO, wvSolution.LastItemKind));
+            wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.DARK, wvSolution.LastItemKind));
             
         }
 

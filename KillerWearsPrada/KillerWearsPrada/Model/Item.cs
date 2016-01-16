@@ -17,9 +17,9 @@ namespace KillerWearsPrada.Model
         private Double price;
         private String description;
         private String reparto;
-        private String textureFileName;
-        private String maskFileName;
+        private String textureFileName;        
         private String imageFileName;
+        private String itemKind;
 
         private String attClueText;
 
@@ -38,9 +38,9 @@ namespace KillerWearsPrada.Model
         /// <param name="descr">string representing the description</param>
         /// <param name="rep">string representing the Reparto</param>
         /// <param name="texture">string representing the texture file name</param>
-        /// <param name="mask">string representing the mask file name</param>
         /// <param name="image">string representing the item image file name</param>
-        public Item(int c, String bc, String name, Double p, String descr, String rep, String texture, String mask, String image)
+        /// <param name="kind">string representing the item kind</param>
+        public Item(int c, String bc, String name, Double p, String descr, String rep, String texture, String image, String kind)
         {
             code = c;
             barcode = bc;
@@ -48,9 +48,9 @@ namespace KillerWearsPrada.Model
             price = p;
             description = descr;
             reparto = rep;
-            textureFileName = texture;
-            maskFileName = mask;
+            textureFileName = texture;            
             imageFileName = image;
+            itemKind = kind;
 
             attTrashed = false;
             attInInventory = false;
@@ -93,9 +93,9 @@ namespace KillerWearsPrada.Model
             get { return textureFileName; }
         }
 
-        public String MaskFileName
+        public String ItemKind
         {
-            get { return maskFileName; }
+            get { return itemKind; }
         }
 
         public String ImageFileName

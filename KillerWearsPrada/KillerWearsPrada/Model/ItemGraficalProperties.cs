@@ -11,48 +11,51 @@ namespace KillerWearsPrada.Model
     public enum E_Color
     {
         NULL,
-        ARANCIONE,
-        BLU,
-        GIALLO,
-        ROSSO,
-        VERDE,
-        VIOLA
+        BLACK,
+        BLUE,
+        BROWN,
+        GRAY,
+        GREEN,        
+        RED,
+        PINK,        
+        PURPLE,
+        YELLOW
     }
 
     public enum E_Gradiation
     {
         NULL,
-        CHIARO,
-        SCURO
+        LIGHT,
+        DARK
     }
 
     public enum E_Shape
     {
         NULL,
-        CORTO,
-        LUNGO
+        SHORT,
+        LONG
     }
 
     public enum E_Texture //can be taken from DB table TipoTexture
     {
         NULL,
-        FANTASIA,
+        FANTASY,
         POIS,
-        RIGHE,
-        SCOZZESE,
-        TINTA_UNITA
+        STRIPES,
+        SCOTTISH,
+        PLAINCOLOR
     }
 
     public enum E_ItemKind // can be taken from DB table TipoCapo
     {
         NULL,
-        Cappello,
-        Cappelino,
-        Camicia,
-        Pantaloni,
-        Maglietta,
-        Maglione,
-        Gonna
+        hat,
+        shirt,
+        t_shirt,
+        trousers,
+        skirt,
+        cap,
+        jumper
         
     }
     
