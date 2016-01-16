@@ -27,6 +27,8 @@
 
         <sys:String x:Key="Selection_Background">grey4.jpg</sys:String>
 
+        <sys:String x:Key="Trash_Empty">trashEmpty.png</sys:String>
+
         <!--#region Immagini Porte-->
         <sys:String x:Key="Doors_Image">doors3empty1.jpg</sys:String>
 

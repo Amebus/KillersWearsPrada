@@ -26,6 +26,8 @@ namespace KillerWearsPrada.Helpers
 
             Selection_Crime,
             Selection_Background,
+
+            Trash_Empty
         }
 
         public enum E_RoomsImages

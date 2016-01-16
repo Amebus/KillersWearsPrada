@@ -32,7 +32,9 @@ namespace KillerWearsPrada
 
 
         //Controller.KinectInterrogator attKinectInterrogator;
-        Controller.GameController attGameController;
+        public Controller.GameController attGameController { get; set; }
+
+
         #region Delegates for GameController events
         private delegate void ResumeGameHandler(GameController.ResumeGame.Args Parameters);
         private delegate void UnloadGameHandler(GameController.UnloadGame.Args Parameters);
@@ -49,7 +51,12 @@ namespace KillerWearsPrada
         string backgroundPath;
         #endregion
 
+
+        public  string provamw { get { return "ciaone"; } }
+
         Window attDebug;
+
+        
 
 
         public MainWindow()
@@ -86,7 +93,9 @@ namespace KillerWearsPrada
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
-        
+
+      
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             attDebug = new UC.DebugWindow();
@@ -352,7 +361,7 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Background);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Crime);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Background);
-
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Trash_Empty);
 
             //path delle immagini delle porte
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.SXdoor_Image);

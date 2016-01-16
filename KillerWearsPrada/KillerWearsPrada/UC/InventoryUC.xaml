@@ -60,8 +60,34 @@
                 </TransformGroup>
             </Grid.RenderTransform>
 
-            <TextBox Name="prova" Margin="428,323,718,288" ></TextBox>
-           
+            <ListView Margin="1043,0,0,198" Name="lvDataBinding">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="Name cloth: " />
+                            <Label Content="{Binding ImageFileName}" FontWeight="Bold" />
+                            <Label Content=", " />
+                            <Label Content="Age: " />
+                            <Label Content="{Binding BarCode}" FontWeight="Bold" />
+                            <Label Content=" (" />
+                            <Label Content="{Binding ItemName}" />
+                            <Label Content=")" />
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="548,0,642,198">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="Image_GridViewColumnName" Width="150" Height="150" Source="{Binding ImageFileName}" />
+                            <CheckBox x:Name="trashare" Content="cestino?" Click="trashare_Click"></CheckBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
             <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-58,-39,1440,789">
                 <Button.Background>
                     <ImageBrush/>
@@ -89,6 +115,24 @@
                         </BeginStoryboard>
                     </EventTrigger>
                 </Button.Triggers>
+            </Button>
+
+            <Button Name="submission" Width="645" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,666,163,10" Click="submission_Click">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
+                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,50,0" VerticalAlignment="Center" FontSize="67" Text="Submit your outfit!" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="637" Height="99" />
+                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
+                </StackPanel>
+
+            </Button>
+
+            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1373,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}">
+                <Button.Background>
+                    <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Trash_Empty}}" Stretch="UniformToFill"/>
+                </Button.Background>
+
             </Button>
 
         </Grid>
