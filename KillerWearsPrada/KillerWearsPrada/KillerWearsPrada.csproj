@@ -117,6 +117,9 @@
     <Compile Include="UC\InventoryUC.xaml.cs">
       <DependentUpon>InventoryUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UC\LeaveGame.xaml.cs">
+      <DependentUpon>LeaveGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UC\Room.xaml.cs">
       <DependentUpon>Room.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UC\InventoryUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\LeaveGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
