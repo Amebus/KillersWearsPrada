@@ -25,7 +25,7 @@ namespace KillerWearsPrada.UC
         private ImageBrush ib3;
 
 
-        public Room(String roomID)
+        public Room(string roomID)
         {
             // roomID contiene l'ID della stanza che devo caricare
             // in questa prova contiene il nome dell'immagine di sfondo della stanza che devo caricare
@@ -51,7 +51,7 @@ namespace KillerWearsPrada.UC
         /// Set canvas background acconrdingly to the door selected
         /// </summary>
         /// <param name="roomImagePath"></param>
-        public void setBackgroundCanvas(String roomImagePath)
+        public void setBackgroundCanvas(string roomImagePath)
         {
             ib1 = new ImageBrush();
             ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
@@ -59,19 +59,19 @@ namespace KillerWearsPrada.UC
         }
 
         /*
-        public void setImageBrush1(String roomImagePath)
+        public void setImageBrush1(string roomImagePath)
         {
             ib1 = new ImageBrush();
             ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
         }
 
-        public void setImageBrush2(String roomImagePath)
+        public void setImageBrush2(string roomImagePath)
         {
             ib1 = new ImageBrush();
             ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
         }
 
-        public void setImageBrush3(String roomImagePath)
+        public void setImageBrush3(string roomImagePath)
         {
             ib1 = new ImageBrush();
             ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
@@ -171,25 +171,25 @@ namespace KillerWearsPrada.UC
             change_LivingroomButtons_Status(false);
         }
 
-        public void change_KitchenButtons_Status(Boolean b)
+        public void change_KitchenButtons_Status(bool b)
         {
             hat1.IsEnabled = b;
             hat3.IsEnabled = b;
         }
 
-        public void change_LivingroomButtons_Status(Boolean b)
+        public void change_LivingroomButtons_Status(bool b)
         {
             trousers1.IsEnabled = b;
             trousers3.IsEnabled = b;
         }
 
-        public void change_BedroomButtons_Status(Boolean b)
+        public void change_BedroomButtons_Status(bool b)
         {
             shirt3.IsEnabled = b;
             shirt4.IsEnabled = b;
         }
 
-        public void change_CommonButtons_Status(Boolean b)
+        public void change_CommonButtons_Status(bool b)
         {
             inventory_btn.IsEnabled = b;
             exit.IsEnabled = b;

@@ -5,10 +5,10 @@ namespace KillerWearsPrada.Controller
 {
     public class GameController
     {
-        private const Int32 REFRESH_TIME = 1000;
-        private const Int32 DEBUG_REFRESH_TIME = 10000;
-        private const Int32 ITEMS_PER_ROOM = 2;
-        private const Int32 NUMBER_OF_ROOMS = 3;
+        private const int REFRESH_TIME = 1000;
+        private const int DEBUG_REFRESH_TIME = 10000;
+        private const int ITEMS_PER_ROOM = 2;
+        private const int NUMBER_OF_ROOMS = 3;
 
         private Model.Game attGame;
         private Helpers.DBHelper attDataBase;
@@ -54,7 +54,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Representing the index of the room in which the player is investigating
         /// </summary>
-        public Int32 ActualRoomIndex
+        public int ActualRoomIndex
         {
             get { return attGame.ActualRoomIndex; }
             set { attGame.ActualRoomIndex = value; }
@@ -79,7 +79,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent a value which indicate if the game is alredy started
         /// </summary>
-        public Boolean IsGameStarted
+        public bool IsGameStarted
         {
             get { return attGame.GameStarted; }
         }
@@ -87,7 +87,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// The name of the player
         /// </summary>
-        public String NamePlayer
+        public string NamePlayer
         {
             get { return attGame.PlayerName; }
         }
@@ -129,7 +129,7 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public void SaveGame()
         {
-            String wvPath = Helpers.ResourcesHelper.SavesDirectory;
+            string wvPath = Helpers.ResourcesHelper.SavesDirectory;
             wvPath = CombinePath(wvPath, attGame.PlayerID);
             Helpers.SerializerHelper.Serialize(wvPath, attGame);
         }
@@ -137,9 +137,9 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Resume the status of a specified game saved in binary format
         /// </summary>
-        public void LoadGame(String ID)
+        public void LoadGame(string ID)
         {
-            String wvPath = CombinePath(Helpers.ResourcesHelper.SavesDirectory, ID);
+            string wvPath = CombinePath(Helpers.ResourcesHelper.SavesDirectory, ID);
             attGame = (Model.Game)Helpers.SerializerHelper.Deserialize(wvPath);
         }
         
@@ -165,10 +165,10 @@ namespace KillerWearsPrada.Controller
         /// Create a new <see cref="Model.Game"/> and a new <see cref="Model.Player"/> and save them into a file
         /// </summary>
         /// <param name="PlayerName">Name of the <see cref="Model.Player"/></param>
-        public static void CreateGameAndPlayer(String PlayerName)
+        public static void CreateGameAndPlayer(string PlayerName)
         {
-            String wvPath = Helpers.ResourcesHelper.SavesDirectory;
-            String wvID = DateTime.Now.ToString();
+            string wvPath = Helpers.ResourcesHelper.SavesDirectory;
+            string wvID = DateTime.Now.ToString();
 
             wvID = wvID.Replace(' ', '-');
             wvID += ("-" + PlayerName);
@@ -185,7 +185,7 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         /// <param name="NumberOfItems"></param>
         /// <returns></returns>
-        private void CreateGame(Int32 NumberOfItems)
+        private void CreateGame(int NumberOfItems)
         {
             Model.Solution wvSolution = new Model.Solution();
             List<Model.Item> wvItems = new List<Model.Item>();
@@ -212,17 +212,17 @@ namespace KillerWearsPrada.Controller
             clue2= E_Shape
             clue3=...
 
-            Boolean positive1 = true;
+            bool positive1 = true;
             if(!randPositive1%3)
             {
                 positive1 = false;
             }
-            Boolean positive2 = true;
+            bool positive2 = true;
             if(!randPositive2%3)
             {
                 positive2 = false;
             }
-            Boolean positive3 = true;
+            bool positive3 = true;
             if(!randPositive3%3)
             {
                 positive3 = false;
@@ -323,7 +323,7 @@ namespace KillerWearsPrada.Controller
             attUnloadGame.RaiseEvent();
         }
 
-        private string CombinePath(String Path1, String Path2)
+        private string CombinePath(string Path1, string Path2)
         {
             return System.IO.Path.Combine(Path1, Path2);
         }

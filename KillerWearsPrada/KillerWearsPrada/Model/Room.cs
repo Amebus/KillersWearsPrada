@@ -10,7 +10,7 @@ namespace KillerWearsPrada.Model
     public class Room : ISerializable
     {
         
-        public Room(List<Item> Items, List<Clue> Clues, String Name)
+        public Room(List<Item> Items, List<Clue> Clues, string Name)
         {
             this.Name = Name;
 
@@ -20,7 +20,7 @@ namespace KillerWearsPrada.Model
             this.Clues = Clues;
         } 
         
-        public String Name
+        public string Name
         {
             get;
             private set;
@@ -35,7 +35,7 @@ namespace KillerWearsPrada.Model
         /// <summary>
         /// Represent the number on Item contained in the player's inventory
         /// </summary>
-        public Int32 NumberOfItemInInventory
+        public int NumberOfItemInInventory
         {
             get
             {
@@ -63,7 +63,7 @@ namespace KillerWearsPrada.Model
         }
         
 
-        public Item GetItemByBarCode (String BarCode)
+        public Item GetItemByBarCode (string BarCode)
         {
             foreach(Item it in this.Items)
             {
@@ -74,7 +74,7 @@ namespace KillerWearsPrada.Model
             return null;
         }
 
-        public Item GetItemByCode(Int32 Code)
+        public Item GetItemByCode(int Code)
         {
             foreach (Item it in Items)
             {

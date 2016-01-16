@@ -12,20 +12,20 @@ namespace KillerWearsPrada.Model
     {
 
         private int code;
-        private String barcode;
-        private String itemName;
+        private string barcode;
+        private string itemName;
         private Double price;
-        private String description;
-        private String reparto;
-        private String textureFileName;        
-        private String imageFileName;
-        private String itemKind;
+        private string description;
+        private string reparto;
+        private string textureFileName;        
+        private string imageFileName;
+        private string itemKind;
 
-        private String attClueText;
+        private string attClueText;
 
-        private Boolean attTrashed;
-        private Boolean attInInventory;
-        private Boolean attDressed;
+        private bool attTrashed;
+        private bool attInInventory;
+        private bool attDressed;
 
         /// <summary>
         /// constructor which initiates an Item object with parameters
@@ -40,7 +40,7 @@ namespace KillerWearsPrada.Model
         /// <param name="texture">string representing the texture file name</param>
         /// <param name="image">string representing the item image file name</param>
         /// <param name="kind">string representing the item kind</param>
-        public Item(int c, String bc, String name, Double p, String descr, String rep, String texture, String image, String kind)
+        public Item(int c, string bc, string name, Double p, string descr, string rep, string texture, string image, string kind)
         {
             code = c;
             barcode = bc;
@@ -63,7 +63,7 @@ namespace KillerWearsPrada.Model
             get { return code; }
         }
 
-        public String BarCode
+        public string BarCode
         {
             get { return barcode; }
         }
@@ -73,64 +73,64 @@ namespace KillerWearsPrada.Model
             get { return price; }
         }
 
-        public String ItemName
+        public string ItemName
         {
             get { return itemName; }
         }
 
-        public String Description
+        public string Description
         {
             get { return description; }
         }
 
-        public String Reparto
+        public string Reparto
         {
             get { return reparto; }
         }
 
-        public String TextureFilename
+        public string TextureFilename
         {
             get { return textureFileName; }
         }
 
-        public String ItemKind
+        public string ItemKind
         {
             get { return itemKind; }
         }
 
-        public String ImageFileName
+        public string ImageFileName
         {
             get { return imageFileName; }
         }
 
-        public Boolean IsTrashed
+        public bool IsTrashed
         {
             get { return attTrashed; }
         }
 
-        public Boolean IsInInventory
+        public bool IsInInventory
         {
             get { return attInInventory; }
         }
 
-        public Boolean IsDressed
+        public bool IsDressed
         {
             get { return attDressed; }
         }
 
-        public String ClueText
+        public string ClueText
         {
             get { return attClueText; }
         }
         #endregion
 
         #region Methods
-        public void SetClueText (String ClueText)
+        public void SetClueText (string ClueText)
         {
             attClueText = ClueText;
         }
 
-        public Boolean SetAsTrashed()
+        public bool SetAsTrashed()
         {
             if (!this.IsInInventory)
                 return false;
@@ -140,7 +140,7 @@ namespace KillerWearsPrada.Model
             return true;
         }
 
-        public Boolean RestoreFromTrash()
+        public bool RestoreFromTrash()
         {
             if (!this.IsTrashed)
                 return false;
@@ -153,7 +153,7 @@ namespace KillerWearsPrada.Model
             attInInventory = true;
         }
 
-        public Boolean Dress()
+        public bool Dress()
         {
             if (!this.IsInInventory || this.IsTrashed)
                 return false;
@@ -166,7 +166,7 @@ namespace KillerWearsPrada.Model
         /// It allows to undress an item
         /// </summary>
         /// <returns>true if the it has been undressed, false otherwise</returns>
-        public Boolean Undress()
+        public bool Undress()
         {
             if (!this.IsDressed)
                 return false;

@@ -12,7 +12,7 @@ namespace KillerWearsPrada.Controller
     class PlayerChecker
     {
         
-        private String attIDCurrentPalyer;
+        private string attIDCurrentPalyer;
 
         /// <summary>
         /// 
@@ -30,9 +30,9 @@ namespace KillerWearsPrada.Controller
         }
 
         /// <summary>
-        /// Return a <see cref="String"/> value that represent the current <see cref="Model.Player"/>'s ID
+        /// Return a <see cref="string"/> value that represent the current <see cref="Model.Player"/>'s ID
         /// </summary>
-        public String IDCurrentPlayer
+        public string IDCurrentPlayer
         {
             get { return attIDCurrentPalyer; }
         }
@@ -41,7 +41,7 @@ namespace KillerWearsPrada.Controller
         /// 
         /// </summary>
         /// <param name="ID"></param>
-        public void CheckPlayer(String ID)
+        public void CheckPlayer(string ID)
         {
             Relation wvRel = CheckRelation(attIDCurrentPalyer, ID);
             switch (wvRel)
@@ -67,7 +67,7 @@ namespace KillerWearsPrada.Controller
 
         }
 
-        private Relation CheckRelation(String ActualID, String NewID)
+        private Relation CheckRelation(string ActualID, string NewID)
         {
             Relation wvRel;
             if (ActualID == null)
@@ -105,7 +105,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// 
         /// </summary>
-        public void RaisePlayerEnterKinectSensorEvent(String ID)
+        public void RaisePlayerEnterKinectSensorEvent(string ID)
         {
             PlayerEnterKinectSensor.Args wvParameters = new PlayerEnterKinectSensor.Args(ID);
 
@@ -150,14 +150,14 @@ namespace KillerWearsPrada.Controller
             public class Args : EventArgs
             {
 
-                private String attID;
+                private string attID;
 
-                public Args(String ID) : base()
+                public Args(string ID) : base()
                 {
                     attID = ID;
                 }
 
-                public String ID
+                public string ID
                 {
                     get { return attID; }
                 }

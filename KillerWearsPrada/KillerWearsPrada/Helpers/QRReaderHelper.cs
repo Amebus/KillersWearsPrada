@@ -16,7 +16,7 @@ namespace KillerWearsPrada.Helpers
         /// <summary>
         /// Da vedere se riposizionare nei singoli metodi
         /// </summary>
-        private static String attImagePath;
+        private static string attImagePath;
         #endregion
         
 
@@ -24,17 +24,17 @@ namespace KillerWearsPrada.Helpers
         /// Imposta indirizzo immagine da cui estrarre BarCode e QRCode
         /// NB: indirizzo deve essere ASSOLUTO
         /// </summary>
-        public  static String ImagePath
+        public  static string ImagePath
         {
             set { attImagePath = value; }
         }
 
         /// <summary>
-        /// Resturn a <see cref="String"/> which represent the value of the BarCode found in an image
+        /// Resturn a <see cref="string"/> which represent the value of the BarCode found in an image
         /// <param name="BarCodeFound">True if the BarCode was find, False if was generate an error code</param>
         /// <returns>The BarCode found or an error string</returns>
         /// </summary>
-        public static String BarCode (out Boolean BarCodeFound)
+        public static string BarCode (out bool BarCodeFound)
         {
             Bitmap wvImage;
             BarcodeReader wvBarCodeReader;
@@ -73,11 +73,11 @@ namespace KillerWearsPrada.Helpers
         }
 
         /// <summary>
-        /// Resturn a <see cref="String"/> which represent the value of the QRCode found in an image
+        /// Resturn a <see cref="string"/> which represent the value of the QRCode found in an image
         /// </summary>
         /// <param name="QRCodeFound">True if the QRCode was find, False if was generate an error code</param>
         /// <returns>The QRCode found or an error string</returns>
-        public static String QRCode(out Boolean QRCodeFound)
+        public static string QRCode(out bool QRCodeFound)
         {
             Bitmap wvImage;
             BarcodeReader wvQRCodeReader;
@@ -107,12 +107,12 @@ namespace KillerWearsPrada.Helpers
         }
 
         /// <summary>
-        /// Resturn a <see cref="String"/> which represent the value of the QRCode found in an image
+        /// Resturn a <see cref="string"/> which represent the value of the QRCode found in an image
         /// </summary>
         /// <param name="QRCodeFound">True if the QRCode was find, False if was generate an error code</param>
         /// <param name="Image">The <see cref="Bitmap"/> image in which search the QRCode</param>
         /// <returns>The QRCode found or an error string</returns>
-        public static String QRCode(out Boolean QRCodeFound, Bitmap Image)
+        public static string QRCode(out bool QRCodeFound, Bitmap Image)
         {
             BarcodeReader wvQRCodeReader;
 
@@ -137,7 +137,7 @@ namespace KillerWearsPrada.Helpers
             return r.Text.ToString();
         }
 
-        public static void GenerateQRCode (String Text)
+        public static void GenerateQRCode (string Text)
         {
             Bitmap wvImage;
             BarcodeWriter wvQRCodeWriter = new BarcodeWriter();

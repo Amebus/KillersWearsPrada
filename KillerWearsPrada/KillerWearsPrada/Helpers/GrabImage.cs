@@ -15,7 +15,7 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         /// <param name="AsKinect">Se <code>true</code> ritorna implementazione che si interfaccia col kinect, altrimenti ritorna implementazione come test <param>
         /// <returns></returns>
-        public static GrabImage GrabImageAsKinect(Boolean AsKinect)
+        public static GrabImage GrabImageAsKinect(bool AsKinect)
         {
             if (AsKinect)
                 return new GrabImageKinect();

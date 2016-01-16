@@ -28,7 +28,7 @@ namespace KillerWearsPrada
     /// </summary>
     public partial class MainWindow : Window
     {
-        const Int32 REFRESH_TIME = 1000;
+        const int REFRESH_TIME = 1000;
 
 
         //Controller.KinectInterrogator attKinectInterrogator;
@@ -46,7 +46,7 @@ namespace KillerWearsPrada
         private Room room;
         private InventoryUC inventory;
         private SelectionDisplay selection_Display;
-        String backgroundPath;
+        string backgroundPath;
         #endregion
 
         Window attDebug;
@@ -320,7 +320,7 @@ namespace KillerWearsPrada
             //qui ci vorrebbe lo user control di provenienza?
             inventory = new InventoryUC();
 
-            String a = "-";
+            string a = "-";
             //qui l'id della maglietta di provenienza? non credo più...
             selection_Display = new SelectionDisplay(a);
             

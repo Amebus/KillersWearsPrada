@@ -19,10 +19,10 @@ namespace KillerWearsPrada.Model
         /// <summary>
         /// rappresenta la stanza in cui si trova il giocatore
         /// </summary>
-        private Int32 attActualRoom;
+        private int attActualRoom;
 
-        private Boolean attStarted;
-        private Int32 attScore;
+        private bool attStarted;
+        private int attScore;
         private Solution attSolution;
         #endregion
 
@@ -31,7 +31,7 @@ namespace KillerWearsPrada.Model
         /// </summary>
         /// <param name="ID">ID of the Game</param>
         /// <param name="PlayerName">Name of the player</param>
-        public Game (String ID, String PlayerName)
+        public Game (string ID, string PlayerName)
         {
             attStarted = false;
             attSolution = new Solution();
@@ -42,12 +42,12 @@ namespace KillerWearsPrada.Model
         }
 
         #region Properties
-        public String PlayerID
+        public string PlayerID
         {
             get { return attPlayer.ID; }
         }
 
-        public String PlayerName
+        public string PlayerName
         {
             get { return PlayerName; }
         }
@@ -57,7 +57,7 @@ namespace KillerWearsPrada.Model
         /// If the passed value exceed the room count the Actual Room Index is setted to the maximum index available.
         /// If the passed value is less than zero the Actual Room Index is setted to zero.
         /// </summary>
-        public Int32 ActualRoomIndex
+        public int ActualRoomIndex
         {
             get { return attActualRoom; }
             set
@@ -74,7 +74,7 @@ namespace KillerWearsPrada.Model
         /// <summary>
         /// Get or Set a value that idicate if the Game is alredy started or not
         /// </summary>
-        public Boolean GameStarted
+        public bool GameStarted
         {
             get { return attStarted; }
             set { attStarted = value; }
@@ -91,7 +91,7 @@ namespace KillerWearsPrada.Model
         /// <summary>
         /// Represent the player's score 
         /// </summary>
-        public Int32 Score
+        public int Score
         {
             get { return attScore; }
         }
@@ -159,17 +159,17 @@ namespace KillerWearsPrada.Model
 
         #region Methods
 
-        public List<Item> GetRoomItems(Int32 RoomIndex)
+        public List<Item> GetRoomItems(int RoomIndex)
         {
             return attRooms[RoomIndex].Items;
         }
 
-        public Item GetItemByCode(Int32 Room, Int32 ItemCode)
+        public Item GetItemByCode(int Room, int ItemCode)
         {
             return attRooms[Room].GetItemByCode(ItemCode);
         }
 
-        public Item GetItemByBarCode(Int32 Room, Int32 ItemBarCode)
+        public Item GetItemByBarCode(int Room, int ItemBarCode)
         {
             return attRooms[Room].GetItemByCode(ItemBarCode);
         }

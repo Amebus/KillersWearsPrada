@@ -82,9 +82,9 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         /// <param name="Directory">Path da modificare</param>
         /// <returns></returns>
-        private static String CreatePath(String Directory)
+        private static string CreatePath(string Directory)
         {
-            String wvPath = Directory;
+            string wvPath = Directory;
 
             if (Directory[0]!=('\\'))
                 wvPath = "\\" + Directory;
@@ -93,88 +93,88 @@ namespace KillerWearsPrada.Helpers
         }
 
         #region Resource generic getter and setter
-        private static object GetResource(String ResourceName)
+        private static object GetResource(string ResourceName)
         {
             return Application.Current.Resources[ResourceName.ToString()];
 
 
         }
 
-        private static void SetResource(String ResourceName, object Value)
+        private static void SetResource(string ResourceName, object Value)
         {
             Application.Current.Resources[ResourceName] = Value;
         }
         #endregion
 
         #region Resource specific getter
-        private static String GetResource(E_Direcetories ResourceName)
+        private static string GetResource(E_Direcetories ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static String GetResource(E_GenericImages ResourceName)
+        private static string GetResource(E_GenericImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static String GetResource(E_DoorsImages ResourceName)
+        private static string GetResource(E_DoorsImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static String GetResource(E_RoomsImages ResourceName)
+        private static string GetResource(E_RoomsImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static String GetResource(E_KitchenImages ResourceName)
+        private static string GetResource(E_KitchenImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static String GetResource(E_LivingroomImages ResourceName)
+        private static string GetResource(E_LivingroomImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static String GetResource(E_BedroomImages ResourceName)
+        private static string GetResource(E_BedroomImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
         #endregion
 
         #region Resource specifc setters
-        private static void SetResource(E_Direcetories ResourceName, String Value)
+        private static void SetResource(E_Direcetories ResourceName, string Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
 
-        private static void SetResource(E_GenericImages ResourceName, String Value)
+        private static void SetResource(E_GenericImages ResourceName, string Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
 
-        private static void SetResource(E_DoorsImages ResourceName, String Value)
+        private static void SetResource(E_DoorsImages ResourceName, string Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
 
-        private static void SetResource(E_RoomsImages ResourceName, String Value)
+        private static void SetResource(E_RoomsImages ResourceName, string Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
 
-        private static void SetResource(E_LivingroomImages ResourceName, String Value)
+        private static void SetResource(E_LivingroomImages ResourceName, string Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
 
-        private static void SetResource(E_BedroomImages ResourceName, String Value)
+        private static void SetResource(E_BedroomImages ResourceName, string Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
 
-        private static void SetResource(E_KitchenImages ResourceName, String Value)
+        private static void SetResource(E_KitchenImages ResourceName, string Value)
         {
             SetResource(ResourceName.ToString(), Value);
         }
@@ -183,32 +183,32 @@ namespace KillerWearsPrada.Helpers
         /// <summary>
         /// Ottiene la Directory di lavoro corrente del programma come stringa
         /// </summary>
-        public static String CurrentDirectory
+        public static string CurrentDirectory
         {
             get { return GetResource(E_Direcetories.CurrentDirectory); }
         }
 
         /// <summary>
-        /// Return a <see cref="String "/> which represent the absolute path of the <see cref="E_Direcetories.ImagesDir"/> directory
+        /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.ImagesDir"/> directory
         /// </summary>
-        public static String ImagesDirectory
+        public static string ImagesDirectory
         {
             get
             {
-                String wvPath = GetResource(E_Direcetories.CurrentDirectory);
+                string wvPath = GetResource(E_Direcetories.CurrentDirectory);
                 wvPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
                 return wvPath;
             }
         }
 
         /// <summary>
-        /// Return a <see cref="String "/> which represent the absolute path of the <see cref="E_Direcetories.SavesDir"/> directory
+        /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.SavesDir"/> directory
         /// </summary>
-        public static String SavesDirectory
+        public static string SavesDirectory
         {
             get
             {
-                String wvPath = GetResource(E_Direcetories.CurrentDirectory);
+                string wvPath = GetResource(E_Direcetories.CurrentDirectory);
                 wvPath += CreatePath(GetResource(E_Direcetories.SavesDir));
                 return wvPath;
             }
@@ -219,7 +219,7 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         public static void SaveCurrentDirectory()
         {
-            String wvDir = Directory.GetCurrentDirectory().ToString();
+            string wvDir = Directory.GetCurrentDirectory().ToString();
             SetResource(E_Direcetories.CurrentDirectory, wvDir);
         }
 
@@ -228,10 +228,10 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         public static void ModifyMainBackgroundPath ()
         {
-            String wvRightPath = CurrentDirectory;
-            //String dir = CurrentDirectory;
+            string wvRightPath = CurrentDirectory;
+            //string dir = CurrentDirectory;
             /*
-            String[] dirs = dir.Split('\\');
+            string[] dirs = dir.Split('\\');
             dir_ok = dirs[0];
             for (int i = 1; i < dirs.Length - 2; i++)
                 dir_ok = dir_ok + "\\" + dirs[i];
@@ -246,7 +246,7 @@ namespace KillerWearsPrada.Helpers
 
         public static void ModifyRoomBackgroundPath(E_RoomsImages ResourceName)
         {
-                String wvRightPath = CurrentDirectory;
+                string wvRightPath = CurrentDirectory;
                 wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
                 wvRightPath += CreatePath(GetResource(ResourceName));
                 SetResource(ResourceName, wvRightPath);
@@ -255,7 +255,7 @@ namespace KillerWearsPrada.Helpers
 
         public static void ModifyDoorsPath(E_DoorsImages ResourceName)
         {
-            String wvRightPath = CurrentDirectory;
+            string wvRightPath = CurrentDirectory;
             wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
             wvRightPath += CreatePath(GetResource(ResourceName));
             SetResource(ResourceName, wvRightPath);
@@ -264,7 +264,7 @@ namespace KillerWearsPrada.Helpers
 
         public static void ModifyGenericImagesPath(E_GenericImages ResourceName)
         {
-            String wvRightPath = CurrentDirectory;
+            string wvRightPath = CurrentDirectory;
             wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
             wvRightPath += CreatePath(GetResource(ResourceName));
             SetResource(ResourceName, wvRightPath);
@@ -274,7 +274,7 @@ namespace KillerWearsPrada.Helpers
         
         public static void ModifyKitchenImagesPath(E_KitchenImages ResourceName)
         {
-            String wvRightPath = CurrentDirectory;
+            string wvRightPath = CurrentDirectory;
             wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
             wvRightPath += CreatePath(GetResource(ResourceName));
             SetResource(ResourceName, wvRightPath);
@@ -283,7 +283,7 @@ namespace KillerWearsPrada.Helpers
 
         public static void ModifyLivingroomImagesPath(E_LivingroomImages ResourceName)
         {
-            String wvRightPath = CurrentDirectory;
+            string wvRightPath = CurrentDirectory;
             wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
             wvRightPath += CreatePath(GetResource(ResourceName));
             SetResource(ResourceName, wvRightPath);
@@ -292,7 +292,7 @@ namespace KillerWearsPrada.Helpers
 
         public static void ModifyBedroomImagesPath(E_BedroomImages ResourceName)
         {
-            String wvRightPath = CurrentDirectory;
+            string wvRightPath = CurrentDirectory;
             wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
             wvRightPath += CreatePath(GetResource(ResourceName));
             SetResource(ResourceName, wvRightPath);

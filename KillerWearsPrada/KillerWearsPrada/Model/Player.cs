@@ -9,22 +9,22 @@ namespace KillerWearsPrada.Model
     [Serializable]
     class Player : ISerializable
     {
-        private String attName;
-        private String attID;
+        private string attName;
+        private string attID;
 
-        public Player (String ID, String Name)
+        public Player (string ID, string Name)
         {
             attID = ID;
             attName = Name;
         }
 
-        private String Name
+        private string Name
         {
             get { return attName; }
         }
 
 
-        public String ID
+        public string ID
         {
             get { return attID; }
         }

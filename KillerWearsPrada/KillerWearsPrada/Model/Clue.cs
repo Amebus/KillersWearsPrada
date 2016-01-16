@@ -17,11 +17,11 @@ namespace KillerWearsPrada.Model
         private E_Shape attShape;
         private E_Texture attTexture;
         // non serve private E_ItemKind attItemKind;
-        //private String color;
+        //private string color;
         //private bool gradiation;
         //private bool shape;
-        //private String texture;
-        //private String itemKind;
+        //private string texture;
+        //private string itemKind;
 
         /// <summary>
         ///  constructor that initiates a Clue object using input parameters
@@ -34,7 +34,7 @@ namespace KillerWearsPrada.Model
         /// <param name="Texture"></param>
         /// <param name="ItemKind"></param>
         /// 
-        public Clue(Boolean Positive, E_Gradiation Gradiation, E_Shape Shape, E_Color Color, E_Texture Texture) //, E_ItemKind ItemKind)
+        public Clue(bool Positive, E_Gradiation Gradiation, E_Shape Shape, E_Color Color, E_Texture Texture) //, E_ItemKind ItemKind)
         {
             attPositive = Positive;
 
@@ -52,7 +52,7 @@ namespace KillerWearsPrada.Model
 
         public override string ToString()
         {
-            String wvClue = BASE;
+            string wvClue = BASE;
             if (!this.attPositive)
             {
                 wvClue += "non ";

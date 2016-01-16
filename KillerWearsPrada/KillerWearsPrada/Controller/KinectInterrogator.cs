@@ -19,9 +19,9 @@ namespace KillerWearsPrada.Controller
     {
 
         //TODO Scatenare l'evento qundo viene salvato uno screenshot e si riconosce il giocatore 
-        private const String attScreen = "screenshot.png";
-        private String attSavePath;
-        private Int32 attWaitingTime;
+        private const string attScreen = "screenshot.png";
+        private string attSavePath;
+        private int attWaitingTime;
 
         private KinectSensor attKinectSensor;
         private WriteableBitmap attColorBitmap = null;
@@ -40,7 +40,7 @@ namespace KillerWearsPrada.Controller
         /// <param name="Sensor">The Kinect Sensor to use</param>
         /// <param name="WaitingTime">Reppresent the time, in milliseconnds, to wait before taking another screenshot</param>
         /// <param name="Checker"></param>
-        public KinectInterrogator(KinectSensor Sensor, Int32 WaitingTime) 
+        public KinectInterrogator(KinectSensor Sensor, int WaitingTime) 
         {
             attPlayerChecker = new PlayerChecker();
             attWaitingTime = WaitingTime;
@@ -69,7 +69,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Return a value that indicate if the KinectSensor is connected
         /// </summary>
-        public Boolean IsKinectConnected
+        public bool IsKinectConnected
         {
             get { return attKinectSensor.IsAvailable; }
         }
@@ -131,7 +131,7 @@ namespace KillerWearsPrada.Controller
             BackgroundWorkerParameters wvBWP = (BackgroundWorkerParameters)e.Argument;
 
             BitmapEncoder wvEncoder;
-            Boolean wvQRCodeFound;
+            bool wvQRCodeFound;
             
 
             // create a png bitmap encoder which knows how to save a .png file

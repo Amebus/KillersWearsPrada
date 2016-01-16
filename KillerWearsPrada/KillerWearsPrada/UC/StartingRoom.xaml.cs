@@ -90,7 +90,7 @@ namespace KillerWearsPrada.UC
            Canvas prepareRoom = (Canvas)yourParentWindow.Room.FindName(b.Content.ToString());
            prepareRoom.Visibility = Visibility.Visible; */
 
-            String button_content = b.Content.ToString();
+            string button_content = b.Content.ToString();
             yourParentWindow.Room.setBackgroundCanvas(Application.Current.Resources[button_content].ToString());
             /*
                         if(button_content != "Livingroom_Canvas" && button_content != "Kitchen_Canvas")
@@ -196,7 +196,7 @@ namespace KillerWearsPrada.UC
         /// Change the status of the buttons, accondingly to the model
         /// i.e. which room is accessible to that player
         /// </summary>
-        public void change_Buttons_Status(Boolean b)
+        public void change_Buttons_Status(bool b)
         {
             // abilito solo i bottoni delle stanze che posso abilitare
             sxDoorButton.IsEnabled = b;

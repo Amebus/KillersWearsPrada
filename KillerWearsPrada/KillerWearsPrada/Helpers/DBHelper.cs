@@ -11,7 +11,7 @@ namespace KillerWearsPrada.Helpers
     /// </summary>
     class DBHelper
     {
-        private String connectionString;
+        private string connectionString;
         private OleDbConnection DBConnection;
 
         public DBHelper()
@@ -25,7 +25,7 @@ namespace KillerWearsPrada.Helpers
         /// This method tests the connectivity
         /// </summary>
         /// <returns>string that states the result of the try ("Succesfull cnnection" vs exception message)</returns>
-        public String TestConnection()
+        public string TestConnection()
         {
             try
             {
@@ -109,13 +109,13 @@ namespace KillerWearsPrada.Helpers
             result.Read();
 
             int codice = result.GetInt32(0);
-            String barcode = result.GetString(1);
-            String name = result.GetString(2);
+            string barcode = result.GetString(1);
+            string name = result.GetString(2);
             Double price = result.GetDouble(3);
-            String descr = result.GetString(4);
-            String rep = result.GetString(5);
-            String texture = result.GetString(6);
-            String image = result.GetString(7);
+            string descr = result.GetString(4);
+            string rep = result.GetString(5);
+            string texture = result.GetString(6);
+            string image = result.GetString(7);
             
 
             Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, itemKind.ToString());
@@ -174,13 +174,13 @@ namespace KillerWearsPrada.Helpers
             result.Read();
 
             int codice = result.GetInt32(0);
-            String barcode = result.GetString(1);
-            String name = result.GetString(2);
+            string barcode = result.GetString(1);
+            string name = result.GetString(2);
             Double price = result.GetDouble(3);
-            String descr = result.GetString(4);
-            String rep = result.GetString(5);
-            String texture = result.GetString(6);
-            String image = result.GetString(7);
+            string descr = result.GetString(4);
+            string rep = result.GetString(5);
+            string texture = result.GetString(6);
+            string image = result.GetString(7);
             
             
 
@@ -240,13 +240,13 @@ namespace KillerWearsPrada.Helpers
             result.Read();
 
             int codice = result.GetInt32(0);
-            String barcode = result.GetString(1);
-            String name = result.GetString(2);
+            string barcode = result.GetString(1);
+            string name = result.GetString(2);
             Double price = result.GetDouble(3);
-            String descr = result.GetString(4);
-            String rep = result.GetString(5);
-            String texture = result.GetString(6);
-            String image = result.GetString(7);
+            string descr = result.GetString(4);
+            string rep = result.GetString(5);
+            string texture = result.GetString(6);
+            string image = result.GetString(7);
             
             
 
@@ -264,7 +264,7 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         /// <param name="player">string, player ID (datetime)</param>
         /// <param name="score">integer, player's score</param>
-        public void SaveScoreForPlayer(String player, int score)
+        public void SaveScoreForPlayer(string player, int score)
         {
             DBConnection.Open();
 
@@ -292,7 +292,7 @@ namespace KillerWearsPrada.Helpers
         /// </summary>
         /// <param name="dateTime">string, player ID (datetime)</param>
         /// <param name="username">string, player's username</param>
-        public void AddPlayer(String dateTime, String username)
+        public void AddPlayer(string dateTime, string username)
         {
             DBConnection.Open();
 
@@ -313,7 +313,7 @@ namespace KillerWearsPrada.Helpers
         /// this method removes a player from the DB
         /// </summary>
         /// <param name="player">string, player ID (datetime)</param>
-        public void RemovePlayer (String player)
+        public void RemovePlayer (string player)
         {
             DBConnection.Open();
             
