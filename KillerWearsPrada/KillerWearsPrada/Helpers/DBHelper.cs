@@ -64,10 +64,11 @@ namespace KillerWearsPrada.Helpers
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName, D.Immagine";
-            query += " FROM Capo AS C,DatiNegozio AS D, Grafica AS G,Texture AS T, Maschera AS M, TipoCapo AS TC, TipoTexture AS TT";
-            query += " WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND TC.ID=D.Tipo";
-            query += " AND T.TipoTexture = TT.ID D.Disponibili > 10 AND D.Lungo=@p1 AND T.Chiaro=@p2 AND  TT.Nome = @p3 AND T.ColoreDominante = @p4 AND TC.Tipo = @p5 ORDER BY rnd(C.ID)";
+            string query = "SELECT TOP 1 C.ID, C.Barcode, C.Nome, C.Prezzo, C.Descrizione, C.Reparto, T.FileName, M.FileName, C.Immagine";
+            query += " FROM Capo AS C ,Texture AS T, Maschera AS M, TipoCapo AS TC, TipoTexture AS TT";
+            query += " WHERE C.Texture = T.ID AND C.Maschera = M.ID AND TC.ID = C.Tipo AND T.TipoTexture = TT.ID";
+            query += " AND C.Disponibili > 10 AND C.Lungo=@p1 AND T.Chiaro=@p2 AND TT.Nome = @p3 AND T.ColoreDominante = @p4 AND TC.Tipo = @p5";
+            query += " ORDER BY rnd(C.ID)";
 
             // parameter @p1 - shape
             if (long1 == E_Shape.LUNGO)
@@ -145,26 +146,27 @@ namespace KillerWearsPrada.Helpers
         {
 
             DBConnection.Open();
-            
+
             // note : we want items of which we have more than 10 available 
-            
-            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName, D.Immagine";
-            query += " FROM Capo AS C,DatiNegozio AS D, Grafica AS G,Texture AS T, Maschera AS M, TipoCapo AS TC";
-            query += " WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND TC.ID=D.Tipo";
-            query += " AND D.Disponibili > 10 AND D.Lungo=@p1 AND TC.Tipo = @p4 ORDER BY rnd(C.ID)";
+
+            string query = "SELECT TOP 1 C.ID, C.Barcode, C.Nome, C.Prezzo, C.Descrizione, C.Reparto, T.FileName, M.FileName, C.Immagine";
+            query += " FROM Capo AS C ,Texture AS T, Maschera AS M, TipoCapo AS TC, TipoTexture AS TT";
+            query += " WHERE C.Texture = T.ID AND C.Maschera = M.ID AND TC.ID = C.Tipo AND T.TipoTexture = TT.ID";
+            query += " AND C.Disponibili > 10 AND C.Lungo=@shape AND TC.Tipo = @kind";
+            query += " ORDER BY rnd(C.ID)";
 
             // parameter @p1 - shape
             if (long1 == E_Shape.LUNGO)
             {
-                query = query.Replace("@p1", true.ToString());
+                query = query.Replace("@shape", true.ToString());
             }
             else
             {
-                query = query.Replace("@p1", false.ToString());
+                query = query.Replace("@shape", false.ToString());
             }
                 
             // parameter @p4 - item kind 
-            query = query.Replace("@p4", "\'" + itemKind.ToString() + "\'");
+            query = query.Replace("@kind", "\'" + itemKind.ToString() + "\'");
             
             OleDbCommand command = new OleDbCommand(query, DBConnection);
 
@@ -212,23 +214,24 @@ namespace KillerWearsPrada.Helpers
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 C.ID,D.Barcode, D.Nome, D.Prezzo, D.Descrizione, D.Reparto, T.FileName, M.FileName, D.Immagine";
-            query += " FROM Capo AS C,DatiNegozio AS D, Grafica AS G,Texture AS T, Maschera AS M, TipoCapo AS TC";
-            query += " WHERE C.DatiNegozio = D.ID AND C.Grafica = G.ID AND G.Texture = T.ID AND G.Maschera = M.ID AND TC.ID=D.Tipo";
-            query += " AND D.Disponibili > 10 AND T.Chiaro=@p2 AND TC.Tipo = @p4 ORDER BY rnd(C.ID)";
+            string query = "SELECT TOP 1 C.ID, C.Barcode, C.Nome, C.Prezzo, C.Descrizione, C.Reparto, T.FileName, M.FileName, C.Immagine";
+            query += " FROM Capo AS C ,Texture AS T, Maschera AS M, TipoCapo AS TC, TipoTexture AS TT";
+            query += " WHERE C.Texture = T.ID AND C.Maschera = M.ID AND TC.ID = C.Tipo AND T.TipoTexture = TT.ID";
+            query += " AND C.Disponibili > 10 AND T.Chiaro=@grad AND TC.Tipo = @kind";
+            query += " ORDER BY rnd(C.ID)";
 
             // parameter @p2 - gradiation
             if (light == E_Gradiation.CHIARO)
             {
-                query = query.Replace("@p2", true.ToString());
+                query = query.Replace("@grad", true.ToString());
             }
             else
             {
-                query = query.Replace("@p2", false.ToString());
+                query = query.Replace("@grad", false.ToString());
             }
 
             // parameter @p4 - item kind 
-            query = query.Replace("@p4", "\'" + itemKind.ToString() + "\'");
+            query = query.Replace("@kind", "\'" + itemKind.ToString() + "\'");
 
             OleDbCommand command = new OleDbCommand(query, DBConnection);
 

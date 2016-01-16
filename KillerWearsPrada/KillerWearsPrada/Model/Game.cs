@@ -49,7 +49,7 @@ namespace KillerWearsPrada.Model
                 attRooms[i] = new Room(CreateItems(ItemsPerRoom));
             }
 
-            //
+            // una volta finite le stanze scambiare il 3° indizio che sarà dato in un'altra stanza
 
 
         }
@@ -162,14 +162,22 @@ namespace KillerWearsPrada.Model
 
             1° capo -quello giusto - corrisponde a 3 indizi - gradation + shape + 3°
             wvItems.Add(wvDB.GetItemFromClues(clue1,clue2,NULL,clue3,ItemKind));
+            // aggiungi la clue all'item 1
             2° capo - corrisponde a 2 indizi gradation + shape
             wvItems.Add(wvDB.GetItemFromClues(clue1,clue2,NULL,!clue3,ItemKind));
+            // aggiungi la clue all'item 2
             3° e 4° capo  - solo shape
             wvItems.Add(wvDB.GetItemFromClues(clue1,!clue2,NULL,!clue3,ItemKind));
+            // aggiungi la clue all'item 3
             wvItems.Add(wvDB.GetItemFromClues(clue1,!clue2,NULL,!clue3,ItemKind));
+            // aggiungi la clue all'item 4
             5° e 6° capo - solo gradiation
             wvItems.Add(wvDB.GetItemFromClues(!clue1,clue2,NULL,!clue3,ItemKind));
+            // aggiungi la clue all'item 5
             wvItems.Add(wvDB.GetItemFromClues(!clue2,clue2,NULL,!clue3,ItemKind));
+            // aggiungi la clue all'item 6
+
+
 
             ora a parte la traduzione dei metodi e variabili finti in qualcosa di più reale
             doremmo avere una stanza popolata, e clues nelle stanze
