@@ -237,7 +237,7 @@ namespace KillerWearsPrada
             //       if (attGameController.IsGameStarted == false)
             //vai alla welcome home
             //devo bindare lo username...
-            Boolean t = true;
+            Boolean t = false;
             if (t == false)
             {
                 backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
