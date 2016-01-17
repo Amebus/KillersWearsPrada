@@ -37,7 +37,8 @@ namespace KillerWearsPrada.Controller
             attKinectInterrogator.RaisePlayerLeaveKinectSensor = HandlePlayerLeaveKinectSensor;
             
         }
-        
+
+        #region Proprietà
         public Model.Game Game
         {
             get { return attGame; }
@@ -71,7 +72,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Reperesent the <see cref="Model.Room"/> in which the player is investigating
         /// </summary>
-        public Model.Room ActualRoom
+        public Room ActualRoom
         {
             get { return attGame.ActualRoom; }
         }
@@ -79,7 +80,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent a List of <see cref="Model.Item"/> items contained in the <see cref="Model.Room"/> in which the player is invastigating
         /// </summary>
-        public List<Model.Item> ActualRoomItems
+        public List<Item> ActualRoomItems
         {
             get { return attGame.ActualRoom.Items; }
         }
@@ -103,7 +104,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent the List of <see cref="Model.Room"/> defined in the actual game
         /// </summary>
-        public List<Model.Room> Rooms
+        public List<Room> Rooms
         {
             get { return attGame.Rooms; }
         }
@@ -111,7 +112,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent a List of <see cref="Model.Item"/> that are in the player's inventory
         /// </summary>
-        public List<Model.Item> ItemsInInventory
+        public List<Item> ItemsInInventory
         {
             get { return attGame.ItemsInInventory; }
         }
@@ -119,10 +120,11 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent a List of <see cref="Model.Item"/> that are in the player's tresh
         /// </summary>
-        public List<Model.Item> ItemsInTrash
+        public List<Item> ItemsInTrash
         {
             get { return attGame.ItemsIntrash; }
         }
+        #endregion
 
         /// <summary>
         /// Set a value that the Game has been started
@@ -190,6 +192,7 @@ namespace KillerWearsPrada.Controller
             //throw new NotImplementedException("Implementare qui la stampa dei QRCODE");
         }
 
+        #region Generation, inizialization and elimination of the games
         /// <summary>
         /// Generate a list of <see cref="Item,"/> to be put in a <see cref="Room"/>
         /// </summary>
@@ -197,8 +200,8 @@ namespace KillerWearsPrada.Controller
         /// <returns></returns>
         private static void CreateGame(int NumberOfItems)
         {
-            Model.Solution wvSolution = new Model.Solution();
-            List<Model.Item> wvItems = new List<Model.Item>();
+            Solution wvSolution = new Solution();
+            List<Item> wvItems = new List<Item>();
             Clue wvCorrectClue;
             E_ItemKind wvItemKind;
             Item wvCorrectItem;
@@ -209,14 +212,17 @@ namespace KillerWearsPrada.Controller
             //wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             //wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
             
-            wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM);
+            wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
+
+            //Room r = new Room()
+
 
             wvItemKind = E_ItemKind.trousers;
             wvCorrectClue = GenerateCorrectClue(wvItemKind);
             wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
 
-            wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
+            wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
 
 
             wvItemKind = E_ItemKind.t_shirt;
@@ -224,7 +230,7 @@ namespace KillerWearsPrada.Controller
             wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
 
-            wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
+            wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
             
             //riprendere da qui
 
@@ -237,6 +243,11 @@ namespace KillerWearsPrada.Controller
             
         }
 
+        /// <summary>
+        /// Return a <see cref="Clue"/> generated starting from the specified <see cref="E_ItemKind"/>
+        /// </summary>
+        /// <param name="ItemKind">The kind of item to be use to generate the clue</param>
+        /// <returns></returns>
         private static Clue GenerateCorrectClue(E_ItemKind ItemKind)
         {
             E_Gradiation wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation.NULL, 1 + (int)E_Gradiation.DARK);
@@ -273,13 +284,13 @@ namespace KillerWearsPrada.Controller
             return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
         }
 
-        private static List<Clue> GenerateCluesFromClue(Clue CorrectClue, int Times)
+        private static List<Clue> GenerateCluesFromCorrectClue(Clue CorrectClue, int Times)
         {
             List<Clue> wvClues = new List<Clue>();
             Clue wvTemp;
             wvClues.Add(GenerateFirstIncorrectClue(CorrectClue));
             bool wvSecondClueOk = true; 
-            for (int i = 1; i <= Times; i++)
+            for (int i = 1; i < Times; i++)
             {
                 do
                 {
@@ -305,7 +316,6 @@ namespace KillerWearsPrada.Controller
 
             return wvClues;
         }
-
 
         private static Clue GenerateFirstIncorrectClue(Clue Correct)
         {
@@ -450,7 +460,7 @@ namespace KillerWearsPrada.Controller
             foreach (System.IO.FileInfo wvFile in wvFileInfos)
                 wvFile.Delete();
         }
-
+        #endregion
 
         /// <summary>
         /// 
