@@ -309,7 +309,7 @@ namespace KillerWearsPrada.Controller
 
         private static Clue GenerateFirstIncorrectClue(Clue Correct)
         {
-            List<string> wvStrings = new List<string>();
+            List<E_PropertiesKind> wvProperties = new List<E_PropertiesKind>();
             List<E_Texture> wvTextures = new List<E_Texture>();
             List<E_Color> wvColors = new List<E_Color>();
 
@@ -319,12 +319,12 @@ namespace KillerWearsPrada.Controller
             E_Texture wvTexture = Correct.Texture;
 
             if (Correct.Gradiation != E_Gradiation.NULL)
-                wvStrings.Add("Gradiation");
+                wvProperties.Add(E_PropertiesKind.GRADIATION);
             if (Correct.Shape != E_Shape.NULL)
-                wvStrings.Add("Shape");
+                wvProperties.Add(E_PropertiesKind.SHAPE);
             if (Correct.Color != E_Color.NULL)
             {
-                wvStrings.Add("Color");
+                wvProperties.Add(E_PropertiesKind.COLOR);
 
                 Array array = Enum.GetValues(typeof(E_Color));
                 foreach (E_Color t in array)
@@ -335,7 +335,7 @@ namespace KillerWearsPrada.Controller
             }
             if (Correct.Texture != E_Texture.NULL)
             {
-                wvStrings.Add("Texture");
+                wvProperties.Add(E_PropertiesKind.TEXTURE);
 
                 Array array = Enum.GetValues(typeof(E_Texture));
                 foreach (E_Texture t in array)
@@ -345,22 +345,22 @@ namespace KillerWearsPrada.Controller
                 }
             }
 
-            int wvNull = attRandom.Next(wvStrings.Count);
+            int wvNull = attRandom.Next(wvProperties.Count);
             int wvIndex = 0;
 
-            switch (wvStrings[wvNull])
+            switch (wvProperties[wvNull])
             {
-                case "Gradiation":
+                case E_PropertiesKind.GRADIATION:
                     wvGradiation = (Correct.Gradiation == E_Gradiation.DARK) ? E_Gradiation.LIGHT : E_Gradiation.DARK;
                     break;
-                case "Shape":
+                case E_PropertiesKind.SHAPE:
                     wvShape = (Correct.Shape == E_Shape.SHORT) ? E_Shape.LONG : E_Shape.SHORT;
                     break;
-                case "Color":
+                case E_PropertiesKind.COLOR:
                     wvIndex = attRandom.Next(wvColors.Count);
                     wvColor = wvColors[wvIndex];
                     break;
-                case "Texture":
+                case E_PropertiesKind.TEXTURE:
                     wvIndex = attRandom.Next(wvTextures.Count);
                     wvTexture = wvTextures[wvIndex];
                     break;
@@ -372,7 +372,7 @@ namespace KillerWearsPrada.Controller
 
         private static Clue GenerateSecondsIncorrectClue( Clue Correct, Clue FirsIncorrectClue)
         {
-            List<string> wvStrings = new List<string>();
+            List<E_PropertiesKind> wvProperties = new List<E_PropertiesKind>();
             List<E_Texture> wvTextures = new List<E_Texture>();
             List<E_Color> wvColors = new List<E_Color>();
 
@@ -382,12 +382,12 @@ namespace KillerWearsPrada.Controller
             E_Texture wvTexture = Correct.Texture;
 
             if (Correct.Gradiation != E_Gradiation.NULL && Correct.Gradiation==FirsIncorrectClue.Gradiation)
-                wvStrings.Add("Gradiation");
+                wvProperties.Add(E_PropertiesKind.GRADIATION);
             if (Correct.Shape != E_Shape.NULL && Correct.Shape==FirsIncorrectClue.Shape)
-                wvStrings.Add("Shape");
+                wvProperties.Add(E_PropertiesKind.SHAPE);
             if (Correct.Color != E_Color.NULL)
             {
-                wvStrings.Add("Color");
+                wvProperties.Add(E_PropertiesKind.COLOR);
 
                 Array array = Enum.GetValues(typeof(E_Color));
                 foreach (E_Color t in array)
@@ -398,7 +398,7 @@ namespace KillerWearsPrada.Controller
             }
             if (Correct.Texture != E_Texture.NULL)
             {
-                wvStrings.Add("Texture");
+                wvProperties.Add(E_PropertiesKind.TEXTURE);
 
                 Array array = Enum.GetValues(typeof(E_Texture));
                 foreach (E_Texture t in array)
@@ -413,28 +413,28 @@ namespace KillerWearsPrada.Controller
 
             for (int i = 0; i < 2; i++)
             {
-                wvNull = attRandom.Next(wvStrings.Count);
-                switch (wvStrings[wvNull])
+                wvNull = attRandom.Next(wvProperties.Count);
+                switch (wvProperties[wvNull])
                 {
-                    case "Gradiation":
+                    case E_PropertiesKind.GRADIATION:
                         wvGradiation = (Correct.Gradiation == E_Gradiation.DARK) ? E_Gradiation.LIGHT : E_Gradiation.DARK;
                         break;
-                    case "Shape":
+                    case E_PropertiesKind.SHAPE:
                         wvShape = (Correct.Shape == E_Shape.SHORT) ? E_Shape.LONG : E_Shape.SHORT;
                         break;
-                    case "Color":
+                    case E_PropertiesKind.COLOR:
                         wvIndex = attRandom.Next(wvColors.Count);
                         wvColor = wvColors[wvIndex];
                         wvColors.RemoveAt(wvIndex);
                         break;
-                    case "Texture":
+                    case E_PropertiesKind.TEXTURE:
                         wvIndex = attRandom.Next(wvTextures.Count);
                         wvTexture = wvTextures[wvIndex];
                         wvTextures.RemoveAt(wvIndex);
                         break;
 
                 }
-                wvStrings.RemoveAt(wvNull);
+                wvProperties.RemoveAt(wvNull);
 
             }
 

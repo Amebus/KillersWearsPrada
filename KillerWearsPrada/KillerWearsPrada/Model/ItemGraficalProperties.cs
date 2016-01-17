@@ -7,7 +7,14 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
 
-    //da ricontrollare
+    public enum E_PropertiesKind
+    {
+        COLOR,
+        GRADIATION,
+        SHAPE,
+        TEXTURE
+    }
+
     public enum E_Color
     {
         NULL,
