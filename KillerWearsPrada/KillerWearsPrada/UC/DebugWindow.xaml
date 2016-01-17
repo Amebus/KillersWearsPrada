@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KillerWearsPrada.UC"
         mc:Ignorable="d"
-        Title="DebugWindow" Height="310.805" Width="508.475">
+        Title="DebugWindow" Height="436.576" Width="651.366">
     <Grid>
-        <Button x:Name="btnTestDB" Content="Prova connessione DB" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="282" Height="25" Click="btnTestDB_Click" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name="btnTestDB" Content="Prova connessione DB" HorizontalAlignment="Left" Margin="335,10,0,0" VerticalAlignment="Top" Width="134" Height="38" Click="btnTestDB_Click" RenderTransformOrigin="0.5,0.5"/>
 
-        <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="88" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="282"/>
-        <Button x:Name="btnQueryProva" Content="Esegui query di prova" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Width="282" Click="btnQueryProva_Click"/>
+        <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="386" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="320"/>
+        <Button x:Name="btnQueryProva" Content="Esegui query di prova" HorizontalAlignment="Left" Margin="335,53,0,0" VerticalAlignment="Top" Width="134" Click="btnQueryProva_Click" Height="38"/>
+        <Button x:Name="btnPopolazioneProva" Content="Esegui popolazione&#xD;&#xA; di prova" HorizontalAlignment="Left" Margin="335,96,0,0" VerticalAlignment="Top" Width="134" Height="38" Click="btnPopolazioneProva_Click"/>
 
     </Grid>
 </Window>

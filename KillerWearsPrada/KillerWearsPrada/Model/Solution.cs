@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Solution : ISerializable
+    public class Solution : ISerializable
     {
 
         private List<Pairer> attPairers;
@@ -62,7 +62,7 @@ namespace KillerWearsPrada.Model
             return false;
         }
 
-        public bool ContainsClue
+        //public bool ContainsClue
 
         public void AddItem (Clue Clue, Item Value)
         {

@@ -98,7 +98,7 @@ namespace KillerWearsPrada
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            attDebug = new UC.DebugWindow();
+            attDebug = new UC.DebugWindow(attGameController);
             attDebug.Show();
 
             //attGameController.StartTakingScreenShot()
@@ -171,7 +171,7 @@ namespace KillerWearsPrada
             }
             catch (Exception)
             {
-                attDebug = new DebugWindow();
+                attDebug = new DebugWindow(attGameController);
                 attDebug.Show();
             }
             

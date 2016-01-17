@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
     [Serializable]
-    class Game : ISerializable
+    public class Game : ISerializable
     {
 
         #region Attributes

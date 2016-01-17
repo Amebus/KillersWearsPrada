@@ -11,9 +11,9 @@ namespace KillerWearsPrada.Controller
         private const int ITEMS_PER_ROOM = 2;
         private const int NUMBER_OF_ROOMS = 3;
 
-        private Random attRandom;
-        private Model.Game attGame;
-        private Helpers.DBHelper attDataBase;
+        private static Random attRandom;
+        private static Helpers.DBHelper attDataBase;
+        private Game attGame;
         private KinectInterrogator attKinectInterrogator;
 
         private ResumeGame attResumeGame;
@@ -38,6 +38,11 @@ namespace KillerWearsPrada.Controller
             
         }
         
+        public Model.Game Game
+        {
+            get { return attGame; }
+        }
+
         /// <summary>
         /// The instannce of Class representing the Event ResumeGame
         /// </summary>
@@ -171,16 +176,18 @@ namespace KillerWearsPrada.Controller
         public static void CreateGameAndPlayer(string PlayerName)
         {
             string wvPath = Helpers.ResourcesHelper.SavesDirectory;
-            string wvID = DateTime.Now.ToString();
+            string wvID="";// = DateTime.Now.ToString();
 
-            wvID = wvID.Replace(' ', '-');
+            //wvID = wvID.Replace(' ', '-');
             wvID += ("-" + PlayerName);
             Model.Game wvGame = new Model.Game(wvID, PlayerName);
-            
+
+            CreateGame(ITEMS_PER_ROOM);
+
             wvPath = System.IO.Path.Combine(wvPath, wvID);
             Helpers.SerializerHelper.Serialize(wvPath, wvGame);
 
-            throw new NotImplementedException("Implementare qui la stampa dei QRCODE");
+            //throw new NotImplementedException("Implementare qui la stampa dei QRCODE");
         }
 
         /// <summary>
@@ -188,7 +195,7 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         /// <param name="NumberOfItems"></param>
         /// <returns></returns>
-        private void CreateGame(int NumberOfItems)
+        private static void CreateGame(int NumberOfItems)
         {
             Model.Solution wvSolution = new Model.Solution();
             List<Model.Item> wvItems = new List<Model.Item>();
@@ -199,14 +206,14 @@ namespace KillerWearsPrada.Controller
 
             wvItemKind = E_ItemKind.hat;
             wvCorrectClue = GenerateCorrectClue(wvItemKind);
-            wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue.Shape, wvCorrectClue.Gradiation, wvCorrectClue.Texture, wvCorrectClue.Color, wvItemKind);
-            wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
+            //wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
+            //wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
             
-            wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
+            wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM);
 
             wvItemKind = E_ItemKind.trousers;
             wvCorrectClue = GenerateCorrectClue(wvItemKind);
-            wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue.Shape, wvCorrectClue.Gradiation, wvCorrectClue.Texture, wvCorrectClue.Color, wvItemKind);
+            wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
 
             wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
@@ -214,7 +221,7 @@ namespace KillerWearsPrada.Controller
 
             wvItemKind = E_ItemKind.t_shirt;
             wvCorrectClue = GenerateCorrectClue(wvItemKind);
-            wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue.Shape, wvCorrectClue.Gradiation, wvCorrectClue.Texture, wvCorrectClue.Color, wvItemKind);
+            wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
 
             wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
@@ -222,15 +229,15 @@ namespace KillerWearsPrada.Controller
             //riprendere da qui
 
             //Il primo è quello giusto
-            wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.LIGHT, wvSolution.LastItemKind));
+            //wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.LIGHT, wvSolution.LastItemKind));
 
             NumberOfItems--;
             //mi faccio dare gli altri (per ora sola il secondo)
-            wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.DARK, wvSolution.LastItemKind));
+            //wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.DARK, wvSolution.LastItemKind));
             
         }
 
-        private Clue GenerateCorrectClue(E_ItemKind ItemKind)
+        private static Clue GenerateCorrectClue(E_ItemKind ItemKind)
         {
             E_Gradiation wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation.NULL, 1 + (int)E_Gradiation.DARK);
             E_Shape wvShape = (E_Shape)attRandom.Next(1 + (int)E_Shape.NULL, 1 + (int)E_Shape.LONG);
@@ -266,17 +273,30 @@ namespace KillerWearsPrada.Controller
             return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
         }
 
-        private List<Clue> GenerateCluesFromClue(Clue CorrectClue, int Times)
+        private static List<Clue> GenerateCluesFromClue(Clue CorrectClue, int Times)
         {
             List<Clue> wvClues = new List<Clue>();
             Clue wvTemp;
-
+            wvClues.Add(GenerateFirstIncorrectClue(CorrectClue));
+            bool wvSecondClueOk = true; 
             for (int i = 1; i <= Times; i++)
             {
                 do
                 {
-                    wvTemp = GenerateIncorrectClue(i, CorrectClue);
-                } while (CorrectClue.EqualsTo(wvTemp));
+                    wvSecondClueOk = true;
+                    wvTemp = GenerateSecondsIncorrectClue(CorrectClue, wvClues[0]);
+                    
+                    for (int j = 1; j<wvClues.Count; j++)
+                    {
+                        if(wvTemp.EqualsTo(wvClues[j]))
+                        {
+                            wvSecondClueOk = false;
+                            break;
+                        }
+                    }
+
+
+                } while (!wvSecondClueOk);
 
 
                 wvClues.Add(wvTemp);
@@ -286,14 +306,14 @@ namespace KillerWearsPrada.Controller
             return wvClues;
         }
 
-        private Clue GenerateIncorrectClue(int WrongParametersCount, Clue Correct)
+
+        private static Clue GenerateFirstIncorrectClue(Clue Correct)
         {
             List<string> wvStrings = new List<string>();
-            
+            List<E_Texture> wvTextures = new List<E_Texture>();
+            List<E_Color> wvColors = new List<E_Color>();
 
-            WrongParametersCount = (WrongParametersCount < 3) ? WrongParametersCount : 2;
-
-            E_Gradiation wvGradiation= Correct.Gradiation;
+            E_Gradiation wvGradiation = Correct.Gradiation;
             E_Shape wvShape = Correct.Shape;
             E_Color wvColor = Correct.Color;
             E_Texture wvTexture = Correct.Texture;
@@ -303,53 +323,118 @@ namespace KillerWearsPrada.Controller
             if (Correct.Shape != E_Shape.NULL)
                 wvStrings.Add("Shape");
             if (Correct.Color != E_Color.NULL)
+            {
                 wvStrings.Add("Color");
+
+                Array array = Enum.GetValues(typeof(E_Color));
+                foreach (E_Color t in array)
+                {
+                    if (t != E_Color.NULL && t != Correct.Color)
+                        wvColors.Add(t);
+                }
+            }
             if (Correct.Texture != E_Texture.NULL)
+            {
                 wvStrings.Add("Texture");
 
+                Array array = Enum.GetValues(typeof(E_Texture));
+                foreach (E_Texture t in array)
+                {
+                    if (t != E_Texture.NULL && t != Correct.Texture)
+                        wvTextures.Add(t);
+                }
+            }
 
             int wvNull = attRandom.Next(wvStrings.Count);
-
-
+            int wvIndex = 0;
 
             switch (wvStrings[wvNull])
             {
                 case "Gradiation":
-                    wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation.NULL, 1 + (int)E_Gradiation.DARK);
+                    wvGradiation = (Correct.Gradiation == E_Gradiation.DARK) ? E_Gradiation.LIGHT : E_Gradiation.DARK;
                     break;
                 case "Shape":
-                    wvShape = (E_Shape)attRandom.Next(1 + (int)E_Shape.NULL, 1 + (int)E_Shape.LONG);
+                    wvShape = (Correct.Shape == E_Shape.SHORT) ? E_Shape.LONG : E_Shape.SHORT;
                     break;
                 case "Color":
-                    wvColor = (E_Color)attRandom.Next(1 + (int)E_Color.NULL, 1 + (int)E_Color.YELLOW);
+                    wvIndex = attRandom.Next(wvColors.Count);
+                    wvColor = wvColors[wvIndex];
                     break;
                 case "Texture":
-                    wvTexture = (E_Texture)attRandom.Next(1 + (int)E_Texture.NULL, 1 + (int)E_Texture.PLAINCOLOR);
+                    wvIndex = attRandom.Next(wvTextures.Count);
+                    wvTexture = wvTextures[wvIndex];
                     break;
-
             }
-            wvStrings.RemoveAt(wvNull);
 
+            return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
 
-            if (WrongParametersCount > 1)
+        }
+
+        private static Clue GenerateSecondsIncorrectClue( Clue Correct, Clue FirsIncorrectClue)
+        {
+            List<string> wvStrings = new List<string>();
+            List<E_Texture> wvTextures = new List<E_Texture>();
+            List<E_Color> wvColors = new List<E_Color>();
+
+            E_Gradiation wvGradiation= Correct.Gradiation;
+            E_Shape wvShape = Correct.Shape;
+            E_Color wvColor = Correct.Color;
+            E_Texture wvTexture = Correct.Texture;
+
+            if (Correct.Gradiation != E_Gradiation.NULL && Correct.Gradiation==FirsIncorrectClue.Gradiation)
+                wvStrings.Add("Gradiation");
+            if (Correct.Shape != E_Shape.NULL && Correct.Shape==FirsIncorrectClue.Shape)
+                wvStrings.Add("Shape");
+            if (Correct.Color != E_Color.NULL)
+            {
+                wvStrings.Add("Color");
+
+                Array array = Enum.GetValues(typeof(E_Color));
+                foreach (E_Color t in array)
+                {
+                    if (t != E_Color.NULL && t != Correct.Color && t!=FirsIncorrectClue.Color)
+                        wvColors.Add(t);
+                }
+            }
+            if (Correct.Texture != E_Texture.NULL)
+            {
+                wvStrings.Add("Texture");
+
+                Array array = Enum.GetValues(typeof(E_Texture));
+                foreach (E_Texture t in array)
+                {
+                    if (t != E_Texture.NULL && t != Correct.Texture && t!= FirsIncorrectClue.Texture)
+                        wvTextures.Add(t);
+                }
+            }
+
+            int wvNull = 0;
+            int wvIndex = 0;
+
+            for (int i = 0; i < 2; i++)
             {
                 wvNull = attRandom.Next(wvStrings.Count);
                 switch (wvStrings[wvNull])
                 {
                     case "Gradiation":
-                        wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation.NULL, 1 + (int)E_Gradiation.DARK);
+                        wvGradiation = (Correct.Gradiation == E_Gradiation.DARK) ? E_Gradiation.LIGHT : E_Gradiation.DARK;
                         break;
                     case "Shape":
-                        wvShape = (E_Shape)attRandom.Next(1 + (int)E_Shape.NULL, 1 + (int)E_Shape.LONG);
+                        wvShape = (Correct.Shape == E_Shape.SHORT) ? E_Shape.LONG : E_Shape.SHORT;
                         break;
                     case "Color":
-                        wvColor = (E_Color)attRandom.Next(1 + (int)E_Color.NULL, 1 + (int)E_Color.YELLOW);
+                        wvIndex = attRandom.Next(wvColors.Count);
+                        wvColor = wvColors[wvIndex];
+                        wvColors.RemoveAt(wvIndex);
                         break;
                     case "Texture":
-                        wvTexture = (E_Texture)attRandom.Next(1 + (int)E_Texture.NULL, 1 + (int)E_Texture.PLAINCOLOR);
+                        wvIndex = attRandom.Next(wvTextures.Count);
+                        wvTexture = wvTextures[wvIndex];
+                        wvTextures.RemoveAt(wvIndex);
                         break;
 
                 }
+                wvStrings.RemoveAt(wvNull);
 
             }
 

@@ -61,7 +61,7 @@ namespace KillerWearsPrada.Helpers
         ///         8. Image file name
         ///         9. item kind
         /// </returns>
-        public Item GetItemFromClues(E_Shape long1, E_Gradiation light, E_Texture textureKind, E_Color color, E_ItemKind itemKind){
+        /*public Item GetItemFromClues(E_Shape long1, E_Gradiation light, E_Texture textureKind, E_Color color, E_ItemKind itemKind){
 
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
@@ -124,6 +124,7 @@ namespace KillerWearsPrada.Helpers
 
             return i;
         }
+        */
 
         /// <summary>
         /// returns an item given a clue ad an item kind
@@ -190,21 +191,21 @@ namespace KillerWearsPrada.Helpers
             // parameter @p3 - texture kind 
             if(c.Texture != E_Texture.NULL)
             {
-                whereTexture = whereTexture.Replace("@p3", "\'" + c.Texture.ToString() + "\'");
+                whereTexture = whereTexture.Replace("@p3", "\'" + c.Texture.ToString().ToLower() + "\'");
                 query += whereTexture;
             }
 
             // parameter @p4 - main color 
             if (c.Color != E_Color.NULL)
             {
-                whereColor = whereColor.Replace("@p4", "\'" + c.Color.ToString() + "\'");
+                whereColor = whereColor.Replace("@p4", "\'" + c.Color.ToString().ToLower() + "\'");
                 query += whereColor;
             }
             
             
 
             // parameter @p5 - item kind 
-            query = query.Replace("@p5", "\'" + itemKind.ToString() + "\'");
+            query = query.Replace("@p5", "\'" + itemKind.ToString().ToLower() + "\'");
 
             query += order;
 
@@ -230,6 +231,7 @@ namespace KillerWearsPrada.Helpers
 
             return i;
         }
+
         #endregion
         #region testItem
         // test method
