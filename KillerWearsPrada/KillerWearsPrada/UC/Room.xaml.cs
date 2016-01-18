@@ -132,7 +132,7 @@ namespace KillerWearsPrada.UC
                     }
                     #endregion */
 
-            tr1 = @"C:\Users\Monica\Pictures\camicia rossa tinta unita.jpg";
+            tr1 = Application.Current.Resources[Helpers.ResourcesHelper.E_LivingroomImages.Trousers1.ToString()].ToString();
             this.DataContext = this;
             InitializeComponent();
         }
