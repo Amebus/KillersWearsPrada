@@ -7,26 +7,75 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
 
-    //da ricontrollare
+    
+    public class ItemGraficalProperty
+    {
+        private E_PropertiesKind attPropertyKind;
+        public object Property { get; private set; }
+
+        public E_PropertiesKind PropertyKind
+        {
+            get { return attPropertyKind; }
+        }
+
+        public ItemGraficalProperty()
+        {
+            attPropertyKind = E_PropertiesKind._NULL;
+            Property = null;
+        }
+        
+        public void SetProperty (E_PropertiesKind PropertyKind, object ItemProperty)
+        {
+            attPropertyKind = PropertyKind;
+            Property = ItemProperty;
+        }
+
+        internal bool EqualsTo(ItemGraficalProperty AI)
+        {
+            if (this.PropertyKind != AI.PropertyKind)
+                return false;
+            if (this.Property != AI.Property)
+                return false;
+
+            return true;
+
+        }
+    }
+
+    /// <summary>
+    /// Kind of properties addable to the items
+    /// </summary>
+    public enum E_PropertiesKind
+    {
+        _NULL,
+        GRADIATION,
+        COLOR,
+        SHAPE,
+        TEXTURE,
+        _END
+    }
+
     public enum E_Color
     {
-        NULL,
+        _NULL,
         BLACK,
         BLUE,
-        BROWN,
-        GRAY,
+        //BROWN,
+        //GRAY,
         GREEN,        
-        RED,
-        PINK,        
-        PURPLE,
-        YELLOW
+        //RED,
+        //PINK,        
+        //PURPLE,
+        //YELLOW,
+        _END
     }
 
     public enum E_Gradiation
     {
-        NULL,
+        _NULL,
         LIGHT,
-        DARK
+        DARK,
+        _END
     }
 
     /// <summary>
@@ -34,28 +83,30 @@ namespace KillerWearsPrada.Model
     /// </summary>
     public enum E_Shape
     {
-        NULL,
+        _NULL,
         SHORT,
-        LONG
+        LONG,
+        _END
     }
 
     public enum E_Texture //can be taken from DB table TipoTexture
     {
-        NULL,
-        FANTASY,
+        _NULL,
+        FLOWERS,
         POIS,
         STRIPES,
         SCOTTISH,
-        PLAINCOLOR
+        PLAINCOLOR,
+        _END
     }
 
     public enum E_ItemKind // can be taken from DB table TipoCapo
     {
-        NULL,
+        _NULL,
         hat,
         t_shirt,
-        trousers
-        
+        trousers,
+        _END
     }
     
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KillerWearsPrada", "KillerWearsPrada\KillerWearsPrada.csproj", "{C46FAFB1-7165-4411-B23D-373A1A7FD239}"
 EndProject
@@ -54,16 +54,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "textures", "textures", "{71
 		KillerWearsPrada\Images\textures\darkBrown.jpg = KillerWearsPrada\Images\textures\darkBrown.jpg
 		KillerWearsPrada\Images\textures\darkGreen.jpg = KillerWearsPrada\Images\textures\darkGreen.jpg
 		KillerWearsPrada\Images\textures\darkRed.jpg = KillerWearsPrada\Images\textures\darkRed.jpg
+		KillerWearsPrada\Images\textures\flowersBlack.png = KillerWearsPrada\Images\textures\flowersBlack.png
+		KillerWearsPrada\Images\textures\flowersBlueDark.png = KillerWearsPrada\Images\textures\flowersBlueDark.png
+		KillerWearsPrada\Images\textures\flowersBlueLight.png = KillerWearsPrada\Images\textures\flowersBlueLight.png
+		KillerWearsPrada\Images\textures\flowersGreenDark.png = KillerWearsPrada\Images\textures\flowersGreenDark.png
+		KillerWearsPrada\Images\textures\flowersGreenLight.png = KillerWearsPrada\Images\textures\flowersGreenLight.png
 		KillerWearsPrada\Images\textures\greenPois.jpg = KillerWearsPrada\Images\textures\greenPois.jpg
 		KillerWearsPrada\Images\textures\grey.jpg = KillerWearsPrada\Images\textures\grey.jpg
 		KillerWearsPrada\Images\textures\lightBlue.jpg = KillerWearsPrada\Images\textures\lightBlue.jpg
 		KillerWearsPrada\Images\textures\lightBrown.jpg = KillerWearsPrada\Images\textures\lightBrown.jpg
 		KillerWearsPrada\Images\textures\lightGreen.jpg = KillerWearsPrada\Images\textures\lightGreen.jpg
 		KillerWearsPrada\Images\textures\pink.jpg = KillerWearsPrada\Images\textures\pink.jpg
+		KillerWearsPrada\Images\textures\poisBlack.jpg = KillerWearsPrada\Images\textures\poisBlack.jpg
+		KillerWearsPrada\Images\textures\poisBlueLight.jpg = KillerWearsPrada\Images\textures\poisBlueLight.jpg
+		KillerWearsPrada\Images\textures\poisDarkBlue.jpg = KillerWearsPrada\Images\textures\poisDarkBlue.jpg
+		KillerWearsPrada\Images\textures\poisGreenDark.jpg = KillerWearsPrada\Images\textures\poisGreenDark.jpg
+		KillerWearsPrada\Images\textures\poisGreenLight.jpg = KillerWearsPrada\Images\textures\poisGreenLight.jpg
 		KillerWearsPrada\Images\textures\purple.jpg = KillerWearsPrada\Images\textures\purple.jpg
-		KillerWearsPrada\Images\textures\redBlueStripes.jpg = KillerWearsPrada\Images\textures\redBlueStripes.jpg
 		KillerWearsPrada\Images\textures\redTartan.jpg = KillerWearsPrada\Images\textures\redTartan.jpg
 		KillerWearsPrada\Images\textures\redYellowFlowers.jpg = KillerWearsPrada\Images\textures\redYellowFlowers.jpg
+		KillerWearsPrada\Images\textures\scottishBlack.png = KillerWearsPrada\Images\textures\scottishBlack.png
+		KillerWearsPrada\Images\textures\scottishGreen.jpg = KillerWearsPrada\Images\textures\scottishGreen.jpg
+		KillerWearsPrada\Images\textures\scottishGreenLight.jpg = KillerWearsPrada\Images\textures\scottishGreenLight.jpg
+		KillerWearsPrada\Images\textures\scottishLightBlue.jpg = KillerWearsPrada\Images\textures\scottishLightBlue.jpg
+		KillerWearsPrada\Images\textures\stripesBlack.png = KillerWearsPrada\Images\textures\stripesBlack.png
+		KillerWearsPrada\Images\textures\stripesDarkGreen.png = KillerWearsPrada\Images\textures\stripesDarkGreen.png
+		KillerWearsPrada\Images\textures\stripesDrakBlue.jpg = KillerWearsPrada\Images\textures\stripesDrakBlue.jpg
+		KillerWearsPrada\Images\textures\stripesLightGreen.png = KillerWearsPrada\Images\textures\stripesLightGreen.png
 		KillerWearsPrada\Images\textures\yellow.jpg = KillerWearsPrada\Images\textures\yellow.jpg
 	EndProjectSection
 EndProject

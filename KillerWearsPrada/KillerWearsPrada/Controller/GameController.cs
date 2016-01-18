@@ -18,7 +18,17 @@ namespace KillerWearsPrada.Controller
 
         private ResumeGame attResumeGame;
         private UnloadGame attUnloadGame;
-        
+
+        private readonly byte[,] attPopulationMatrix =
+        { 
+            { 1, 1, 1 },
+            { 1, 1, 0 },
+            { 1, 0, 1 },
+            { 1, 0, 0 },
+            { 0, 1, 1 },
+            { 0, 1, 0 }
+        };
+
         /// <summary>
         /// 
         /// </summary>
@@ -37,7 +47,8 @@ namespace KillerWearsPrada.Controller
             attKinectInterrogator.RaisePlayerLeaveKinectSensor = HandlePlayerLeaveKinectSensor;
             
         }
-        
+
+        #region Proprietà
         public Model.Game Game
         {
             get { return attGame; }
@@ -71,7 +82,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Reperesent the <see cref="Model.Room"/> in which the player is investigating
         /// </summary>
-        public Model.Room ActualRoom
+        public Room ActualRoom
         {
             get { return attGame.ActualRoom; }
         }
@@ -79,7 +90,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent a List of <see cref="Model.Item"/> items contained in the <see cref="Model.Room"/> in which the player is invastigating
         /// </summary>
-        public List<Model.Item> ActualRoomItems
+        public List<Item> ActualRoomItems
         {
             get { return attGame.ActualRoom.Items; }
         }
@@ -103,7 +114,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent the List of <see cref="Model.Room"/> defined in the actual game
         /// </summary>
-        public List<Model.Room> Rooms
+        public List<Room> Rooms
         {
             get { return attGame.Rooms; }
         }
@@ -111,7 +122,7 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent a List of <see cref="Model.Item"/> that are in the player's inventory
         /// </summary>
-        public List<Model.Item> ItemsInInventory
+        public List<Item> ItemsInInventory
         {
             get { return attGame.ItemsInInventory; }
         }
@@ -119,10 +130,11 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// Represent a List of <see cref="Model.Item"/> that are in the player's tresh
         /// </summary>
-        public List<Model.Item> ItemsInTrash
+        public List<Item> ItemsInTrash
         {
             get { return attGame.ItemsIntrash; }
         }
+        #endregion
 
         /// <summary>
         /// Set a value that the Game has been started
@@ -190,6 +202,7 @@ namespace KillerWearsPrada.Controller
             //throw new NotImplementedException("Implementare qui la stampa dei QRCODE");
         }
 
+        #region Generation, inizialization and elimination of the games
         /// <summary>
         /// Generate a list of <see cref="Item,"/> to be put in a <see cref="Room"/>
         /// </summary>
@@ -197,26 +210,38 @@ namespace KillerWearsPrada.Controller
         /// <returns></returns>
         private static void CreateGame(int NumberOfItems)
         {
-            Model.Solution wvSolution = new Model.Solution();
-            List<Model.Item> wvItems = new List<Model.Item>();
-            Clue wvCorrectClue;
-            E_ItemKind wvItemKind;
-            Item wvCorrectItem;
-            List<Clue> wvWrongClues;
+            Solution wvSolution = new Solution();
+            List<AbstractItem> wvCorrectAbstractItems = new List<AbstractItem>();
 
-            wvItemKind = E_ItemKind.hat;
-            wvCorrectClue = GenerateCorrectClue(wvItemKind);
+
+            for (int i = 1; i <= NUMBER_OF_ROOMS; i++)
+            {
+                wvCorrectAbstractItems.Add(GenerateCorrectAbstractItem((E_ItemKind)(E_ItemKind._NULL + i)));
+                wvSolution.AddItem(wvCorrectAbstractItems[i - 1]);
+            }
+
+
+            List<Item> wvCorrectItems = new List<Item>();
+            foreach(AbstractItem ai in wvCorrectAbstractItems)
+            {
+                wvCorrectItems.Add(attDataBase.GetItemFromAbstractItem(ai));
+            }
+
+            //wvCorrectClue = GenerateCorrectClue(wvItemKind);
             //wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             //wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
             
-            wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM);
+            //wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
 
+            //Room r = new Room()
+
+            /*
             wvItemKind = E_ItemKind.trousers;
             wvCorrectClue = GenerateCorrectClue(wvItemKind);
             wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
 
-            wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
+            wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
 
 
             wvItemKind = E_ItemKind.t_shirt;
@@ -224,7 +249,7 @@ namespace KillerWearsPrada.Controller
             wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
 
-            wvWrongClues = GenerateCluesFromClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
+            wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
             
             //riprendere da qui
 
@@ -234,15 +259,118 @@ namespace KillerWearsPrada.Controller
             NumberOfItems--;
             //mi faccio dare gli altri (per ora sola il secondo)
             //wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.DARK, wvSolution.LastItemKind));
+
+
+            wvItems = GenerateItemsByItemKind(wvItemKind);
+            */
             
         }
 
+        private static AbstractItem GenerateCorrectAbstractItem(E_ItemKind ItemKind)
+        {
+            int wvRandom;
+            E_Gradiation wvGradiation;
+            E_Shape wvShape;
+            E_Color wvColor;
+            E_Texture wvTexture;
+
+            AbstractItem wvAbstractItem = new AbstractItem(E_ItemType.A, ItemKind);
+            ItemGraficalProperty wvProperty = new ItemGraficalProperty();
+            List <E_PropertiesKind> wvPropertiesKind = new List<E_PropertiesKind>();
+            
+            wvRandom = attRandom.Next((int)E_PropertiesKind._NULL + 1 ,(int)E_PropertiesKind._END);
+
+            if (ItemKind == E_ItemKind.hat)
+            {
+                for (int i = (int)E_PropertiesKind._NULL + 1; i < (int)E_PropertiesKind._END ; i++)
+                {
+                    if (i != wvRandom)
+                        wvPropertiesKind.Add((E_PropertiesKind)i);
+                }
+            }
+            else
+            {
+                for (int i = (int)E_PropertiesKind._NULL + 1; i < (int)E_PropertiesKind._END; i++)
+                {
+                    if (i != (int)E_PropertiesKind.SHAPE)
+                        wvPropertiesKind.Add((E_PropertiesKind)i);
+                }
+            }
+
+            wvGradiation = E_Gradiation._NULL;
+            foreach (E_PropertiesKind pk in wvPropertiesKind)
+            {
+                wvProperty = new ItemGraficalProperty();
+                switch (pk)
+                {
+                    case E_PropertiesKind.COLOR:
+
+                        #region Color from Gradiation
+                        List<E_Color> wvColors = new List<E_Color>();
+                        if(wvGradiation == E_Gradiation._NULL)
+                        {
+                            for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
+                            {
+                                wvColors.Add((E_Color)i);
+                            }
+                        }
+                        else
+                        {
+                            for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
+                            {
+                                if ((E_Color)i != E_Color.BLACK) //TODO E_Color.WHITE
+                                    wvColors.Add((E_Color)i);
+                            }
+                        }
+                        wvRandom = attRandom.Next(wvColors.Count);
+                        wvColor = wvColors[wvRandom];
+                        #endregion
+
+
+                        wvProperty.SetProperty(pk, wvColor);
+                        break;
+                    case E_PropertiesKind.GRADIATION:
+                        wvRandom = attRandom.Next(1 + (int)E_Gradiation._NULL, (int)E_Gradiation._END);
+                        wvGradiation = (E_Gradiation)wvRandom;
+                        wvProperty.SetProperty(pk, wvGradiation);
+                        break;
+                    case E_PropertiesKind.SHAPE:
+                        wvRandom = attRandom.Next(1 + (int)E_Shape._NULL, (int)E_Shape._END);
+                        wvShape = (E_Shape)wvRandom;
+                        wvProperty.SetProperty(pk, wvShape);
+                        break;
+                    default: //TEXTURE
+                        wvRandom = attRandom.Next(1 + (int)E_Texture._NULL, (int)E_Texture._END);
+                        wvTexture = (E_Texture)wvRandom;
+                        wvProperty.SetProperty(pk, wvTexture);
+                        break;
+
+                }
+                wvAbstractItem.AddProperty(wvProperty);
+            }
+
+            return wvAbstractItem;
+        }
+
+        private static List<Item> GenerateItemsByItemKind(E_ItemKind wvItemKind)
+        {
+            //AbstractItem wvAbstractItem = new AbstractItem();
+            //wvAbstractItem.AddProperty();
+            throw new NotImplementedException("Finire la generazione random");
+        }
+
+        /*
+        /// <summary>
+        /// Return a <see cref="Clue"/> generated starting from the specified <see cref="E_ItemKind"/>
+        /// </summary>
+        /// <param name="ItemKind">The kind of item to be use to generate the clue</param>
+        /// <returns></returns>
         private static Clue GenerateCorrectClue(E_ItemKind ItemKind)
         {
-            E_Gradiation wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation.NULL, 1 + (int)E_Gradiation.DARK);
-            E_Shape wvShape = (E_Shape)attRandom.Next(1 + (int)E_Shape.NULL, 1 + (int)E_Shape.LONG);
-            E_Color wvColor = (E_Color)attRandom.Next(1 + (int)E_Color.NULL, 1 + (int)E_Color.YELLOW);
-            E_Texture wvTexture = (E_Texture)attRandom.Next(1 + (int)E_Texture.NULL, 1 + (int)E_Texture.PLAINCOLOR);
+            E_Gradiation wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation._NULL, 1 + (int)E_Gradiation.DARK);
+            E_Shape wvShape = (E_Shape)attRandom.Next(1 + (int)E_Shape._NULL, 1 + (int)E_Shape.LONG);
+            E_Color wvColor = (E_Color)attRandom.Next(1 + (int)E_Color._NULL, 1 + (int)E_Color.YELLOW);
+            E_Texture wvTexture = (E_Texture)attRandom.Next(1 + (int)E_Texture._NULL, 1 + (int)E_Texture.PLAINCOLOR);
             
             if (ItemKind != E_ItemKind.trousers && ItemKind != E_ItemKind.t_shirt)
             {
@@ -251,35 +379,35 @@ namespace KillerWearsPrada.Controller
                 switch (wvNull)
                 {
                     case 0:
-                        wvGradiation = E_Gradiation.NULL;
+                        wvGradiation = E_Gradiation._NULL;
                         break;
                     case 1:
-                        wvShape = E_Shape.NULL;
+                        wvShape = E_Shape._NULL;
                         break;
                     case 2:
-                        wvColor = E_Color.NULL;
+                        wvColor = E_Color._NULL;
                         break;
                     default:
-                        wvTexture = E_Texture.NULL;
+                        wvTexture = E_Texture._NULL;
                         break;
 
                 }
             }
             else
             {
-                wvShape = E_Shape.NULL;
+                wvShape = E_Shape._NULL;
             }
             
             return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
         }
-
-        private static List<Clue> GenerateCluesFromClue(Clue CorrectClue, int Times)
+        */
+        private static List<Clue> GenerateCluesFromCorrectClue(Clue CorrectClue, int Times)
         {
             List<Clue> wvClues = new List<Clue>();
             Clue wvTemp;
             wvClues.Add(GenerateFirstIncorrectClue(CorrectClue));
             bool wvSecondClueOk = true; 
-            for (int i = 1; i <= Times; i++)
+            for (int i = 1; i < Times; i++)
             {
                 do
                 {
@@ -306,10 +434,9 @@ namespace KillerWearsPrada.Controller
             return wvClues;
         }
 
-
         private static Clue GenerateFirstIncorrectClue(Clue Correct)
         {
-            List<string> wvStrings = new List<string>();
+            List<E_PropertiesKind> wvProperties = new List<E_PropertiesKind>();
             List<E_Texture> wvTextures = new List<E_Texture>();
             List<E_Color> wvColors = new List<E_Color>();
 
@@ -318,49 +445,49 @@ namespace KillerWearsPrada.Controller
             E_Color wvColor = Correct.Color;
             E_Texture wvTexture = Correct.Texture;
 
-            if (Correct.Gradiation != E_Gradiation.NULL)
-                wvStrings.Add("Gradiation");
-            if (Correct.Shape != E_Shape.NULL)
-                wvStrings.Add("Shape");
-            if (Correct.Color != E_Color.NULL)
+            if (Correct.Gradiation != E_Gradiation._NULL)
+                wvProperties.Add(E_PropertiesKind.GRADIATION);
+            if (Correct.Shape != E_Shape._NULL)
+                wvProperties.Add(E_PropertiesKind.SHAPE);
+            if (Correct.Color != E_Color._NULL)
             {
-                wvStrings.Add("Color");
+                wvProperties.Add(E_PropertiesKind.COLOR);
 
                 Array array = Enum.GetValues(typeof(E_Color));
                 foreach (E_Color t in array)
                 {
-                    if (t != E_Color.NULL && t != Correct.Color)
+                    if (t != E_Color._NULL && t != Correct.Color)
                         wvColors.Add(t);
                 }
             }
-            if (Correct.Texture != E_Texture.NULL)
+            if (Correct.Texture != E_Texture._NULL)
             {
-                wvStrings.Add("Texture");
+                wvProperties.Add(E_PropertiesKind.TEXTURE);
 
                 Array array = Enum.GetValues(typeof(E_Texture));
                 foreach (E_Texture t in array)
                 {
-                    if (t != E_Texture.NULL && t != Correct.Texture)
+                    if (t != E_Texture._NULL && t != Correct.Texture)
                         wvTextures.Add(t);
                 }
             }
 
-            int wvNull = attRandom.Next(wvStrings.Count);
+            int wvNull = attRandom.Next(wvProperties.Count);
             int wvIndex = 0;
 
-            switch (wvStrings[wvNull])
+            switch (wvProperties[wvNull])
             {
-                case "Gradiation":
+                case E_PropertiesKind.GRADIATION:
                     wvGradiation = (Correct.Gradiation == E_Gradiation.DARK) ? E_Gradiation.LIGHT : E_Gradiation.DARK;
                     break;
-                case "Shape":
+                case E_PropertiesKind.SHAPE:
                     wvShape = (Correct.Shape == E_Shape.SHORT) ? E_Shape.LONG : E_Shape.SHORT;
                     break;
-                case "Color":
+                case E_PropertiesKind.COLOR:
                     wvIndex = attRandom.Next(wvColors.Count);
                     wvColor = wvColors[wvIndex];
                     break;
-                case "Texture":
+                case E_PropertiesKind.TEXTURE:
                     wvIndex = attRandom.Next(wvTextures.Count);
                     wvTexture = wvTextures[wvIndex];
                     break;
@@ -372,7 +499,7 @@ namespace KillerWearsPrada.Controller
 
         private static Clue GenerateSecondsIncorrectClue( Clue Correct, Clue FirsIncorrectClue)
         {
-            List<string> wvStrings = new List<string>();
+            List<E_PropertiesKind> wvProperties = new List<E_PropertiesKind>();
             List<E_Texture> wvTextures = new List<E_Texture>();
             List<E_Color> wvColors = new List<E_Color>();
 
@@ -381,29 +508,29 @@ namespace KillerWearsPrada.Controller
             E_Color wvColor = Correct.Color;
             E_Texture wvTexture = Correct.Texture;
 
-            if (Correct.Gradiation != E_Gradiation.NULL && Correct.Gradiation==FirsIncorrectClue.Gradiation)
-                wvStrings.Add("Gradiation");
-            if (Correct.Shape != E_Shape.NULL && Correct.Shape==FirsIncorrectClue.Shape)
-                wvStrings.Add("Shape");
-            if (Correct.Color != E_Color.NULL)
+            if (Correct.Gradiation != E_Gradiation._NULL && Correct.Gradiation==FirsIncorrectClue.Gradiation)
+                wvProperties.Add(E_PropertiesKind.GRADIATION);
+            if (Correct.Shape != E_Shape._NULL && Correct.Shape==FirsIncorrectClue.Shape)
+                wvProperties.Add(E_PropertiesKind.SHAPE);
+            if (Correct.Color != E_Color._NULL)
             {
-                wvStrings.Add("Color");
+                wvProperties.Add(E_PropertiesKind.COLOR);
 
                 Array array = Enum.GetValues(typeof(E_Color));
                 foreach (E_Color t in array)
                 {
-                    if (t != E_Color.NULL && t != Correct.Color && t!=FirsIncorrectClue.Color)
+                    if (t != E_Color._NULL && t != Correct.Color && t!=FirsIncorrectClue.Color)
                         wvColors.Add(t);
                 }
             }
-            if (Correct.Texture != E_Texture.NULL)
+            if (Correct.Texture != E_Texture._NULL)
             {
-                wvStrings.Add("Texture");
+                wvProperties.Add(E_PropertiesKind.TEXTURE);
 
                 Array array = Enum.GetValues(typeof(E_Texture));
                 foreach (E_Texture t in array)
                 {
-                    if (t != E_Texture.NULL && t != Correct.Texture && t!= FirsIncorrectClue.Texture)
+                    if (t != E_Texture._NULL && t != Correct.Texture && t!= FirsIncorrectClue.Texture)
                         wvTextures.Add(t);
                 }
             }
@@ -413,28 +540,28 @@ namespace KillerWearsPrada.Controller
 
             for (int i = 0; i < 2; i++)
             {
-                wvNull = attRandom.Next(wvStrings.Count);
-                switch (wvStrings[wvNull])
+                wvNull = attRandom.Next(wvProperties.Count);
+                switch (wvProperties[wvNull])
                 {
-                    case "Gradiation":
+                    case E_PropertiesKind.GRADIATION:
                         wvGradiation = (Correct.Gradiation == E_Gradiation.DARK) ? E_Gradiation.LIGHT : E_Gradiation.DARK;
                         break;
-                    case "Shape":
+                    case E_PropertiesKind.SHAPE:
                         wvShape = (Correct.Shape == E_Shape.SHORT) ? E_Shape.LONG : E_Shape.SHORT;
                         break;
-                    case "Color":
+                    case E_PropertiesKind.COLOR:
                         wvIndex = attRandom.Next(wvColors.Count);
                         wvColor = wvColors[wvIndex];
                         wvColors.RemoveAt(wvIndex);
                         break;
-                    case "Texture":
+                    case E_PropertiesKind.TEXTURE:
                         wvIndex = attRandom.Next(wvTextures.Count);
                         wvTexture = wvTextures[wvIndex];
                         wvTextures.RemoveAt(wvIndex);
                         break;
 
                 }
-                wvStrings.RemoveAt(wvNull);
+                wvProperties.RemoveAt(wvNull);
 
             }
 
@@ -450,7 +577,7 @@ namespace KillerWearsPrada.Controller
             foreach (System.IO.FileInfo wvFile in wvFileInfos)
                 wvFile.Delete();
         }
-
+        #endregion
 
         /// <summary>
         /// 

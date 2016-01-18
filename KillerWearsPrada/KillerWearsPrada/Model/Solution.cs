@@ -10,87 +10,32 @@ namespace KillerWearsPrada.Model
     public class Solution : ISerializable
     {
 
-        private List<Pairer> attPairers;
+        private List<AbstractItem> attSolutionItems;
 
         public Solution ()
         {
-            attPairers = new List<Pairer>();
+            attSolutionItems = new List<AbstractItem>();
         }
 
         public int Count
         {
-            get { return attPairers.Count; }
+            get { return attSolutionItems.Count; }
         }
 
-        public List<string> CorrectBarCodes
+        public void AddItem (AbstractItem Item)
         {
-            get
-            {
-                List<string> wvList = new List<string>();
-                foreach(Pairer p in attPairers)
-                {
-                    wvList.Add(p.Item.BarCode);
-                }
-                return wvList;
-            }
+            attSolutionItems.Add(Item);
         }
 
-        public Clue GetClueByBarcode(string BarCode)
+        public bool CheckInSolution(AbstractItem Item)
         {
-            foreach(Pairer p in attPairers)
+            foreach(AbstractItem ai in attSolutionItems)
             {
-                if (p.Item.BarCode == BarCode)
-                    return p.Clue;
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Check if an ItemKind is already used.
-        /// Return true if so, false otherwise.
-        /// </summary>
-        /// <param name="Value"></param>
-        /// <returns></returns>
-        public bool CheckItemKind (E_ItemKind Value)
-        {
-            foreach(Pairer p in attPairers)
-            {
-                if (p.Item.ItemKind.ToLower() == Value.ToString().ToLower())
-                    return true;
+                if (!ai.Equals(Item))
+                    return false;
             }
 
-            return false;
-        }
-
-        //public bool ContainsClue
-
-        public void AddItem (Clue Clue, Item Value)
-        {
-            attPairers.Add(new Pairer(Clue, Value));
-        }
-
-        class Pairer
-        {
-
-            Item attItem;
-            Clue attClue;
-
-            public Pairer(Clue Clue, Item Item)
-            {
-                attItem = Item;
-                attClue = Clue;
-                attItem.SetClueText(Clue.ToString());
-            }
-
-            public Item Item
-            {
-                get { return attItem; }
-            }
-            
-            public Clue Clue
-            {
-                get { return attClue; }
-            }
+            return true;
         }
 
     }
