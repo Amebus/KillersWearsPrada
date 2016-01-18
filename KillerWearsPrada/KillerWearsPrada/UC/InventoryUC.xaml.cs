@@ -26,21 +26,43 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class InventoryUC : UserControl
     {
+        // observable collection construita con tutti gli item nella lista nell'inventario
+        public ObservableCollection<Item> itemInv { get; set; }
+            // = new ObservableCollection<Item>();
 
         ObservableCollection<ItemProva> p;
 
         ObservableCollection<ItemProva> SelectedItems = new ObservableCollection<ItemProva>();
         ObservableCollection<ItemProva> SelectedItems2 = new ObservableCollection<ItemProva>();
 
+        public int countItems { get; set; }
 
         public InventoryUC()
         {
-            MainWindow i = (MainWindow)Application.Current.Windows[0];
+            itemInv = new ObservableCollection<Item>();
+            zoneList = new ObservableCollection<TimeZoneInfo>();
+
+            // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
+            /*   foreach (Item it in MainWindow.attGameController.ItemsInInventory)
+               {
+                   itemInv.Add(it);
+               }
+               */
+            //conto e mostro gli item che ha nell'inventariooo
+            // ma devo farlo cambiare runtime!!!
+            //countItems = "You have " + zoneList.Count.ToString() + " items in your inventory";
+
+           
 
             this.DataContext = this;
+          //  countItems = zoneList.Count;
             InitializeComponent();
 
+            
 
+            // se non ci sono item nell'inventario, mostrare label 
+
+            #region togliere
 
             //TODO sarebbe così
             /*
@@ -65,10 +87,13 @@ namespace KillerWearsPrada.UC
             //Bindo nome listView.ItemsSource = Lista tipizzata!!!
             //    lvDataBinding.ItemsSource = s;
 
-           // Come dovrei  per prendere gli item nell'inventario
-      //      ListView1.ItemsSource = MainWindow.attGameController.ItemsInInventory;
+            #endregion
 
 
+            // Come dovrei  per prendere gli item nell'inventario
+            //      ListView1.ItemsSource = itemInv;
+
+            #region prova drag drop solo con mouse
             lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
 
             foreach (TimeZoneInfo tzi in TimeZoneInfo.GetSystemTimeZones())
@@ -77,13 +102,32 @@ namespace KillerWearsPrada.UC
                     zoneList.Add(tzi);
             }
             lbOne.ItemsSource = zoneList;
+            #endregion
+            
+        }
 
+        
 
+        public Int32 ArticleCount
+        {
+            get
+            {
+                if (zoneList == null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return this.zoneList.Count;
+                }
+            }
         }
 
         private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
+            // MainWindow.attGameController.ItemsInInventory = (List)zoneList;
 
+            saveItemsinModel();
 
             Canvas p = (Canvas)this.Parent;
 
@@ -91,6 +135,25 @@ namespace KillerWearsPrada.UC
 
             p.Children.Remove(this);
 
+        }
+
+        /// <summary>
+        /// salvare le proprietà dressed ininventory e trashed dei vari items nel model alla chiusura dell'inventario, o alla submission
+        /// </summary>
+        private void saveItemsinModel()
+        {
+            /*      foreach (Item r in MainWindow.attGameController.ItemsInInventory)
+                  {
+                      foreach (Item i in itemInv)
+                      {
+                          if (i.BarCode == r.BarCode)
+                          {
+                              r.IsInInventory = i.IsInInventory;
+                              r.IsDressed = i.IsDressed;
+                              r.IsTrashed = i.IsTrashed;
+                          }
+                      }
+                  }*/
         }
 
         /// <summary>
@@ -134,7 +197,10 @@ namespace KillerWearsPrada.UC
         // TODO
         private void submission_Click(object sender, RoutedEventArgs e)
         {
+            saveItemsinModel();
 
+            //controllo se sono giudti gli item in dressed con quelli in solution?
+            //prendere da game controller la attGameSolution?
         }
 
 
@@ -160,7 +226,9 @@ namespace KillerWearsPrada.UC
 
         //TODO
         //cose per implementare drag drop listboxes
-        ObservableCollection<TimeZoneInfo> zoneList = new ObservableCollection<TimeZoneInfo>();
+        public ObservableCollection<TimeZoneInfo> zoneList { get; set; }
+            
+            //= new ObservableCollection<TimeZoneInfo>();
         ObservableCollection<string> zoneListDest = new ObservableCollection<string>();
 
         ListBox dragSource = null;

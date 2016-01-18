@@ -60,6 +60,13 @@
                 </TransformGroup>
             </Grid.RenderTransform>
 
+            <Label Margin="278,-39,953,739" Content="Inventory" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="96" Height="150" Foreground="Red" />
+
+            <Label Margin="1020,0,578,733" Content="{Binding itemInv.Count, Mode=OneWay}" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="82" />
+
+            <Label Margin="764,0,686,733" Content="You have " FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="230" />
+
+            <Label Margin="1107,0,0,733" Content="items in your inventory" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="573" />
 
 
             <ListView Margin="1043,0,0,198" Name="lvDataBinding" Visibility="Collapsed">
@@ -119,7 +126,7 @@
             </ListView>
 
             <ListBox x:Name="lbOne"
-                 HorizontalAlignment="Left" Margin="672,61,0,346" Width="517" 
+                 HorizontalAlignment="Left" Margin="672,223,0,184" Width="517" 
                  ScrollViewer.CanContentScroll="False">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -130,12 +137,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <ListBox x:Name="lbTwo"  Drop="ListBox_Drop" AllowDrop="True"
-                 HorizontalAlignment="Right" Margin="0,61,12,318" Width="429" 
+                 HorizontalAlignment="Right" Margin="0,223,12,156" Width="429" 
                  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-            <TextBlock Height="59" Text="ListBox One" HorizontalAlignment="Left" 
-                   Margin="672,2,0,0" VerticalAlignment="Top" Width="439" />
-            <TextBlock Height="59" Text="ListBox Two" HorizontalAlignment="Right" 
-                   Margin="0,2,12,0" VerticalAlignment="Top" Width="361" />
 
             <ListBox  x:Name="ItemsListBox" SelectionMode="Multiple" Height="300" 
           ItemsSource="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}"
