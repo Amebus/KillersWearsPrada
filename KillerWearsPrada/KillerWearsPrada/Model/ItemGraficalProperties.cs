@@ -42,6 +42,9 @@ namespace KillerWearsPrada.Model
         }
     }
 
+    /// <summary>
+    /// Kind of properties addable to the items
+    /// </summary>
     public enum E_PropertiesKind
     {
         _NULL,

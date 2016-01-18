@@ -211,22 +211,31 @@ namespace KillerWearsPrada.Controller
         private static void CreateGame(int NumberOfItems)
         {
             Solution wvSolution = new Solution();
-            List<Item> wvItems = new List<Item>();
-            Clue wvCorrectClue;
+            List<AbstractItem> wvCorrectItem = new List<AbstractItem>();
+
+
+            for (int i = 1; i <= NUMBER_OF_ROOMS; i++)
+                wvCorrectItem.Add(GenerateCorrectAbstractItem((E_ItemKind)(E_ItemKind._NULL + i)));
+
+
+
+
+
+            //Clue wvCorrectClue;
             E_ItemKind wvItemKind;
-            Item wvCorrectItem;
-            List<Clue> wvWrongClues;
+            
+            //List<Clue> wvWrongClues;
 
             wvItemKind = E_ItemKind.hat;
-            wvCorrectClue = GenerateCorrectClue(wvItemKind);
+            //wvCorrectClue = GenerateCorrectClue(wvItemKind);
             //wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             //wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
             
-            wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
+            //wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
 
             //Room r = new Room()
 
-
+            /*
             wvItemKind = E_ItemKind.trousers;
             wvCorrectClue = GenerateCorrectClue(wvItemKind);
             wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
@@ -253,17 +262,67 @@ namespace KillerWearsPrada.Controller
 
 
             wvItems = GenerateItemsByItemKind(wvItemKind);
+            */
+            
+        }
+
+        private static AbstractItem GenerateCorrectAbstractItem(E_ItemKind ItemKind)
+        {
+            E_Gradiation wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation._NULL, 1 + (int)E_Gradiation.DARK);
+            E_Shape wvShape = (E_Shape)attRandom.Next(1 + (int)E_Shape._NULL, 1 + (int)E_Shape.LONG);
+            E_Color wvColor = (E_Color)attRandom.Next(1 + (int)E_Color._NULL, 1 + (int)E_Color.YELLOW);
+            E_Texture wvTexture = (E_Texture)attRandom.Next(1 + (int)E_Texture._NULL, 1 + (int)E_Texture.PLAINCOLOR);
+            List<E_PropertiesKind> wvPropertiesKind = new List<E_PropertiesKind>();
+            Array array = Enum.GetValues(typeof(E_PropertiesKind));
+
+
+            foreach (E_PropertiesKind t in array)
+            {
+                if (t != E_PropertiesKind._NULL && t != E_PropertiesKind._END)
+                    wvPropertiesKind.Add(t);
+            }
+
+            attRandom.Next()
 
             
+
+            if (ItemKind != E_ItemKind.trousers && ItemKind != E_ItemKind.t_shirt)
+            {
+                int wvNull = attRandom.Next(4);
+
+                switch (wvNull)
+                {
+                    case 0:
+                        wvGradiation = E_Gradiation._NULL;
+                        break;
+                    case 1:
+                        wvShape = E_Shape._NULL;
+                        break;
+                    case 2:
+                        wvColor = E_Color._NULL;
+                        break;
+                    default:
+                        wvTexture = E_Texture._NULL;
+                        break;
+
+                }
+            }
+            else
+            {
+                wvShape = E_Shape._NULL;
+            }
+
+            return new AbstractItem(E_ItemType.A, ItemKind);
         }
 
         private static List<Item> GenerateItemsByItemKind(E_ItemKind wvItemKind)
         {
-            AbstractItem wvAbstractItem = new AbstractItem();
-            wvAbstractItem.AddProperty()
-
+            //AbstractItem wvAbstractItem = new AbstractItem();
+            //wvAbstractItem.AddProperty();
+            throw new NotImplementedException("Finire la generazione random");
         }
 
+        /*
         /// <summary>
         /// Return a <see cref="Clue"/> generated starting from the specified <see cref="E_ItemKind"/>
         /// </summary>
@@ -304,7 +363,7 @@ namespace KillerWearsPrada.Controller
             
             return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
         }
-
+        */
         private static List<Clue> GenerateCluesFromCorrectClue(Clue CorrectClue, int Times)
         {
             List<Clue> wvClues = new List<Clue>();

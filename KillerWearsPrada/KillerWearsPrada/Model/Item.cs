@@ -30,11 +30,12 @@ namespace KillerWearsPrada.Model
     public class AbstractItem : ISerializable
     {
         public E_ItemKind ItemKind { get; private set; }
-        public E_ItemType ItemType { get; private set; }
+        protected E_ItemType ItemType { get; private set; }
         protected List<ItemGraficalProperty> ItemProperties { get; private set; }
         
-        public AbstractItem(E_ItemType ItemType)
+        public AbstractItem(E_ItemType ItemType, E_ItemKind ItemKind)
         {
+            this.ItemKind = ItemKind;
             this.ItemType = ItemType;
             this.ItemProperties = new List<ItemGraficalProperty>();
         }
@@ -72,6 +73,17 @@ namespace KillerWearsPrada.Model
             return true;
         }
 
+        public bool CheckPropertyByKind(E_PropertiesKind PropertyKind)
+        {
+            foreach (ItemGraficalProperty igp in ItemProperties)
+            {
+                if (igp.PropertyKind == PropertyKind)
+                    return true;
+            }
+
+            return false;
+        }
+
         public E_PropertiesKind GetProperyKind(int Index)
         {
             if (Index >= ItemProperties.Count)
@@ -95,19 +107,7 @@ namespace KillerWearsPrada.Model
             if (wvProperty == null)
                 return null;
 
-            switch (wvProperty.PropertyKind)
-            {
-                case E_PropertiesKind.COLOR:
-                    return ((E_Color)wvProperty.Property).ToString();
-                case E_PropertiesKind.GRADIATION:
-                    return ((E_Gradiation)wvProperty.Property).ToString();
-                case E_PropertiesKind.SHAPE:
-                    return ((E_Shape)wvProperty.Property).ToString();
-                case E_PropertiesKind.TEXTURE:
-                    return ((E_Texture)wvProperty.Property).ToString();
-                default:
-                    return null;
-            }
+            return ConvertProperty(wvProperty);
 
         }
 
@@ -118,21 +118,28 @@ namespace KillerWearsPrada.Model
             else if (Index < 0)
                 Index = 0;
 
-            ItemGraficalProperty wvProperty = ItemProperties[Index]; 
-            switch(wvProperty.PropertyKind)
+            ItemGraficalProperty wvProperty = ItemProperties[Index];
+
+            return ConvertProperty(wvProperty);
+        }
+
+        private string ConvertProperty(ItemGraficalProperty Property)
+        {
+            switch (Property.PropertyKind)
             {
                 case E_PropertiesKind.COLOR:
-                    return ((E_Color)wvProperty.Property).ToString();
+                    return ((E_Color)Property.Property).ToString();
                 case E_PropertiesKind.GRADIATION:
-                    return ((E_Gradiation)wvProperty.Property).ToString();
+                    return ((E_Gradiation)Property.Property).ToString();
                 case E_PropertiesKind.SHAPE:
-                    return ((E_Shape)wvProperty.Property).ToString();
+                    return ((E_Shape)Property.Property).ToString();
                 case E_PropertiesKind.TEXTURE:
-                    return ((E_Texture)wvProperty.Property).ToString();
+                    return ((E_Texture)Property.Property).ToString();
                 default:
                     return null;
             }
         }
+
     }
 
     [Serializable]
