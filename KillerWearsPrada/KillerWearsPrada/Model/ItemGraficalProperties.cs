@@ -7,17 +7,46 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
 
+    
+    public class ItemGraficalProperty
+    {
+        private E_PropertiesKind attPropertyKind;
+        public object Property { get; private set; }
+
+        public E_PropertiesKind PropertyKind
+        {
+            get { return attPropertyKind; }
+        }
+
+        public ItemGraficalProperty()
+        {
+            attPropertyKind = E_PropertiesKind._NULL;
+            Property = null;
+        }
+        
+        public void SetProperty (E_PropertiesKind PropertyKind, object ItemProperty)
+        {
+            attPropertyKind = PropertyKind;
+            Property = ItemProperty;
+        }
+
+
+
+    }
+
     public enum E_PropertiesKind
     {
+        _NULL,
         COLOR,
         GRADIATION,
         SHAPE,
-        TEXTURE
+        TEXTURE,
+        _END
     }
 
     public enum E_Color
     {
-        NULL,
+        _NULL,
         BLACK,
         BLUE,
         BROWN,
@@ -26,14 +55,16 @@ namespace KillerWearsPrada.Model
         RED,
         PINK,        
         PURPLE,
-        YELLOW
+        YELLOW,
+        _END
     }
 
     public enum E_Gradiation
     {
-        NULL,
+        _NULL,
         LIGHT,
-        DARK
+        DARK,
+        _END
     }
 
     /// <summary>
@@ -41,28 +72,30 @@ namespace KillerWearsPrada.Model
     /// </summary>
     public enum E_Shape
     {
-        NULL,
+        _NULL,
         SHORT,
-        LONG
+        LONG,
+        _END
     }
 
     public enum E_Texture //can be taken from DB table TipoTexture
     {
-        NULL,
-        FANTASY,
+        _NULL,
+        FLOWERS,
         POIS,
         STRIPES,
         SCOTTISH,
-        PLAINCOLOR
+        PLAINCOLOR,
+        _END
     }
 
     public enum E_ItemKind // can be taken from DB table TipoCapo
     {
-        NULL,
+        _NULL,
         hat,
         t_shirt,
-        trousers
-        
+        trousers,
+        _END
     }
     
 }

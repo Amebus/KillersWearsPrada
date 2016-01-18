@@ -6,15 +6,118 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Model
 {
+
+    public enum E_ItemType
+    {
+        A,
+        B,
+        C,
+        D,
+        E,
+        F
+    }
+
+    [Serializable]
+    public class AbstractItem : ISerializable
+    {
+        public E_ItemType ItemType { get; private set; }
+        protected List<ItemGraficalProperty> ItemProperties { get; private set; }
+        
+        public AbstractItem(E_ItemType ItemType)
+        {
+            this.ItemType = ItemType;
+            this.ItemProperties = new List<ItemGraficalProperty>();
+        }
+
+        protected AbstractItem(AbstractItem AI)
+        {
+            this.ItemProperties = AI.ItemProperties;
+            this.ItemType = AI.ItemType;
+        }
+
+        public int PropertiesCount
+        {
+            get { return ItemProperties.Count; }
+        }
+
+        public void AddProperty(ItemGraficalProperty Property)
+        {
+            ItemProperties.Add(Property);
+        }
+
+
+        public E_PropertiesKind GetProperyKind(int Index)
+        {
+            if (Index >= ItemProperties.Count)
+                Index = ItemProperties.Count - 1;
+            else if (Index < 0)
+                Index = 0;
+
+            return ItemProperties[Index].PropertyKind;
+        }
+
+        public string GetProperty(E_PropertiesKind PropertyKind)
+        {
+            ItemGraficalProperty wvProperty = null;
+
+            foreach(ItemGraficalProperty igp in ItemProperties)
+            {
+                if (igp.PropertyKind == PropertyKind)
+                    wvProperty = igp;
+            }
+
+            if (wvProperty == null)
+                return null;
+
+            switch (wvProperty.PropertyKind)
+            {
+                case E_PropertiesKind.COLOR:
+                    return ((E_Color)wvProperty.Property).ToString();
+                case E_PropertiesKind.GRADIATION:
+                    return ((E_Gradiation)wvProperty.Property).ToString();
+                case E_PropertiesKind.SHAPE:
+                    return ((E_Shape)wvProperty.Property).ToString();
+                case E_PropertiesKind.TEXTURE:
+                    return ((E_Texture)wvProperty.Property).ToString();
+                default:
+                    return null;
+            }
+
+        }
+
+        public string GetProperty (int Index)
+        {
+            if (Index >= ItemProperties.Count)
+                Index = ItemProperties.Count - 1;
+            else if (Index < 0)
+                Index = 0;
+
+            ItemGraficalProperty wvProperty = ItemProperties[Index]; 
+            switch(wvProperty.PropertyKind)
+            {
+                case E_PropertiesKind.COLOR:
+                    return ((E_Color)wvProperty.Property).ToString();
+                case E_PropertiesKind.GRADIATION:
+                    return ((E_Gradiation)wvProperty.Property).ToString();
+                case E_PropertiesKind.SHAPE:
+                    return ((E_Shape)wvProperty.Property).ToString();
+                case E_PropertiesKind.TEXTURE:
+                    return ((E_Texture)wvProperty.Property).ToString();
+                default:
+                    return null;
+            }
+        }
+    }
+
     [Serializable]
     // this class represents the item in the game
-    public class Item : ISerializable
+    public class Item : AbstractItem
     {
 
         private int code;
         private string barcode;
         private string itemName;
-        private Double price;
+        private double price;
         private string description;
         private string reparto;
         private string textureFileName;        
@@ -40,8 +143,9 @@ namespace KillerWearsPrada.Model
         /// <param name="texture">string representing the texture file name</param>
         /// <param name="image">string representing the item image file name</param>
         /// <param name="kind">string representing the item kind</param>
-        public Item(int c, string bc, string name, Double p, string descr, string rep, string texture, string image, string kind)
+        public Item(int c, string bc, string name, double p, string descr, string rep, string texture, string image, string kind, AbstractItem AItem) : base(AItem)
         {
+            
             code = c;
             barcode = bc;
             itemName = name;
@@ -68,7 +172,7 @@ namespace KillerWearsPrada.Model
             get { return barcode; }
         }
 
-        public Double Price
+        public double Price
         {
             get { return price; }
         }

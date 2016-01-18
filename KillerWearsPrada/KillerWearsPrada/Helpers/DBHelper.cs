@@ -42,89 +42,6 @@ namespace KillerWearsPrada.Helpers
         }
 
         #region Items
-        /// <summary>
-        /// This methods implements a query over the db that given some parameters returns a random item
-        /// </summary>
-        /// <param name="long1"> contains the shape  - look Enum</param>
-        /// <param name="light">contains the gradiation - look Enum </param>
-        /// <param name="textureKind"> contains the kind of texture needed - look Enum -</param>
-        /// <param name="itemKind"> contains the kind of item you need - look Enum </param>
-        /// <param name="color"> contains the predominant color - look Enum </param>
-        /// <returns> an Item object that contains, in order : 
-        ///         1. Item code
-        ///         2. Barcode
-        ///         3. Item Name
-        ///         4. Item Price
-        ///         5. Item Description
-        ///         6. Item Reparto
-        ///         7. Texture file name
-        ///         8. Image file name
-        ///         9. item kind
-        /// </returns>
-        /*public Item GetItemFromClues(E_Shape long1, E_Gradiation light, E_Texture textureKind, E_Color color, E_ItemKind itemKind){
-
-            DBConnection.Open();
-            // note : we want items of which we have more than 10 available 
-            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
-            query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
-            query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
-            query += " AND I.Available > 10 AND II.Long = @p1 AND T.Light = @p2 AND TK.TextureKind = @p3 AND T.MainColor = @p4 AND IK.ItemKind = @p5";
-            query += " ORDER BY Rnd(-(10000*I.ID)*Time())";
-
-            // parameter @p1 - shape
-            if (long1 == E_Shape.LONG)
-            {
-                query = query.Replace("@p1", true.ToString());
-            }
-            else
-            {
-                query = query.Replace("@p1", false.ToString());
-            }
-
-            // parameter @p2 - gradiation
-            if (light == E_Gradiation.LIGHT)
-            {
-                query = query.Replace("@p2", true.ToString());
-            }
-            else
-            {
-                query = query.Replace("@p2", false.ToString());
-            }
-
-            // parameter @p3 - texture kind 
-            query = query.Replace("@p3", "\'" + textureKind.ToString() + "\'");
-
-            // parameter @p4 - main color 
-            query = query.Replace("@p4", "\'" + color.ToString() + "\'");
-
-            // parameter @p5 - item kind 
-            query = query.Replace("@p5", "\'" + itemKind.ToString() + "\'");
-
-
-
-            OleDbCommand command = new OleDbCommand(query, DBConnection);
-
-            OleDbDataReader result = command.ExecuteReader();
-
-            result.Read();
-
-            int codice = result.GetInt32(0);
-            string barcode = result.GetString(1);
-            string name = result.GetString(2);
-            double price = result.GetDouble(3);
-            string descr = result.GetString(4);
-            string rep = result.GetString(5);
-            string texture = result.GetString(6);
-            string image = result.GetString(7);
-            
-
-            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, itemKind.ToString());
-
-            DBConnection.Close();
-
-            return i;
-        }
-        */
 
         /// <summary>
         /// returns an item given a clue ad an item kind
@@ -142,7 +59,7 @@ namespace KillerWearsPrada.Helpers
         ///         8. Image file name
         ///         9. item kind
         /// </returns>
-        public Item GetItemFromClues(Clue c, E_ItemKind itemKind)
+        public Item GetItemFromClues(AbstractItem Item) //
         {
 
             DBConnection.Open();
@@ -160,7 +77,7 @@ namespace KillerWearsPrada.Helpers
             string whereColor = " AND T.MainColor = @p4";
 
             // parameter @p1 - shape
-            if(c.Shape != E_Shape.NULL)
+            if(c.Shape != E_Shape._NULL)
             {
                 if (c.Shape == E_Shape.LONG)
                 {
@@ -174,7 +91,7 @@ namespace KillerWearsPrada.Helpers
             }
             
             // parameter @p2 - gradiation
-            if (c.Gradiation != E_Gradiation.NULL)
+            if (c.Gradiation != E_Gradiation._NULL)
             {
                 if (c.Gradiation == E_Gradiation.LIGHT)
                 {
@@ -189,14 +106,14 @@ namespace KillerWearsPrada.Helpers
             
 
             // parameter @p3 - texture kind 
-            if(c.Texture != E_Texture.NULL)
+            if(c.Texture != E_Texture._NULL)
             {
                 whereTexture = whereTexture.Replace("@p3", "\'" + c.Texture.ToString().ToLower() + "\'");
                 query += whereTexture;
             }
 
             // parameter @p4 - main color 
-            if (c.Color != E_Color.NULL)
+            if (c.Color != E_Color._NULL)
             {
                 whereColor = whereColor.Replace("@p4", "\'" + c.Color.ToString().ToLower() + "\'");
                 query += whereColor;
@@ -232,141 +149,6 @@ namespace KillerWearsPrada.Helpers
             return i;
         }
 
-        #endregion
-        #region testItem
-        // test method
-        /// <summary>
-        /// This methods implements a query over the db that given the item shape (long vs short) returns a random item
-        /// </summary>
-        /// <param name="long1"> tells if an item il LONG or SHORT</param>        
-        /// <param name="itemKind">  containing the kind of item you need</param>
-        /// <returns> an Item object that contains, in order : 
-        ///         1. Item code
-        ///         2. Barcode
-        ///         3. Item Name
-        ///         4. Item Price
-        ///         5. Item Description
-        ///         6. Item Reparto
-        ///         7. Texture file name
-        ///         8. Image file name
-        ///         9. item kind
-        /// </returns>
-        public Item GetItemByShape(E_Shape long1, E_ItemKind itemKind)
-        {
-
-            DBConnection.Open();
-
-            // note : we want items of which we have more than 10 available 
-
-            string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
-            query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
-            query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
-            query += " AND I.Available > 10 AND II.Long = @shape AND IK.ItemKind = @kind";
-            query += " ORDER BY Rnd(-(10000*I.ID)*Time())";
-            
-            // parameter @shape
-            if (long1 == E_Shape.LONG)
-            {
-                query = query.Replace("@shape", true.ToString());
-            }
-            else
-            {
-                query = query.Replace("@shape", false.ToString());
-            }
-                
-            // parameter @kind   - item kind
-            query = query.Replace("@kind", @"'" + itemKind.ToString().ToLower() + @"'");
-            
-            OleDbCommand command = new OleDbCommand(query, DBConnection);
-
-            OleDbDataReader result = command.ExecuteReader();
-            if (!result.HasRows)
-                return null;
-            result.Read();
-
-            int codice = result.GetInt32(0);
-            string barcode = result.GetString(1);
-            string name = result.GetString(2);
-            double price = result.GetDouble(3);
-            string descr = result.GetString(4);
-            string rep = result.GetString(5);
-            string texture = result.GetString(6);
-            string image = result.GetString(7);
-            
-            
-
-            Item i = new Item(codice, barcode, name, price , descr, rep, texture , image, itemKind.ToString());
-
-            DBConnection.Close();
-
-            return i;
-        }
-
-
-        // test method
-        /// <summary>
-        /// This methods implements a query over the db that given the item's gradation (light vs dark) returns a random item
-        /// </summary>
-        /// <param name="light">tells if an item is DARK or LIGHT </param>
-        /// <param name="itemKind"> containing the kind of item you need</param>
-        /// <returns> an Item object that contains, in order : 
-        ///         1. Item code
-        ///         2. Barcode
-        ///         3. Item Name
-        ///         4. Item Price
-        ///         5. Item Description
-        ///         6. Item Reparto
-        ///         7. Texture file name
-        ///         8. Image file name
-        ///         9. item kind
-        /// </returns>
-        public Item GetItemByGradation(E_Gradiation light, E_ItemKind itemKind)
-        {
-
-            DBConnection.Open();
-            // note : we want items of which we have more than 10 available 
-            string query = "SELECT I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
-            query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
-            query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
-            query += " AND I.Available > 10 AND T.Light = @grad AND IK.ItemKind = @kind";
-            query += " ORDER BY Rnd(-(10000*I.ID)*Time())";
-
-            // parameter @p2 - gradiation
-            if (light == E_Gradiation.LIGHT)
-            {
-                query = query.Replace("@grad", true.ToString());
-            }
-            else
-            {
-                query = query.Replace("@grad", false.ToString());
-            }
-
-            // parameter @kind  - item kind 
-            query = query.Replace("@kind", "\'" + itemKind.ToString() + "\'");
-
-            OleDbCommand command = new OleDbCommand(query, DBConnection);
-
-            OleDbDataReader result = command.ExecuteReader();
-
-            result.Read();
-
-            int codice = result.GetInt32(0);
-            string barcode = result.GetString(1);
-            string name = result.GetString(2);
-            double price = result.GetDouble(3);
-            string descr = result.GetString(4);
-            string rep = result.GetString(5);
-            string texture = result.GetString(6);
-            string image = result.GetString(7);
-            
-            
-
-            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, itemKind.ToString());
-
-            DBConnection.Close();
-
-            return i;
-        }
         #endregion
 
         #region Player
