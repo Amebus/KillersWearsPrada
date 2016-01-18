@@ -211,22 +211,22 @@ namespace KillerWearsPrada.Controller
         private static void CreateGame(int NumberOfItems)
         {
             Solution wvSolution = new Solution();
-            List<AbstractItem> wvCorrectItem = new List<AbstractItem>();
+            List<AbstractItem> wvCorrectAbstractItems = new List<AbstractItem>();
 
 
             for (int i = 1; i <= NUMBER_OF_ROOMS; i++)
-                wvCorrectItem.Add(GenerateCorrectAbstractItem((E_ItemKind)(E_ItemKind._NULL + i)));
+            {
+                wvCorrectAbstractItems.Add(GenerateCorrectAbstractItem((E_ItemKind)(E_ItemKind._NULL + i)));
+                wvSolution.AddItem(wvCorrectAbstractItems[i - 1]);
+            }
 
 
+            List<Item> wvCorrectItems = new List<Item>();
+            foreach(AbstractItem ai in wvCorrectAbstractItems)
+            {
+                wvCorrectItems.Add(attDataBase.GetItemFromAbstractItem(ai));
+            }
 
-
-
-            //Clue wvCorrectClue;
-            E_ItemKind wvItemKind;
-            
-            //List<Clue> wvWrongClues;
-
-            wvItemKind = E_ItemKind.hat;
             //wvCorrectClue = GenerateCorrectClue(wvItemKind);
             //wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             //wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
@@ -268,51 +268,76 @@ namespace KillerWearsPrada.Controller
 
         private static AbstractItem GenerateCorrectAbstractItem(E_ItemKind ItemKind)
         {
-            E_Gradiation wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation._NULL, 1 + (int)E_Gradiation.DARK);
-            E_Shape wvShape = (E_Shape)attRandom.Next(1 + (int)E_Shape._NULL, 1 + (int)E_Shape.LONG);
-            E_Color wvColor = (E_Color)attRandom.Next(1 + (int)E_Color._NULL, 1 + (int)E_Color.YELLOW);
-            E_Texture wvTexture = (E_Texture)attRandom.Next(1 + (int)E_Texture._NULL, 1 + (int)E_Texture.PLAINCOLOR);
-            List<E_PropertiesKind> wvPropertiesKind = new List<E_PropertiesKind>();
-            Array array = Enum.GetValues(typeof(E_PropertiesKind));
+            int wvRandom;
+            E_Gradiation wvGradiation;
+            E_Shape wvShape;
+            E_Color wvColor;
+            E_Texture wvTexture;
 
+            AbstractItem wvAbstractItem = new AbstractItem(E_ItemType.A, ItemKind);
+            ItemGraficalProperty wvProperty = new ItemGraficalProperty();
+            List <E_PropertiesKind> wvPropertiesKind = new List<E_PropertiesKind>();
 
-            foreach (E_PropertiesKind t in array)
+            wvRandom = attRandom.Next(1 + (int)E_Shape._NULL, (int)E_Shape._END);
+            wvShape = (E_Shape)wvRandom;
+
+            wvRandom = attRandom.Next(1 + (int)E_Color._NULL, (int)E_Color._END);
+            wvColor = (E_Color)wvRandom;
+
+            if (wvColor == E_Color.BLACK)
+                wvGradiation = E_Gradiation.DARK;
+            else // TODO: ADD else if for E_Color.WHITE
             {
-                if (t != E_PropertiesKind._NULL && t != E_PropertiesKind._END)
-                    wvPropertiesKind.Add(t);
+                wvRandom = attRandom.Next(1 + (int)E_Gradiation._NULL, (int)E_Gradiation._END);
+                wvGradiation = (E_Gradiation)wvRandom;
             }
 
-            attRandom.Next()
+            wvRandom = attRandom.Next(1 + (int)E_Texture._NULL, (int)E_Texture._END);
+            wvTexture = (E_Texture)wvRandom;
 
-            
 
-            if (ItemKind != E_ItemKind.trousers && ItemKind != E_ItemKind.t_shirt)
+            wvRandom = attRandom.Next((int)E_PropertiesKind._NULL + 1 ,(int)E_PropertiesKind._END);
+
+            if (ItemKind == E_ItemKind.hat)
             {
-                int wvNull = attRandom.Next(4);
-
-                switch (wvNull)
+                for (int i = (int)E_PropertiesKind._NULL + 1; i < (int)E_PropertiesKind._END ; i++)
                 {
-                    case 0:
-                        wvGradiation = E_Gradiation._NULL;
-                        break;
-                    case 1:
-                        wvShape = E_Shape._NULL;
-                        break;
-                    case 2:
-                        wvColor = E_Color._NULL;
-                        break;
-                    default:
-                        wvTexture = E_Texture._NULL;
-                        break;
-
+                    if (i != wvRandom)
+                        wvPropertiesKind.Add((E_PropertiesKind)i);
                 }
             }
             else
             {
-                wvShape = E_Shape._NULL;
+                for (int i = (int)E_PropertiesKind._NULL + 1; i < (int)E_PropertiesKind._END; i++)
+                {
+                    if (i != (int)E_PropertiesKind.SHAPE)
+                        wvPropertiesKind.Add((E_PropertiesKind)i);
+                }
             }
 
-            return new AbstractItem(E_ItemType.A, ItemKind);
+            foreach (E_PropertiesKind pk in wvPropertiesKind)
+            {
+                wvProperty = new ItemGraficalProperty();
+                switch (pk)
+                {
+                    case E_PropertiesKind.COLOR:
+                        wvProperty.SetProperty(pk, wvColor);
+                        break;
+                    case E_PropertiesKind.GRADIATION:
+                        wvProperty.SetProperty(pk, wvGradiation);
+                        break;
+                    case E_PropertiesKind.SHAPE:
+                        wvProperty.SetProperty(pk, wvShape);
+                        break;
+                    default:
+                        wvProperty.SetProperty(pk, wvTexture);
+                        break;
+
+                }
+                wvAbstractItem.AddProperty(wvProperty);
+            }
+
+            return wvAbstractItem;
         }
 
         private static List<Item> GenerateItemsByItemKind(E_ItemKind wvItemKind)

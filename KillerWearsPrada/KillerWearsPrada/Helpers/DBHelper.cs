@@ -59,10 +59,18 @@ namespace KillerWearsPrada.Helpers
         ///         8. Image file name
         ///         9. item kind
         /// </returns>
-        public Item GetItemFromClues(AbstractItem Item) //
+        public Item GetItemFromAbstractItem(AbstractItem Item) //
         {
+            try
+            {
+                DBConnection.Open();
+            }
+            catch
+            {
+                DBConnection.Close();
+                DBConnection.Open();
+            }
 
-            DBConnection.Open();
             // note : we want items of which we have more than 10 available 
             string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
             query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II, Color AS C";
@@ -89,11 +97,11 @@ namespace KillerWearsPrada.Helpers
                 }
                 query += whereLong;
             }
-            
+
             // parameter @p2 - gradiation
-            if (c.Gradiation != E_Gradiation._NULL)
+            if (Item.CheckPropertyByKind(E_PropertiesKind.GRADIATION))
             {
-                if (c.Gradiation == E_Gradiation.LIGHT)
+                if (Item.GetProperty(E_PropertiesKind.GRADIATION) == E_Gradiation.LIGHT.ToString())
                 {
                     whereLight = whereLight.Replace("@p2", true.ToString());
                 }
@@ -103,26 +111,26 @@ namespace KillerWearsPrada.Helpers
                 }
                 query += whereLight;
             }
-            
+
 
             // parameter @p3 - texture kind 
-            if(c.Texture != E_Texture._NULL)
+            if (Item.CheckPropertyByKind(E_PropertiesKind.TEXTURE))
             {
-                whereTexture = whereTexture.Replace("@p3", "\'" + c.Texture.ToString().ToLower() + "\'");
+                whereTexture = whereTexture.Replace("@p3", "\'" + Item.GetProperty(E_PropertiesKind.TEXTURE).ToLower() + "\'");
                 query += whereTexture;
             }
 
             // parameter @p4 - main color 
-            if (c.Color != E_Color._NULL)
+            if (Item.CheckPropertyByKind(E_PropertiesKind.COLOR))
             {
-                whereColor = whereColor.Replace("@p4", "\'" + c.Color.ToString().ToLower() + "\'");
+                whereColor = whereColor.Replace("@p4", "\'" + Item.GetProperty(E_PropertiesKind.COLOR).ToLower() + "\'");
                 query += whereColor;
             }
             
             
 
             // parameter @p5 - item kind 
-            query = query.Replace("@p5", "\'" + itemkind + "\'");
+            query = query.Replace("@p5", "\'" + Item.ItemKind + "\'");
 
             query += order;
 
@@ -142,7 +150,7 @@ namespace KillerWearsPrada.Helpers
             string image = result.GetString(7);
 
 
-            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, Item.ItemKind.ToString());
+            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, Item);
 
             DBConnection.Close();
 
