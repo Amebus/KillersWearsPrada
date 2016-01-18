@@ -32,7 +32,7 @@ namespace KillerWearsPrada
 
 
         //Controller.KinectInterrogator attKinectInterrogator;
-        public Controller.GameController attGameController { get; set; }
+        public static GameController attGameController;
 
 
         #region Delegates for GameController events
@@ -94,6 +94,7 @@ namespace KillerWearsPrada
             GC.WaitForPendingFinalizers();
         }
 
+        
       
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -141,10 +142,10 @@ namespace KillerWearsPrada
         /// which contains information passed by the event <see cref="Controller.GameController.ResumeGame"/></param>
         private void ResumeGame(GameController.ResumeGame.Args Parameters)
         {
-            txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume";
+            txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
 
             // qui faccio allocare tutti gli user control?
-            allocate_All_UC();
+            //allocate_All_UC();
         }
 
         /// <summary>
@@ -320,8 +321,11 @@ namespace KillerWearsPrada
 
         private void homepage(object sender, RoutedEventArgs e)
         {
-            ResumeGameFinto("ciao");            /*
 
+         //   attGameController.GetResumeGame.RaiseEvent();
+            ResumeGameFinto("ciao");  
+            /*
+            
             backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
             ib = new ImageBrush();
             ib.ImageSource = new BitmapImage(new Uri(@backgroundPath, UriKind.Absolute));

@@ -72,8 +72,28 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    
+
+    <Style x:Key="lb" TargetType="{x:Type ListBox}">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name=""/>
+                                <VisualState x:Name="Pressed"/>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <Style x:Key="RedBlinkSx" TargetType="{x:Type Button}" BasedOn="{StaticResource BlinkBase}">
         <Setter Property="Template">
             <Setter.Value>

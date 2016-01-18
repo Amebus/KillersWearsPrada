@@ -46,7 +46,7 @@
     </UserControl.Background>
 
     <Grid x:Name="layoutRoot" Height="850" Width="1680">
-        <Grid x:Name="grid"  RenderTransformOrigin="0.5,0.5" Margin="0,-10,0,10">
+        <Grid x:Name="grid"  RenderTransformOrigin="0.5,0.5" Margin="0,-28,0,28">
             <Grid.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Mode=OneWay, Source={StaticResource Inventory_Background}}"/>
             </Grid.Background>
@@ -60,7 +60,9 @@
                 </TransformGroup>
             </Grid.RenderTransform>
 
-            <ListView Margin="1043,0,0,198" Name="lvDataBinding">
+
+
+            <ListView Margin="1043,0,0,198" Name="lvDataBinding" Visibility="Collapsed">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
@@ -77,7 +79,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="548,0,642,198">
+            <!--        <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="548,0,642,198">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -86,7 +88,106 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="IsSelected" Value="{Binding IsGroovy}"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
             </ListView>
+-->
+
+            <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="548,0,642,198" Visibility="Collapsed">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <!--   <Image x:Name="Image_GridViewColumnName" Width="150" Height="150" Source="{Binding ImageFileName}" />
+                            <CheckBox x:Name="trashare" Content="cestino?" Click="trashare_Click"></CheckBox> -->
+                            <Label x:Name="imaget" Width="300" Height="150" Content="{Binding NomeItem}" ></Label>
+                            <Label x:Name="i" Width="150" Height="150" Content="{Binding isDressed}" ></Label>
+                            <!-- Credo che PropertyChanged serva a noi-->
+                            <CheckBox x:Name="check" IsChecked="{Binding Path=isDressed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="check_Checked">
+
+                            </CheckBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <!--       <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="IsSelected" Value="{Binding isDressed}"/>
+                    </Style>
+                </ListView.ItemContainerStyle> -->
+            </ListView>
+
+            <ListBox x:Name="lbOne"
+                 HorizontalAlignment="Left" Margin="672,61,0,346" Width="517" 
+                 ScrollViewer.CanContentScroll="False">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Height="200" >
+                            <Label Content="{Binding DisplayName}" Height="200"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox x:Name="lbTwo"  Drop="ListBox_Drop" AllowDrop="True"
+                 HorizontalAlignment="Right" Margin="0,61,12,318" Width="429" 
+                 ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <TextBlock Height="59" Text="ListBox One" HorizontalAlignment="Left" 
+                   Margin="672,2,0,0" VerticalAlignment="Top" Width="439" />
+            <TextBlock Height="59" Text="ListBox Two" HorizontalAlignment="Right" 
+                   Margin="0,2,12,0" VerticalAlignment="Top" Width="361" />
+
+            <ListBox  x:Name="ItemsListBox" SelectionMode="Multiple" Height="300" 
+          ItemsSource="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}"
+          SelectedItem="{Binding SelectedItems2,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,550,746,0" Visibility="Collapsed">
+                <ListBox.ItemTemplate>
+
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+
+                            <!--   <Image x:Name="Image_GridViewColumnName" Width="150" Height="150" Source="{Binding ImageFileName}" />
+                            <CheckBox x:Name="trashare" Content="cestino?" Click="trashare_Click"></CheckBox> -->
+                            <Label x:Name="imaget" Width="300" Height="150" Content="{Binding NomeItem}" ></Label>
+                            <Label x:Name="i" Width="150" Height="150" Content="{Binding isDressed}" ></Label>
+                            <!-- Credo che PropertyChanged serva a noi
+                            <CheckBox x:Name="check" IsChecked="{Binding Path=isDressed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="check_Checked"> 
+                            </CheckBox>-->
+
+
+
+                        </StackPanel>
+
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+            <ListBox Name="listMyItems" Margin="10,61,1171,318"  SelectionMode="Multiple" SelectionChanged="listMyItems_SelectionChanged"  SelectedItem="{Binding SelectedItems,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed">
+
+                <ListBox.ItemTemplate>
+
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+
+                            <!--   <Image x:Name="Image_GridViewColumnName" Width="150" Height="150" Source="{Binding ImageFileName}" />
+                            <CheckBox x:Name="trashare" Content="cestino?" Click="trashare_Click"></CheckBox> -->
+                            <Label x:Name="imaget" Width="300" Height="150" Content="{Binding NomeItem}" ></Label>
+                            <Label x:Name="i" Width="150" Height="150" Content="{Binding isDressed}" ></Label>
+                            <!-- Credo che PropertyChanged serva a noi
+                            <CheckBox x:Name="check" IsChecked="{Binding Path=isDressed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="check_Checked"> 
+                            </CheckBox>-->
+
+                            <ListBoxItem Selected="ListBoxItem_Selected"></ListBoxItem>
+
+                        </StackPanel>
+
+                    </DataTemplate>
+
+                </ListBox.ItemTemplate>
+
+            </ListBox>
+
 
             <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-58,-39,1440,789">
                 <Button.Background>
@@ -117,7 +218,7 @@
                 </Button.Triggers>
             </Button>
 
-            <Button Name="submission" Width="645" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,666,163,10" Click="submission_Click">
+            <Button Name="submission" Width="645" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,666,58,10" Click="submission_Click">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
@@ -128,7 +229,10 @@
 
             </Button>
 
-            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1373,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}">
+
+
+
+            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1373,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}" Drop="Trash_Drop" AllowDrop="True">
                 <Button.Background>
                     <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Trash_Empty}}" Stretch="UniformToFill"/>
                 </Button.Background>
