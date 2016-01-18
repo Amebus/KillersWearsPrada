@@ -277,25 +277,7 @@ namespace KillerWearsPrada.Controller
             AbstractItem wvAbstractItem = new AbstractItem(E_ItemType.A, ItemKind);
             ItemGraficalProperty wvProperty = new ItemGraficalProperty();
             List <E_PropertiesKind> wvPropertiesKind = new List<E_PropertiesKind>();
-
-            wvRandom = attRandom.Next(1 + (int)E_Shape._NULL, (int)E_Shape._END);
-            wvShape = (E_Shape)wvRandom;
-
-            wvRandom = attRandom.Next(1 + (int)E_Color._NULL, (int)E_Color._END);
-            wvColor = (E_Color)wvRandom;
-
-            if (wvColor == E_Color.BLACK)
-                wvGradiation = E_Gradiation.DARK;
-            else // TODO: ADD else if for E_Color.WHITE
-            {
-                wvRandom = attRandom.Next(1 + (int)E_Gradiation._NULL, (int)E_Gradiation._END);
-                wvGradiation = (E_Gradiation)wvRandom;
-            }
-
-            wvRandom = attRandom.Next(1 + (int)E_Texture._NULL, (int)E_Texture._END);
-            wvTexture = (E_Texture)wvRandom;
-
-
+            
             wvRandom = attRandom.Next((int)E_PropertiesKind._NULL + 1 ,(int)E_PropertiesKind._END);
 
             if (ItemKind == E_ItemKind.hat)
@@ -315,21 +297,51 @@ namespace KillerWearsPrada.Controller
                 }
             }
 
+            wvGradiation = E_Gradiation._NULL;
             foreach (E_PropertiesKind pk in wvPropertiesKind)
             {
                 wvProperty = new ItemGraficalProperty();
                 switch (pk)
                 {
                     case E_PropertiesKind.COLOR:
+
+                        #region Color from Gradiation
+                        List<E_Color> wvColors = new List<E_Color>();
+                        if(wvGradiation == E_Gradiation._NULL)
+                        {
+                            for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
+                            {
+                                wvColors.Add((E_Color)i);
+                            }
+                        }
+                        else
+                        {
+                            for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
+                            {
+                                if ((E_Color)i != E_Color.BLACK) //TODO E_Color.WHITE
+                                    wvColors.Add((E_Color)i);
+                            }
+                        }
+                        wvRandom = attRandom.Next(wvColors.Count);
+                        wvColor = wvColors[wvRandom];
+                        #endregion
+
+
                         wvProperty.SetProperty(pk, wvColor);
                         break;
                     case E_PropertiesKind.GRADIATION:
+                        wvRandom = attRandom.Next(1 + (int)E_Gradiation._NULL, (int)E_Gradiation._END);
+                        wvGradiation = (E_Gradiation)wvRandom;
                         wvProperty.SetProperty(pk, wvGradiation);
                         break;
                     case E_PropertiesKind.SHAPE:
+                        wvRandom = attRandom.Next(1 + (int)E_Shape._NULL, (int)E_Shape._END);
+                        wvShape = (E_Shape)wvRandom;
                         wvProperty.SetProperty(pk, wvShape);
                         break;
-                    default:
+                    default: //TEXTURE
+                        wvRandom = attRandom.Next(1 + (int)E_Texture._NULL, (int)E_Texture._END);
+                        wvTexture = (E_Texture)wvRandom;
                         wvProperty.SetProperty(pk, wvTexture);
                         break;
 

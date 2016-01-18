@@ -48,8 +48,8 @@ namespace KillerWearsPrada.Model
     public enum E_PropertiesKind
     {
         _NULL,
-        COLOR,
         GRADIATION,
+        COLOR,
         SHAPE,
         TEXTURE,
         _END
