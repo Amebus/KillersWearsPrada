@@ -199,6 +199,10 @@ namespace KillerWearsPrada.UC
             maingrid.Children.Remove(this);
             maingrid.Children.Add(ucstart); */
 
+            //imposto l'indice della room in cui sta andando il player
+            // 0 credo sia l'entrata
+           // MainWindow.attGameController.ActualRoomIndex = 0;
+
             disable_buttons();
 
             Livingroom_Image.Visibility = Visibility.Hidden;

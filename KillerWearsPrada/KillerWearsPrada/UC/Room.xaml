@@ -26,9 +26,9 @@
 
         <!--     <Button x:Name="close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="1678" Canvas.Top="22"/>  -->
 
-        <Button x:Name="back" Click="back_button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="48" Canvas.Left="75" Canvas.Top="914" Style="{StaticResource GlassButtonKinect}" Foreground="#FFE8FF00">
-            <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
-                <TextBlock Margin="5,10,50,8" FontSize="40" Text="Go Back" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
+        <Button x:Name="back" Click="back_button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="362" Height="93" FontSize="48" Canvas.Left="75" Canvas.Top="914" Style="{StaticResource GlassButtonKinect}" Foreground="#FFE8FF00">
+            <StackPanel HorizontalAlignment="Center" Height="118" Width="300"  Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Margin="5,33,50,31" FontSize="40" Text="Go to Entrance" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="297"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
             </StackPanel>
         </Button>
@@ -58,7 +58,7 @@
         </Canvas>
         <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Hidden" >
 
-      <!--      <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
+            <!--      <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
 
             <Button x:Name ="hat1" Click="hat_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoom}" Tag="hat1"/>
             <Button x:Name ="hat3" Click="hat_btn"  Height="105" Canvas.Left="1421" Canvas.Top="518" Width="162" Style="{StaticResource KinectButtonZoomHat3}" Tag="hat3"/>
