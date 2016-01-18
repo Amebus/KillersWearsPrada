@@ -44,7 +44,7 @@
 
             </Label>
 
-            <Label Content="{StaticResource ResourceKey=Player_Name}" x:Name="name_player" Margin="10,417,1136,536" FontSize="80" FontFamily="AR DARLING" Visibility="Collapsed" Foreground="Wheat">
+            <Label x:Name="name_player" Margin="10,417,1136,536" FontSize="80" FontFamily="AR DARLING" Visibility="Collapsed" Foreground="Wheat">
                 <Label.Effect>
                     <DropShadowEffect BlurRadius="10" Color="Black"></DropShadowEffect>
                 </Label.Effect>

@@ -71,6 +71,8 @@ namespace KillerWearsPrada
             //txtDisplay.AppendText(dir_ok);
             InitializeComponent();
 
+            this.DataContext = this;
+
             // This method load all usercontrols and put their visibility to hidden
             allocate_All_UC();
 
@@ -146,6 +148,9 @@ namespace KillerWearsPrada
 
             // qui faccio allocare tutti gli user control?
             //allocate_All_UC();
+
+            //nome della label di benvenuto
+            //name_player.Content = = attGameController.NamePlayer + "!";
         }
 
         /// <summary>
@@ -234,6 +239,8 @@ namespace KillerWearsPrada
 
         private void ResumeGameFinto(String idUser)
         {
+            //Player_Name = attGameController.NamePlayer;
+            name_player.Content = "Player Username" + "!";
             // qui faccio allocare tutti gli user control?
             // con i rispettivi oggetti giusti!!!
             allocate_All_UC();

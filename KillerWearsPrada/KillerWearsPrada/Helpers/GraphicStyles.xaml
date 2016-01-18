@@ -646,7 +646,16 @@
                                             ContentTemplate="{TemplateBinding ContentTemplate}" 
                                             Content="{TemplateBinding Content}" />
 
-                                        <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Trousers1}}" RenderTransformOrigin="0.5,0.5"  >
+                                        <!-- Qui ci va l'immagine mask di trousers1 con la giusta texture-->
+                                        <!--  <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Trousers1}}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image> -->
+                                        
+                                        
+                                        <Image x:Name="image2" Source="{Binding tr1}" RenderTransformOrigin="0.5,0.5"  >
                                             <Image.RenderTransform>
                                                 <ScaleTransform ScaleX="1" ScaleY="1"/>
                                             </Image.RenderTransform>

@@ -62,23 +62,23 @@
                 </TransformGroup>
             </Grid.RenderTransform>
 
-            <Image Source="{Binding Path=DisplayedImagePath}"  
+            <Image Source="{Binding Path=ImagePath}"  
     Margin="10,10,572,350" Name="image1" Stretch="Uniform"  />
 
-            <Label Name="nameCloth" Content="{Binding NomeCapo}" Margin="0,450,572,244" Foreground="#FFFDFDFD" FontFamily="Rockwell Extra Bold" FontSize="40" Padding="20,30,0,0" >
+            <Label Name="nameCloth" Content="{Binding ClothName}" Margin="0,450,572,244" Foreground="#FFFDFDFD" FontFamily="Rockwell Extra Bold" FontSize="40" Padding="20,30,0,0" >
                 <Label.Effect>
                     <DropShadowEffect Color="Red"  ShadowDepth="1" BlurRadius="10"/>
                 </Label.Effect>
             </Label>
 
-            <Label Name="priceCloth" Content="{Binding Prezzo}" Margin="777,559,117,62" FontSize="60" Foreground="#FFFDFDFD" FontFamily="Rockwell Extra Bold">
+            <Label Name="priceCloth" Content="{Binding ItemPrice}" Margin="777,559,117,62" FontSize="60" Foreground="#FFFDFDFD" FontFamily="Rockwell Extra Bold">
                 <Label.Effect>
                     <DropShadowEffect Color="Red"  ShadowDepth="1" BlurRadius="30" />
                 </Label.Effect>
             </Label>
 
             <TextBox x:Name="descCloth" Margin="10,556,531,10" ScrollViewer.VerticalScrollBarVisibility="Visible" Style="{StaticResource TextBlockStyle}" Height="234" MouseDoubleClick="EnterKeyCommand"  MouseLeftButtonDown="EnterKeyCommand"  
-                  SelectionOpacity="0" FontFamily="AR ESSENCE" FontSize="50" FontWeight="Bold" Text="{Binding Descrizione}"  Padding="10,0,0,0" VerticalAlignment="Center" TextAlignment="Center" >
+                  SelectionOpacity="0" FontFamily="AR ESSENCE" FontSize="50" FontWeight="Bold" Text="{Binding ItemDescription}"  Padding="10,0,0,0" VerticalAlignment="Center" TextAlignment="Center" >
                 <TextBox.Background>
                     <SolidColorBrush Color="White" Opacity="0.7"/>
                 </TextBox.Background>
@@ -88,7 +88,7 @@
                 <Label.Background>
                     <ImageBrush ImageSource="C:\Users\Monica\Documents\sketchup projects\fumetto1.png"/>
                 </Label.Background>
-                <TextBox Width="369" Height="233" Padding="0,0,0,0" Text="{Binding Indizio}" FontFamily="Gill Sans Ultra Bold" TextAlignment="Center" TextWrapping="Wrap" 
+                <TextBox Width="369" Height="233" Padding="0,0,0,0" Text="{Binding ItemClue}" FontFamily="Gill Sans Ultra Bold" TextAlignment="Center" TextWrapping="Wrap" 
                          FontSize="30" Style="{StaticResource TextBlockStyle}" MouseDoubleClick="EnterKeyCommand"  MouseLeftButtonDown="EnterKeyCommand"  
                   SelectionOpacity="0"></TextBox>
             </Label>
