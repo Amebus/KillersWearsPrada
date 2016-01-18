@@ -96,7 +96,7 @@
             </ListView>
 -->
 
-            <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="548,0,642,198" Visibility="Collapsed">
+            <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="93,87,1097,111" Visibility="Collapsed">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
