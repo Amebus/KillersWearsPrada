@@ -155,7 +155,7 @@ namespace KillerWearsPrada.Model
         private string reparto;
         private string textureFileName;        
         private string imageFileName;
-        private string itemKind;
+      
 
         private string attClueText;
 
@@ -175,8 +175,8 @@ namespace KillerWearsPrada.Model
         /// <param name="rep">string representing the Reparto</param>
         /// <param name="texture">string representing the texture file name</param>
         /// <param name="image">string representing the item image file name</param>
-        /// <param name="kind">string representing the item kind</param>
-        public Item(int c, string bc, string name, double p, string descr, string rep, string texture, string image, string kind, AbstractItem AItem) : base(AItem)
+        /// <param name="AItem">abstract item related to the real one (contains propreties)</param>
+        public Item(int c, string bc, string name, double p, string descr, string rep, string texture, string image, AbstractItem AItem) : base(AItem)
         {
             
             code = c;
@@ -186,8 +186,7 @@ namespace KillerWearsPrada.Model
             description = descr;
             reparto = rep;
             textureFileName = texture;            
-            imageFileName = image;
-            itemKind = kind;
+            imageFileName = image;            
 
             attTrashed = false;
             attInInventory = false;
@@ -228,12 +227,7 @@ namespace KillerWearsPrada.Model
         public string TextureFilename
         {
             get { return textureFileName; }
-        }
-
-        public string ItemKind
-        {
-            get { return itemKind; }
-        }
+        }       
 
         public string ImageFileName
         {

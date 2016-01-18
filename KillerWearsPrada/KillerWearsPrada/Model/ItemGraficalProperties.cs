@@ -60,13 +60,13 @@ namespace KillerWearsPrada.Model
         _NULL,
         BLACK,
         BLUE,
-        BROWN,
-        GRAY,
+        //BROWN,
+        //GRAY,
         GREEN,        
-        RED,
-        PINK,        
-        PURPLE,
-        YELLOW,
+        //RED,
+        //PINK,        
+        //PURPLE,
+        //YELLOW,
         _END
     }
 

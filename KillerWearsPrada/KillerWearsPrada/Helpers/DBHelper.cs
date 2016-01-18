@@ -65,8 +65,8 @@ namespace KillerWearsPrada.Helpers
             DBConnection.Open();
             // note : we want items of which we have more than 10 available 
             string query = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
-            query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II";
-            query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID";
+            query += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II, Color AS C";
+            query += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID AND T.MainColor = C.ID";
             query += " AND I.Available > 10 AND IK.ItemKind = @p5";
 
             string order = " ORDER BY Rnd(-(10000*I.ID)*Time())";
@@ -74,12 +74,12 @@ namespace KillerWearsPrada.Helpers
             string whereLong = " AND II.Long = @p1";
             string whereLight = " AND T.Light = @p2";
             string whereTexture = " AND TK.TextureKind = @p3";
-            string whereColor = " AND T.MainColor = @p4";
+            string whereColor = " AND C.Color = @p4";
 
             // parameter @p1 - shape
-            if(c.Shape != E_Shape._NULL)
+            if(Item.CheckPropertyByKind(E_PropertiesKind.SHAPE))
             {
-                if (c.Shape == E_Shape.LONG)
+                if (Item.GetProperty(E_PropertiesKind.SHAPE) == E_Shape.LONG.ToString())
                 {
                     whereLong = whereLong.Replace("@p1", true.ToString());
                 }
@@ -122,7 +122,7 @@ namespace KillerWearsPrada.Helpers
             
 
             // parameter @p5 - item kind 
-            query = query.Replace("@p5", "\'" + itemKind.ToString().ToLower() + "\'");
+            query = query.Replace("@p5", "\'" + itemkind + "\'");
 
             query += order;
 
@@ -142,7 +142,7 @@ namespace KillerWearsPrada.Helpers
             string image = result.GetString(7);
 
 
-            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, itemKind.ToString());
+            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, Item.ItemKind.ToString());
 
             DBConnection.Close();
 
