@@ -43,9 +43,9 @@ namespace KillerWearsPrada.UC
 
            // devo anche controllare che quelli nell'inventario non siano anche nel cestino???
 
-                s.Add(new Item (2, "bc", "name",9.04,"descr", "rep","texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\textures\blueTartan.jpg", "kind" ));
-                s.Add(new Item(2, "bc", "name2", 9.04, "descr", "rep", "texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\hat_1meleOk.png", "kind"));
-                s.Add(new Item(2, "bc", "name3", 9.04, "descr", "rep", "texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\trashEmpty.png", "kind"));
+                //s.Add(new Item (2, "bc", "name",9.04,"descr", "rep","texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\textures\blueTartan.jpg", "kind" ));
+                //s.Add(new Item(2, "bc", "name2", 9.04, "descr", "rep", "texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\hat_1meleOk.png", "kind"));
+                //s.Add(new Item(2, "bc", "name3", 9.04, "descr", "rep", "texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\trashEmpty.png", "kind"));
             
       /*      items.Add(new ItemProva() { code = 345, description = "eee333", itemName = "ciaone", price = 3.5 });
             items.Add(new ItemProva() { description = "Jane Doe", code = 39, imageFileName = "jane@doe-family.com", price = 0.888 });

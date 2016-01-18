@@ -31,30 +31,35 @@ namespace KillerWearsPrada.Model
     {
         public E_ItemKind ItemKind { get; private set; }
         protected E_ItemType ItemType { get; private set; }
-        protected List<ItemGraficalProperty> ItemProperties { get; private set; }
+        private List<ItemGraficalProperty> attItemProperties;
         
         public AbstractItem(E_ItemType ItemType, E_ItemKind ItemKind)
         {
             this.ItemKind = ItemKind;
             this.ItemType = ItemType;
-            this.ItemProperties = new List<ItemGraficalProperty>();
+            this.attItemProperties = new List<ItemGraficalProperty>();
         }
 
         protected AbstractItem(AbstractItem AI)
         {
-            this.ItemProperties = AI.ItemProperties;
+            this.attItemProperties = AI.attItemProperties;
             this.ItemType = AI.ItemType;
             this.ItemKind = AI.ItemKind;
         }
 
+        public List<ItemGraficalProperty> ItemProperties
+        {
+            get { return attItemProperties; }
+        }
+
         public int PropertiesCount
         {
-            get { return ItemProperties.Count; }
+            get { return attItemProperties.Count; }
         }
 
         public void AddProperty(ItemGraficalProperty Property)
         {
-            ItemProperties.Add(Property);
+            attItemProperties.Add(Property);
         }
 
         public bool EqualsTo(AbstractItem AI)
