@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Model
 {
-
+    /// <summary>
+    /// Indicates the type of object referring to the current paradigm :
+    ///  1 - A means the CORRECT item for the solution
+    ///  2 -    |   A = | 1 1 1 |
+    ///         |   B = | 1 1 0 |
+    ///         |   C = | 1 0 1 |
+    ///         |   D = | 1 0 0 |
+    ///         |   E = | 0 1 1 |
+    ///         |   F = | 0 1 0 |
+    /// </summary>
     public enum E_ItemType
     {
         A,
@@ -20,6 +29,7 @@ namespace KillerWearsPrada.Model
     [Serializable]
     public class AbstractItem : ISerializable
     {
+        public E_ItemKind ItemKind { get; private set; }
         public E_ItemType ItemType { get; private set; }
         protected List<ItemGraficalProperty> ItemProperties { get; private set; }
         
@@ -33,6 +43,7 @@ namespace KillerWearsPrada.Model
         {
             this.ItemProperties = AI.ItemProperties;
             this.ItemType = AI.ItemType;
+            this.ItemKind = AI.ItemKind;
         }
 
         public int PropertiesCount
@@ -45,6 +56,21 @@ namespace KillerWearsPrada.Model
             ItemProperties.Add(Property);
         }
 
+        public bool EqualsTo(AbstractItem AI)
+        {
+            if (this.ItemKind != AI.ItemKind)
+                return false;
+            if (this.ItemType != AI.ItemType)
+                return false;
+
+            for(int i =0; i<this.PropertiesCount; i++)
+            {
+                if (!this.ItemProperties[i].EqualsTo(AI.ItemProperties[i]))
+                    return false;
+            }
+            
+            return true;
+        }
 
         public E_PropertiesKind GetProperyKind(int Index)
         {

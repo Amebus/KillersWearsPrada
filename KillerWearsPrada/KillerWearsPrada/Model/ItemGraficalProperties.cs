@@ -30,8 +30,16 @@ namespace KillerWearsPrada.Model
             Property = ItemProperty;
         }
 
+        internal bool EqualsTo(ItemGraficalProperty AI)
+        {
+            if (this.PropertyKind != AI.PropertyKind)
+                return false;
+            if (this.Property != AI.Property)
+                return false;
 
+            return true;
 
+        }
     }
 
     public enum E_PropertiesKind
