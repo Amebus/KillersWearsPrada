@@ -10,7 +10,7 @@
 
         <!--#region Directories Paths and subPaths-->
         <sys:String x:Key="CurrentDirectory">s</sys:String>
-        
+
         <sys:String x:Key="ImagesDir">\Images</sys:String>
 
         <sys:String x:Key="SavesDir">\SavedGames</sys:String>
@@ -20,8 +20,18 @@
         <sys:String x:Key="ItemsImagesDir">ItemsImages</sys:String>
 
         <sys:String x:Key="MasksDir">Masks</sys:String>
+
+        <sys:String x:Key="MagickDir">Magick</sys:String>
+
+        <sys:String x:Key="GhostscriptDirectory">GhostscriptDirectory</sys:String>
+
+        <sys:String x:Key="CacheDirectoryMagick">CacheDirectoryMagick</sys:String>
+
+        <sys:String x:Key="TempDirectory">TempDirectory</sys:String>
+
+        <sys:String x:Key="SketchesImages">SketchesImages</sys:String>
         <!--#endregion-->
-        
+
         <!--#region Immagini Generiche-->
         <sys:String x:Key="Application_Start_Image">Application_Start.png</sys:String>
 
@@ -140,7 +150,7 @@ NOTA si può lasciare il gioco in ogni momento inviando un Identikit
         <!--#region Nomi cappelli -->
         <sys:String x:Key="Hat1">hat_1meleOk.png</sys:String>
         <sys:String x:Key="Hat3">hat_3tablewhiteOk.png</sys:String>
-        
+
         <!--#endregion-->
 
         <!--#region Nomi shirts -->
@@ -157,6 +167,6 @@ NOTA si può lasciare il gioco in ogni momento inviando un Identikit
 
         <sys:String x:Key="ApplicationTitle">Killer Wears Prada</sys:String>
         <sys:String x:Key="ApplicationTitleMaiusc">THE KILLER WEARS PRADA</sys:String>
-        
+
     </Application.Resources>
 </Application>

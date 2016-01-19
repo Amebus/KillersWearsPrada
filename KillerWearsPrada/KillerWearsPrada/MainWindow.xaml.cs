@@ -76,6 +76,8 @@ namespace KillerWearsPrada
             // This method load all usercontrols and put their visibility to hidden
             allocate_All_UC();
 
+           
+
             KinectRegion.SetKinectRegion(this, kinectRegion);
 
             App wvApp = ((App)Application.Current);
@@ -239,6 +241,8 @@ namespace KillerWearsPrada
 
         private void ResumeGameFinto(String idUser)
         {
+            
+            Helpers.SketchHelper.SetDirectories();
             //Player_Name = attGameController.NamePlayer;
             name_player.Content = "Player Username" + "!";
             // qui faccio allocare tutti gli user control?

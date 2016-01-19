@@ -107,6 +107,7 @@
     <Compile Include="Controller\GameController.cs" />
     <Compile Include="Controller\PlayerChecker.cs" />
     <Compile Include="Helpers\SerializerHelper.cs" />
+    <Compile Include="Helpers\SketchHelper.cs" />
     <Compile Include="KWP_DB_TestDataSet.cs">
       <DependentUpon>KWP_DB_TestDataSet.xsd</DependentUpon>
     </Compile>
