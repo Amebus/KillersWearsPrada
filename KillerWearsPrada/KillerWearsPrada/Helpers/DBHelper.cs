@@ -41,6 +41,25 @@ namespace KillerWearsPrada.Helpers
             return "Successfull connection";
         }
 
+
+        #region Prof
+        public Game GetGameForProf()
+        {
+            string wvPlayerID = "15/01/2016-10:50:42-alberto";
+            string wvPlayerName = "alberto";
+
+
+
+
+
+
+
+
+            return null;
+            //return new Game(wvPlayerID, wvPlayerName, );
+        }
+        #endregion
+
         #region Items
 
         /// <summary>

@@ -39,6 +39,23 @@ namespace KillerWearsPrada.Model
             private set;
         }
 
+        public string LastClue
+        {
+
+            get
+            {
+                string wvClue = "Thanks to your efforts, a witness remembers that the @p1 was @p2!";
+                Item wvItem = Items[0];
+
+                wvClue = wvClue.Replace("@p1", wvItem.ItemKind.ToString());
+                wvClue = wvClue.Replace("@p2", wvItem.ItemProperties[wvItem.PropertiesCount - 1].Property.ToString());
+
+                return wvClue;
+            }
+
+
+        }
+
         /// <summary>
         /// Represent the number on Item contained in the player's inventory
         /// </summary>

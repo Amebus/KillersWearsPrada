@@ -151,7 +151,7 @@ namespace KillerWearsPrada.Model
     // this class represents the item in the game
     public class Item : AbstractItem
     {
-        private const string BASE = "A witness remembers that the @p1 was ";
+        private const string BASE = "A witness remembers that the @p1 was @p2!";
         private int code;
         private string barcode;
         private string itemName;
@@ -259,8 +259,9 @@ namespace KillerWearsPrada.Model
                 string wvTemp;
                 if (ItemType == E_ItemType.A || ItemType == E_ItemType.C || ItemType == E_ItemType.D)
                     wvTemp = this.ItemProperties[0].Property.ToString();
-
-
+                else
+                    wvTemp = this.ItemProperties[1].Property.ToString();
+                wvClue = wvClue.Replace("@p2", wvTemp);
 
                 return wvClue;
             }

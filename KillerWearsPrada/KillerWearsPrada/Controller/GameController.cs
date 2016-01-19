@@ -228,7 +228,7 @@ namespace KillerWearsPrada.Controller
 
                 wvSolution.AddItem(GenerateCorrectAbstractItem((E_ItemKind._NULL + i)));
 
-                wvRooms.Add(GenerateRoom("name", wvCorrectItem));
+                //wvRooms.Add(GenerateRoom("name", wvCorrectItem));
 
             }
 
@@ -272,7 +272,7 @@ namespace KillerWearsPrada.Controller
             */
 
         }
-
+        /*
         private Room GenerateRoom(string Name, Item CorrectItem)
         {
             Room wvRoom = null;
@@ -314,8 +314,8 @@ namespace KillerWearsPrada.Controller
 
 
             return wvRoom;
-        }
-
+        }*/
+        /*
         private AbstractItem InvertByItemType(AbstractItem CorrectItem, E_ItemType ItemTypeToGenerate)
         {
             ItemGraficalProperty wvIgp;
@@ -396,7 +396,7 @@ namespace KillerWearsPrada.Controller
 
             return wvInvertedAbstractAbstractItem;   
         }
-
+        */
         private AbstractItem GenerateCorrectAbstractItem(E_ItemKind ItemKind)
         {
             int wvRandom;
@@ -411,7 +411,7 @@ namespace KillerWearsPrada.Controller
             
             wvRandom = attRandom.Next((int)E_PropertiesKind._NULL + 1 ,(int)E_PropertiesKind._END);
 
-            if (ItemKind == E_ItemKind.hat)
+            if (ItemKind == E_ItemKind.HAT)
             {
                 for (int i = (int)E_PropertiesKind._NULL + 1; i < (int)E_PropertiesKind._END ; i++)
                 {
@@ -532,174 +532,6 @@ namespace KillerWearsPrada.Controller
             return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
         }
         */
-        private static List<Clue> GenerateCluesFromCorrectClue(Clue CorrectClue, int Times)
-        {
-            List<Clue> wvClues = new List<Clue>();
-            Clue wvTemp;
-            wvClues.Add(GenerateFirstIncorrectClue(CorrectClue));
-            bool wvSecondClueOk = true; 
-            for (int i = 1; i < Times; i++)
-            {
-                do
-                {
-                    wvSecondClueOk = true;
-                    wvTemp = GenerateSecondsIncorrectClue(CorrectClue, wvClues[0]);
-                    
-                    for (int j = 1; j<wvClues.Count; j++)
-                    {
-                        if(wvTemp.EqualsTo(wvClues[j]))
-                        {
-                            wvSecondClueOk = false;
-                            break;
-                        }
-                    }
-
-
-                } while (!wvSecondClueOk);
-
-
-                wvClues.Add(wvTemp);
-            }
-
-
-            return wvClues;
-        }
-
-        private static Clue GenerateFirstIncorrectClue(Clue Correct)
-        {
-            List<E_PropertiesKind> wvProperties = new List<E_PropertiesKind>();
-            List<E_Texture> wvTextures = new List<E_Texture>();
-            List<E_Color> wvColors = new List<E_Color>();
-
-            E_Gradiation wvGradiation = Correct.Gradiation;
-            E_Shape wvShape = Correct.Shape;
-            E_Color wvColor = Correct.Color;
-            E_Texture wvTexture = Correct.Texture;
-
-            if (Correct.Gradiation != E_Gradiation._NULL)
-                wvProperties.Add(E_PropertiesKind.GRADIATION);
-            if (Correct.Shape != E_Shape._NULL)
-                wvProperties.Add(E_PropertiesKind.SHAPE);
-            if (Correct.Color != E_Color._NULL)
-            {
-                wvProperties.Add(E_PropertiesKind.COLOR);
-
-                Array array = Enum.GetValues(typeof(E_Color));
-                foreach (E_Color t in array)
-                {
-                    if (t != E_Color._NULL && t != Correct.Color)
-                        wvColors.Add(t);
-                }
-            }
-            if (Correct.Texture != E_Texture._NULL)
-            {
-                wvProperties.Add(E_PropertiesKind.TEXTURE);
-
-                Array array = Enum.GetValues(typeof(E_Texture));
-                foreach (E_Texture t in array)
-                {
-                    if (t != E_Texture._NULL && t != Correct.Texture)
-                        wvTextures.Add(t);
-                }
-            }
-
-            int wvNull = attRandom.Next(wvProperties.Count);
-            int wvIndex = 0;
-
-            switch (wvProperties[wvNull])
-            {
-                case E_PropertiesKind.GRADIATION:
-                    wvGradiation = (Correct.Gradiation == E_Gradiation.DARK) ? E_Gradiation.LIGHT : E_Gradiation.DARK;
-                    break;
-                case E_PropertiesKind.SHAPE:
-                    wvShape = (Correct.Shape == E_Shape.SHORT) ? E_Shape.LONG : E_Shape.SHORT;
-                    break;
-                case E_PropertiesKind.COLOR:
-                    wvIndex = attRandom.Next(wvColors.Count);
-                    wvColor = wvColors[wvIndex];
-                    break;
-                case E_PropertiesKind.TEXTURE:
-                    wvIndex = attRandom.Next(wvTextures.Count);
-                    wvTexture = wvTextures[wvIndex];
-                    break;
-            }
-
-            return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
-
-        }
-
-        private static Clue GenerateSecondsIncorrectClue( Clue Correct, Clue FirsIncorrectClue)
-        {
-            List<E_PropertiesKind> wvProperties = new List<E_PropertiesKind>();
-            List<E_Texture> wvTextures = new List<E_Texture>();
-            List<E_Color> wvColors = new List<E_Color>();
-
-            E_Gradiation wvGradiation= Correct.Gradiation;
-            E_Shape wvShape = Correct.Shape;
-            E_Color wvColor = Correct.Color;
-            E_Texture wvTexture = Correct.Texture;
-
-            if (Correct.Gradiation != E_Gradiation._NULL && Correct.Gradiation==FirsIncorrectClue.Gradiation)
-                wvProperties.Add(E_PropertiesKind.GRADIATION);
-            if (Correct.Shape != E_Shape._NULL && Correct.Shape==FirsIncorrectClue.Shape)
-                wvProperties.Add(E_PropertiesKind.SHAPE);
-            if (Correct.Color != E_Color._NULL)
-            {
-                wvProperties.Add(E_PropertiesKind.COLOR);
-
-                Array array = Enum.GetValues(typeof(E_Color));
-                foreach (E_Color t in array)
-                {
-                    if (t != E_Color._NULL && t != Correct.Color && t!=FirsIncorrectClue.Color)
-                        wvColors.Add(t);
-                }
-            }
-            if (Correct.Texture != E_Texture._NULL)
-            {
-                wvProperties.Add(E_PropertiesKind.TEXTURE);
-
-                Array array = Enum.GetValues(typeof(E_Texture));
-                foreach (E_Texture t in array)
-                {
-                    if (t != E_Texture._NULL && t != Correct.Texture && t!= FirsIncorrectClue.Texture)
-                        wvTextures.Add(t);
-                }
-            }
-
-            int wvNull = 0;
-            int wvIndex = 0;
-
-            for (int i = 0; i < 2; i++)
-            {
-                wvNull = attRandom.Next(wvProperties.Count);
-                switch (wvProperties[wvNull])
-                {
-                    case E_PropertiesKind.GRADIATION:
-                        wvGradiation = (Correct.Gradiation == E_Gradiation.DARK) ? E_Gradiation.LIGHT : E_Gradiation.DARK;
-                        break;
-                    case E_PropertiesKind.SHAPE:
-                        wvShape = (Correct.Shape == E_Shape.SHORT) ? E_Shape.LONG : E_Shape.SHORT;
-                        break;
-                    case E_PropertiesKind.COLOR:
-                        wvIndex = attRandom.Next(wvColors.Count);
-                        wvColor = wvColors[wvIndex];
-                        wvColors.RemoveAt(wvIndex);
-                        break;
-                    case E_PropertiesKind.TEXTURE:
-                        wvIndex = attRandom.Next(wvTextures.Count);
-                        wvTexture = wvTextures[wvIndex];
-                        wvTextures.RemoveAt(wvIndex);
-                        break;
-
-                }
-                wvProperties.RemoveAt(wvNull);
-
-            }
-
-            return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
-
-        }
-
         public static void DeleteAllGames()
         {
             System.IO.DirectoryInfo wvDirInfo = new System.IO.DirectoryInfo(Helpers.ResourcesHelper.SavesDirectory);
