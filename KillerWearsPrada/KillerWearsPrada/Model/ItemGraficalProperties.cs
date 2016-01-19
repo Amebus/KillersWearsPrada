@@ -60,13 +60,14 @@ namespace KillerWearsPrada.Model
         _NULL,
         BLACK,
         BLUE,
-        //BROWN,
+        BROWN,
         //GRAY,
         GREEN,        
-        //RED,
+        RED,
         //PINK,        
-        //PURPLE,
-        //YELLOW,
+        PURPLE,
+        YELLOW,
+        WHITE,
         _END
     }
 
@@ -103,9 +104,9 @@ namespace KillerWearsPrada.Model
     public enum E_ItemKind // can be taken from DB table TipoCapo
     {
         _NULL,
-        hat,
-        t_shirt,
-        trousers,
+        HAT,
+        T_SHIRT,
+        TROUSERS,
         _END
     }
     

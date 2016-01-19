@@ -130,7 +130,7 @@ namespace KillerWearsPrada.Helpers
             
 
             // parameter @p5 - item kind 
-            query = query.Replace("@p5", "\'" + Item.ItemKind + "\'");
+            query = query.Replace("@p5", "\'" + Item.ItemKind.ToString().ToLower() + "\'");
 
             query += order;
 
