@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KillerWearsPrada", "KillerWearsPrada\KillerWearsPrada.csproj", "{C46FAFB1-7165-4411-B23D-373A1A7FD239}"
 EndProject
@@ -109,6 +109,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "textures", "textures", "{71
 		KillerWearsPrada\Images\textures\stripesBlack.png = KillerWearsPrada\Images\textures\stripesBlack.png
 		KillerWearsPrada\Images\textures\stripesBrownDark.png = KillerWearsPrada\Images\textures\stripesBrownDark.png
 		KillerWearsPrada\Images\textures\stripesBrownLight.png = KillerWearsPrada\Images\textures\stripesBrownLight.png
+		KillerWearsPrada\Images\textures\stripesDarkBlue.jpg = KillerWearsPrada\Images\textures\stripesDarkBlue.jpg
 		KillerWearsPrada\Images\textures\stripesDarkGreen.png = KillerWearsPrada\Images\textures\stripesDarkGreen.png
 		KillerWearsPrada\Images\textures\stripesDrakBlue.jpg = KillerWearsPrada\Images\textures\stripesDrakBlue.jpg
 		KillerWearsPrada\Images\textures\stripesLightBlue.jpg = KillerWearsPrada\Images\textures\stripesLightBlue.jpg
