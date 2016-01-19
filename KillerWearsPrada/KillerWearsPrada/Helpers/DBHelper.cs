@@ -3,6 +3,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 
 using KillerWearsPrada.Model;
+using System.Collections.Generic;
 
 namespace KillerWearsPrada.Helpers
 {
@@ -43,20 +44,163 @@ namespace KillerWearsPrada.Helpers
 
 
         #region Prof
+        private enum E_Items
+        {
+            AOne=19,
+            BOne=18,
+            ATwo=71,
+            BTwo=68,
+            AThree=127,
+            BThree=121
+        }
+
         public Game GetGameForProf()
         {
             string wvPlayerID = "15/01/2016-10:50:42-alberto";
             string wvPlayerName = "alberto";
 
+            ItemGraficalProperty wvProperty = new ItemGraficalProperty();
+            ItemGraficalProperty wvEmptyProperty = new ItemGraficalProperty();
+            Solution wvSolution = new Solution();
+            List<Room> wvRooms = new List<Room>();
+            List<Item> wvItems;
 
+            AbstractItem wvAbstract;
 
+            AbstractItem wvATwo = new AbstractItem(E_ItemType.A, E_ItemKind.HAT);
+            AbstractItem wvBTwo = new AbstractItem(E_ItemType.B, E_ItemKind.HAT);
 
+            AbstractItem wvAThree = new AbstractItem(E_ItemType.A, E_ItemKind.T_SHIRT);
+            AbstractItem wvBThree = new AbstractItem(E_ItemType.B, E_ItemKind.T_SHIRT);
 
+            #region Room  1
+            wvItems = new List<Item>();
 
+            #region A -> ID 19
+            wvAbstract = new AbstractItem(E_ItemType.A, E_ItemKind.TROUSERS);
+            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.BLUE);
+            wvAbstract.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
+            wvAbstract.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.SCOTTISH);
+            wvAbstract.AddProperty(wvProperty);
+
+            wvItems.Add(GetItem(wvAbstract, (int)E_Items.AOne));
+
+            #endregion
+
+            #region B One -> 18
+            wvAbstract = new AbstractItem(E_ItemType.B, E_ItemKind.TROUSERS);
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.BLUE);
+            wvAbstract.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
+            wvAbstract.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.PLAINCOLOR);
+            wvAbstract.AddProperty(wvProperty);
+
+            wvItems.Add(GetItem(wvAbstract, (int)E_Items.BOne));
+            #endregion
+
+            //wvRooms.Add(new Room(),)
+            #endregion
+
+            #region A Two -> 71
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.GREEN);
+            wvATwo.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.DARK);
+            wvATwo.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.STRIPES);
+            wvATwo.AddProperty(wvProperty);
+            #endregion
+
+            #region B Two  -> 68
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.GREEN);
+            wvBTwo.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.DARK);
+            wvBTwo.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.POIS);
+            wvBTwo.AddProperty(wvProperty);
+            #endregion
+
+            #region A Three  -> 127
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.PURPLE);
+            wvAThree.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
+            wvAThree.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.POIS);
+            wvAThree.AddProperty(wvProperty);
+            #endregion
+
+            #region B Three -> 121
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.PURPLE);
+            wvBThree.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
+            wvBThree.AddProperty(wvProperty);
+
+            wvProperty = wvEmptyProperty;
+            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.FLOWERS);
+            wvBThree.AddProperty(wvProperty);
+            #endregion
 
 
             return null;
             //return new Game(wvPlayerID, wvPlayerName, );
+        }
+
+        private Item GetItem(AbstractItem AI, int ID)
+        {
+            string wvBaseQuery = "SELECT TOP 1 I.ID, I.Barcode, II.ItemName, II.Price, II.Description, II.Reparto, T.FileName, I.Image";
+            wvBaseQuery += " FROM Item AS I ,Texture AS T, ItemKind AS IK, TextureKind AS TK, ItemInfo AS II, Color AS C";
+            wvBaseQuery += " WHERE II.ItemKind = IK.ID AND I.ItemInfo = II.ID AND I.Texture = T.ID AND T.TextureKind = TK.ID AND T.MainColor = C.ID";
+            wvBaseQuery += " AND I.ID=";
+
+            string query = wvBaseQuery + ID;
+
+            DBConnection.Open();
+            OleDbCommand command = new OleDbCommand(query, DBConnection);
+
+            OleDbDataReader result = command.ExecuteReader();
+
+            int codice = result.GetInt32(0);
+            string barcode = result.GetString(1);
+            string name = result.GetString(2);
+            double price = result.GetDouble(3);
+            string descr = result.GetString(4);
+            string rep = result.GetString(5);
+            string texture = result.GetString(6);
+            string image = result.GetString(7);
+
+            DBConnection.Close();
+            Item i = new Item(codice, barcode, name, price, descr, rep, texture, image, AI);
+
+            return i;
         }
         #endregion
 

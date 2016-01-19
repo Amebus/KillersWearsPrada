@@ -104,9 +104,9 @@ namespace KillerWearsPrada.Model
     public enum E_ItemKind // can be taken from DB table TipoCapo
     {
         _NULL,
+        TROUSERS,
         HAT,
         T_SHIRT,
-        TROUSERS,
         _END
     }
     

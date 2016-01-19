@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KillerWearsPrada", "KillerWearsPrada\KillerWearsPrada.csproj", "{C46FAFB1-7165-4411-B23D-373A1A7FD239}"
 EndProject
@@ -185,6 +185,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ItemsImages", "ItemsImages"
 		KillerWearsPrada\Images\itemsImages\imge14.jpg = KillerWearsPrada\Images\itemsImages\imge14.jpg
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Masks", "Masks", "{CAC4F376-C63A-46E4-9CDB-59BAA9D37EE4}"
+	ProjectSection(SolutionItems) = preProject
+		KillerWearsPrada\Images\Masks\hat_1meleOk.png = KillerWearsPrada\Images\Masks\hat_1meleOk.png
+		KillerWearsPrada\Images\Masks\hat_3tablewhiteOk.png = KillerWearsPrada\Images\Masks\hat_3tablewhiteOk.png
+		KillerWearsPrada\Images\Masks\hat_6sediaOk.png = KillerWearsPrada\Images\Masks\hat_6sediaOk.png
+		KillerWearsPrada\Images\Masks\panta_1divanoOkmask.png = KillerWearsPrada\Images\Masks\panta_1divanoOkmask.png
+		KillerWearsPrada\Images\Masks\panta_3tableOkMask.png = KillerWearsPrada\Images\Masks\panta_3tableOkMask.png
+		KillerWearsPrada\Images\Masks\shirt_1libriOk.png = KillerWearsPrada\Images\Masks\shirt_1libriOk.png
+		KillerWearsPrada\Images\Masks\shirt_2muroOk.png = KillerWearsPrada\Images\Masks\shirt_2muroOk.png
+		KillerWearsPrada\Images\Masks\shirt_3bedOkscalata.png = KillerWearsPrada\Images\Masks\shirt_3bedOkscalata.png
+		KillerWearsPrada\Images\Masks\shirt_4armadiofuoriOkscalata.png = KillerWearsPrada\Images\Masks\shirt_4armadiofuoriOkscalata.png
+		KillerWearsPrada\Images\Masks\shirt_5tappetoOk.png = KillerWearsPrada\Images\Masks\shirt_5tappetoOk.png
+		KillerWearsPrada\Images\Masks\shirt_6armadioOk.png = KillerWearsPrada\Images\Masks\shirt_6armadioOk.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -205,5 +220,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{71D66EBD-2ED8-4FF8-AAF4-CA21BDD5CA19} = {5622C086-9192-499D-AC42-B464C38C38E6}
 		{233643F2-8BF4-4768-9B66-0EFCC88EF1C6} = {5622C086-9192-499D-AC42-B464C38C38E6}
+		{CAC4F376-C63A-46E4-9CDB-59BAA9D37EE4} = {5622C086-9192-499D-AC42-B464C38C38E6}
 	EndGlobalSection
 EndGlobal
