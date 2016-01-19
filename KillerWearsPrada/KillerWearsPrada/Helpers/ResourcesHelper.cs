@@ -10,7 +10,10 @@ namespace KillerWearsPrada.Helpers
         {
             CurrentDirectory,
             ImagesDir,
-            SavesDir
+            SavesDir,
+            TexturesDir,
+            ItemsImagesDir,
+            MasksDir
         }
 
         public enum E_GenericImages
@@ -204,6 +207,45 @@ namespace KillerWearsPrada.Helpers
         }
 
         /// <summary>
+        /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.TexturesDir"/> directory plus \
+        /// </summary>
+        public static string TexturesDirectory
+        {
+            get
+            {
+                string wvPath = GetResource(E_Direcetories.CurrentDirectory);
+                wvPath += CreatePath(GetResource(E_Direcetories.TexturesDir));
+                return wvPath;
+            }
+        }
+
+        /// <summary>
+        /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.ItemsImagesDir"/> directory
+        /// </summary>
+        public static string ItemsImagesDirectory
+        {
+            get
+            {
+                string wvPath = GetResource(E_Direcetories.CurrentDirectory);
+                wvPath += CreatePath(GetResource(E_Direcetories.ItemsImagesDir));
+                return wvPath;
+            }
+        }
+
+        /// <summary>
+        /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.MasksDir"/> directory
+        /// </summary>
+        public static string MasksDirectory
+        {
+            get
+            {
+                string wvPath = GetResource(E_Direcetories.CurrentDirectory);
+                wvPath += CreatePath(GetResource(E_Direcetories.MasksDir));
+                return wvPath;
+            }
+        }
+
+        /// <summary>
         /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.SavesDir"/> directory
         /// </summary>
         public static string SavesDirectory
@@ -299,6 +341,24 @@ namespace KillerWearsPrada.Helpers
             wvRightPath += CreatePath(GetResource(ResourceName));
             SetResource(ResourceName, wvRightPath);
             //     Application.Current.Resources[roomImage] = wvRightPath;
+        }
+
+        public static string TexturesPaths(string filename)
+        {
+            string wvTexturePath = TexturesDirectory + "\\" + filename;
+            return wvTexturePath;
+        }
+
+        public static string ItemsImagesPaths(string filename)
+        {
+            string wvItemPath = ImagesDirectory + "\\" + filename;
+            return wvItemPath;
+        }
+
+        public static string MasksPaths(string filename)
+        {
+            string wvMaskPath = MasksDirectory + "\\" + filename;
+            return wvMaskPath;
         }
 
     }
