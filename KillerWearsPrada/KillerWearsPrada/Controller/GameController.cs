@@ -219,7 +219,7 @@ namespace KillerWearsPrada.Controller
             Solution wvSolution = new Solution();
             List<Room> wvRooms = new List<Room>();
 
-            wvRooms.Add(new Room("Start_Room"));
+            wvRooms.Add(new Room(E_RoomsName.START_ROOM));
 
             for (int i = 1; i <= NUMBER_OF_ROOMS_WITH_ITEMS; i++)
             {

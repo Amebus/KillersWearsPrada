@@ -157,7 +157,7 @@ namespace KillerWearsPrada.Model
         #endregion
 
         #region Methods
-        private Room GetRoom(string RoomName)
+        private Room GetRoom(E_RoomsName RoomName)
         {
             foreach (Room r in attRooms)
                 if (r.Name == RoomName)
@@ -170,12 +170,12 @@ namespace KillerWearsPrada.Model
             return attRooms[RoomIndex].Items;
         }
 
-        public Item GetItem(string RoomName, int ItemCode)
+        public Item GetItem(E_RoomsName RoomName, int ItemCode)
         {
             return GetRoom(RoomName).GetItem(ItemCode);
         }
 
-        public Item GetItem(string RoomName, string ItemBarCode)
+        public Item GetItem(E_RoomsName RoomName, string ItemBarCode)
         {
             return GetRoom(RoomName).GetItem(ItemBarCode);
         }

@@ -7,17 +7,27 @@ using System.Threading.Tasks;
 
 namespace KillerWearsPrada.Model
 {
+    public enum E_RoomsName
+    {
+        _NULL,
+        START_ROOM,
+        LIVINGROOM,
+        KITCHEN,
+        BEDROOM,
+        _END
+    }
+
     [Serializable]
     public class Room : ISerializable
     {
         
-        public Room(string Name)
+        public Room(E_RoomsName Name)
         {
             this.Name = Name;
             this.Items = new List<Item>();
         }
 
-        public Room(List<Item> Items, string Name)
+        public Room(List<Item> Items, E_RoomsName Name)
         {
             this.Name = Name;
 
@@ -27,7 +37,7 @@ namespace KillerWearsPrada.Model
             
         } 
         
-        public string Name
+        public E_RoomsName Name
         {
             get;
             private set;
