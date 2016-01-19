@@ -9,24 +9,24 @@ namespace KillerWearsPrada.Controller
         private const int REFRESH_TIME = 1000;
         private const int DEBUG_REFRESH_TIME = 10000;
         private const int ITEMS_PER_ROOM = 2;
-        private const int NUMBER_OF_ROOMS = 3;
+        private const int NUMBER_OF_ROOMS_WITH_ITEMS = 3;
 
-        private static Random attRandom;
-        private static Helpers.DBHelper attDataBase;
+        private Random attRandom;
+        private Helpers.DBHelper attDataBase;
         private Game attGame;
         private KinectInterrogator attKinectInterrogator;
 
         private ResumeGame attResumeGame;
         private UnloadGame attUnloadGame;
 
-        private readonly byte[,] attPopulationMatrix =
+        private readonly bool[][] attPopulationMatrix =
         { 
-            { 1, 1, 1 },
-            { 1, 1, 0 },
-            { 1, 0, 1 },
-            { 1, 0, 0 },
-            { 0, 1, 1 },
-            { 0, 1, 0 }
+            new bool[] { true, true, true },
+            new bool[] { true, true, false },
+            new bool[] { true, false, true },
+            new bool[] { true, false, false },
+            new bool[] { false, true, true },
+            new bool[] { false, true, false }
         };
 
         /// <summary>
@@ -179,25 +179,30 @@ namespace KillerWearsPrada.Controller
             attKinectInterrogator.StopTakingScreenshots();
         }
 
+        public int ComputeScore()
+        {
+            attGame.ComputeScore();
 
+            return new Random().Next(16, 31);
+        }
 
         /// <summary>
         /// Create a new <see cref="Model.Game"/> and a new <see cref="Model.Player"/> and save them into a file
         /// </summary>
         /// <param name="PlayerName">Name of the <see cref="Model.Player"/></param>
-        public static void CreateGameAndPlayer(string PlayerName)
+        public void CreateGameAndPlayer(string PlayerName)
         {
             string wvPath = Helpers.ResourcesHelper.SavesDirectory;
             string wvID="";// = DateTime.Now.ToString();
 
             //wvID = wvID.Replace(' ', '-');
-            wvID += ("-" + PlayerName);
-            Model.Game wvGame = new Model.Game(wvID, PlayerName);
+            //wvID += ("-" + PlayerName);
+            //Game wvGame = new Game(wvID, PlayerName);
 
-            CreateGame(ITEMS_PER_ROOM);
+            attGame = CreateGame(wvID, PlayerName, ITEMS_PER_ROOM);
 
-            wvPath = System.IO.Path.Combine(wvPath, wvID);
-            Helpers.SerializerHelper.Serialize(wvPath, wvGame);
+            //wvPath = System.IO.Path.Combine(wvPath, wvID);
+            //Helpers.SerializerHelper.Serialize(wvPath, wvGame);
 
             //throw new NotImplementedException("Implementare qui la stampa dei QRCODE");
         }
@@ -208,29 +213,31 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         /// <param name="NumberOfItems"></param>
         /// <returns></returns>
-        private static void CreateGame(int NumberOfItems)
+        private Game CreateGame(string ID, string PalyerName,int NumberOfItems)
         {
+
             Solution wvSolution = new Solution();
-            List<AbstractItem> wvCorrectAbstractItems = new List<AbstractItem>();
+            List<Room> wvRooms = new List<Room>();
 
+            wvRooms.Add(new Room("Start_Room"));
 
-            for (int i = 1; i <= NUMBER_OF_ROOMS; i++)
+            for (int i = 1; i <= NUMBER_OF_ROOMS_WITH_ITEMS; i++)
             {
-                wvCorrectAbstractItems.Add(GenerateCorrectAbstractItem((E_ItemKind)(E_ItemKind._NULL + i)));
-                wvSolution.AddItem(wvCorrectAbstractItems[i - 1]);
+                AbstractItem wvCorrectAbstractItem = GenerateCorrectAbstractItem((E_ItemKind._NULL + i));
+                Item wvCorrectItem = attDataBase.GetItemFromAbstractItem(wvCorrectAbstractItem);
+
+                wvSolution.AddItem(GenerateCorrectAbstractItem((E_ItemKind._NULL + i)));
+
+                wvRooms.Add(GenerateRoom("name", wvCorrectItem));
+
             }
 
-
-            List<Item> wvCorrectItems = new List<Item>();
-            foreach(AbstractItem ai in wvCorrectAbstractItems)
-            {
-                wvCorrectItems.Add(attDataBase.GetItemFromAbstractItem(ai));
-            }
-
+            return new Game(ID, PalyerName, wvRooms, wvSolution);
+            
             //wvCorrectClue = GenerateCorrectClue(wvItemKind);
             //wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
             //wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
-            
+
             //wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
 
             //Room r = new Room()
@@ -263,10 +270,134 @@ namespace KillerWearsPrada.Controller
 
             wvItems = GenerateItemsByItemKind(wvItemKind);
             */
-            
+
         }
 
-        private static AbstractItem GenerateCorrectAbstractItem(E_ItemKind ItemKind)
+        private Room GenerateRoom(string Name, Item CorrectItem)
+        {
+            Room wvRoom = null;
+            List<Item> wvItems = new List<Item>();
+
+            for(int i = (int)E_ItemType.A; i<= (int)E_ItemType.F; i++)
+            {
+                AbstractItem wvAbstractItem = new AbstractItem((E_ItemType)i, CorrectItem.ItemKind);
+
+                switch((E_ItemType)i)
+                {
+                    case E_ItemType.A:
+                        wvItems.Add(CorrectItem);
+                        break;
+                    case E_ItemType.B:
+                        wvAbstractItem = InvertByItemType(CorrectItem, E_ItemType.B);
+
+                        break;
+                    case E_ItemType.C:
+                        break;
+                    case E_ItemType.D:
+                        break;
+                    case E_ItemType.E:
+                        break;
+                    case E_ItemType.F:
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+            return wvRoom;
+        }
+
+        private AbstractItem InvertByItemType(AbstractItem CorrectItem, E_ItemType ItemTypeToGenerate)
+        {
+            ItemGraficalProperty wvIgp;
+            AbstractItem wvInvertedAbstractAbstractItem = new AbstractItem(ItemTypeToGenerate, CorrectItem.ItemKind);
+            int wvRandom;
+            int n = 0;
+            for(int i = 0;  i<CorrectItem.PropertiesCount; i++)
+            {
+                ItemGraficalProperty wvProperty = new ItemGraficalProperty();
+                switch(wvIgp.PropertyKind)
+                {
+                    case E_PropertiesKind.COLOR:
+
+                        #region Color from Gradiation
+                        List<E_Color> wvColors = new List<E_Color>();
+                        if (CorrectItem.CheckPropertyByKind(E_PropertiesKind.GRADIATION))
+                        {
+                            for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
+                            {
+                                if(((E_Color)i).ToString()!= CorrectItem.GetProperty(E_PropertiesKind.COLOR))
+                                    wvColors.Add((E_Color)i);
+                            }
+                        }
+                        else
+                        {
+                            for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
+                            {
+                                if ((E_Color)i != E_Color.BLACK && ((E_Color)i).ToString() != CorrectItem.GetProperty(E_PropertiesKind.COLOR)) //TODO E_Color.WHITE
+                                    wvColors.Add((E_Color)i);
+                            }
+                        }
+                        wvRandom = attRandom.Next(wvColors.Count);
+                        wvProperty.SetProperty(wvIgp.PropertyKind, wvColors[wvRandom]);
+                        #endregion
+
+                        wvInvertedAbstractAbstractItem.AddProperty(wvProperty);
+                        break;
+                    case E_PropertiesKind.GRADIATION:
+                        E_Gradiation wvGradiation = E_Gradiation.DARK;
+
+                        if (CorrectItem.GetProperty(E_PropertiesKind.GRADIATION) == E_Gradiation.DARK.ToString())
+                            wvGradiation = E_Gradiation.LIGHT;
+                        wvProperty.SetProperty(wvIgp.PropertyKind, wvGradiation);
+                        wvInvertedAbstractAbstractItem.AddProperty(wvProperty);
+                        break;
+                    case E_PropertiesKind.SHAPE:
+                        E_Shape wvShape = E_Shape.LONG;
+
+                        if (CorrectItem.GetProperty(E_PropertiesKind.SHAPE) == E_Shape.LONG.ToString())
+                            wvShape = E_Shape.SHORT;
+                        wvProperty.SetProperty(wvIgp.PropertyKind, wvShape);
+                        wvInvertedAbstractAbstractItem.AddProperty(wvProperty);
+                        break;
+                    case E_PropertiesKind.TEXTURE:
+
+
+
+                        List<E_Texture> wvTextures = new List<E_Texture>();
+
+                        for (int i = (int)E_Texture._NULL + 1; i < (int)E_Texture._END; i++)
+                        {
+                            if (((E_Texture)i).ToString() != CorrectItem.GetProperty(E_PropertiesKind.TEXTURE))
+                                wvTextures.Add((E_Texture)i);
+                        }
+                        
+                        wvRandom = attRandom.Next(wvTextures.Count);
+                        wvProperty.SetProperty(wvIgp.PropertyKind, wvTextures[wvRandom]);
+                        
+                        break;
+
+                    default:
+                        break;
+                }
+
+
+                n++;
+            }
+
+            return wvInvertedAbstractAbstractItem;   
+        }
+
+        private AbstractItem GenerateCorrectAbstractItem(E_ItemKind ItemKind)
         {
             int wvRandom;
             E_Gradiation wvGradiation;
@@ -352,7 +483,7 @@ namespace KillerWearsPrada.Controller
             return wvAbstractItem;
         }
 
-        private static List<Item> GenerateItemsByItemKind(E_ItemKind wvItemKind)
+        private List<Item> GenerateItemsByItemKind(E_ItemKind wvItemKind)
         {
             //AbstractItem wvAbstractItem = new AbstractItem();
             //wvAbstractItem.AddProperty();

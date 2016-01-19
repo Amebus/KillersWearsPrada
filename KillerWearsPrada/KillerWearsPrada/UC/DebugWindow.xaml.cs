@@ -59,7 +59,7 @@ namespace KillerWearsPrada.UC
         {
             try
             {
-                Controller.GameController.CreateGameAndPlayer("Giocatore1");
+                attGameController.CreateGameAndPlayer("Giocatore1");
 
                 attGameController.LoadGame("-Giocatore1");
 

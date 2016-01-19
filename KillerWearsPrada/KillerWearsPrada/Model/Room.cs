@@ -11,14 +11,20 @@ namespace KillerWearsPrada.Model
     public class Room : ISerializable
     {
         
-        public Room(List<Item> Items, List<Clue> Clues, string Name)
+        public Room(string Name)
+        {
+            this.Name = Name;
+            this.Items = new List<Item>();
+        }
+
+        public Room(List<Item> Items, string Name)
         {
             this.Name = Name;
 
             this.Items = Items;
             // ogni stanza contnene anche le clues che verranno mostate nelle finestre degli item
             // più una Clue che sarà risolutiva per un'altra stanza
-            this.Clues = Clues;
+            
         } 
         
         public string Name
@@ -51,20 +57,7 @@ namespace KillerWearsPrada.Model
             }
         }
 
-        public void AddClue(Clue c)
-        {
-            this.Clues.Add(c);
-        }
-        
-            
-        public List<Clue> Clues 
-        {
-            get;
-            private set;
-        }
-        
-
-        public Item GetItemByBarCode (string BarCode)
+        public Item GetItem (string BarCode)
         {
             foreach(Item it in this.Items)
             {
@@ -75,7 +68,7 @@ namespace KillerWearsPrada.Model
             return null;
         }
 
-        public Item GetItemByCode(int Code)
+        public Item GetItem(int Code)
         {
             foreach (Item it in Items)
             {

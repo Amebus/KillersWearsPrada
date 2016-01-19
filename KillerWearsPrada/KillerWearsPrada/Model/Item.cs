@@ -89,7 +89,7 @@ namespace KillerWearsPrada.Model
             return false;
         }
 
-        public E_PropertiesKind GetProperyKind(int Index)
+        public E_PropertiesKind GetPropertyKind(int Index)
         {
             if (Index >= ItemProperties.Count)
                 Index = ItemProperties.Count - 1;
@@ -151,7 +151,7 @@ namespace KillerWearsPrada.Model
     // this class represents the item in the game
     public class Item : AbstractItem
     {
-
+        private const string BASE = "A witness remembers that the @p1 was ";
         private int code;
         private string barcode;
         private string itemName;
@@ -160,9 +160,6 @@ namespace KillerWearsPrada.Model
         private string reparto;
         private string textureFileName;        
         private string imageFileName;
-      
-
-        private string attClueText;
 
         private bool attTrashed;
         private bool attInInventory;
@@ -254,18 +251,23 @@ namespace KillerWearsPrada.Model
             get { return attDressed; }
         }
 
-        public string ClueText
+        public string Clue
         {
-            get { return attClueText; }
+            get
+            {
+                string wvClue = BASE.Replace("@p1", ItemKind.ToString().Replace('_', ' '));
+                string wvTemp;
+                if (ItemType == E_ItemType.A || ItemType == E_ItemType.C || ItemType == E_ItemType.D)
+                    wvTemp = this.ItemProperties[0].Property.ToString();
+
+
+
+                return wvClue;
+            }
         }
         #endregion
 
         #region Methods
-        public void SetClueText (string ClueText)
-        {
-            attClueText = ClueText;
-        }
-
         public bool SetAsTrashed()
         {
             if (!this.IsInInventory)
@@ -310,11 +312,7 @@ namespace KillerWearsPrada.Model
             attDressed = false;
             return true;
         }
-
-        public override string ToString()
-        {
-            return attClueText;
-        }
+        
         #endregion
     }
 }

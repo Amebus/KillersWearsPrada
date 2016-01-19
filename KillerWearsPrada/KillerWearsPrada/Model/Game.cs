@@ -31,14 +31,15 @@ namespace KillerWearsPrada.Model
         /// </summary>
         /// <param name="ID">ID of the Game</param>
         /// <param name="PlayerName">Name of the player</param>
-        public Game (string ID, string PlayerName)
+        public Game (string ID, string PlayerName, List<Room> Rooms, Solution Solution)
         {
             attStarted = false;
             attSolution = new Solution();
             attPlayer = new Player(ID, PlayerName);
             attScore = 0;
             attActualRoom = 0;
-
+            attRooms = Rooms;
+            this.attSolution = Solution;
         }
 
         #region Properties
@@ -143,7 +144,6 @@ namespace KillerWearsPrada.Model
         public List<Room> Rooms
         {
             get { return attRooms; }
-            set { attRooms = value; }
         }
         
         /// <summary>
@@ -152,26 +152,42 @@ namespace KillerWearsPrada.Model
         public Solution Solution
         {
             get { return Solution; }
-            set { Solution = value; }
         }
 
         #endregion
 
         #region Methods
+        private Room GetRoom(string RoomName)
+        {
+            foreach (Room r in attRooms)
+                if (r.Name == RoomName)
+                    return r;
+            return null;
+        }
 
         public List<Item> GetRoomItems(int RoomIndex)
         {
             return attRooms[RoomIndex].Items;
         }
 
-        public Item GetItemByCode(int Room, int ItemCode)
+        public Item GetItem(string RoomName, int ItemCode)
         {
-            return attRooms[Room].GetItemByCode(ItemCode);
+            return GetRoom(RoomName).GetItem(ItemCode);
         }
 
-        public Item GetItemByBarCode(int Room, int ItemBarCode)
+        public Item GetItem(string RoomName, string ItemBarCode)
         {
-            return attRooms[Room].GetItemByCode(ItemBarCode);
+            return GetRoom(RoomName).GetItem(ItemBarCode);
+        }
+
+        public Item GetItem(int Room, int ItemCode)
+        {
+            return attRooms[Room].GetItem(ItemCode);
+        }
+
+        public Item GetItem(int Room, string ItemBarCode)
+        {
+            return attRooms[Room].GetItem(ItemBarCode);
         }
 
         /// <summary>
