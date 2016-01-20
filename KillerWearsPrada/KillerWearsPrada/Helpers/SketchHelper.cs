@@ -17,7 +17,7 @@ namespace KillerWearsPrada.Helpers
         public static void SetDirectories()
         {
             Helpers.ResourcesHelper.ModifyAllMagickPath();
-
+            System.IO.Directory.CreateDirectory(Application.Current.Resources[Helpers.ResourcesHelper.E_Magick_Dirs.CacheDirectoryMagick.ToString()].ToString());
             MagickAnyCPU.CacheDirectory = Application.Current.Resources[Helpers.ResourcesHelper.E_Magick_Dirs.CacheDirectoryMagick.ToString()].ToString();
             MagickNET.SetGhostscriptDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.GhostscriptDirectory.ToString()]);
             // MagickNET.Initialize(@"C:\Users\Monica\Documents\MagickTestFilesVari\MyImageMagickXmlFiles");
