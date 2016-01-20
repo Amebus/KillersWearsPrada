@@ -21,14 +21,14 @@ namespace KillerWearsPrada.Helpers
             wvStream.Close();
         }
 
-        public static Model.ISerializable Deserialize(string Path)
+        public static Model.Game Deserialize(string Path)
         {
-            Model.ISerializable wvSerializedObject;
+            Model.Game wvSerializedGame;
             BinaryFormatter wvSerializer = new BinaryFormatter();
             Stream wvStream = new FileStream(Path, FileMode.Open, FileAccess.Read);
-            wvSerializedObject = (Model.ISerializable)wvSerializer.Deserialize(wvStream);
+            wvSerializedGame = (Model.Game)wvSerializer.Deserialize(wvStream);
             wvStream.Close();
-            return wvSerializedObject;
+            return wvSerializedGame;
         }
     }
 }

@@ -130,7 +130,7 @@ namespace KillerWearsPrada.Helpers
             if (r == null)
             {
                 QRCodeFound = false;
-                return "QRCodeFound=False";
+                return null;
             }
             
             QRCodeFound = true;

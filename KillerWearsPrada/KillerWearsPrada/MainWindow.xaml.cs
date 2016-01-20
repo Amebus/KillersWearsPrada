@@ -106,12 +106,12 @@ namespace KillerWearsPrada
             attDebug = new UC.DebugWindow(attGameController);
             attDebug.Show();
 
-            //attGameController.StartTakingScreenShot()
+            attGameController.StartTakingScreenshots();
         }
 
         private void CaptureResumeGameEvent(object Sender, GameController.ResumeGame.Args Parameters)
         {
-            object[] wvParameters = new object[] { Parameters };
+            //object[] wvParameters = new object[] { Parameters };
             //this.Invoke(d, new object[] { e });
             if (this.Dispatcher.CheckAccess())
             {
@@ -121,20 +121,20 @@ namespace KillerWearsPrada
             else
             {
                 //Altrimenti invoca il delegato sul thread corretto
-                this.Dispatcher.Invoke(attResumeGameHandlerDelegate, new object[] { wvParameters });
+                this.Dispatcher.Invoke(attResumeGameHandlerDelegate, Parameters );
             }
         }
 
         private void CaptureUnloadGameEvent(object Sender, GameController.UnloadGame.Args Parameters)
         {
-            object[] wvParameters = new object[] { Parameters };
+            //object[] wvParameters = new object[] { Parameters };
             if (this.Dispatcher.CheckAccess())
             {
                 attUnloadGameHandlerDelegate.Invoke(Parameters);
             }
             else
             {
-                this.Dispatcher.Invoke(attUnloadGameHandlerDelegate, new object[] { wvParameters });
+                this.Dispatcher.Invoke(attUnloadGameHandlerDelegate, Parameters );
             }
         }
 
@@ -147,7 +147,7 @@ namespace KillerWearsPrada
         private void ResumeGame(GameController.ResumeGame.Args Parameters)
         {
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
-            txtDisplay.AppendText("\r\n" + attGameController.Game.GameStarted.ToString());
+            txtDisplay.AppendText("\r\n" + attGameController.Game.PlayerID.ToString());
 
             // qui faccio allocare tutti gli user control?
             //allocate_All_UC();

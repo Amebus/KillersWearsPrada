@@ -114,25 +114,26 @@ namespace KillerWearsPrada.Controller
             BackgroundWorkerParameters wvBWP = (BackgroundWorkerParameters)e.Argument;
             bool wvQRCodeFound;
 
+            
             wvEncoder = new PngBitmapEncoder();
             // create a png bitmap encoder which knows how to save a .png file
             wvEncoder.Frames.Add(BitmapFrame.Create(wvBWP.ImageToBeChecked));
 
             Stream wvMemoryImege = new MemoryStream();
             wvEncoder.Save(wvMemoryImege);
-            wvMemoryImege.Close();
 
             wvImage = new Bitmap(wvMemoryImege);
 
             //attSavePath = Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
 
             //creao uno stream per convertire writablebitmap in bitmap, in questo modo posso usare subito l'immagine
-            
+            //wvImage = wvBWP.ImageToBeChecked;
 
             attPlayerChecker.CheckPlayer(Helpers.QRReaderHelper.QRCode(out wvQRCodeFound, wvImage));
-            
-            
-            
+
+            wvMemoryImege.Close();
+
+
 
             //throw new NotImplementedException("Mettere i controlli sulla disponibilità del kinect");
             /*codice utile per scatenare gli eventi del backgroundworker
@@ -168,7 +169,7 @@ namespace KillerWearsPrada.Controller
             if (attScreenshotWorker.IsBusy)
                 return;
 
-
+            
             ColorFrame wvColorFrame = e.FrameReference.AcquireFrame();
 
             if (wvColorFrame == null)
@@ -197,6 +198,18 @@ namespace KillerWearsPrada.Controller
 
             wvColorBitmap.Unlock();
 
+
+            //BitmapEncoder wvEncoder = new PngBitmapEncoder();
+            // create a png bitmap encoder which knows how to save a .png file
+            //wvEncoder.Frames.Add(BitmapFrame.Create(wvColorBitmap));
+
+            //Stream wvMemoryImege = new MemoryStream();
+            //wvEncoder.Save(wvMemoryImege);
+
+
+            //Bitmap wvImage = new Bitmap(wvMemoryImege);
+            //wvMemoryImege.Close();
+            wvColorBitmap.Freeze();
             BackgroundWorkerParameters wvBWP = new BackgroundWorkerParameters();
             wvBWP.ImageToBeChecked = wvColorBitmap;
             attScreenshotWorker.RunWorkerAsync(wvBWP);

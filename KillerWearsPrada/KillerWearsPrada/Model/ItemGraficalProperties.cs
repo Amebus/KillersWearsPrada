@@ -10,24 +10,27 @@ namespace KillerWearsPrada.Model
     [Serializable]
     public class ItemGraficalProperty : ISerializable
     {
-        private E_PropertiesKind attPropertyKind;
         public object Property { get; private set; }
 
-        public E_PropertiesKind PropertyKind
-        {
-            get { return attPropertyKind; }
-        }
+        public E_PropertiesKind PropertyKind { get; private set; }
+        
 
         public ItemGraficalProperty()
         {
-            attPropertyKind = E_PropertiesKind._NULL;
+            PropertyKind = E_PropertiesKind._NULL;
             Property = null;
         }
         
         public void SetProperty (E_PropertiesKind PropertyKind, object ItemProperty)
         {
-            attPropertyKind = PropertyKind;
+            PropertyKind = PropertyKind;
             Property = ItemProperty;
+        }
+
+        public void SetProperty (ItemGraficalProperty IGP)
+        {
+            PropertyKind = IGP.PropertyKind;
+            this.Property = IGP.Property;
         }
 
         internal bool EqualsTo(ItemGraficalProperty AI)

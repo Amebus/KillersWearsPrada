@@ -170,7 +170,10 @@ namespace KillerWearsPrada.Controller
         public void LoadGame(string ID)
         {
             string wvPath = CombinePath(Helpers.ResourcesHelper.SavesDirectory, ID);
-            attGame = (Model.Game)Helpers.SerializerHelper.Deserialize(wvPath);
+            attGame = Helpers.SerializerHelper.Deserialize(wvPath);
+            bool r = true;
+            if (r)
+                r = false;
         }
         
         /// <summary>
@@ -240,15 +243,15 @@ namespace KillerWearsPrada.Controller
 
                 wvSolution.AddItem(GenerateCorrectAbstractItem((E_ItemKind._NULL + i)));
 
-                //wvRooms.Add(GenerateRoom("name", wvCorrectItem));
+                wvRooms.Add(GenerateRoom((E_RoomsName)(i+1), wvCorrectItem));
 
             }
 
             return new Game(ID, PalyerName, wvRooms, wvSolution);
             
         }
-        /*
-        private Room GenerateRoom(string Name, Item CorrectItem)
+        
+        private Room GenerateRoom(E_RoomsName Name, Item CorrectItem)
         {
             Room wvRoom = null;
             List<Item> wvItems = new List<Item>();
@@ -283,89 +286,105 @@ namespace KillerWearsPrada.Controller
 
 
             return wvRoom;
-        }*/
-        /*
+        }
+        
         private AbstractItem InvertByItemType(AbstractItem CorrectItem, E_ItemType ItemTypeToGenerate)
         {
             ItemGraficalProperty wvIgp;
             AbstractItem wvInvertedAbstractAbstractItem = new AbstractItem(ItemTypeToGenerate, CorrectItem.ItemKind);
-            int wvRandom;
-            int n = 0;
+            bool[] wvVctor = attPopulationMatrix[(int)ItemTypeToGenerate];
+
             for(int i = 0;  i<CorrectItem.PropertiesCount; i++)
             {
+                
                 ItemGraficalProperty wvProperty = new ItemGraficalProperty();
-                switch(wvIgp.PropertyKind)
+                wvIgp = CorrectItem.ItemProperties[i];
+                if(wvVctor[i])
                 {
-                    case E_PropertiesKind.COLOR:
+                    wvProperty.SetProperty(wvIgp.PropertyKind, wvIgp.Property);
+                }
+                else
+                {
 
-                        #region Color from Gradiation
-                        List<E_Color> wvColors = new List<E_Color>();
-                        if (CorrectItem.CheckPropertyByKind(E_PropertiesKind.GRADIATION))
-                        {
-                            for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
-                            {
-                                if(((E_Color)i).ToString()!= CorrectItem.GetProperty(E_PropertiesKind.COLOR))
-                                    wvColors.Add((E_Color)i);
-                            }
-                        }
-                        else
-                        {
-                            for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
-                            {
-                                if ((E_Color)i != E_Color.BLACK && ((E_Color)i).ToString() != CorrectItem.GetProperty(E_PropertiesKind.COLOR)) //TODO E_Color.WHITE
-                                    wvColors.Add((E_Color)i);
-                            }
-                        }
-                        wvRandom = attRandom.Next(wvColors.Count);
-                        wvProperty.SetProperty(wvIgp.PropertyKind, wvColors[wvRandom]);
-                        #endregion
-
-                        wvInvertedAbstractAbstractItem.AddProperty(wvProperty);
-                        break;
-                    case E_PropertiesKind.GRADIATION:
-                        E_Gradiation wvGradiation = E_Gradiation.DARK;
-
-                        if (CorrectItem.GetProperty(E_PropertiesKind.GRADIATION) == E_Gradiation.DARK.ToString())
-                            wvGradiation = E_Gradiation.LIGHT;
-                        wvProperty.SetProperty(wvIgp.PropertyKind, wvGradiation);
-                        wvInvertedAbstractAbstractItem.AddProperty(wvProperty);
-                        break;
-                    case E_PropertiesKind.SHAPE:
-                        E_Shape wvShape = E_Shape.LONG;
-
-                        if (CorrectItem.GetProperty(E_PropertiesKind.SHAPE) == E_Shape.LONG.ToString())
-                            wvShape = E_Shape.SHORT;
-                        wvProperty.SetProperty(wvIgp.PropertyKind, wvShape);
-                        wvInvertedAbstractAbstractItem.AddProperty(wvProperty);
-                        break;
-                    case E_PropertiesKind.TEXTURE:
-
-
-
-                        List<E_Texture> wvTextures = new List<E_Texture>();
-
-                        for (int i = (int)E_Texture._NULL + 1; i < (int)E_Texture._END; i++)
-                        {
-                            if (((E_Texture)i).ToString() != CorrectItem.GetProperty(E_PropertiesKind.TEXTURE))
-                                wvTextures.Add((E_Texture)i);
-                        }
-                        
-                        wvRandom = attRandom.Next(wvTextures.Count);
-                        wvProperty.SetProperty(wvIgp.PropertyKind, wvTextures[wvRandom]);
-                        
-                        break;
-
-                    default:
-                        break;
+                    wvProperty.SetProperty(InvertProperty(wvIgp));
+                    
                 }
 
-
-                n++;
+                wvInvertedAbstractAbstractItem.AddProperty(wvProperty);
             }
 
             return wvInvertedAbstractAbstractItem;   
         }
-        */
+
+        private ItemGraficalProperty InvertProperty(ItemGraficalProperty IGP)
+        {
+            int wvRandom;
+            ItemGraficalProperty wvProperty = new ItemGraficalProperty();
+
+            switch (IGP.PropertyKind)
+            {
+                case E_PropertiesKind.COLOR:
+
+                    #region Color from Gradiation
+                    List<E_Color> wvColors = new List<E_Color>();
+                    if (IGP.PropertyKind == E_PropertiesKind.GRADIATION)
+                    {
+                        for (int j = (int)E_Color._NULL + 1; j < (int)E_Color._END; j++)
+                        {
+                            if (((E_Color)j).ToString() != IGP.Property.ToString())
+                                wvColors.Add((E_Color)j);
+                        }
+                    }
+                    else
+                    {
+                        for (int j = (int)E_Color._NULL + 1; j < (int)E_Color._END; j++)
+                        {
+                            if (
+                                    (E_Color)j != E_Color.BLACK &&
+                                    (E_Color)j != E_Color.WHITE &&
+                                    ((E_Color)j).ToString() != IGP.Property.ToString())
+                                wvColors.Add((E_Color)j);
+                        }
+                    }
+                    wvRandom = attRandom.Next(wvColors.Count);
+                    wvProperty.SetProperty(IGP.PropertyKind, wvColors[wvRandom]);
+                    #endregion
+                    
+                    break;
+                case E_PropertiesKind.GRADIATION:
+                    E_Gradiation wvGradiation = E_Gradiation.DARK;
+
+                    if (IGP.Property.ToString() == E_Gradiation.DARK.ToString())
+                        wvGradiation = E_Gradiation.LIGHT;
+                    wvProperty.SetProperty(IGP.PropertyKind, wvGradiation);
+                    break;
+                case E_PropertiesKind.SHAPE:
+                    E_Shape wvShape = E_Shape.LONG;
+
+                    if (IGP.Property.ToString() == E_Shape.LONG.ToString())
+                        wvShape = E_Shape.SHORT;
+                    wvProperty.SetProperty(IGP.PropertyKind, wvShape);
+                    break;
+                case E_PropertiesKind.TEXTURE:
+                    List<E_Texture> wvTextures = new List<E_Texture>();
+
+                    for (int j = (int)E_Texture._NULL + 1; j < (int)E_Texture._END; j++)
+                    {
+                        if (((E_Texture)j).ToString() !=IGP.Property.ToString())
+                            wvTextures.Add((E_Texture)j);
+                    }
+
+                    wvRandom = attRandom.Next(wvTextures.Count);
+                    wvProperty.SetProperty(IGP.PropertyKind, wvTextures[wvRandom]);
+                    break;
+
+                default:
+                    break;
+            }
+
+            return wvProperty;
+        }
+
         private AbstractItem GenerateCorrectAbstractItem(E_ItemKind ItemKind)
         {
             int wvRandom;
@@ -487,7 +506,7 @@ namespace KillerWearsPrada.Controller
         /// <param name="e"></param>
         private void HandlePlayerLeaveKinectSensor(object Sender, PlayerChecker.PlayerLeaveKinectSensor.Args Parameters)
         {
-            throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore lascia la postazione");
+            //throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore lascia la postazione");
 
             SaveGame();
             attUnloadGame.RaiseEvent();
@@ -507,10 +526,10 @@ namespace KillerWearsPrada.Controller
 
             protected virtual void OnResumeGame(Args e)
             {
-                EventHandler<Args> wvHendeler = RaiseResumeGame;
-                if (wvHendeler != null)
+                
+                if (RaiseResumeGame != null)
                 {
-                    wvHendeler(this, e);
+                    RaiseResumeGame(this, e);
                 }
             }
 

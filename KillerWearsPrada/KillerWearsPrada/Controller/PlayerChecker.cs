@@ -98,7 +98,7 @@ namespace KillerWearsPrada.Controller
             EventHandler<PlayerEnterKinectSensor.Args> wvHendeler = RaisePlayerEnterKinectSensor;
             if (wvHendeler != null)
             {
-                wvHendeler(this, e);
+                wvHendeler(this, e );
             }
         }
 
@@ -121,10 +121,10 @@ namespace KillerWearsPrada.Controller
         /// <param name="e"></param>
         protected virtual void OnPlayerLeaveKinectSensor(PlayerLeaveKinectSensor.Args e)
         {
-            EventHandler<PlayerLeaveKinectSensor.Args> wvHendeler = RaisePlayerLeaveKinectSensor;
-            if (wvHendeler != null)
+           
+            if (RaisePlayerLeaveKinectSensor != null)
             {
-                wvHendeler(this, e);
+                RaisePlayerLeaveKinectSensor(this, e);
             }
         }
 

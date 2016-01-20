@@ -38,7 +38,7 @@ namespace KillerWearsPrada.UC
 
         private void btnQueryProva_Click(object sender, RoutedEventArgs e)
         {
-            string r;
+            
             db = new Helpers.DBHelper();
             try
             {
@@ -51,8 +51,8 @@ namespace KillerWearsPrada.UC
                 //string wvPlayerName = "alberto";
                 //wvPlayerID += ("_" + wvPlayerName);
                 string wvPath = Helpers.ResourcesHelper.SavesDirectory + "\\" + wvPlayerID;
-                Model.Game wvGame = (Model.Game)Helpers.SerializerHelper.Deserialize(wvPath);
-                txtDisplay.Text = wvGame.GameStarted.ToString();
+                Model.Game wvGame = Helpers.SerializerHelper.Deserialize(wvPath);
+                txtDisplay.Text = wvGame.PlayerID;
             }
             catch (Exception ex)
             {
