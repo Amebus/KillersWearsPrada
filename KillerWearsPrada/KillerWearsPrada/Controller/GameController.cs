@@ -18,6 +18,7 @@ namespace KillerWearsPrada.Controller
 
         private ResumeGame attResumeGame;
         private UnloadGame attUnloadGame;
+        private UpdateInventory attUpdateInventory;
 
         private readonly bool[][] attPopulationMatrix =
         { 
@@ -42,16 +43,22 @@ namespace KillerWearsPrada.Controller
 
             attResumeGame = new ResumeGame();
             attUnloadGame = new UnloadGame();
+            attUpdateInventory = new UpdateInventory();
 
             attKinectInterrogator.RaisePlayerEnterKinectSensor = HandlePlayerEnterKinectSensor;
             attKinectInterrogator.RaisePlayerLeaveKinectSensor = HandlePlayerLeaveKinectSensor;
-            
+            attKinectInterrogator.RaiseBarCodeRecognized = HandleBarCodeRecognized;
         }
 
         #region Proprietà
         public Model.Game Game
         {
             get { return attGame; }
+        }
+
+        public UpdateInventory GetUpdateInventory
+        {
+            get { return attUpdateInventory; }
         }
 
         /// <summary>
@@ -471,13 +478,6 @@ namespace KillerWearsPrada.Controller
             return wvAbstractItem;
         }
 
-        private List<Item> GenerateItemsByItemKind(E_ItemKind wvItemKind)
-        {
-            //AbstractItem wvAbstractItem = new AbstractItem();
-            //wvAbstractItem.AddProperty();
-            throw new NotImplementedException("Finire la generazione random");
-        }
-
         public static void DeleteAllGames()
         {
             System.IO.DirectoryInfo wvDirInfo = new System.IO.DirectoryInfo(Helpers.ResourcesHelper.SavesDirectory);
@@ -487,6 +487,13 @@ namespace KillerWearsPrada.Controller
                 wvFile.Delete();
         }
         #endregion
+
+        private void HandleBarCodeRecognized(object Sender, BarCodeRecognized.Arguments Parameters)
+        {
+
+            attGame.SetInInventory(Parameters.BarCode);
+            attUpdateInventory.RaiseEvent(Parameters.BarCode);
+        }
 
         /// <summary>
         /// 
@@ -522,14 +529,14 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public class ResumeGame
         {
-            public event EventHandler<Arguments> RaiseResumeGame;
+            public event EventHandler<Arguments> ResumeGameEvent;
 
             protected virtual void OnResumeGame(Arguments e)
             {
                 
-                if (RaiseResumeGame != null)
+                if (ResumeGameEvent != null)
                 {
-                    RaiseResumeGame(this, e);
+                    ResumeGameEvent(this, e);
                 }
             }
 
@@ -559,13 +566,13 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public class UnloadGame
         {
-            public event EventHandler<Arguments> RaiseUnloadGame;
+            public event EventHandler<Arguments> UnloadGameEvent;
 
             protected virtual void OnUnloadGame(Arguments e)
             {
-                if (RaiseUnloadGame != null)
+                if (UnloadGameEvent != null)
                 {
-                    RaiseUnloadGame(this, e);
+                    UnloadGameEvent(this, e);
                 }
             }
 
@@ -583,6 +590,37 @@ namespace KillerWearsPrada.Controller
 
             public class Arguments : EventArgs
             {
+
+            }
+        }
+
+
+        public class UpdateInventory
+        {
+            public event EventHandler<Arguments> UpdateInventoryEvent;
+
+            protected virtual void OnUpdateInventory(Arguments e)
+            {
+                if (UpdateInventoryEvent != null)
+                    UpdateInventoryEvent(this, e);
+
+            }
+
+            public void RaiseEvent(string BarCode)
+            {
+                Arguments wvParameters = new Arguments(BarCode);
+
+                OnUpdateInventory(wvParameters);
+            }
+
+            public class Arguments
+            {
+                public Arguments (string BarCode)
+                {
+                    this.BarCode = BarCode;
+                }
+
+                public string BarCode { get; private set; }
 
             }
         }

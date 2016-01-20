@@ -34,9 +34,8 @@ namespace KillerWearsPrada.Helpers
         /// <param name="BarCodeFound">True if the BarCode was find, False if was generate an error code</param>
         /// <returns>The BarCode found or an error string</returns>
         /// </summary>
-        public static string BarCode (out bool BarCodeFound)
+        public static string BarCode (out bool BarCodeFound, Bitmap Image )
         {
-            Bitmap wvImage;
             BarcodeReader wvBarCodeReader;
 
             List<BarcodeFormat> wvBarCodesList = new List<BarcodeFormat>();
@@ -57,16 +56,14 @@ namespace KillerWearsPrada.Helpers
             wvBarCodeReader.TryInverted = true;
 
             Result r;
-            wvImage = (Bitmap)Image.FromFile(attImagePath, true);
-            r = wvBarCodeReader.Decode(wvImage);
+            r = wvBarCodeReader.Decode(Image);
 
             if (r==null)
             {
                 BarCodeFound = false;
-                return "BarCodeFound=False";
+                return null;
             }
 
-            wvImage.Dispose();
             BarCodeFound = true;
             return r.Text.ToString();
           

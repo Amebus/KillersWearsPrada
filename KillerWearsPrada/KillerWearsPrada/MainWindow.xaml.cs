@@ -38,9 +38,12 @@ namespace KillerWearsPrada
         #region Delegates for GameController events
         private delegate void ResumeGameHandler(GameController.ResumeGame.Arguments Parameters);
         private delegate void UnloadGameHandler(GameController.UnloadGame.Arguments Parameters);
+        private delegate void UpdateInventorydHandler(GameController.UpdateInventory.Arguments Parameters);
 
         private ResumeGameHandler attResumeGameHandlerDelegate;
         private UnloadGameHandler attUnloadGameHandlerDelegate;
+        private UpdateInventorydHandler attUpdateInventoryDelegate;
+
         #endregion
 
         #region User Controls
@@ -83,18 +86,17 @@ namespace KillerWearsPrada
             attGameController = new GameController(this.kinectRegion.KinectSensor);
             //attKinectInterrogator = new Controller.KinectInterrogator(this.kinectRegion.KinectSensor, REFRESH_TIME);
 
-            attGameController.GetResumeGame.RaiseResumeGame += CaptureResumeGameEvent;
-            attGameController.GetUnloadGame.RaiseUnloadGame += CaptureUnloadGameEvent;
+            attGameController.GetResumeGame.ResumeGameEvent += CaptureResumeGameEvent;
+            attGameController.GetUnloadGame.UnloadGameEvent += CaptureUnloadGameEvent;
+            attGameController.GetUpdateInventory.UpdateInventoryEvent += CaptureUpdateInventoryEvent;
 
             attResumeGameHandlerDelegate = new ResumeGameHandler(this.ResumeGame);
             attUnloadGameHandlerDelegate = new UnloadGameHandler(this.UnloadGame);
+            attUpdateInventoryDelegate = new UpdateInventorydHandler(this.UpdateInventory);
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
-
-        
-      
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -102,6 +104,22 @@ namespace KillerWearsPrada
             attDebug.Show();
 
             attGameController.StartTakingScreenshots();
+        }
+
+        private void CaptureUpdateInventoryEvent(object Sender, GameController.UpdateInventory.Arguments Parameters)
+        {
+            //object[] wvParameters = new object[] { Parameters };
+            //this.Invoke(d, new object[] { e });
+            if (this.Dispatcher.CheckAccess())
+            {
+                //Se siamo su quello dei controlli, chiama il delegato normalmente
+                attUpdateInventoryDelegate.Invoke(Parameters);
+            }
+            else
+            {
+                //Altrimenti invoca il delegato sul thread corretto
+                this.Dispatcher.Invoke(attUpdateInventoryDelegate, Parameters);
+            }
         }
 
         private void CaptureResumeGameEvent(object Sender, GameController.ResumeGame.Arguments Parameters)
@@ -161,6 +179,11 @@ namespace KillerWearsPrada
         private void UnloadGame(GameController.UnloadGame.Arguments Parameters)
         {
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Unload";
+        }
+
+        private void UpdateInventory(GameController.UpdateInventory.Arguments Parameters)
+        {
+            throw new NotImplementedException("Qui aggiornare l'inventario");
         }
 
         private void Window_Initialized(object sender, EventArgs e)

@@ -199,6 +199,12 @@ namespace KillerWearsPrada.Model
 
         }
 
+        internal void SetInInventory(string BarCode)
+        {
+
+            throw new Exception("Implementa il metodo");
+        }
+
         #endregion
     }
 }

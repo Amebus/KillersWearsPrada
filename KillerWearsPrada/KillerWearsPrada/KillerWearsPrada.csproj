@@ -104,6 +104,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\BarCodeRecognized.cs" />
     <Compile Include="Controller\GameController.cs" />
     <Compile Include="Controller\PlayerChecker.cs" />
     <Compile Include="Helpers\SerializerHelper.cs" />

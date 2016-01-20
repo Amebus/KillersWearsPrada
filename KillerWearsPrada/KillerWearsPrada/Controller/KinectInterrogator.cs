@@ -20,7 +20,6 @@ namespace KillerWearsPrada.Controller
 
         //TODO Scatenare l'evento qundo viene salvato uno screenshot e si riconosce il giocatore 
         private const string attScreen = "screenshot.png";
-        private string attSavePath;
         private int attWaitingTime;
 
         private KinectSensor attKinectSensor;
@@ -28,6 +27,7 @@ namespace KillerWearsPrada.Controller
         private ColorFrameReader attColorFrameReader;
 
         private PlayerChecker attPlayerChecker;
+        private BarCodeRecognized attBarcodeChecker;
 
         private BackgroundWorker attScreenshotWorker;
 
@@ -44,7 +44,6 @@ namespace KillerWearsPrada.Controller
             attEnableTakingScreenshot = false;
             attPlayerChecker = new PlayerChecker();
             attWaitingTime = WaitingTime;
-            attSavePath = "";
             this.attKinectSensor = Sensor;
             
             attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
@@ -90,6 +89,11 @@ namespace KillerWearsPrada.Controller
             set { attPlayerChecker.RaisePlayerLeaveKinectSensor += value; }
         }
 
+        public EventHandler<BarCodeRecognized.Arguments> RaiseBarCodeRecognized
+        {
+            set { attBarcodeChecker.BarCodeRecognizedEvent += value; }
+        }
+
         /// <summary>
         /// Start the thread that take periodic screenshot for the kinect sensor
         /// </summary>
@@ -130,6 +134,15 @@ namespace KillerWearsPrada.Controller
             //wvImage = wvBWP.ImageToBeChecked;
 
             attPlayerChecker.CheckPlayer(Helpers.QRReaderHelper.QRCode(out wvQRCodeFound, wvImage));
+
+            if(wvQRCodeFound)
+            {
+                bool wvBarCodeFound;
+                string r = Helpers.QRReaderHelper.BarCode(out wvBarCodeFound, wvImage);
+                if (wvBarCodeFound)
+                    attBarcodeChecker.RaiseEvent(r);
+            }
+
 
             wvMemoryImege.Close();
 
