@@ -50,7 +50,7 @@ namespace KillerWearsPrada.Model
 
         public string PlayerName
         {
-            get { return PlayerName; }
+            get { return attPlayer.Name; }
         }
 
         /// <summary>

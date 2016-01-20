@@ -18,7 +18,7 @@ namespace KillerWearsPrada.Model
             attName = Name;
         }
 
-        private string Name
+        public string Name
         {
             get { return attName; }
         }

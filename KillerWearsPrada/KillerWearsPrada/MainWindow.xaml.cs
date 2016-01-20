@@ -242,7 +242,7 @@ namespace KillerWearsPrada
 
         private void ResumeGameFinto(String idUser)
         {
-            
+            attGameController.LoadGame("15-01-2016-10-50-42_alberto");
             Helpers.SketchHelper.SetDirectories();
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";

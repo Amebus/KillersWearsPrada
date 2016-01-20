@@ -19,11 +19,15 @@ namespace KillerWearsPrada.Helpers
             Helpers.ResourcesHelper.ModifyAllMagickPath();
             System.IO.Directory.CreateDirectory(Application.Current.Resources[Helpers.ResourcesHelper.E_Magick_Dirs.CacheDirectoryMagick.ToString()].ToString());
             MagickAnyCPU.CacheDirectory = Application.Current.Resources[Helpers.ResourcesHelper.E_Magick_Dirs.CacheDirectoryMagick.ToString()].ToString();
+
+            System.IO.Directory.CreateDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.GhostscriptDirectory.ToString()]);
             MagickNET.SetGhostscriptDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.GhostscriptDirectory.ToString()]);
             // MagickNET.Initialize(@"C:\Users\Monica\Documents\MagickTestFilesVari\MyImageMagickXmlFiles");
+            System.IO.Directory.CreateDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.TempDirectory.ToString()]);
             MagickNET.SetTempDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.TempDirectory.ToString()]);
             // questi sopra vanno bene
             // Samples.MagickNET.CombiningImagesSamples.MergeMultipleImages();
+            System.IO.Directory.CreateDirectory(ResourcesHelper.SketchesPathsFile());
             CreateSketches(Helpers.ResourcesHelper.MasksPaths("hat_1meleOk.png"), Helpers.ResourcesHelper.TexturesPath("redTartan.jpg"), "ciao.png");
         }
 
@@ -45,7 +49,7 @@ namespace KillerWearsPrada.Helpers
             Texture.Composite(Mask, CompositeOperator.CopyAlpha);
             Mask.Composite(Texture, CompositeOperator.Multiply);
             MagickImage sketch = Mask;
-
+            
             sketch.Write(Helpers.ResourcesHelper.SketchesPath() + nameSketch);
 
         }
