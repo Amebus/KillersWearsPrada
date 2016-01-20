@@ -11,7 +11,6 @@ namespace KillerWearsPrada.Model
     {
 
         #region Attributes
-        private Player attPlayer;
         /// <summary>
         /// Rappresenta la lista di stanze incluso l'ingresso
         /// </summary>
@@ -35,7 +34,7 @@ namespace KillerWearsPrada.Model
         {
             attStarted = false;
             attSolution = new Solution();
-            attPlayer = new Player(ID, PlayerName);
+            this.Player = new Player(ID, PlayerName);
             attScore = 0;
             attActualRoom = 0;
             attRooms = Rooms;
@@ -43,14 +42,16 @@ namespace KillerWearsPrada.Model
         }
 
         #region Properties
+        private Player Player { get; set; }
+
         public string PlayerID
         {
-            get { return attPlayer.ID; }
+            get { return Player.ID; }
         }
 
         public string PlayerName
         {
-            get { return attPlayer.Name; }
+            get { return Player.Name; }
         }
 
         /// <summary>

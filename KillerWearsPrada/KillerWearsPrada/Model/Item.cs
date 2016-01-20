@@ -152,14 +152,6 @@ namespace KillerWearsPrada.Model
     public class Item : AbstractItem
     {
         private const string BASE = "A witness remembers that the @p1 was @p2!";
-        private int code;
-        private string barcode;
-        private string itemName;
-        private double price;
-        private string description;
-        private string reparto;
-        private string textureFileName;        
-        private string imageFileName;
 
         private bool attTrashed;
         private bool attInInventory;
@@ -181,14 +173,14 @@ namespace KillerWearsPrada.Model
         public Item(int c, string bc, string name, double p, string descr, string rep, string texture, string image, AbstractItem AItem) : base(AItem)
         {
             
-            code = c;
-            barcode = bc;
-            itemName = name;
-            price = p;
-            description = descr;
-            reparto = rep;
-            textureFileName = texture;            
-            imageFileName = image;            
+            this.Code = c;
+            this.BarCode = bc;
+            this.ItemName = name;
+            this.Price = p;
+            this.Description = descr;
+            this.Reparto = rep;
+            this.TextureFilename = texture;            
+            this.ImageFileName = image;            
 
             attTrashed = false;
             attInInventory = false;
@@ -198,42 +190,50 @@ namespace KillerWearsPrada.Model
         #region Properties
         public int Code
         {
-            get { return code; }
+            get;
+            private set;
         }
 
         public string BarCode
         {
-            get { return barcode; }
+            get;
+            private set;
         }
 
         public double Price
         {
-            get { return price; }
+            get;
+            private set;
         }
 
         public string ItemName
         {
-            get { return itemName; }
+            get;
+            private set;
         }
 
         public string Description
         {
-            get { return description; }
+            get;
+            private set;
         }
 
         public string Reparto
         {
-            get { return reparto; }
+            get;
+            private set;
         }
 
         public string TextureFilename
         {
-            get { return textureFileName; }
+            get;
+            private set;
         }       
 
         public string ImageFileName
         {
-            get { return imageFileName; }
+            get;
+            private set;
         }
 
         public bool IsTrashed
