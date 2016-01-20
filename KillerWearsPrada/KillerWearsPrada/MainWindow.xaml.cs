@@ -245,7 +245,8 @@ namespace KillerWearsPrada
             
             Helpers.SketchHelper.SetDirectories();
             //Player_Name = attGameController.NamePlayer;
-            name_player.Content = "Player Username" + "!";
+            //name_player.Content = "Player Username" + "!";
+            name_player.Content = attGameController.NamePlayer;
             // qui faccio allocare tutti gli user control?
             // con i rispettivi oggetti giusti!!!
             allocate_All_UC();
