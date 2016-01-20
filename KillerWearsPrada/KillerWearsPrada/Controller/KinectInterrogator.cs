@@ -24,15 +24,14 @@ namespace KillerWearsPrada.Controller
         private int attWaitingTime;
 
         private KinectSensor attKinectSensor;
-        private WriteableBitmap attColorBitmap = null;
-        private Bitmap attImage;
 
         private ColorFrameReader attColorFrameReader;
 
         private PlayerChecker attPlayerChecker;
 
-        private Timer attTimerScreenshots;
         private BackgroundWorker attScreenshotWorker;
+
+        private bool attEnableTakingScreenshot;
 
         /// <summary>
         /// 
@@ -42,18 +41,15 @@ namespace KillerWearsPrada.Controller
         /// <param name="Checker"></param>
         public KinectInterrogator(KinectSensor Sensor, int WaitingTime) 
         {
+            attEnableTakingScreenshot = false;
             attPlayerChecker = new PlayerChecker();
             attWaitingTime = WaitingTime;
             attSavePath = "";
             this.attKinectSensor = Sensor;
-            FrameDescription wvColorFrameDescription = this.attKinectSensor.ColorFrameSource.CreateFrameDescription(ColorImageFormat.Bgra);
-            attColorBitmap = new WriteableBitmap(wvColorFrameDescription.Width, wvColorFrameDescription.Height, 96.0, 96.0, PixelFormats.Bgr32, null);
+            
             attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
             attColorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
             //attScreenshotSaver = new Thread(new ThreadStart(TakeScreenshot));
-
-            attTimerScreenshots = new Timer(WaitingTime);
-            attTimerScreenshots.Elapsed += TimerScreenshotsTick;
 
             SetBackgroundWorker();
         }
@@ -99,7 +95,7 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public void StartTakingScreenshots()
         {
-            attTimerScreenshots.Start();
+            attEnableTakingScreenshot = true;
         }
 
         /// <summary>
@@ -107,69 +103,38 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public void StopTakingScreenshots()
         {
-            if(attScreenshotWorker.IsBusy)
-            {
-                attScreenshotWorker.CancelAsync();
-            }
-            attTimerScreenshots.Stop();
+            attEnableTakingScreenshot = false;
         }
 
-        private void TimerScreenshotsTick(object sender, ElapsedEventArgs e)
-        {
-            if (!attScreenshotWorker.IsBusy)
-            {
-                attScreenshotWorker.RunWorkerAsync(new BackgroundWorkerParameters());
-            }
-        }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            //butta il thread per lo screenshot
-            if (this.attColorBitmap == null)
-                return;
-
-            BackgroundWorkerParameters wvBWP = (BackgroundWorkerParameters)e.Argument;
-
+            Bitmap wvImage;
             BitmapEncoder wvEncoder;
+            BackgroundWorkerParameters wvBWP = (BackgroundWorkerParameters)e.Argument;
             bool wvQRCodeFound;
-            
 
-            // create a png bitmap encoder which knows how to save a .png file
             wvEncoder = new PngBitmapEncoder();
+            // create a png bitmap encoder which knows how to save a .png file
+            wvEncoder.Frames.Add(BitmapFrame.Create(wvBWP.ImageToBeChecked));
 
-            // create frame from the writable bitmap and add to encoder
-            wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
-
-
-            // create frame from the writable bitmap and add to encoder
-            wvEncoder.Frames.Add(BitmapFrame.Create(this.attColorBitmap));
-
-            attSavePath = Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
-
-            //creao uno stream per convertire writablebitmap in bitmap, in questo modo posso usare subito l'immagine
             Stream wvMemoryImege = new MemoryStream();
             wvEncoder.Save(wvMemoryImege);
-            attImage = new Bitmap(wvMemoryImege);
-
-            attPlayerChecker.CheckPlayer(Helpers.QRReaderHelper.QRCode(out wvQRCodeFound, attImage));
-            
             wvMemoryImege.Close();
 
-            // write the new file to disk
-            try
-            {
-                // FileStream is IDisposable
-                FileStream fs = new FileStream(attSavePath, FileMode.Create);
-                wvEncoder.Save(fs);
-                fs.Close();
-                //this.StatusText = string.Format(Properties.Resources.SavedScreenshotStatusTextFormat, path);
-            }
-            catch (IOException)
-            {
-                //this.StatusText = string.Format(Properties.Resources.FailedScreenshotStatusTextFormat, path);
-            }
+            wvImage = new Bitmap(wvMemoryImege);
 
-            throw new NotImplementedException("Mettere i controlli sulla disponibilità del kinect");
+            //attSavePath = Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
+
+            //creao uno stream per convertire writablebitmap in bitmap, in questo modo posso usare subito l'immagine
+            
+
+            attPlayerChecker.CheckPlayer(Helpers.QRReaderHelper.QRCode(out wvQRCodeFound, wvImage));
+            
+            
+            
+
+            //throw new NotImplementedException("Mettere i controlli sulla disponibilità del kinect");
             /*codice utile per scatenare gli eventi del backgroundworker
             int max = (int)e.Argument;
             int result = 0;
@@ -197,35 +162,54 @@ namespace KillerWearsPrada.Controller
         /// <param name="e"></param>
         private void Reader_ColorFrameArrived(object sender, ColorFrameArrivedEventArgs e)
         {
+            if (!attEnableTakingScreenshot)
+                return;
+
+            if (attScreenshotWorker.IsBusy)
+                return;
+
+
             ColorFrame wvColorFrame = e.FrameReference.AcquireFrame();
 
             if (wvColorFrame == null)
                 return;
             
             FrameDescription colorFrameDescription = wvColorFrame.FrameDescription;
-
             KinectBuffer wvColorBuffer = wvColorFrame.LockRawImageBuffer();
+
             
 
-            this.attColorBitmap.Lock();
+            WriteableBitmap wvColorBitmap = null;
+            FrameDescription wvColorFrameDescription = this.attKinectSensor.ColorFrameSource.CreateFrameDescription(ColorImageFormat.Bgra);
+            wvColorBitmap = new WriteableBitmap(wvColorFrameDescription.Width, wvColorFrameDescription.Height, 96.0, 96.0, PixelFormats.Bgr32, null);
+            wvColorBitmap.Lock();
 
             // verify data and write the new color frame data to the display bitmap
-            if ((colorFrameDescription.Width == this.attColorBitmap.PixelWidth) && (colorFrameDescription.Height == this.attColorBitmap.PixelHeight))
+            if ((colorFrameDescription.Width == wvColorBitmap.PixelWidth) && (colorFrameDescription.Height == wvColorBitmap.PixelHeight))
             {
                 wvColorFrame.CopyConvertedFrameDataToIntPtr(
-                    this.attColorBitmap.BackBuffer,
+                    wvColorBitmap.BackBuffer,
                     (uint)(colorFrameDescription.Width * colorFrameDescription.Height * 4),
                     ColorImageFormat.Bgra);
 
-                this.attColorBitmap.AddDirtyRect(new Int32Rect(0, 0, this.attColorBitmap.PixelWidth, this.attColorBitmap.PixelHeight));
+                wvColorBitmap.AddDirtyRect(new Int32Rect(0, 0, wvColorBitmap.PixelWidth, wvColorBitmap.PixelHeight));
             }
 
-            this.attColorBitmap.Unlock();
-            
+            wvColorBitmap.Unlock();
+
+            BackgroundWorkerParameters wvBWP = new BackgroundWorkerParameters();
+            wvBWP.ImageToBeChecked = wvColorBitmap;
+            attScreenshotWorker.RunWorkerAsync(wvBWP);
+
         }
 
         public class BackgroundWorkerParameters
         {
+
+            public WriteableBitmap ImageToBeChecked
+            {
+                get; set;
+            }
 
         }
 

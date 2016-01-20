@@ -70,6 +70,16 @@ namespace KillerWearsPrada.Controller
             get { return attUnloadGame; }
         }
 
+        internal void CreateProfGame()
+        {
+            Game wvGame = attDataBase.GetGameForProf();
+
+            string wvPath = Helpers.ResourcesHelper.SavesDirectory;
+            wvPath = CombinePath(wvPath, wvGame.PlayerID);
+            Helpers.SerializerHelper.Serialize(wvPath, wvGame);
+
+        }
+
         /// <summary>
         /// Representing the index of the room in which the player is investigating
         /// </summary>
@@ -195,8 +205,10 @@ namespace KillerWearsPrada.Controller
             string wvPath = Helpers.ResourcesHelper.SavesDirectory;
             string wvID="";// = DateTime.Now.ToString();
 
-            //wvID = wvID.Replace(' ', '-');
-            //wvID += ("-" + PlayerName);
+            wvID = wvID.Replace(' ', '-');
+            wvID = wvID.Replace('/', '-');
+            wvID = wvID.Replace(':', '-');
+            wvID += ("_" + PlayerName);
             //Game wvGame = new Game(wvID, PlayerName);
 
             attGame = CreateGame(wvID, PlayerName, ITEMS_PER_ROOM);
@@ -234,43 +246,6 @@ namespace KillerWearsPrada.Controller
 
             return new Game(ID, PalyerName, wvRooms, wvSolution);
             
-            //wvCorrectClue = GenerateCorrectClue(wvItemKind);
-            //wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
-            //wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
-
-            //wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
-
-            //Room r = new Room()
-
-            /*
-            wvItemKind = E_ItemKind.trousers;
-            wvCorrectClue = GenerateCorrectClue(wvItemKind);
-            wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
-            wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
-
-            wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
-
-
-            wvItemKind = E_ItemKind.t_shirt;
-            wvCorrectClue = GenerateCorrectClue(wvItemKind);
-            wvCorrectItem = attDataBase.GetItemFromClues(wvCorrectClue, wvItemKind);
-            wvSolution.AddItem(wvCorrectClue, wvCorrectItem);
-
-            wvWrongClues = GenerateCluesFromCorrectClue(wvCorrectClue, ITEMS_PER_ROOM - 1);
-            
-            //riprendere da qui
-
-            //Il primo è quello giusto
-            //wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.LIGHT, wvSolution.LastItemKind));
-
-            NumberOfItems--;
-            //mi faccio dare gli altri (per ora sola il secondo)
-            //wvItems.Add(attDataBase.GetItemByGradation(Model.E_Gradiation.DARK, wvSolution.LastItemKind));
-
-
-            wvItems = GenerateItemsByItemKind(wvItemKind);
-            */
-
         }
         /*
         private Room GenerateRoom(string Name, Item CorrectItem)
@@ -305,12 +280,6 @@ namespace KillerWearsPrada.Controller
 
 
             }
-
-
-
-
-
-
 
 
             return wvRoom;
@@ -490,48 +459,6 @@ namespace KillerWearsPrada.Controller
             throw new NotImplementedException("Finire la generazione random");
         }
 
-        /*
-        /// <summary>
-        /// Return a <see cref="Clue"/> generated starting from the specified <see cref="E_ItemKind"/>
-        /// </summary>
-        /// <param name="ItemKind">The kind of item to be use to generate the clue</param>
-        /// <returns></returns>
-        private static Clue GenerateCorrectClue(E_ItemKind ItemKind)
-        {
-            E_Gradiation wvGradiation = (E_Gradiation)attRandom.Next(1 + (int)E_Gradiation._NULL, 1 + (int)E_Gradiation.DARK);
-            E_Shape wvShape = (E_Shape)attRandom.Next(1 + (int)E_Shape._NULL, 1 + (int)E_Shape.LONG);
-            E_Color wvColor = (E_Color)attRandom.Next(1 + (int)E_Color._NULL, 1 + (int)E_Color.YELLOW);
-            E_Texture wvTexture = (E_Texture)attRandom.Next(1 + (int)E_Texture._NULL, 1 + (int)E_Texture.PLAINCOLOR);
-            
-            if (ItemKind != E_ItemKind.trousers && ItemKind != E_ItemKind.t_shirt)
-            {
-                int wvNull = attRandom.Next(4);
-
-                switch (wvNull)
-                {
-                    case 0:
-                        wvGradiation = E_Gradiation._NULL;
-                        break;
-                    case 1:
-                        wvShape = E_Shape._NULL;
-                        break;
-                    case 2:
-                        wvColor = E_Color._NULL;
-                        break;
-                    default:
-                        wvTexture = E_Texture._NULL;
-                        break;
-
-                }
-            }
-            else
-            {
-                wvShape = E_Shape._NULL;
-            }
-            
-            return new Clue(true, wvGradiation, wvShape, wvColor, wvTexture);
-        }
-        */
         public static void DeleteAllGames()
         {
             System.IO.DirectoryInfo wvDirInfo = new System.IO.DirectoryInfo(Helpers.ResourcesHelper.SavesDirectory);

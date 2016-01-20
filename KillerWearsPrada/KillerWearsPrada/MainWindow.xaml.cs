@@ -147,6 +147,7 @@ namespace KillerWearsPrada
         private void ResumeGame(GameController.ResumeGame.Args Parameters)
         {
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
+            txtDisplay.AppendText("\r\n" + attGameController.Game.GameStarted.ToString());
 
             // qui faccio allocare tutti gli user control?
             //allocate_All_UC();

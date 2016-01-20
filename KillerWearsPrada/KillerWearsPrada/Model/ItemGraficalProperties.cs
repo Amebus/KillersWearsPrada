@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace KillerWearsPrada.Model
 {
 
-    
-    public class ItemGraficalProperty
+    [Serializable]
+    public class ItemGraficalProperty : ISerializable
     {
         private E_PropertiesKind attPropertyKind;
         public object Property { get; private set; }
