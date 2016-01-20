@@ -17,11 +17,11 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// 
         /// </summary>
-        public event EventHandler<PlayerEnterKinectSensor.Args> RaisePlayerEnterKinectSensor;
+        public event EventHandler<PlayerEnterKinectSensor.Arguments> RaisePlayerEnterKinectSensor;
         /// <summary>
         /// 
         /// </summary>
-        public event EventHandler<PlayerLeaveKinectSensor.Args> RaisePlayerLeaveKinectSensor;
+        public event EventHandler<PlayerLeaveKinectSensor.Arguments> RaisePlayerLeaveKinectSensor;
 
         public PlayerChecker()
         {
@@ -93,12 +93,11 @@ namespace KillerWearsPrada.Controller
         /// 
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void OnPlayerEnterKinectSensor(PlayerEnterKinectSensor.Args e)
+        protected virtual void OnPlayerEnterKinectSensor(PlayerEnterKinectSensor.Arguments e)
         {
-            EventHandler<PlayerEnterKinectSensor.Args> wvHendeler = RaisePlayerEnterKinectSensor;
-            if (wvHendeler != null)
+            if (RaisePlayerEnterKinectSensor != null)
             {
-                wvHendeler(this, e );
+                RaisePlayerEnterKinectSensor(this, e );
             }
         }
 
@@ -107,7 +106,7 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public void RaisePlayerEnterKinectSensorEvent(string ID)
         {
-            PlayerEnterKinectSensor.Args wvParameters = new PlayerEnterKinectSensor.Args(ID);
+            PlayerEnterKinectSensor.Arguments wvParameters = new PlayerEnterKinectSensor.Arguments(ID);
 
 
             OnPlayerEnterKinectSensor(wvParameters);
@@ -119,7 +118,7 @@ namespace KillerWearsPrada.Controller
         /// 
         /// </summary>
         /// <param name="e"></param>
-        protected virtual void OnPlayerLeaveKinectSensor(PlayerLeaveKinectSensor.Args e)
+        protected virtual void OnPlayerLeaveKinectSensor(PlayerLeaveKinectSensor.Arguments e)
         {
            
             if (RaisePlayerLeaveKinectSensor != null)
@@ -131,7 +130,7 @@ namespace KillerWearsPrada.Controller
         public void RaisePlayerLeaveKinectSensorEvent()
         {
             //TODO completare i parametri
-            PlayerLeaveKinectSensor.Args wvParameters = new PlayerLeaveKinectSensor.Args();
+            PlayerLeaveKinectSensor.Arguments wvParameters = new PlayerLeaveKinectSensor.Arguments();
 
 
             OnPlayerLeaveKinectSensor(wvParameters);
@@ -147,12 +146,12 @@ namespace KillerWearsPrada.Controller
             /// <summary>
             /// Contains information used by the event <see cref="PlayerEnterKinectSensor"/>
             /// </summary>
-            public class Args : EventArgs
+            public class Arguments : EventArgs
             {
 
                 private string attID;
 
-                public Args(string ID) : base()
+                public Arguments(string ID) : base()
                 {
                     attID = ID;
                 }
@@ -168,7 +167,7 @@ namespace KillerWearsPrada.Controller
 
         public class PlayerLeaveKinectSensor
         {
-            public class Args : EventArgs
+            public class Arguments : EventArgs
             {
 
             }

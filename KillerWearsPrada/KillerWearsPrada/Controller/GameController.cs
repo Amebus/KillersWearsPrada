@@ -493,7 +493,7 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         /// <param name="Sender"></param>
         /// <param name="Parameters"></param>
-        private void HandlePlayerEnterKinectSensor(object Sender, PlayerChecker.PlayerEnterKinectSensor.Args Parameters)
+        private void HandlePlayerEnterKinectSensor(object Sender, PlayerChecker.PlayerEnterKinectSensor.Arguments Parameters)
         {
             LoadGame(Parameters.ID);
             attResumeGame.RaiseEvent();
@@ -504,7 +504,7 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HandlePlayerLeaveKinectSensor(object Sender, PlayerChecker.PlayerLeaveKinectSensor.Args Parameters)
+        private void HandlePlayerLeaveKinectSensor(object Sender, PlayerChecker.PlayerLeaveKinectSensor.Arguments Parameters)
         {
             //throw new NotImplementedException("Implementare la logica che gestisce il momento in cui il giocatore lascia la postazione");
 
@@ -522,9 +522,9 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public class ResumeGame
         {
-            public event EventHandler<Args> RaiseResumeGame;
+            public event EventHandler<Arguments> RaiseResumeGame;
 
-            protected virtual void OnResumeGame(Args e)
+            protected virtual void OnResumeGame(Arguments e)
             {
                 
                 if (RaiseResumeGame != null)
@@ -539,7 +539,7 @@ namespace KillerWearsPrada.Controller
             public void RaiseEvent()
             {
                 //TODO mettere l'ID del giocatore entrato
-                Args wvParameters = new Args();
+                Arguments wvParameters = new Arguments();
 
 
                 OnResumeGame(wvParameters);
@@ -548,7 +548,7 @@ namespace KillerWearsPrada.Controller
             /// <summary>
             /// 
             /// </summary>
-            public class Args : EventArgs
+            public class Arguments : EventArgs
             {
 
             }
@@ -559,14 +559,13 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public class UnloadGame
         {
-            public event EventHandler<Args> RaiseUnloadGame;
+            public event EventHandler<Arguments> RaiseUnloadGame;
 
-            protected virtual void OnUnloadGame(Args e)
+            protected virtual void OnUnloadGame(Arguments e)
             {
-                EventHandler<Args> wvHendeler = RaiseUnloadGame;
-                if (wvHendeler != null)
+                if (RaiseUnloadGame != null)
                 {
-                    wvHendeler(this, e);
+                    RaiseUnloadGame(this, e);
                 }
             }
 
@@ -576,13 +575,13 @@ namespace KillerWearsPrada.Controller
             public void RaiseEvent()
             {
                 //TODO mettere l'ID del giocatore entrato
-                Args wvParameters = new Args();
+                Arguments wvParameters = new Arguments();
 
 
                 OnUnloadGame(wvParameters);
             }
 
-            public class Args : EventArgs
+            public class Arguments : EventArgs
             {
 
             }

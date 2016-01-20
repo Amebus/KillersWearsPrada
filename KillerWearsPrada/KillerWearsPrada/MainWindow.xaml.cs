@@ -36,8 +36,8 @@ namespace KillerWearsPrada
 
 
         #region Delegates for GameController events
-        private delegate void ResumeGameHandler(GameController.ResumeGame.Args Parameters);
-        private delegate void UnloadGameHandler(GameController.UnloadGame.Args Parameters);
+        private delegate void ResumeGameHandler(GameController.ResumeGame.Arguments Parameters);
+        private delegate void UnloadGameHandler(GameController.UnloadGame.Arguments Parameters);
 
         private ResumeGameHandler attResumeGameHandlerDelegate;
         private UnloadGameHandler attUnloadGameHandlerDelegate;
@@ -109,7 +109,7 @@ namespace KillerWearsPrada
             attGameController.StartTakingScreenshots();
         }
 
-        private void CaptureResumeGameEvent(object Sender, GameController.ResumeGame.Args Parameters)
+        private void CaptureResumeGameEvent(object Sender, GameController.ResumeGame.Arguments Parameters)
         {
             //object[] wvParameters = new object[] { Parameters };
             //this.Invoke(d, new object[] { e });
@@ -125,7 +125,7 @@ namespace KillerWearsPrada
             }
         }
 
-        private void CaptureUnloadGameEvent(object Sender, GameController.UnloadGame.Args Parameters)
+        private void CaptureUnloadGameEvent(object Sender, GameController.UnloadGame.Arguments Parameters)
         {
             //object[] wvParameters = new object[] { Parameters };
             if (this.Dispatcher.CheckAccess())
@@ -142,12 +142,13 @@ namespace KillerWearsPrada
         ///  Called by the delegate <see cref="ResumeGameHandler"/> to handle the event <see cref="GameController.ResumeGame"/> 
         /// that occure when the <see cref="Model.Game"/> must loaded
         /// </summary>
-        /// <param name="Parameters">Instance of an object repressenting the class <see cref="GameController.ResumeGame.Args"/> 
+        /// <param name="Parameters">Instance of an object repressenting the class <see cref="GameController.ResumeGame.Arguments"/> 
         /// which contains information passed by the event <see cref="Controller.GameController.ResumeGame"/></param>
-        private void ResumeGame(GameController.ResumeGame.Args Parameters)
+        private void ResumeGame(GameController.ResumeGame.Arguments Parameters)
         {
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
-            txtDisplay.AppendText("\r\n" + attGameController.Game.PlayerID.ToString());
+            txtDisplay.AppendText("\r\n" + attGameController.Game.GameStarted.ToString());
+            attGameController.SetGameStarted();
 
             // qui faccio allocare tutti gli user control?
             //allocate_All_UC();
@@ -160,9 +161,9 @@ namespace KillerWearsPrada
         /// Called by the delegate <see cref="UnloadGameHandler"/> to handle the event <see cref="GameController.UnloadGame"/> 
         /// that occure when the <see cref="Model.Game"/> must be saved and unloaded
         /// </summary>
-        /// <param name="Parameters">Instance of an object repressenting the class <see cref="GameController.UnloadGame.Args"/> 
+        /// <param name="Parameters">Instance of an object repressenting the class <see cref="GameController.UnloadGame.Arguments"/> 
         /// which contains information passed by the event <see cref="GameController.UnloadGame"/></param>
-        private void UnloadGame(GameController.UnloadGame.Args Parameters)
+        private void UnloadGame(GameController.UnloadGame.Arguments Parameters)
         {
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Unload";
         }

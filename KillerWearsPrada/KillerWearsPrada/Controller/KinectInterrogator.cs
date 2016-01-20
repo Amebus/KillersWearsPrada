@@ -80,12 +80,12 @@ namespace KillerWearsPrada.Controller
             set { attScreenshotWorker.RunWorkerCompleted += value; }
         } 
 
-        public EventHandler<PlayerChecker.PlayerEnterKinectSensor.Args> RaisePlayerEnterKinectSensor
+        public EventHandler<PlayerChecker.PlayerEnterKinectSensor.Arguments> RaisePlayerEnterKinectSensor
         {
             set { attPlayerChecker.RaisePlayerEnterKinectSensor += value; }
         }
 
-        public EventHandler<PlayerChecker.PlayerLeaveKinectSensor.Args> RaisePlayerLeaveKinectSensor
+        public EventHandler<PlayerChecker.PlayerLeaveKinectSensor.Arguments> RaisePlayerLeaveKinectSensor
         {
             set { attPlayerChecker.RaisePlayerLeaveKinectSensor += value; }
         }
