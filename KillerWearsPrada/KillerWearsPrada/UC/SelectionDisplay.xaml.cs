@@ -52,18 +52,28 @@ namespace KillerWearsPrada.UC
         /// <param name="itemId"></param> is the barcode of the item associated to the button pressed
         public SelectionDisplay(string itemId)
         {
-            
-           
-  /*          #region carico le cose da mostrare dell'item giusto. Mi serve sapere la stanza dove sono e il barcode che è nel tag del bottone
-            Model.Item it = MainWindow.attGameController.ActualRoom.GetItemByBarCode(itemId);
+
+
+            #region Load information related to the button selected, found by barcode, which is the tag button pressed
+            Model.Item it = MainWindow.attGameController.ActualRoom.GetItem(itemId);
             ClothName = it.ItemName;
             ItemDescription = it.Description;
-            ItemPrice = it.Price.ToString();
-            ItemClue = it.ClueText;
 
-            ImagePath = Helpers.ResourcesHelper.ImagesDirectory + it.ImageFileName; //calcolo l'image path se non l'ho già fatto! però con la giusta directory in cui ci saranno tutti i capi
+            string[] temp = it.Price.ToString().Split(new char[] { ',' });
+            if (temp.Length != 2)
+                temp[0] += ",00";
+            else
+            { if (temp[1].Length == 1)
+                    temp[1] += "0";
+                temp[0] += ("," + temp[1]);
+            }
+            ItemPrice = temp[0]+" €";
             
-            #endregion */
+            ItemClue = it.Clue;
+
+            ImagePath = it.ItemsImagePath; //calcolo l'image path se non l'ho già fatto! però con la giusta directory in cui ci saranno tutti i capi
+
+            #endregion
 
             InitializeComponent();
 
@@ -72,28 +82,6 @@ namespace KillerWearsPrada.UC
             // devo metterlo dopo InitializeComponent(), se no non si vede nulla
             this.DataContext = this;
 
-            // switch per capire che bottone è e quindi che item con relativa clue devo mostrare... e le cose le devo prendere dal model ovviamente!
-            if (itemId == "hat1")
-            {
-                ImagePath = Application.Current.Resources[Helpers.ResourcesHelper.E_KitchenImages.Hat1.ToString()].ToString();
-                //       DisplayedImagePath=@"C:\Users\Monica\Documents\sketchup projects\JALIS BIANCO.JPG";
-                ClothName = "Cappello Fedora";
-                ItemPrice = "33.50 €";
-                ItemDescription = "Un fantastio cappello da indossare tutti i giorni,bianco come la neve";
-                ItemClue = "Un testimone si è ricordato che il cappello era un fedora azzurro";
-            }
-
-            else {
-                //         DisplayedImagePath = @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\pergamena1.png";
-                ImagePath = Application.Current.Resources[Helpers.ResourcesHelper.E_BedroomImages.Shirt3.ToString()].ToString();
-                ClothName = "Cappello Fedora bordato";
-                ItemPrice = "33.50 €";
-                ItemDescription = "Un bellissimo cappello per coprire la pelata che avanza";
-                //    Indizio = "Un testimone si è ricordato che il cappello era un fedora con bordo nero";
-                ItemClue = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM";
-            }
-
-            //     messageTextBlock.Text = itemId.ToString();
         }
 
         /// <summary>

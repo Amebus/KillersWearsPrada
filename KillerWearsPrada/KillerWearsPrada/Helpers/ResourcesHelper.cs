@@ -64,19 +64,31 @@ namespace KillerWearsPrada.Helpers
         public enum E_KitchenImages
         {
             Hat1,
-            Hat3
+            Hat2,
+            Hat3,
+            Hat4,
+            Hat5,
+            Hat6
         }
 
         public enum E_LivingroomImages
         {
             Trousers1,
-            Trousers3
+            Trousers2,
+            Trousers3,
+            Trousers4,
+            Trousers5,
+            Trousers6
         }
 
         public enum E_BedroomImages
         {
+            Shirt1,
+            Shirt2,
             Shirt3,
-            Shirt4
+            Shirt4,
+            Shirt5,
+            Shirt6
         }
 
         /*
@@ -141,20 +153,22 @@ namespace KillerWearsPrada.Helpers
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static string GetResource(E_KitchenImages ResourceName)
+        //public because I need them in Room.xaml.cs
+        public static string GetResource(E_KitchenImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static string GetResource(E_LivingroomImages ResourceName)
+        public static string GetResource(E_LivingroomImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
 
-        private static string GetResource(E_BedroomImages ResourceName)
+        public static string GetResource(E_BedroomImages ResourceName)
         {
             return GetResource(ResourceName.ToString()).ToString();
         }
+
 
         private static string GetResource(E_Magick_Dirs ResourceName)
         {
@@ -221,6 +235,21 @@ namespace KillerWearsPrada.Helpers
             {
                 string wvPath = GetResource(E_Direcetories.CurrentDirectory);
                 wvPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+                return wvPath;
+            }
+        }
+
+        /// <summary>
+        /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.ItemsImagesDir"/> directory, plus "\\" 
+        /// </summary>
+        public static string ItemsImagesPath
+        {
+            get
+            {
+                string wvPath = GetResource(E_Direcetories.CurrentDirectory);
+                wvPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
+                wvPath += CreatePath(GetResource(E_Direcetories.ItemsImagesDir));
+                wvPath += "\\";
                 return wvPath;
             }
         }
@@ -523,5 +552,16 @@ namespace KillerWearsPrada.Helpers
               }
               */
         #endregion
+
+            // mi sa che non mi serve
+        /// <summary>
+        /// Method to set the right path to the resources of the sketches in the kitchen room
+        /// </summary>
+        /// <param name="rightPath"></param>
+        /// <param name="numHat"></param>
+        public static void SetClothSketchesPath(string rightPath, E_KitchenImages numHat)
+        {
+            SetResource(numHat, rightPath);
+        }
     }
 }

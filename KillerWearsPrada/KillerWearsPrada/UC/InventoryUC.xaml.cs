@@ -35,6 +35,8 @@ namespace KillerWearsPrada.UC
         ObservableCollection<ItemProva> SelectedItems = new ObservableCollection<ItemProva>();
         ObservableCollection<ItemProva> SelectedItems2 = new ObservableCollection<ItemProva>();
 
+        public string ImageFileNameOC { get; set; }
+
         public int countItems { get; set; }
 
         public InventoryUC()
@@ -43,11 +45,13 @@ namespace KillerWearsPrada.UC
             zoneList = new ObservableCollection<TimeZoneInfo>();
 
             // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
-            /*   foreach (Item it in MainWindow.attGameController.ItemsInInventory)
+          /*     foreach (Item it in MainWindow.attGameController.ItemsInInventory)
                {
-                   itemInv.Add(it);
+                
+                    ImageFileNameOC = ImagePath = Helpers.ResourcesHelper.ItemsImagesPath + it.ImageFileName;
+                itemInv.Add(it);
                }
-               */
+              */
             //conto e mostro gli item che ha nell'inventariooo
             // ma devo farlo cambiare runtime!!!
             //countItems = "You have " + zoneList.Count.ToString() + " items in your inventory";
@@ -317,6 +321,33 @@ namespace KillerWearsPrada.UC
 
 
 
+    public class GraphicInventoryItem { 
+
+        public GraphicInventoryItem()
+        {
+            
+        }
+
+        // l'id è il barcode dell'item
+        public string id { get; set; }
+        public string ImageItem { get; set; }
+
+        public bool isDressed
+        {
+            get; set;
+        }
+
+        public bool isInInventory
+        {
+            get; set;
+        }
+
+        public bool isInTrash
+        {
+            get; set;
+        }
+
+    }
 
     public class ItemProva
     {

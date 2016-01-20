@@ -131,7 +131,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="200" >
-                            <Label Content="{Binding DisplayName}" Height="200"></Label>
+                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ImageFileName}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -192,7 +192,7 @@
             </ListBox>
 
 
-            <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-58,-39,1440,789">
+            <Button Name="CloseInventory" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-58,-39,1440,789">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>

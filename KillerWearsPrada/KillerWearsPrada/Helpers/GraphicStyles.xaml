@@ -283,7 +283,7 @@
     </Style> -->
 
 
-        <Style x:Key="KinectButtonZoom" TargetType="{x:Type Button}" >
+    <Style x:Key="KinectButtonZoomHat1" TargetType="{x:Type Button}" >
         <Setter Property="Background">
             <Setter.Value>
                 <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Hat1}}"/>
@@ -341,7 +341,7 @@
                                             ContentTemplate="{TemplateBinding ContentTemplate}" 
                                             Content="{TemplateBinding Content}" />
 
-                                        <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Hat1}}" RenderTransformOrigin="0.5,0.5"  >
+                                        <Image x:Name="image2" Source="{Binding hat1Image}" RenderTransformOrigin="0.5,0.5"  >
                                             <Image.RenderTransform>
                                                 <ScaleTransform ScaleX="1" ScaleY="1"/>
                                             </Image.RenderTransform>
@@ -416,7 +416,7 @@
                                             ContentTemplate="{TemplateBinding ContentTemplate}" 
                                             Content="{TemplateBinding Content}" />
 
-                                        <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Hat3}}" RenderTransformOrigin="0.5,0.5"  >
+                                        <Image x:Name="image2" Source="{Binding hat3Image}" RenderTransformOrigin="0.5,0.5"  >
                                             <Image.RenderTransform>
                                                 <ScaleTransform ScaleX="1" ScaleY="1"/>
                                             </Image.RenderTransform>
@@ -494,7 +494,7 @@
                                             ContentTemplate="{TemplateBinding ContentTemplate}" 
                                             Content="{TemplateBinding Content}" />
 
-                                        <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Shirt3}}" RenderTransformOrigin="0.5,0.5"  >
+                                        <Image x:Name="image2" Source="{Binding shirt3Image}" RenderTransformOrigin="0.5,0.5"  >
                                             <Image.RenderTransform>
                                                 <ScaleTransform ScaleX="1" ScaleY="1"/>
                                             </Image.RenderTransform>
@@ -570,7 +570,7 @@
                                             ContentTemplate="{TemplateBinding ContentTemplate}" 
                                             Content="{TemplateBinding Content}" />
 
-                                        <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Shirt4}}" RenderTransformOrigin="0.5,0.5"  >
+                                        <Image x:Name="image2" Source="{Binding shirt4Image}" RenderTransformOrigin="0.5,0.5"  >
                                             <Image.RenderTransform>
                                                 <ScaleTransform ScaleX="1" ScaleY="1"/>
                                             </Image.RenderTransform>
@@ -653,9 +653,9 @@
                                             </Image.RenderTransform>
 
                                         </Image> -->
-                                        
-                                        
-                                        <Image x:Name="image2" Source="{Binding tr1}" RenderTransformOrigin="0.5,0.5"  >
+
+
+                                        <Image x:Name="image2" Source="{Binding trousers1Image}" RenderTransformOrigin="0.5,0.5"  >
                                             <Image.RenderTransform>
                                                 <ScaleTransform ScaleX="1" ScaleY="1"/>
                                             </Image.RenderTransform>
@@ -731,7 +731,7 @@
                                             ContentTemplate="{TemplateBinding ContentTemplate}" 
                                             Content="{TemplateBinding Content}" />
 
-                                        <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Trousers3}}" RenderTransformOrigin="0.5,0.5"  >
+                                        <Image x:Name="image2" Source="{Binding trousers3Image}" RenderTransformOrigin="0.5,0.5"  >
                                             <Image.RenderTransform>
                                                 <ScaleTransform ScaleX="1" ScaleY="1"/>
                                             </Image.RenderTransform>

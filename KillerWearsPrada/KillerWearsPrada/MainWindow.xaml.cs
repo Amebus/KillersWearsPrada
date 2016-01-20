@@ -73,11 +73,6 @@ namespace KillerWearsPrada
 
             this.DataContext = this;
 
-            // This method load all usercontrols and put their visibility to hidden
-            allocate_All_UC();
-
-           
-
             KinectRegion.SetKinectRegion(this, kinectRegion);
 
             App wvApp = ((App)Application.Current);
@@ -247,9 +242,10 @@ namespace KillerWearsPrada
             Helpers.SketchHelper.SetDirectories();
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
-            name_player.Content = attGameController.NamePlayer;
+            name_player.Content = attGameController.NamePlayer + "!";
             // qui faccio allocare tutti gli user control?
             // con i rispettivi oggetti giusti!!!
+            // This method load all usercontrols and put their visibility to hidden
             allocate_All_UC();
 
             txtDisplay.Visibility = Visibility.Collapsed;
@@ -395,17 +391,6 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartPressed_Image);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Image);
 
-            //cappelli
-            Helpers.ResourcesHelper.ModifyKitchenImagesPath(E_KitchenImages.Hat1);
-            Helpers.ResourcesHelper.ModifyKitchenImagesPath(E_KitchenImages.Hat3);
-
-            //shirts
-            Helpers.ResourcesHelper.ModifyBedroomImagesPath(E_BedroomImages.Shirt3);
-            Helpers.ResourcesHelper.ModifyBedroomImagesPath(E_BedroomImages.Shirt4);
-
-            //trousers
-            Helpers.ResourcesHelper.ModifyLivingroomImagesPath(E_LivingroomImages.Trousers1);
-            Helpers.ResourcesHelper.ModifyLivingroomImagesPath(E_LivingroomImages.Trousers3);
         }
 
         #region getter of user controls

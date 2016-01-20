@@ -144,10 +144,10 @@ namespace KillerWearsPrada.UC
                     {
                         yourParentWindow.Room.change_KitchenButtons_Status(true);
                         yourParentWindow.Room.change_CommonButtons_Status(true);
-
                         //imposto l'indice della room in cui sta andando il player
+                        MainWindow.attGameController.ActualRoomIndex = 2;
                         // 2 credo sia la cucina
-                     //   MainWindow.attGameController.ActualRoomIndex = 2;
+                        //   MainWindow.attGameController.ActualRoomIndex = 2;
                         //imposto anche la actualroom?
                     }
                     break;
@@ -156,8 +156,9 @@ namespace KillerWearsPrada.UC
                         yourParentWindow.Room.change_LivingroomButtons_Status(true);
                         yourParentWindow.Room.change_CommonButtons_Status(true);
                         //imposto l'indice della room in cui sta andando il player
+                        MainWindow.attGameController.ActualRoomIndex = 1;
                         // 1 credo sia la cucina
-                   //     MainWindow.attGameController.ActualRoomIndex = 1;
+                        //     MainWindow.attGameController.ActualRoomIndex = 1;
                     }
 
                     break;
@@ -166,8 +167,9 @@ namespace KillerWearsPrada.UC
                         yourParentWindow.Room.change_BedroomButtons_Status(true);
                         yourParentWindow.Room.change_CommonButtons_Status(true);
                         //imposto l'indice della room in cui sta andando il player
+                        MainWindow.attGameController.ActualRoomIndex = 3;
                         // 3 credo sia la cucina
-                      //  MainWindow.attGameController.ActualRoomIndex = 3;
+                        //  MainWindow.attGameController.ActualRoomIndex = 3;
                     }
                     break;
             }

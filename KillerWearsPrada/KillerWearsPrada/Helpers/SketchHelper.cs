@@ -28,7 +28,7 @@ namespace KillerWearsPrada.Helpers
             // questi sopra vanno bene
             // Samples.MagickNET.CombiningImagesSamples.MergeMultipleImages();
             System.IO.Directory.CreateDirectory(ResourcesHelper.SketchesPathsFile());
-            CreateSketches(Helpers.ResourcesHelper.MasksPaths("hat_1meleOk.png"), Helpers.ResourcesHelper.TexturesPath("redTartan.jpg"), "ciao.png");
+            //CreateSketches(Helpers.ResourcesHelper.MasksPaths("hat_1meleOk.png"), Helpers.ResourcesHelper.TexturesPath("redTartan.jpg"), "ciao.png");
         }
 
         /// <summary>
@@ -51,6 +51,30 @@ namespace KillerWearsPrada.Helpers
             MagickImage sketch = Mask;
             
             sketch.Write(Helpers.ResourcesHelper.SketchesPath() + nameSketch);
+
+        }
+
+        /// <summary>
+        /// ritorna il path dell'oggetto creato        /// </summary>
+        /// <param name="mask"></param>
+        /// <param name="texture"></param>
+        /// <param name="nameSketch"></param>
+        public static string CreateSketchesPath(string mask, string texture, string nameSketch)
+        {
+
+            MagickImage Mask = new MagickImage(mask);
+
+            MagickImage Texture = new MagickImage(texture); 
+
+            Texture.Crop(Mask.Width, Mask.Height);
+
+            Texture.Composite(Mask, CompositeOperator.CopyAlpha);
+            Mask.Composite(Texture, CompositeOperator.Multiply);
+            MagickImage sketch = Mask;
+
+            sketch.Write(Helpers.ResourcesHelper.SketchesPath() + nameSketch);
+            string path = Helpers.ResourcesHelper.SketchesPath() + nameSketch;
+            return path;
 
         }
     }

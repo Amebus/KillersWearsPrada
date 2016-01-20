@@ -251,6 +251,11 @@ namespace KillerWearsPrada.Model
             get { return attDressed; }
         }
 
+        public string ItemsImagePath
+        {
+            get { return Helpers.ResourcesHelper.ItemsImagesPath + ImageFileName; }
+        }
+
         public string Clue
         {
             get

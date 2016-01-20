@@ -39,6 +39,8 @@
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
             </StackPanel>
         </Button>
+
+        
         <!--
         <Canvas.Background>
             <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
@@ -60,7 +62,7 @@
 
             <!--      <Button x:Name="backkit" Click="back_button" Content="Go Back from Kitchen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="583" Height="93" FontSize="32" Canvas.Left="577" Canvas.Top="544"/> -->
 
-            <Button x:Name ="hat1" Click="hat_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoom}" Tag="hat1"/>
+            <Button x:Name ="hat1" Click="hat_btn"  Height="153" Canvas.Left="314" Canvas.Top="619" Width="234" Style="{StaticResource KinectButtonZoomHat1}" Tag="hat1"/>
             <Button x:Name ="hat3" Click="hat_btn"  Height="105" Canvas.Left="1421" Canvas.Top="518" Width="162" Style="{StaticResource KinectButtonZoomHat3}" Tag="hat3"/>
 
         </Canvas>
