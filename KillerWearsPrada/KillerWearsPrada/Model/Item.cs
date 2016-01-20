@@ -284,17 +284,10 @@ namespace KillerWearsPrada.Model
             return true;
         }
 
-        public bool RestoreFromTrash()
-        {
-            if (!this.IsTrashed)
-                return false;
-            attTrashed = false;
-            return true;
-        }
-
         public void SetAsInInventory()
         {
             attInInventory = true;
+            attTrashed = false;
         }
 
         public bool Dress()

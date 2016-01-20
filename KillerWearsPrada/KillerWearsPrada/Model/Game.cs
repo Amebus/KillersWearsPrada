@@ -98,6 +98,25 @@ namespace KillerWearsPrada.Model
             get { return attScore; }
         }
 
+        public List<Item> ItemsDressed
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+
+                foreach (Room r in attRooms)
+                {
+                    foreach (Item i in r.Items)
+                    {
+                        if (i.IsDressed)
+                            wvItems.Add(i);
+                    }
+                }
+
+                return wvItems;
+            }
+        }
+
         /// <summary>
         /// Represent a List of the Items placed in the player's inventory
         /// </summary>
@@ -112,6 +131,24 @@ namespace KillerWearsPrada.Model
                     foreach(Item i in r.Items)
                     {
                         if (i.IsInInventory)
+                            wvItems.Add(i);
+                    }
+                }
+
+                return wvItems;
+            }
+        }
+
+        public List<Item> ItemsNotInInventory
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+                foreach (Room r in attRooms)
+                {
+                    foreach (Item i in r.Items)
+                    {
+                        if (!i.IsInInventory)
                             wvItems.Add(i);
                     }
                 }
@@ -199,10 +236,20 @@ namespace KillerWearsPrada.Model
 
         }
 
-        internal void SetInInventory(string BarCode)
+        internal bool SetInInventory(string BarCode)
         {
 
-            throw new Exception("Implementa il metodo");
+            foreach(Item i in ItemsNotInInventory)
+            {
+                if (i.BarCode == BarCode)
+                {
+                    i.SetAsInInventory();
+                    return true;
+                }
+            }
+
+            return false;
+
         }
 
         #endregion

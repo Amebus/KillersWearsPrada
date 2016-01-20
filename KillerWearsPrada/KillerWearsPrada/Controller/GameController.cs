@@ -136,6 +136,11 @@ namespace KillerWearsPrada.Controller
             get { return attGame.Rooms; }
         }
 
+        public List<Item> ItemsDressed
+        {
+            get { return attGame.ItemsDressed; }
+        }
+
         /// <summary>
         /// Represent a List of <see cref="Model.Item"/> that are in the player's inventory
         /// </summary>
@@ -274,7 +279,6 @@ namespace KillerWearsPrada.Controller
                         break;
                     case E_ItemType.B:
                         wvAbstractItem = InvertByItemType(CorrectItem, E_ItemType.B);
-
                         break;
                     case E_ItemType.C:
                         break;
@@ -491,8 +495,8 @@ namespace KillerWearsPrada.Controller
         private void HandleBarCodeRecognized(object Sender, BarCodeRecognized.Arguments Parameters)
         {
 
-            attGame.SetInInventory(Parameters.BarCode);
-            attUpdateInventory.RaiseEvent(Parameters.BarCode);
+            if(attGame.SetInInventory(Parameters.BarCode))
+                attUpdateInventory.RaiseEvent(Parameters.BarCode);
         }
 
         /// <summary>

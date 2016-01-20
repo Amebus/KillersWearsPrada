@@ -23,7 +23,7 @@ namespace KillerWearsPrada.Model
         
         public void SetProperty (E_PropertiesKind PropertyKind, object ItemProperty)
         {
-            PropertyKind = PropertyKind;
+            this.PropertyKind = PropertyKind;
             Property = ItemProperty;
         }
 
