@@ -501,12 +501,11 @@ namespace KillerWearsPrada.Helpers
             return wvRightPath;
         }
 
-        public static string SketchesPathsFile(string name)
+        public static string SketchesPathsFile()
         {
             string wvRightPath = CurrentDirectory;
             wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
             wvRightPath += CreatePath(GetResource(E_Direcetories.SketchesImages));
-            wvRightPath += "\\" + name;
             return wvRightPath;
         }
 
