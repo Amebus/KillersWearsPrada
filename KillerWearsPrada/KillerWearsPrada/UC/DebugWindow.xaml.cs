@@ -69,13 +69,13 @@ namespace KillerWearsPrada.UC
                 //attGameController.CreateGameAndPlayer("Giocatore1");
                 attGameController.CreateProfGame();
                 //attGameController.LoadGame("-Giocatore1");
+                txtDisplay.Text = ("Game correctly populated");
 
             }
             catch (Exception ex)
             {
                 txtDisplay.Text = ex.Message;
             }
-
 
 
         }
