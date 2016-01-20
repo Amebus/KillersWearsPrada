@@ -9,24 +9,24 @@ namespace KillerWearsPrada.Model
     [Serializable]
     class Player : ISerializable
     {
-        private string attName;
-        private string attID;
 
         public Player (string ID, string Name)
         {
-            attID = ID;
-            attName = Name;
+            this.ID = ID;
+            this.Name = Name;
         }
 
         public string Name
         {
-            get { return attName; }
+            get;
+            private set;
         }
 
 
         public string ID
         {
-            get { return attID; }
+            get;
+            private set;
         }
 
     }
