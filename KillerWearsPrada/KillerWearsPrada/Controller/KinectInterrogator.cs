@@ -42,6 +42,7 @@ namespace KillerWearsPrada.Controller
         public KinectInterrogator(KinectSensor Sensor, int WaitingTime) 
         {
             attEnableTakingScreenshot = false;
+            attBarcodeChecker = new BarCodeRecognized();
             attPlayerChecker = new PlayerChecker();
             attWaitingTime = WaitingTime;
             this.attKinectSensor = Sensor;
@@ -79,17 +80,17 @@ namespace KillerWearsPrada.Controller
             set { attScreenshotWorker.RunWorkerCompleted += value; }
         } 
 
-        public EventHandler<PlayerChecker.PlayerEnterKinectSensor.Arguments> RaisePlayerEnterKinectSensor
+        public EventHandler<PlayerChecker.PlayerEnterKinectSensor.Arguments> PlayerEnterKinectSensorEvent
         {
             set { attPlayerChecker.RaisePlayerEnterKinectSensor += value; }
         }
 
-        public EventHandler<PlayerChecker.PlayerLeaveKinectSensor.Arguments> RaisePlayerLeaveKinectSensor
+        public EventHandler<PlayerChecker.PlayerLeaveKinectSensor.Arguments> PlayerLeaveKinectSensorEvent
         {
             set { attPlayerChecker.RaisePlayerLeaveKinectSensor += value; }
         }
 
-        public EventHandler<BarCodeRecognized.Arguments> RaiseBarCodeRecognized
+        public EventHandler<BarCodeRecognized.Arguments> BarCodeRecognizedEvent
         {
             set { attBarcodeChecker.BarCodeRecognizedEvent += value; }
         }

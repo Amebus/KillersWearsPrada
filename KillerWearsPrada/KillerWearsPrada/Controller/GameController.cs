@@ -45,9 +45,9 @@ namespace KillerWearsPrada.Controller
             attUnloadGame = new UnloadGame();
             attUpdateInventory = new UpdateInventory();
 
-            attKinectInterrogator.RaisePlayerEnterKinectSensor = HandlePlayerEnterKinectSensor;
-            attKinectInterrogator.RaisePlayerLeaveKinectSensor = HandlePlayerLeaveKinectSensor;
-            attKinectInterrogator.RaiseBarCodeRecognized = HandleBarCodeRecognized;
+            attKinectInterrogator.PlayerEnterKinectSensorEvent = HandlePlayerEnterKinectSensor;
+            attKinectInterrogator.PlayerLeaveKinectSensorEvent = HandlePlayerLeaveKinectSensor;
+            attKinectInterrogator.BarCodeRecognizedEvent = HandleBarCodeRecognized;
         }
 
         #region Proprietà
@@ -613,7 +613,7 @@ namespace KillerWearsPrada.Controller
                 OnUpdateInventory(wvParameters);
             }
 
-            public class Arguments
+            public class Arguments : EventArgs
             {
                 public Arguments (string BarCode)
                 {
