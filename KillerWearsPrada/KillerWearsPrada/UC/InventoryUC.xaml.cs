@@ -45,24 +45,21 @@ namespace KillerWearsPrada.UC
             zoneList = new ObservableCollection<TimeZoneInfo>();
 
             // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
-          /*     foreach (Item it in MainWindow.attGameController.ItemsInInventory)
-               {
-                
-                    ImageFileNameOC = ImagePath = Helpers.ResourcesHelper.ItemsImagesPath + it.ImageFileName;
+            foreach (Item it in MainWindow.attGameController.ItemsInInventory)
+            {
                 itemInv.Add(it);
-               }
-              */
+            }
             //conto e mostro gli item che ha nell'inventariooo
             // ma devo farlo cambiare runtime!!!
             //countItems = "You have " + zoneList.Count.ToString() + " items in your inventory";
 
-           
+
 
             this.DataContext = this;
           //  countItems = zoneList.Count;
             InitializeComponent();
 
-            
+
 
             // se non ci sono item nell'inventario, mostrare label 
 
@@ -97,16 +94,20 @@ namespace KillerWearsPrada.UC
             // Come dovrei  per prendere gli item nell'inventario
             //      ListView1.ItemsSource = itemInv;
 
-            #region prova drag drop solo con mouse
-            lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
 
-            foreach (TimeZoneInfo tzi in TimeZoneInfo.GetSystemTimeZones())
-            {
-                if (zoneList.Count < 6)
-                    zoneList.Add(tzi);
-            }
-            lbOne.ItemsSource = zoneList;
-            #endregion
+
+            /*         #region prova drag drop solo con mouse
+                     lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
+
+                     foreach (TimeZoneInfo tzi in TimeZoneInfo.GetSystemTimeZones())
+                     {
+                         if (zoneList.Count < 6)
+                             zoneList.Add(tzi);
+                     }
+                     lbOne.ItemsSource = zoneList;
+                     #endregion*/
+
+            lbOne.ItemsSource = itemInv;
             
         }
 

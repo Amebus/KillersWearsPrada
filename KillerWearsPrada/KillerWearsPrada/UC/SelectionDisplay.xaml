@@ -86,7 +86,7 @@
 
             <Label Name="indizioCloth"  Margin="633,10,0,289" FontSize="60" Padding="103,101,0,0" >
                 <Label.Background>
-                    <ImageBrush ImageSource="C:\Users\Monica\Documents\sketchup projects\fumetto1.png"/>
+                    <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Fumetto}}"/>
                 </Label.Background>
                 <TextBox Width="369" Height="233" Padding="0,0,0,0" Text="{Binding ItemClue}" FontFamily="Gill Sans Ultra Bold" TextAlignment="Center" TextWrapping="Wrap" 
                          FontSize="30" Style="{StaticResource TextBlockStyle}" MouseDoubleClick="EnterKeyCommand"  MouseLeftButtonDown="EnterKeyCommand"  

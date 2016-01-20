@@ -399,6 +399,7 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Crime);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Background);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Trash_Empty);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Fumetto);
 
             //path delle immagini delle porte
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.SXdoor_Image);
