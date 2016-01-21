@@ -151,7 +151,7 @@ namespace KillerWearsPrada.Model
         /// <summary>
         /// Represent a List of the Items placed in the player's trash
         /// </summary>
-        public List<Item> ItemsIntrash
+        public List<Item> ItemsInTrash
         {
             get
             {
@@ -159,7 +159,7 @@ namespace KillerWearsPrada.Model
 
                 foreach (Room r in attRooms)
                 {
-                    wvItems.AddRange(r.ItemsInTrash);
+                    wvItems.AddRange(r.ItemsTrashed);
                 }
 
                 return wvItems;
@@ -231,7 +231,20 @@ namespace KillerWearsPrada.Model
             attScore = wvScore;
         }
 
-        internal bool SetInInventory(string BarCode)
+        public void EmptyTrash ()
+        {
+            foreach(Room r in attRooms)
+            {
+                r.EmptyTrash();
+            }
+        }
+
+        /// <summary>
+        /// Return true if the item had been added to the inventory
+        /// </summary>
+        /// <param name="BarCode"></param>
+        /// <returns></returns>
+        public bool SetInInventory(string BarCode)
         {
 
             foreach(Item i in ItemsNotInInventory)

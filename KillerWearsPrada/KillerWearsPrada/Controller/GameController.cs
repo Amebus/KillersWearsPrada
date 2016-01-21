@@ -86,76 +86,7 @@ namespace KillerWearsPrada.Controller
             Helpers.SerializerHelper.Serialize(wvPath, wvGame);
 
         }
-
-        /// <summary>
-        /// Representing the index of the room in which the player is investigating
-        /// </summary>
-        public int ActualRoomIndex
-        {
-            get { return attGame.ActualRoomIndex; }
-            set { attGame.ActualRoomIndex = value; }
-        }
-
-        /// <summary>
-        /// Reperesent the <see cref="Model.Room"/> in which the player is investigating
-        /// </summary>
-        public Room ActualRoom
-        {
-            get { return attGame.ActualRoom; }
-        }
         
-        /// <summary>
-        /// Represent a List of <see cref="Model.Item"/> items contained in the <see cref="Model.Room"/> in which the player is invastigating
-        /// </summary>
-        public List<Item> ActualRoomItems
-        {
-            get { return attGame.ActualRoom.Items; }
-        }
-
-        /// <summary>
-        /// Represent a value which indicate if the game is alredy started
-        /// </summary>
-        public bool IsGameStarted
-        {
-            get { return attGame.GameStarted; }
-        }
-
-        /// <summary>
-        /// The name of the player
-        /// </summary>
-        public string NamePlayer
-        {
-            get { return attGame.PlayerName; }
-        }
-
-        /// <summary>
-        /// Represent the List of <see cref="Model.Room"/> defined in the actual game
-        /// </summary>
-        public List<Room> Rooms
-        {
-            get { return attGame.Rooms; }
-        }
-
-        public List<Item> ItemsDressed
-        {
-            get { return attGame.ItemsDressed; }
-        }
-
-        /// <summary>
-        /// Represent a List of <see cref="Model.Item"/> that are in the player's inventory
-        /// </summary>
-        public List<Item> ItemsInInventory
-        {
-            get { return attGame.ItemsInInventory; }
-        }
-
-        /// <summary>
-        /// Represent a List of <see cref="Model.Item"/> that are in the player's tresh
-        /// </summary>
-        public List<Item> ItemsInTrash
-        {
-            get { return attGame.ItemsIntrash; }
-        }
         #endregion
 
         /// <summary>

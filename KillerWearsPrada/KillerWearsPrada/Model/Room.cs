@@ -97,7 +97,7 @@ namespace KillerWearsPrada.Model
             }
         }
 
-        public List<Item> ItemsInTrash
+        public List<Item> ItemsTrashed
         {
             get
             {
@@ -190,9 +190,19 @@ namespace KillerWearsPrada.Model
             return null;
         }
 
+        public void EmptyTrash()
+        {
+            foreach(Item i in ItemsTrashed)
+            {
+                i.SetAsEliminated();
+            }
+        }
+
+
         public override string ToString()
         {
             return LastClue;
         }
+
     }
 }

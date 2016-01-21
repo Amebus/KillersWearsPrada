@@ -347,6 +347,13 @@ namespace KillerWearsPrada.Model
             return Clue;
         }
 
+        internal void SetAsEliminated()
+        {
+            attInInventory = false;
+            attDressed = false;
+            attTrashed = false;
+        }
+
         #endregion
     }
 }

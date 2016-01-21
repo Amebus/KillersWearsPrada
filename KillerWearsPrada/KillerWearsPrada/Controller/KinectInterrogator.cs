@@ -30,8 +30,11 @@ namespace KillerWearsPrada.Controller
         private BarCodeRecognized attBarcodeChecker;
 
         private BackgroundWorker attScreenshotWorker;
+        private volatile bool attBackGroundWorkerBusy; 
 
         private bool attEnableTakingScreenshot;
+
+
 
         /// <summary>
         /// 
@@ -56,11 +59,15 @@ namespace KillerWearsPrada.Controller
 
         private void SetBackgroundWorker ()
         {
+            attBackGroundWorkerBusy = true;
             attScreenshotWorker = new BackgroundWorker();
             attScreenshotWorker.WorkerReportsProgress = true;
             attScreenshotWorker.WorkerSupportsCancellation = true;
             attScreenshotWorker.DoWork += worker_DoWork;
+            attScreenshotWorker.RunWorkerCompleted += worker_WorkEnded;
+            attBackGroundWorkerBusy = false;
         }
+
 
         /// <summary>
         /// Return a value that indicate if the KinectSensor is connected
@@ -114,6 +121,7 @@ namespace KillerWearsPrada.Controller
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
         {
+            attBackGroundWorkerBusy = true;
             Bitmap wvImage;
             BitmapEncoder wvEncoder;
             BackgroundWorkerParameters wvBWP = (BackgroundWorkerParameters)e.Argument;
@@ -170,6 +178,12 @@ namespace KillerWearsPrada.Controller
             */
         }
 
+        private void worker_WorkEnded(object sender, RunWorkerCompletedEventArgs e)
+        {
+            attBackGroundWorkerBusy = false;   
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -179,8 +193,8 @@ namespace KillerWearsPrada.Controller
         {
             if (!attEnableTakingScreenshot)
                 return;
-
-            if (attScreenshotWorker.IsBusy)
+            
+            if (attBackGroundWorkerBusy)//prima era attScreenshotWorker.IsBusy
                 return;
 
             
@@ -226,6 +240,7 @@ namespace KillerWearsPrada.Controller
             wvColorBitmap.Freeze();
             BackgroundWorkerParameters wvBWP = new BackgroundWorkerParameters();
             wvBWP.ImageToBeChecked = wvColorBitmap;
+            attBackGroundWorkerBusy = true;
             attScreenshotWorker.RunWorkerAsync(wvBWP);
 
         }
