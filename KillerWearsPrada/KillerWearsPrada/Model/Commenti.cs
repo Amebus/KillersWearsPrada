@@ -28,5 +28,26 @@ namespace KillerWearsPrada.Model
 
 
         */
+
+
+
+        /*
+        
+        Commenti by Moni
+
+
+      1)Per Ceru
+        Inserire bool IsCompleted alla room
+        True se il player ha portato i 2 capi "giust"
+        False se non li ha ancora portati
+      
+        
+        2) Per Ceru
+        Proprietà dell'item (Item.Shape) che mi ritorna la shape dell'item  
+
+
+        Per Alec
+        Query che dato il barcode o l'id dell'item mi ritorna la Shape, che ritorna true o false
+        */
     }
 }
