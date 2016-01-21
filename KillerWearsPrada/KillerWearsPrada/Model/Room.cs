@@ -48,6 +48,83 @@ namespace KillerWearsPrada.Model
             get;
             private set;
         }
+        
+
+        public bool IsSearchCompleted
+        {
+            get
+            {
+                bool wvAAdded = false;
+                bool wvBAdded = false;
+                foreach(Item i in ItemInInventory)
+                {
+                    if (i.Type == E_ItemType.A)
+                        wvAAdded = true;
+                    else if (i.Type == E_ItemType.B)
+                        wvBAdded = false;
+                }
+
+                return (wvAAdded && wvBAdded);
+            }
+        }
+
+        public List<Item> ItemsNotInInventory
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+                foreach (Item i in Items)
+                {
+                    if (!i.IsInInventory)
+                        wvItems.Add(i);
+                }
+                return wvItems;
+            }
+        }
+
+
+        public List<Item> ItemsInInventory
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+                foreach(Item i in Items)
+                {
+                    if (i.IsInInventory)
+                        wvItems.Add(i);
+                }
+                return wvItems;
+            }
+        }
+
+        public List<Item> ItemsInTrash
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+                foreach (Item i in Items)
+                {
+                    if (i.IsTrashed)
+                        wvItems.Add(i);
+                }
+                return wvItems;
+            }
+        }
+
+        public List<Item> ItemsDressed
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+                foreach (Item i in Items)
+                {
+                    if (i.IsDressed)
+                        wvItems.Add(i);
+                }
+                return wvItems;
+            }
+        }
+
 
         public string LastClue
         {

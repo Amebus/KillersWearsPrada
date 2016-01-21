@@ -299,6 +299,8 @@ namespace KillerWearsPrada.Model
             }
         }
 
+        public E_ItemType Type { get { return ItemType; } }
+
         #endregion
 
         #region Methods

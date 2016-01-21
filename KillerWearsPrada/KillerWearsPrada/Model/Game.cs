@@ -11,6 +11,9 @@ namespace KillerWearsPrada.Model
     {
 
         #region Attributes
+
+        private const int SCORE_STEP = 5;
+
         /// <summary>
         /// Rappresenta la lista di stanze incluso l'ingresso
         /// </summary>
@@ -106,11 +109,7 @@ namespace KillerWearsPrada.Model
 
                 foreach (Room r in attRooms)
                 {
-                    foreach (Item i in r.Items)
-                    {
-                        if (i.IsDressed)
-                            wvItems.Add(i);
-                    }
+                    wvItems.AddRange(r.ItemsDressed);
                 }
 
                 return wvItems;
@@ -128,11 +127,7 @@ namespace KillerWearsPrada.Model
 
                 foreach(Room r in attRooms)
                 {
-                    foreach(Item i in r.Items)
-                    {
-                        if (i.IsInInventory)
-                            wvItems.Add(i);
-                    }
+                    wvItems.AddRange(r.ItemsInInventory);
                 }
 
                 return wvItems;
@@ -146,11 +141,7 @@ namespace KillerWearsPrada.Model
                 List<Item> wvItems = new List<Item>();
                 foreach (Room r in attRooms)
                 {
-                    foreach (Item i in r.Items)
-                    {
-                        if (!i.IsInInventory)
-                            wvItems.Add(i);
-                    }
+                    wvItems.AddRange(r.ItemsNotInInventory);
                 }
 
                 return wvItems;
@@ -168,11 +159,7 @@ namespace KillerWearsPrada.Model
 
                 foreach (Room r in attRooms)
                 {
-                    foreach (Item i in r.Items)
-                    {
-                        if (i.IsTrashed)
-                            wvItems.Add(i);
-                    }
+                    wvItems.AddRange(r.ItemsInTrash);
                 }
 
                 return wvItems;
@@ -233,7 +220,15 @@ namespace KillerWearsPrada.Model
         /// </summary>
         public void ComputeScore()
         {
+            int wvScore = 0;
 
+            foreach(Item i in ItemsDressed)
+            {
+                if (attSolution.CheckInSolution(i))
+                    wvScore += SCORE_STEP;
+            }
+
+            attScore = wvScore;
         }
 
         internal bool SetInInventory(string BarCode)
