@@ -29,6 +29,8 @@ namespace KillerWearsPrada.Controller
         private PlayerChecker attPlayerChecker;
         private BarCodeRecognized attBarcodeChecker;
 
+        private DateTime attLastcheck;
+
         private BackgroundWorker attScreenshotWorker;
         private volatile bool attBackGroundWorkerBusy; 
 
@@ -53,6 +55,8 @@ namespace KillerWearsPrada.Controller
             attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
             attColorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
             //attScreenshotSaver = new Thread(new ThreadStart(TakeScreenshot));
+
+            attLastcheck = DateTime.Now;
 
             SetBackgroundWorker();
         }
@@ -197,7 +201,11 @@ namespace KillerWearsPrada.Controller
             if (attBackGroundWorkerBusy)//prima era attScreenshotWorker.IsBusy
                 return;
 
-            
+            DateTime wvNow = DateTime.Now;
+            if (wvNow.Subtract(attLastcheck).Seconds < attWaitingTime)
+                return;
+            attLastcheck = wvNow;
+
             ColorFrame wvColorFrame = e.FrameReference.AcquireFrame();
 
             if (wvColorFrame == null)

@@ -44,6 +44,7 @@ namespace KillerWearsPrada.UC
             db = new Helpers.DBHelper();
             try
             {
+                /*
                 //db.GetItemFromClues(Model.E_Shape.CORTO, Model.E_Gradiation.CHIARO, Model.E_Texture.SCOZZESE, Model.E_ItemKind.Cappello);
                 //txtDisplay.Text = db.GetItemByShape(Model.E_Shape.SHORT, Model.E_ItemKind.t_shirt).ToString();
                 //txtDisplay.Text = db.GetItemByGradation(Model.E_Gradiation.LIGHT, Model.E_ItemKind.t_shirt).Code.ToString();
@@ -59,6 +60,9 @@ namespace KillerWearsPrada.UC
                 txtDisplay.AppendText("\r\n" + wvGame.GameStarted);
                 txtDisplay.AppendText("\r\n" + wvGame.PlayerName);
                 txtDisplay.AppendText("\r\n" + wvGame.Score);
+                */
+                db = new Helpers.DBHelper();
+                txtDisplay.Text = db.GetShape("190114771213").ToString();
             }
             catch (Exception ex)
             {
@@ -72,8 +76,8 @@ namespace KillerWearsPrada.UC
         {
             try           
             {
-                attGameController.CreateGameAndPlayer("Giocatore1");
-                //attGameController.CreateProfGame();
+                //attGameController.CreateGameAndPlayer("Giocatore1");
+                attGameController.CreateProfGame();
                 //attGameController.LoadGame("-Giocatore1");
                 txtDisplay.Text = ("Game correctly populated");
 

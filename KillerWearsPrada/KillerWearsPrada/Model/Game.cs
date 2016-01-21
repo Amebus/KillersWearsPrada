@@ -24,6 +24,7 @@ namespace KillerWearsPrada.Model
         private int attActualRoom;
 
         private bool attStarted;
+        private bool attFinished;
         private int attScore;
         private Solution attSolution;
         #endregion
@@ -83,6 +84,12 @@ namespace KillerWearsPrada.Model
         {
             get { return attStarted; }
             set { attStarted = value; }
+        }
+        
+        public bool IsFinisced
+        {
+            get { return attFinished; }
+
         }
 
         /// <summary>
@@ -182,6 +189,11 @@ namespace KillerWearsPrada.Model
         #endregion
 
         #region Methods
+        public void SetAsFinished()
+        {
+            attFinished = true;
+        }
+
         private Room GetRoom(E_RoomsName RoomName)
         {
             foreach (Room r in attRooms)

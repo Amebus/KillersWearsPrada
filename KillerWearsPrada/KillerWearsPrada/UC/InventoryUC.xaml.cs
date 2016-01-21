@@ -45,7 +45,7 @@ namespace KillerWearsPrada.UC
             zoneList = new ObservableCollection<TimeZoneInfo>();
 
             // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
-            foreach (Item it in MainWindow.attGameController.ItemsInInventory)
+            foreach (Item it in MainWindow.attGameController.Game.ItemsInInventory)
             {
                 itemInv.Add(it);
             }
