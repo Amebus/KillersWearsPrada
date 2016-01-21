@@ -47,21 +47,36 @@ namespace KillerWearsPrada.Model
             this.ItemKind = AI.ItemKind;
         }
 
+        /// <summary>
+        /// Return the list of <see cref="ItemGraficalProperty"/> associated to the <see cref="AbstractItem"/>
+        /// </summary>
         public List<ItemGraficalProperty> ItemProperties
         {
             get { return attItemProperties; }
         }
 
+        /// <summary>
+        /// Return the numbers of <see cref="ItemGraficalProperty"/> associated to the <see cref="AbstractItem"/>
+        /// </summary>
         public int PropertiesCount
         {
             get { return attItemProperties.Count; }
         }
 
+        /// <summary>
+        /// Add an <see cref="ItemGraficalProperty"/> to the <see cref="AbstractItem"/>
+        /// </summary>
+        /// <param name="Property"></param>
         public void AddProperty(ItemGraficalProperty Property)
         {
             attItemProperties.Add(Property);
         }
 
+        /// <summary>
+        /// Verify if the <see cref="AbstractItem"/> is equal to another specified <see cref="AbstractItem"/> by checking the equalities of their property
+        /// </summary>
+        /// <param name="AI">The specified <see cref="AbstractItem"/> to be compared</param>
+        /// <returns>True if equals, false otherwise</returns>
         public bool EqualsTo(AbstractItem AI)
         {
             if (this.ItemKind != AI.ItemKind)
@@ -94,6 +109,11 @@ namespace KillerWearsPrada.Model
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Index"></param>
+        /// <returns></returns>
         public E_PropertiesKind GetPropertyKind(int Index)
         {
             if (Index >= ItemProperties.Count)
@@ -104,6 +124,12 @@ namespace KillerWearsPrada.Model
             return ItemProperties[Index].PropertyKind;
         }
 
+        /// <summary>
+        /// Return a <see cref="string"/> representing the value of the <see cref="ItemGraficalProperty"/> corresponding to the <see cref="E_PropertiesKind"/> specified.
+        /// If the property is not found the <see cref="string.Empty"/> will be returned instead
+        /// </summary>
+        /// <param name="PropertyKind">The <see cref="E_PropertiesKind"/> object representing the kind of properties to be returned</param>
+        /// <returns></returns>
         public string GetProperty(E_PropertiesKind PropertyKind)
         {
             ItemGraficalProperty wvProperty = null;
@@ -121,6 +147,12 @@ namespace KillerWearsPrada.Model
 
         }
 
+        /// <summary>
+        /// Return a <see cref="string"/> representing the value of the <see cref="ItemGraficalProperty"/> corresponding to the <see cref="E_PropertiesKind"/> specified.
+        /// If the property is not found the <see cref="string.Empty"/> will be returned instead
+        /// </summary>
+        /// <param name="Index">The <see cref="Int"/> object representing the kind of properties to be returned</param>
+        /// <returns></returns>
         public string GetProperty (int Index)
         {
             if (Index >= ItemProperties.Count)
@@ -133,6 +165,11 @@ namespace KillerWearsPrada.Model
             return ConvertProperty(wvProperty);
         }
 
+        /// <summary>
+        /// Cenvert a property from an <see cref="object"/> to the <see cref="string"/> representing is content
+        /// </summary>
+        /// <param name="Property"></param>
+        /// <returns></returns>
         private string ConvertProperty(ItemGraficalProperty Property)
         {
             switch (Property.PropertyKind)
@@ -146,7 +183,7 @@ namespace KillerWearsPrada.Model
                 case E_PropertiesKind.TEXTURE:
                     return ((E_Texture)Property.Property).ToString();
                 default:
-                    return null;
+                    return string.Empty;
             }
         }
 
@@ -261,6 +298,9 @@ namespace KillerWearsPrada.Model
             get { return Helpers.ResourcesHelper.ItemsImagesPath + ImageFileName; }
         }
 
+        /// <summary>
+        /// Return a <see cref="string"/> representing the clue of the item
+        /// </summary>
         public string Clue
         {
             get
