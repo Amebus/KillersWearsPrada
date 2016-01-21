@@ -105,7 +105,7 @@ namespace KillerWearsPrada.Helpers
             wvItems.Add(GetItem(wvAbstract, E_Items.BOne));
             #endregion
 
-            wvRooms.Add(new Room(wvItems, E_RoomsName.LIVINGROOM));
+            wvRooms.Add(new Room(E_RoomsName.LIVINGROOM, wvItems));
             #endregion
 
             #region Room = KITCHEN
@@ -146,7 +146,7 @@ namespace KillerWearsPrada.Helpers
             wvItems.Add(GetItem(wvAbstract, E_Items.BTwo));
             #endregion
 
-            wvRooms.Add(new Room(wvItems, E_RoomsName.KITCHEN));
+            wvRooms.Add(new Room(E_RoomsName.KITCHEN, wvItems));
             #endregion
 
             #region Room = BEDROOM
@@ -187,7 +187,7 @@ namespace KillerWearsPrada.Helpers
             wvItems.Add(GetItem(wvAbstract, E_Items.BThree));
             #endregion
 
-            wvRooms.Add(new Room(wvItems, E_RoomsName.BEDROOM));
+            wvRooms.Add(new Room(E_RoomsName.BEDROOM, wvItems));
             #endregion
 
             //return null;

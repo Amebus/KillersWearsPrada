@@ -38,6 +38,8 @@ namespace KillerWearsPrada.UC
 
         private void btnQueryProva_Click(object sender, RoutedEventArgs e)
         {
+            //Model.Game wvGame = null;
+            //Model.Room wvRoom = wvGame.ActualRoom;
             
             db = new Helpers.DBHelper();
             try
@@ -53,6 +55,10 @@ namespace KillerWearsPrada.UC
                 string wvPath = Helpers.ResourcesHelper.SavesDirectory + "\\" + wvPlayerID;
                 Model.Game wvGame = Helpers.SerializerHelper.Deserialize(wvPath);
                 txtDisplay.Text = wvGame.PlayerID;
+                txtDisplay.AppendText("\r\n" + wvGame.ActualRoomIndex);
+                txtDisplay.AppendText("\r\n" + wvGame.GameStarted);
+                txtDisplay.AppendText("\r\n" + wvGame.PlayerName);
+                txtDisplay.AppendText("\r\n" + wvGame.Score);
             }
             catch (Exception ex)
             {
@@ -64,10 +70,10 @@ namespace KillerWearsPrada.UC
 
         private void btnPopolazioneProva_Click(object sender, RoutedEventArgs e)
         {
-            try
+            try           
             {
-                //attGameController.CreateGameAndPlayer("Giocatore1");
-                attGameController.CreateProfGame();
+                attGameController.CreateGameAndPlayer("Giocatore1");
+                //attGameController.CreateProfGame();
                 //attGameController.LoadGame("-Giocatore1");
                 txtDisplay.Text = ("Game correctly populated");
 

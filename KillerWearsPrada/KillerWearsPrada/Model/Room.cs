@@ -27,7 +27,7 @@ namespace KillerWearsPrada.Model
             this.Items = new List<Item>();
         }
 
-        public Room(List<Item> Items, E_RoomsName Name)
+        public Room(E_RoomsName Name, List<Item> Items)
         {
             this.Name = Name;
 
@@ -54,11 +54,18 @@ namespace KillerWearsPrada.Model
 
             get
             {
-                string wvClue = "Thanks to your efforts, a witness remembers that the @p1 was @p2!";
-                Item wvItem = Items[0];
+                string wvClue = "There is no LastClue for the " + Name.ToString();
 
-                wvClue = wvClue.Replace("@p1", wvItem.ItemKind.ToString());
-                wvClue = wvClue.Replace("@p2", wvItem.ItemProperties[wvItem.PropertiesCount - 1].Property.ToString());
+                if (Name != E_RoomsName.START_ROOM)
+                {
+                    wvClue = "Thanks to your efforts, a witness remembers that the @p1 was @p2!";
+
+                    Item wvItem = Items[0];
+
+                    wvClue = wvClue.Replace("@p1", wvItem.ItemKind.ToString());
+                    wvClue = wvClue.Replace("@p2", wvItem.ItemProperties[wvItem.PropertiesCount - 1].Property.ToString());
+                }
+
 
                 return wvClue;
             }
@@ -106,5 +113,9 @@ namespace KillerWearsPrada.Model
             return null;
         }
 
+        public override string ToString()
+        {
+            return LastClue;
+        }
     }
 }

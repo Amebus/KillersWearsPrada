@@ -253,7 +253,7 @@ namespace KillerWearsPrada.Controller
                 AbstractItem wvCorrectAbstractItem = GenerateCorrectAbstractItem((E_ItemKind._NULL + i));
                 Item wvCorrectItem = attDataBase.GetItemFromAbstractItem(wvCorrectAbstractItem);
 
-                wvSolution.AddItem(GenerateCorrectAbstractItem((E_ItemKind._NULL + i)));
+                wvSolution.AddItem(wvCorrectItem);
 
                 wvRooms.Add(GenerateRoom((E_RoomsName)(i+1), wvCorrectItem));
 
@@ -267,42 +267,26 @@ namespace KillerWearsPrada.Controller
         {
             Room wvRoom = null;
             List<Item> wvItems = new List<Item>();
+            wvItems.Add(CorrectItem);
 
-            for(int i = (int)E_ItemType.A; i<= (int)E_ItemType.F; i++)
+            for (int i = (int)E_ItemType.A + 1; i<= (int)E_ItemType.F; i++)
             {
                 AbstractItem wvAbstractItem = new AbstractItem((E_ItemType)i, CorrectItem.ItemKind);
 
-                switch((E_ItemType)i)
-                {
-                    case E_ItemType.A:
-                        wvItems.Add(CorrectItem);
-                        break;
-                    case E_ItemType.B:
-                        wvAbstractItem = InvertByItemType(CorrectItem, E_ItemType.B);
-                        break;
-                    case E_ItemType.C:
-                        break;
-                    case E_ItemType.D:
-                        break;
-                    case E_ItemType.E:
-                        break;
-                    case E_ItemType.F:
-                        break;
-                    default:
-                        break;
-                }
+                wvAbstractItem = InvertByItemType(CorrectItem, (E_ItemType)i);
 
+                wvItems.Add(attDataBase.GetItemFromAbstractItem(wvAbstractItem));
 
             }
 
-
+            wvRoom = new Room(Name, wvItems);
             return wvRoom;
         }
         
         private AbstractItem InvertByItemType(AbstractItem CorrectItem, E_ItemType ItemTypeToGenerate)
         {
             ItemGraficalProperty wvIgp;
-            AbstractItem wvInvertedAbstractAbstractItem = new AbstractItem(ItemTypeToGenerate, CorrectItem.ItemKind);
+            AbstractItem wvInvertedAbstractItem = new AbstractItem(ItemTypeToGenerate, CorrectItem.ItemKind);
             bool[] wvVctor = attPopulationMatrix[(int)ItemTypeToGenerate];
 
             for(int i = 0;  i<CorrectItem.PropertiesCount; i++)
@@ -321,10 +305,10 @@ namespace KillerWearsPrada.Controller
                     
                 }
 
-                wvInvertedAbstractAbstractItem.AddProperty(wvProperty);
+                wvInvertedAbstractItem.AddProperty(wvProperty);
             }
 
-            return wvInvertedAbstractAbstractItem;   
+            return wvInvertedAbstractItem;   
         }
 
         private ItemGraficalProperty InvertProperty(ItemGraficalProperty IGP)

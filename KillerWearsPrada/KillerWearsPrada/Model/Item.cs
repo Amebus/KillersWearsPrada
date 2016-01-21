@@ -78,6 +78,11 @@ namespace KillerWearsPrada.Model
             return true;
         }
 
+        /// <summary>
+        /// Return true if the <see cref="Item"/> contains a <see cref="ItemGraficalProperty"/> definition for the specified <see cref="E_PropertiesKind"/>
+        /// </summary>
+        /// <param name="PropertyKind">The <see cref="E_PropertiesKind"/> to check if contained</param>
+        /// <returns>True if the <see cref="Item"/> contains the specified property False otherwise</returns>
         public bool CheckPropertyByKind(E_PropertiesKind PropertyKind)
         {
             foreach (ItemGraficalProperty igp in ItemProperties)
@@ -271,6 +276,29 @@ namespace KillerWearsPrada.Model
                 return wvClue;
             }
         }
+
+        public E_Shape Shape
+        {
+            get
+            {
+                E_Shape wvShape = E_Shape._NULL;
+                if (CheckPropertyByKind(E_PropertiesKind.SHAPE))
+                    wvShape = (E_Shape)Enum.Parse(typeof(E_Shape), GetProperty(E_PropertiesKind.SHAPE));
+                else
+                {
+                    Helpers.DBHelper wvDB = new Helpers.DBHelper();
+                    bool wvBoolShape = wvDB.GetShape(this.Code);
+
+                    if (wvBoolShape)
+                        wvShape = E_Shape.LONG;
+                    else
+                        wvShape = E_Shape.SHORT;
+                }
+
+                return wvShape;
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -311,7 +339,12 @@ namespace KillerWearsPrada.Model
             attDressed = false;
             return true;
         }
-        
+
+        public override string ToString()
+        {
+            return Clue;
+        }
+
         #endregion
     }
 }
