@@ -118,7 +118,6 @@
     <Compile Include="Model\ItemGraficalProperties.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Helpers\DBHelper.cs" />
-    <Compile Include="Model\Clue.cs" />
     <Compile Include="Controller\KinectInterrogator.cs" />
     <Compile Include="Model\Room.cs" />
     <Compile Include="Model\Solution.cs" />
