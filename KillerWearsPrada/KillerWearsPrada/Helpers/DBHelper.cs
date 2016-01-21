@@ -342,6 +342,76 @@ namespace KillerWearsPrada.Helpers
             return i;
         }
 
+        public bool GetShape(int code) 
+        {
+            try
+            {
+                DBConnection.Open();
+            }
+            catch
+            {
+                DBConnection.Close();
+                DBConnection.Open();
+            }
+
+            string query = "SELECT II.Long";
+            query += " FROM Item AS I , ItemInfo AS II";
+            query += " WHERE I.ItemInfo = II.ID AND I.ID = @code";
+
+            
+
+            // parameter @code - code
+            
+            query = query.Replace("@code", code.ToString());
+
+            OleDbCommand command = new OleDbCommand(query, DBConnection);
+
+            OleDbDataReader result = command.ExecuteReader();
+
+            result.Read();
+
+            bool shape = result.GetBoolean(0);
+            DBConnection.Close();
+
+            return shape;
+        }
+
+        public bool GetShape(string barcode)
+        {
+            try
+            {
+                DBConnection.Open();
+            }
+            catch
+            {
+                DBConnection.Close();
+                DBConnection.Open();
+            }
+
+            string query = "SELECT II.Long";
+            query += " FROM Item AS I , ItemInfo AS II";
+            query += " WHERE I.ItemInfo = II.ID AND I.Barcode = @barcode";
+
+
+
+            // parameter @code - code
+
+            query = query.Replace("@barcode", barcode.ToString());
+
+            OleDbCommand command = new OleDbCommand(query, DBConnection);
+
+            OleDbDataReader result = command.ExecuteReader();
+
+            result.Read();
+
+            bool shape = result.GetBoolean(0);
+            DBConnection.Close();
+
+            return shape;
+        }
+
+
+
         #endregion
 
         #region Player
