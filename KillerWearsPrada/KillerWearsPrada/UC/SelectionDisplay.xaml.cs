@@ -55,7 +55,7 @@ namespace KillerWearsPrada.UC
 
 
             #region Load information related to the button selected, found by barcode, which is the tag button pressed
-            Model.Item it = MainWindow.attGameController.ActualRoom.GetItem(itemId);
+            Model.Item it = MainWindow.attGameController.Game.ActualRoom.GetItem(itemId);
             ClothName = it.ItemName;
             ItemDescription = it.Description;
 

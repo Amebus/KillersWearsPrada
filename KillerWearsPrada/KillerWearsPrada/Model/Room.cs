@@ -56,7 +56,7 @@ namespace KillerWearsPrada.Model
             {
                 bool wvAAdded = false;
                 bool wvBAdded = false;
-                foreach(Item i in ItemInInventory)
+                foreach(Item i in ItemsInInventory)
                 {
                     if (i.Type == E_ItemType.A)
                         wvAAdded = true;

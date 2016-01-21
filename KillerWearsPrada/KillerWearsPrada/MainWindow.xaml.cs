@@ -265,7 +265,7 @@ namespace KillerWearsPrada
             Helpers.SketchHelper.SetDirectories();
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
-            name_player.Content = attGameController.NamePlayer + "!";
+            name_player.Content = attGameController.Game.PlayerName + "!";
             // qui faccio allocare tutti gli user control?
             // con i rispettivi oggetti giusti!!!
             // This method load all usercontrols and put their visibility to hidden

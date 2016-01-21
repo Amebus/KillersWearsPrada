@@ -77,7 +77,7 @@ namespace KillerWearsPrada.UC
 
             #region foreach per popolare bottoni stanze
             //dovrei prendere dal controller tutti gli items e metterli nelle varie stanze!!!
-            foreach (Model.Room r in MainWindow.attGameController.Rooms)
+            foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
             {
 
                 switch (r.Name)
@@ -226,7 +226,7 @@ namespace KillerWearsPrada.UC
             // 0 credo sia l'entrata
             // MainWindow.attGameController.ActualRoomIndex = 0;
             //funziona
-            MainWindow.attGameController.ActualRoomIndex = 0;
+            MainWindow.attGameController.Game.ActualRoomIndex = 0;
             disable_buttons();
 
             Livingroom_Image.Visibility = Visibility.Hidden;
