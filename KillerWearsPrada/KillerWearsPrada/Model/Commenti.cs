@@ -33,6 +33,7 @@ namespace KillerWearsPrada.Model
 
         /*
         
+
         Commenti by Moni
 
 
@@ -53,6 +54,13 @@ namespace KillerWearsPrada.Model
         Fare lista delle clue degli items già discosed e attributo a item (o proprietà) che io posso settare true 
         quando user clicca sul pulsante di quell'item
         
+
+        Per Me
+        1)Mettere lista delle clues da mostrare nell'inventario
+
+        2) aggiungere aninmazioni quando si mettono oggetti nell'inventario 
+
+
         */
     }
 }

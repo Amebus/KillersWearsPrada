@@ -161,8 +161,8 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate> -->
 
-            <Label Name="Dressed" Margin="240,111,1019,682" Content="Item dressed by The Killer" FontSize="48" Background="#FF17FF00"></Label>
-            <Label Name="NotDressed" Content="Items in inventory" Margin="1161,112,136,682" FontSize="48" Background="#FF17FF00"></Label>
+            <Label Name="Dressed" Margin="266,111,1071,682" Content="Items in inventory" FontSize="48" Background="#FF17FF00"></Label>
+            <Label Name="NotDressed" Content="Item dressed by The Killer" Margin="1136,112,136,682" FontSize="48" Background="#FF17FF00"></Label>
             <ListBox Margin="312,173,1110,198" Name="LeftListBox" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>

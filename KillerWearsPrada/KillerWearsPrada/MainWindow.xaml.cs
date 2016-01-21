@@ -214,6 +214,8 @@ namespace KillerWearsPrada
         //Dovrebbe passare alla user control StartingRoom ma non lo fa e non so perchè
         private void btnEntrance_Click(object sender, RoutedEventArgs e)
         {
+
+
             // modificare
             //   startRoom = new StartingRoom();
 
@@ -283,11 +285,11 @@ namespace KillerWearsPrada
 
             //guardo se ha già iniziato a giocare o no
             //quello giusto
-            //       if (attGameController.IsGameStarted == false)
+               if (attGameController.Game.GameStarted == false)
             //vai alla welcome home
             //devo bindare lo username...
-            bool t = false;
-            if (t == false)
+          //  bool t = false;
+          //  if (t == false)
             {
                 backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
                 ib = new ImageBrush();
@@ -307,18 +309,18 @@ namespace KillerWearsPrada
 
         private void loadRoom()
         {
-            string temp = "Livingroom";
-            //   switch (attGameController.ActualRoom.Name)
-            switch (temp)
+         //   string temp = "Livingroom";
+            switch (attGameController.Game.ActualRoom.Name)
+          //  switch (temp)
             {
-                case "StartingRoom":
+                case Model.E_RoomsName.START_ROOM:
                     {
                         startRoom.Visibility = Visibility.Visible;
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
                     }
                     break;
-                case "Kitchen":
+                case Model.E_RoomsName.KITCHEN:
                     {
                         room.Visibility = Visibility.Visible;
                         room.Kitchen_Image.Visibility = Visibility;
@@ -331,7 +333,7 @@ namespace KillerWearsPrada
                         GC.WaitForPendingFinalizers();
                     }
                     break;
-                case "Livingroom":
+                case Model.E_RoomsName.LIVINGROOM:
                     {
                         room.Visibility = Visibility.Visible;
                         room.Livingroom_Image.Visibility = Visibility;
