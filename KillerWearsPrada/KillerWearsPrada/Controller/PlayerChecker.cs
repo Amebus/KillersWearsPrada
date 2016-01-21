@@ -59,8 +59,8 @@ namespace KillerWearsPrada.Controller
                     RaisePlayerLeaveKinectSensorEvent();
                     break;
                 case Relation.CP_VALUE_NP_VALUE:
-                    throw new NotImplementedException("Implementare il cotnrollo per capire se c'è un cambio di utente");
-                    //break;
+                    //throw new NotImplementedException("Implementare il cotnrollo per capire se c'è un cambio di utente");
+                    break;
                 default:
                     break;
             }

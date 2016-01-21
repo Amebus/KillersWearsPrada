@@ -6,7 +6,7 @@ namespace KillerWearsPrada.Controller
 {
     public class GameController
     {
-        private const int REFRESH_TIME = 1000;
+        private const int REFRESH_TIME = 3;
         private const int DEBUG_REFRESH_TIME = 10000;
         private const int ITEMS_PER_ROOM = 2;
         private const int NUMBER_OF_ROOMS_WITH_ITEMS = 3;
