@@ -74,6 +74,7 @@ namespace KillerWearsPrada.UC
             // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
             foreach (Item it in MainWindow.attGameController.Game.ItemsInInventory)
             {
+                if(it.IsDressed==false)
                 itemInv.Add(it);
             }
 
@@ -427,6 +428,7 @@ namespace KillerWearsPrada.UC
                     foreach (Item ite in r.Items)
                     {
                         if (ite.BarCode == currentItemText.BarCode)
+                       
                             ite.Dress();
                     }
 
