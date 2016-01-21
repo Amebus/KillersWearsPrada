@@ -342,6 +342,12 @@ namespace KillerWearsPrada.Helpers
             return i;
         }
 
+
+        /// <summary>
+        /// this methods tells if an item is Long (given its code)
+        /// </summary>
+        /// <param name="code">an integere containing the item's code</param>
+        /// <returns>true if the item is LONG, false otherwise</returns>
         public bool GetShape(int code) 
         {
             try
@@ -356,9 +362,7 @@ namespace KillerWearsPrada.Helpers
 
             string query = "SELECT II.Long";
             query += " FROM Item AS I , ItemInfo AS II";
-            query += " WHERE I.ItemInfo = II.ID AND I.ID = @code";
-
-            
+            query += " WHERE I.ItemInfo = II.ID AND I.ID = @code";                 
 
             // parameter @code - code
             
@@ -376,6 +380,11 @@ namespace KillerWearsPrada.Helpers
             return shape;
         }
 
+        /// <summary>
+        /// this methods tells if an item is Long or short given its Barcode
+        /// </summary>
+        /// <param name="barcode">string containing the item's barcode</param>
+        /// <returns>true if the shape il LONG, true otherwise</returns>
         public bool GetShape(string barcode)
         {
             try
@@ -391,12 +400,10 @@ namespace KillerWearsPrada.Helpers
             string query = "SELECT II.Long";
             query += " FROM Item AS I , ItemInfo AS II";
             query += " WHERE I.ItemInfo = II.ID AND I.Barcode = @barcode";
+            
+            // parameter @barcodecode 
 
-
-
-            // parameter @code - code
-
-            query = query.Replace("@barcode", barcode.ToString());
+            query = query.Replace("@barcode","'" + barcode + "'");
 
             OleDbCommand command = new OleDbCommand(query, DBConnection);
 
