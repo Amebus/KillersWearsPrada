@@ -185,6 +185,7 @@ namespace KillerWearsPrada
         {
             //se la ricerca del tizio è completato
             string lastclue = attGameController.Game.ActualRoom.LastClue;
+
             MessageBoxResult result = MessageBox.Show(lastclue, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
            
 

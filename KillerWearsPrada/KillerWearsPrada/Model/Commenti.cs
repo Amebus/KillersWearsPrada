@@ -40,14 +40,19 @@ namespace KillerWearsPrada.Model
         Inserire bool IsCompleted alla room
         True se il player ha portato i 2 capi "giust"
         False se non li ha ancora portati
+
+        2) Per Ceru
+        Inserire proprietà LastClue già mostrata, per ogni stanza,
+        quando mostro la last clue di una stanza la prima volta diventa true e non la mostro più
       
         
-        2) Per Ceru
+        3) Per Ceru
         Proprietà dell'item (Item.Shape) che mi ritorna la shape dell'item  
 
-
-        Per Alec
-        Query che dato il barcode o l'id dell'item mi ritorna la Shape, che ritorna true o false
+        4) Per Ceru
+        Fare lista delle clue degli items già discosed e attributo a item (o proprietà) che io posso settare true 
+        quando user clicca sul pulsante di quell'item
+        
         */
     }
 }
