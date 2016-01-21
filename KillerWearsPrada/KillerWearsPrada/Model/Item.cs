@@ -350,6 +350,7 @@ namespace KillerWearsPrada.Model
                 return false;
             attTrashed = true;
             attDressed = false;
+            attInInventory = false;
 
             return true;
         }
@@ -364,7 +365,7 @@ namespace KillerWearsPrada.Model
         {
             if (!this.IsInInventory || this.IsTrashed)
                 return false;
-            bool b = this.Undress();
+
             attDressed = true;
             return true;
         }

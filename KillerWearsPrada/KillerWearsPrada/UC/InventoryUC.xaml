@@ -8,7 +8,7 @@
              d:DesignHeight="1080" d:DesignWidth="1920"
              Height="1080"
              Width="1920"
-             FontFamily="Segoe UI"
+             FontFamily="Chiller"
              FontSize="30"
              Focusable="True">
 
@@ -46,7 +46,7 @@
     </UserControl.Background>
 
     <Grid x:Name="layoutRoot" Height="850" Width="1680">
-        <Grid x:Name="grid"  RenderTransformOrigin="0.5,0.5" Margin="0,-28,0,28">
+        <Grid x:Name="grid"  RenderTransformOrigin="0.5,0.5" Margin="-45,-28,45,28">
             <Grid.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Mode=OneWay, Source={StaticResource Inventory_Background}}"/>
             </Grid.Background>
@@ -125,20 +125,67 @@
                 </ListView.ItemContainerStyle> -->
             </ListView>
 
-            <ListBox x:Name="lbOne"
+            <ListBox  SelectionMode="Multiple" x:Name="lbOne"  PreviewMouseLeftButtonDown="ListBox_PreviewMouseLeftButtonDown" SelectedItem="{Binding SelectedItems,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  HorizontalAlignment="Left" Margin="672,223,0,184" Width="517" 
-                 ScrollViewer.CanContentScroll="False">
+                 ScrollViewer.CanContentScroll="True" Visibility="Collapsed">
+                <ItemsControl ItemsSource="{Binding itemInv}"/>
+                <!-- ItemsPanelTemplate -->
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel Orientation="Horizontal" Height="200" >
+                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+
+            </ListBox>
+            <!--        <ListBox.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel Orientation="Horizontal" Height="200" >
+                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
+                        </StackPanel>
+                    </DataTemplate>
+                    </ListBox.ItemTemplate> -->
+
+            <ListBox SelectionMode="Multiple" x:Name="lbTwo"  Drop="ListBox_Drop" AllowDrop="True"  
+                 HorizontalAlignment="Right" Margin="0,223,12,156" Width="429" 
+                 ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="Collapsed"/>
+            <!--         <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Height="200" >
+                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate> -->
+
+            <Label Name="Dressed" Margin="240,111,1019,682" Content="Item dressed by The Killer" FontSize="48" Background="#FF17FF00"></Label>
+            <Label Name="NotDressed" Content="Items in inventory" Margin="1161,112,136,682" FontSize="48" Background="#FF17FF00"></Label>
+            <ListBox Margin="312,173,1110,198" Name="LeftListBox" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="200" >
-                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ImageFileName}" />
+                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox x:Name="lbTwo"  Drop="ListBox_Drop" AllowDrop="True"
-                 HorizontalAlignment="Right" Margin="0,223,12,156" Width="429" 
-                 ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+            <ListBox Margin="0,173,180,209" Name="RightListBox" HorizontalAlignment="Right" Width="306">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Height="200" >
+                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Name="AddButton" Height="101" Margin="672,276,711,0" VerticalAlignment="Top"
+        Click="AddButton_Click">Add &gt;&gt;</Button>
+            <Button Name="RemoveButton" Margin="659,455,686,300"
+        Click="RemoveButton_Click">&lt;&lt; Remove</Button>
+
 
             <ListBox  x:Name="ItemsListBox" SelectionMode="Multiple" Height="300" 
           ItemsSource="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}"
@@ -241,6 +288,8 @@
                 </Button.Background>
 
             </Button>
+            <Button x:Name="AddButton_Copy" Height="101" Margin="312,681,1071,0" VerticalAlignment="Top"
+            	Click="AddTrash_Click" Content="Add to Trash"/>
 
         </Grid>
     </Grid>

@@ -183,7 +183,12 @@ namespace KillerWearsPrada
 
         private void UpdateInventory(GameController.UpdateInventory.Arguments Parameters)
         {
-            throw new NotImplementedException("Qui aggiornare l'inventario");
+            //se la ricerca del tizio è completato
+            string lastclue = attGameController.Game.ActualRoom.LastClue;
+            MessageBoxResult result = MessageBox.Show(lastclue, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+           
+
+            //  throw new NotImplementedException("Qui aggiornare l'inventario");
         }
 
         private void Window_Initialized(object sender, EventArgs e)
