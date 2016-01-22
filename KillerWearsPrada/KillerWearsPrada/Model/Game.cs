@@ -108,6 +108,27 @@ namespace KillerWearsPrada.Model
             get { return attScore; }
         }
 
+        public List<string> DisclosedClues
+        {
+            get
+            {
+                List<string> wvDisclossedClues = new List<string>();
+
+                foreach(Room r in attRooms)
+                {
+                    if (r.Name == E_RoomsName.START_ROOM)
+                        continue;
+
+                    wvDisclossedClues.AddRange(r.DisclosedItemsClues);
+                    if (r.IsLastClueAlreadyShown)
+                        wvDisclossedClues.Add(r.LastClue);
+
+                }
+
+                return wvDisclossedClues;
+            }
+        }
+
         public List<Item> ItemsDressed
         {
             get

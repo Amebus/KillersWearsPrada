@@ -411,7 +411,7 @@ namespace KillerWearsPrada.Controller
         {
 
             if(attGame.SetInInventory(Parameters.BarCode))
-                attUpdateInventory.RaiseEvent(Parameters.BarCode);
+                attUpdateInventory.RaiseEvent(Parameters.BarCode, attGame.ActualRoomIndex);
         }
 
         /// <summary>
@@ -525,22 +525,24 @@ namespace KillerWearsPrada.Controller
 
             }
 
-            public void RaiseEvent(string BarCode)
+            public void RaiseEvent(string BarCode, int RoomIndex)
             {
-                Arguments wvParameters = new Arguments(BarCode);
+                Arguments wvParameters = new Arguments(BarCode, RoomIndex);
 
                 OnUpdateInventory(wvParameters);
             }
 
             public class Arguments : EventArgs
             {
-                public Arguments (string BarCode)
+                public Arguments (string BarCode, int RoomIndex)
                 {
                     this.BarCode = BarCode;
+                    this.RoomIndex = RoomIndex;
                 }
 
                 public string BarCode { get; private set; }
 
+                public int RoomIndex { get; private set; }
             }
         }
     }

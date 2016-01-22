@@ -63,6 +63,14 @@ namespace KillerWearsPrada.Model
             get { return attItemProperties.Count; }
         }
 
+        public ItemGraficalProperty LastProperty
+        {
+            get
+            {
+                return attItemProperties[PropertiesCount - 1];
+            }
+        }
+
         /// <summary>
         /// Add an <see cref="ItemGraficalProperty"/> to the <see cref="AbstractItem"/>
         /// </summary>
@@ -198,6 +206,7 @@ namespace KillerWearsPrada.Model
         private bool attTrashed;
         private bool attInInventory;
         private bool attDressed;
+        private bool attClueDisclosed;
 
         /// <summary>
         /// constructor which initiates an Item object with parameters
@@ -298,6 +307,11 @@ namespace KillerWearsPrada.Model
             get { return Helpers.ResourcesHelper.ItemsImagesPath + ImageFileName; }
         }
 
+        public bool IsClueDisclosed
+        {
+            get { return attClueDisclosed; }
+        }
+
         /// <summary>
         /// Return a <see cref="string"/> representing the clue of the item
         /// </summary>
@@ -305,6 +319,7 @@ namespace KillerWearsPrada.Model
         {
             get
             {
+                attClueDisclosed = true;
                 string wvClue = BASE.Replace("@p1", ItemKind.ToString().Replace('_', ' '));
                 string wvTemp;
                 if (ItemType == E_ItemType.A || ItemType == E_ItemType.C || ItemType == E_ItemType.D)

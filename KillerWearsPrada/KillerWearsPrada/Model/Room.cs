@@ -25,6 +25,7 @@ namespace KillerWearsPrada.Model
         {
             this.Name = Name;
             this.Items = new List<Item>();
+            this.LastClueAlreadyShown = false;
         }
 
         public Room(E_RoomsName Name, List<Item> Items)
@@ -49,8 +50,22 @@ namespace KillerWearsPrada.Model
             private set;
         }
         
+        private bool LastClueAlreadyShown { get; set; }
 
-        public bool IsSearchCompleted
+        public bool IsLastClueAlreadyShown
+        {
+            get
+            {
+                if (!LastClueAlreadyShown)
+                {
+                    LastClueAlreadyShown = true;
+                    return false;
+                }
+                return true;
+            }
+        }
+
+        public bool IsRoomCompleted
         {
             get
             {
@@ -61,10 +76,42 @@ namespace KillerWearsPrada.Model
                     if (i.Type == E_ItemType.A)
                         wvAAdded = true;
                     else if (i.Type == E_ItemType.B)
-                        wvBAdded = false;
+                        wvBAdded = true;
                 }
 
                 return (wvAAdded && wvBAdded);
+            }
+        }
+
+        /// <summary>
+        /// Return a list of strings representing all the Clues disclosed in the room
+        /// </summary>
+        public List<string> DisclosedItemsClues
+        {
+            get
+            {
+                List<string> wvCLues = new List<string>();
+                foreach(Item i in Items)
+                {
+                    if (i.IsClueDisclosed)
+                        if(!wvCLues.Contains(i.Clue))
+                            wvCLues.Add(i.Clue);
+                }
+                return wvCLues;
+            }
+        }
+
+        public List<Item> ItemsDisclosed
+        {
+            get
+            {
+                List<Item> wvItems = new List<Item>();
+                foreach (Item i in Items)
+                {
+                    if (!i.IsClueDisclosed)
+                        wvItems.Add(i);
+                }
+                return wvItems;
             }
         }
 
@@ -131,7 +178,8 @@ namespace KillerWearsPrada.Model
 
             get
             {
-                string wvClue = "There is no LastClue for the " + Name.ToString();
+                LastClueAlreadyShown = true;
+                string wvClue = "There is no LastClue for the " + Name.ToString().Replace('_',' ');
 
                 if (Name != E_RoomsName.START_ROOM)
                 {
@@ -140,7 +188,7 @@ namespace KillerWearsPrada.Model
                     Item wvItem = Items[0];
 
                     wvClue = wvClue.Replace("@p1", wvItem.ItemKind.ToString());
-                    wvClue = wvClue.Replace("@p2", wvItem.ItemProperties[wvItem.PropertiesCount - 1].Property.ToString());
+                    wvClue = wvClue.Replace("@p2", wvItem.LastProperty.Property.ToString());
                 }
 
 
