@@ -76,8 +76,8 @@ namespace KillerWearsPrada.UC
         {
             try           
             {
-                //attGameController.CreateGameAndPlayer("Giocatore1");
-                attGameController.CreateProfGame();
+                attGameController.CreateGameAndPlayer("Giocatore1");
+                //attGameController.CreateProfGame();
                 //attGameController.LoadGame("-Giocatore1");
                 txtDisplay.Text = ("Game correctly populated");
 
