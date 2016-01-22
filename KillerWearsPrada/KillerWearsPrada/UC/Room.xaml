@@ -48,7 +48,22 @@
 -->
         <Canvas x:Name="Livingroom_Image" Width="1920" Height="1080" Visibility="Hidden">
 
-            <Button x:Name ="trousers1" Click="trousers_btn" Height="155" Canvas.Top="503" Width="265" Canvas.Left="260" Style="{StaticResource KinectButtonZoomTrousers1}" Tag="trousers1"/>
+            <Button x:Name ="trousers1" Click="trousers_btn" Height="155" Canvas.Top="503" Width="265" Canvas.Left="260" Style="{StaticResource KinectButtonZoomTrousers1}" Tag="trousers1">
+         <!--       <Button.RenderTransform>
+                    <TranslateTransform />
+                </Button.RenderTransform>
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="trousers1"
+                 Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                 From="1000" To="0" Duration="0:0:1" BeginTime="0:0:0" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers> -->
+            </Button>
             <Button x:Name ="trousers3" Click="trousers_btn" Height="167" Canvas.Top="580" Width="381" Canvas.Left="755" Style="{StaticResource KinectButtonZoomTrousers3}" Tag="trousers3"/>
 
 

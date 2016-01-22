@@ -161,9 +161,14 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate> -->
 
-            <Label Name="Dressed" Margin="266,111,1071,682" Content="Items in inventory" FontSize="48" Background="#FF17FF00"></Label>
+            <Label Name="Dressed" Margin="514,117,823,676" Content="Items in inventory" FontSize="48" Background="#FF17FF00"></Label>
             <Label Name="NotDressed" Content="Item dressed by The Killer" Margin="1136,112,136,682" FontSize="48" Background="#FF17FF00"></Label>
-            <ListBox Margin="312,173,1110,198" Name="LeftListBox" >
+            <ListBox Margin="413,187,793,184" Name="LeftListBox" Background="{x:Null}" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="200" >
@@ -172,7 +177,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox Margin="0,173,180,209" Name="RightListBox" HorizontalAlignment="Right" Width="306">
+            <ListBox Margin="0,173,180,209" Name="RightListBox" HorizontalAlignment="Right" Width="306" Background="{x:Null}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="200" >
@@ -181,10 +186,27 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Name="AddButton" Height="101" Margin="672,276,711,0" VerticalAlignment="Top"
+            <Button Name="AddButton" Height="101" Margin="892,271,491,0" VerticalAlignment="Top"
         Click="AddButton_Click">Add &gt;&gt;</Button>
-            <Button Name="RemoveButton" Margin="659,455,686,300"
+            <Button Name="RemoveButton" Margin="892,455,491,300"
         Click="RemoveButton_Click">&lt;&lt; Remove</Button>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="49,126,1272,305" BorderThickness="2">
+                <ItemsControl Name="cluesList" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <!-- <Label x:Name="imaget" Width="300" Height="150" Content="{Binding}"></Label> -->
+
+                                <TextBox HorizontalAlignment="Center"  Padding="0,0,0,0" Text="{Binding Path=.}" FontFamily="Gill Sans Ultra Bold" TextAlignment="Center" TextWrapping="Wrap" 
+                         FontSize="29.333" IsEnabled="False" MouseDoubleClick="EnterKeyCommand"  MouseLeftButtonDown="EnterKeyCommand"  
+                  SelectionOpacity="0" BorderBrush="#FF23FF00" CaretBrush="{x:Null}" Background="#FFB9B4B4"  SelectionBrush="{x:Null}" BorderThickness="2"/>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
 
 
             <ListBox  x:Name="ItemsListBox" SelectionMode="Multiple" Height="300" 

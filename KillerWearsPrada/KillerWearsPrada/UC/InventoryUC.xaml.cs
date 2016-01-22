@@ -41,12 +41,12 @@ namespace KillerWearsPrada.UC
         /// <summary>
         /// INotifyPropertyChangedPropertyChanged event to allow window controls to bind to changeable data
         /// </summary>
-      //  public event PropertyChangedEventHandler PropertyChanged;
+        //  public event PropertyChangedEventHandler PropertyChanged;
 
 
+        public List<string> ListClues { get; set; }
 
-
-        ObservableCollection<ItemProva> SelectedItems = new ObservableCollection<ItemProva>();
+    ObservableCollection<ItemProva> SelectedItems = new ObservableCollection<ItemProva>();
         public ObservableCollection<Item> SelectedItems2 { get; set; }
 
         public string ImageFileNameOC { get; set; }
@@ -55,34 +55,57 @@ namespace KillerWearsPrada.UC
 
         public InventoryUC()
         {
+            ListClues = new List<string>();
             itemInv = new ObservableCollection<Item>();
             SelectedItems2 = new ObservableCollection<Item>();
 
             zoneList = new ObservableCollection<TimeZoneInfo>();
 
-            //carico tutti gli elementi che ho (prova)
-     /*       foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
-            {
-                foreach (Item ite in r.Items)
-                {
-                    ite.SetAsInInventory();
-                }
+            ListClues.Add("ciao bela");
+            ListClues.Add("ciao bellllaaasssssssssssssssssssssssssssssssssssssssssssssssssssb jdnbl flhfcl.enf fllfnaòc knlfsndfcln ldnncl  kdenfclnc lihdfclan ilhfcla oiashfials jluofhcab jkfaegfoueasb kfeagfoueb cakjefb aa2");
+            ListClues.Add("ciao bellllaaaaa2");
+            ListClues.Add("ciao bellllaaaaa2");
 
-            }*/
+            //carico tutti gli elementi che ho (prova)
+            /*       foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
+                   {
+                       foreach (Item ite in r.Items)
+                       {
+                           ite.SetAsInInventory();
+                       }
+
+                   }*/
 
             //carico elementi da mettere nell'inventario, non indossati e non nel cestino
             // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
             foreach (Item it in MainWindow.attGameController.Game.ItemsInInventory)
             {
                 if(it.IsDressed==false)
-                itemInv.Add(it);
+                    itemInv.Add(it);
+                //prova per mostrare la clue!!!
+             //   ListClues.Add(it.Clue);
             }
+
+            #region prova per mettere bene la uniform grid
+            /*       foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
+                   {
+                       foreach (Item it in r.Items)
+                       {
+                           if (it.IsDressed == false)
+                               itemInv.Add(it);
+                           //prova per mostrare la clue!!!
+                           ListClues.Add(it.Clue);
+                       }
+                   }*/
+            #endregion
 
             //metto tutti gli elementi dressed nella listbox dei dressed!
             foreach (Item it in MainWindow.attGameController.Game.ItemsDressed)
             {
                 SelectedItems2.Add(it);
             }
+
+            
 
 
             //conto e mostro gli item che ha nell'inventariooo
@@ -132,22 +155,16 @@ namespace KillerWearsPrada.UC
 
             #endregion
 
-
-            // Come dovrei  per prendere gli item nell'inventario
-            //      ListView1.ItemsSource = itemInv;
-
-
-
-            /*         #region prova drag drop solo con mouse
-                     lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
+            #region prova drag drop solo con mouse
+            /*         lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
 
                      foreach (TimeZoneInfo tzi in TimeZoneInfo.GetSystemTimeZones())
                      {
                          if (zoneList.Count < 6)
                              zoneList.Add(tzi);
                      }
-                     lbOne.ItemsSource = zoneList;
-                     #endregion*/
+                     lbOne.ItemsSource = zoneList; */
+
 
             //drag drop solo mouse
 
@@ -156,7 +173,7 @@ namespace KillerWearsPrada.UC
 
                              lbTwo.ItemsSource = SelectedItems2;
             */
-
+            #endregion
 
 
 
@@ -165,24 +182,11 @@ namespace KillerWearsPrada.UC
             // Bind ArrayList with the ListBox
             LeftListBox.ItemsSource = itemInv;
             RightListBox.ItemsSource = SelectedItems2;
+
+            #region popolo la lista di tutte le clues trovate fino ad allora
+            cluesList.ItemsSource = MainWindow.attGameController.Game.DisclosedClues;
+            #endregion
         }
-
-
-        /*
-                public Int32 ArticleCount
-                {
-                    get
-                    {
-                        if (zoneList == null)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return this.zoneList.Count;
-                        }
-                    }
-                }*/
 
         private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
@@ -427,15 +431,18 @@ namespace KillerWearsPrada.UC
                 {
                     foreach (Item ite in r.Items)
                     {
-                        if (ite.BarCode == currentItemText.BarCode)
-                       
+                        if (ite.BarCode == currentItemText.BarCode && SelectedItems2.Count < 3)
+                        {
                             ite.Dress();
+                            SelectedItems2.Add((Item)currentItemText);
+                            itemInv.RemoveAt(currentItemIndex);
+                        }
                     }
 
                 }
 
-                SelectedItems2.Add((Item)currentItemText);
-                itemInv.RemoveAt(currentItemIndex);
+            //    SelectedItems2.Add((Item)currentItemText);
+            //    itemInv.RemoveAt(currentItemIndex);
             }
 
             // Refresh data binding
@@ -511,6 +518,11 @@ namespace KillerWearsPrada.UC
 
             // Refresh data binding
             // ApplyDataBinding();
+        }
+
+        private void EnterKeyCommand(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 

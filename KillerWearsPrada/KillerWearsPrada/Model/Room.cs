@@ -56,12 +56,7 @@ namespace KillerWearsPrada.Model
         {
             get
             {
-                if (!LastClueAlreadyShown)
-                {
-                    LastClueAlreadyShown = true;
-                    return false;
-                }
-                return true;
+                return LastClueAlreadyShown;
             }
         }
 
