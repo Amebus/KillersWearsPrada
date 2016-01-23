@@ -1,7 +1,7 @@
 ﻿namespace KillerWearsPrada.Model
 {
 
-    interface ISerializable
+    public interface ISerializable
     {
     }
 }

@@ -10,7 +10,7 @@ namespace KillerWearsPrada.Helpers
 {
     
     
-    class SerializerHelper
+    public class SerializerHelper
     {
 
         public static void Serialize(string Path, Model.ISerializable Obj)
