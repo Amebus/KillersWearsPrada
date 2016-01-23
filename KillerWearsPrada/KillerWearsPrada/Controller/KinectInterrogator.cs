@@ -93,12 +93,12 @@ namespace KillerWearsPrada.Controller
 
         public EventHandler<PlayerChecker.PlayerEnterKinectSensor.Arguments> PlayerEnterKinectSensorEvent
         {
-            set { attPlayerChecker.RaisePlayerEnterKinectSensor += value; }
+            set { attPlayerChecker.PlayerEnterKinectSensorEvent += value; }
         }
 
         public EventHandler<PlayerChecker.PlayerLeaveKinectSensor.Arguments> PlayerLeaveKinectSensorEvent
         {
-            set { attPlayerChecker.RaisePlayerLeaveKinectSensor += value; }
+            set { attPlayerChecker.PlayerLeaveKinectSensorEvent += value; }
         }
 
         public EventHandler<BarCodeRecognized.Arguments> BarCodeRecognizedEvent

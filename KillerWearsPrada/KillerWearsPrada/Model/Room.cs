@@ -167,6 +167,23 @@ namespace KillerWearsPrada.Model
             }
         }
 
+        public void DressItem(int Code)
+        {
+
+            if(ItemsDressed.Count == 0)
+                GetItem(Code).Dress();
+            else
+                throw new AlredyWearingAnItemException(GetItem(Code).ItemKind);
+        }
+
+        public void DressItem(string BarCode)
+        {
+
+            if (ItemsDressed.Count == 0)
+                GetItem(BarCode).Dress();
+            else
+                throw new AlredyWearingAnItemException(GetItem(BarCode).ItemKind);
+        }
 
         public string LastClue
         {
@@ -246,6 +263,27 @@ namespace KillerWearsPrada.Model
         {
             return LastClue;
         }
+        
+    }
 
+    public class AlredyWearingAnItemException :Exception
+    {
+
+        private const string BASE = "The killer is already wearing an ";
+
+        public AlredyWearingAnItemException (E_ItemKind ItemKind)
+        {
+            this.ItemKind = ItemKind;
+        }
+
+        private E_ItemKind ItemKind { get; set; }
+
+        public override string Message
+        {
+            get
+            {
+                return BASE + ItemKind.ToString().Replace('_',' ');
+            }
+        }
     }
 }

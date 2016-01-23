@@ -12,10 +12,10 @@ namespace KillerWearsPrada.Controller
 
         public void RaiseEvent(string Code)
         {
-            OnPlayerEnterKinectSensor(new Arguments(Code));
+            OnBarCodeRecognized(new Arguments(Code));
         }
 
-        protected virtual void OnPlayerEnterKinectSensor(Arguments e)
+        protected virtual void OnBarCodeRecognized(Arguments e)
         {
             if (BarCodeRecognizedEvent != null)
             {

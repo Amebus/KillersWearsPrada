@@ -17,11 +17,11 @@ namespace KillerWearsPrada.Controller
         /// <summary>
         /// 
         /// </summary>
-        public event EventHandler<PlayerEnterKinectSensor.Arguments> RaisePlayerEnterKinectSensor;
+        public event EventHandler<PlayerEnterKinectSensor.Arguments> PlayerEnterKinectSensorEvent;
         /// <summary>
         /// 
         /// </summary>
-        public event EventHandler<PlayerLeaveKinectSensor.Arguments> RaisePlayerLeaveKinectSensor;
+        public event EventHandler<PlayerLeaveKinectSensor.Arguments> PlayerLeaveKinectSensorEvent;
 
         public PlayerChecker()
         {
@@ -59,7 +59,8 @@ namespace KillerWearsPrada.Controller
                     RaisePlayerLeaveKinectSensorEvent();
                     break;
                 case Relation.CP_VALUE_NP_VALUE:
-                    //throw new NotImplementedException("Implementare il cotnrollo per capire se c'è un cambio di utente");
+                    if (attIDCurrentPalyer != ID)
+                        RaisePlayerLeaveKinectSensorEvent();
                     break;
                 default:
                     break;
@@ -95,9 +96,9 @@ namespace KillerWearsPrada.Controller
         /// <param name="e"></param>
         protected virtual void OnPlayerEnterKinectSensor(PlayerEnterKinectSensor.Arguments e)
         {
-            if (RaisePlayerEnterKinectSensor != null)
+            if (PlayerEnterKinectSensorEvent != null)
             {
-                RaisePlayerEnterKinectSensor(this, e );
+                PlayerEnterKinectSensorEvent(this, e );
             }
         }
 
@@ -121,9 +122,9 @@ namespace KillerWearsPrada.Controller
         protected virtual void OnPlayerLeaveKinectSensor(PlayerLeaveKinectSensor.Arguments e)
         {
            
-            if (RaisePlayerLeaveKinectSensor != null)
+            if (PlayerLeaveKinectSensorEvent != null)
             {
-                RaisePlayerLeaveKinectSensor(this, e);
+                PlayerLeaveKinectSensorEvent(this, e);
             }
         }
 
