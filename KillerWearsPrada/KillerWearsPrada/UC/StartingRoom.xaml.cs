@@ -79,7 +79,10 @@ namespace KillerWearsPrada.UC
 
 
             Button b = (Button)sender;
+
             
+          //  VisualStateManager.G
+
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
 
             // if(b.Content.ToString() == "Livingroom_Image")
@@ -211,6 +214,51 @@ namespace KillerWearsPrada.UC
         /// </summary>
         public void change_Buttons_Status(bool b)
         {
+            #region non dovrebbe più servire perchè è nella mainwindow
+        /*    foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
+            {
+                switch (r.Name)
+                //  switch (temp)
+                {
+                    case Model.E_RoomsName.BEDROOM:
+                        {
+                            if (r.DisclosedItemsClues.Count() > 0)
+                            {
+                                if (r.IsRoomCompleted == true)
+                                    VisualStateManager.GoToState(dxDoorButton, "RoomCompleted", false);
+                                else
+                                    VisualStateManager.GoToState(dxDoorButton, "Started", false);
+                            }
+                        }
+                        break;
+                    case Model.E_RoomsName.KITCHEN:
+                        {
+                            if (r.DisclosedItemsClues.Count() > 0)
+                            {
+                                if (r.IsRoomCompleted == true)
+                                    VisualStateManager.GoToState(centerDoorButton, "RoomCompleted", false);
+                                else
+                                    VisualStateManager.GoToState(centerDoorButton, "Started", false);
+                            }
+                        }
+                        break;
+                    case Model.E_RoomsName.LIVINGROOM:
+                        {
+                            if (r.DisclosedItemsClues.Count() > 0)
+                            {
+                                if (r.IsRoomCompleted == true)
+                                    VisualStateManager.GoToState(sxDoorButton, "RoomCompleted", false);
+                                else
+                                    VisualStateManager.GoToState(sxDoorButton, "Started", false);
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }*/
+            #endregion
+
             // abilito solo i bottoni delle stanze che posso abilitare
             sxDoorButton.IsEnabled = b;
             centerDoorButton.IsEnabled = b;

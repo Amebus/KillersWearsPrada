@@ -17,7 +17,7 @@
 
     <Canvas Name="room_Canvas">
 
-        <Button Name="exit"  Click="exit_button" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}">
+        <Button Name="exit"  Click="moving" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
@@ -80,7 +80,7 @@
             <Button x:Name ="hat3" Click="hat_btn"  Height="105" Canvas.Left="1421" Canvas.Top="518" Width="162" Style="{StaticResource KinectButtonZoomHat3}" Tag="hat3"/>
             <Button x:Name ="hat4" Click="hat_btn"  Height="88" Canvas.Left="1269" Canvas.Top="292" Width="137" Style="{StaticResource KinectButtonZoomHat4}" Tag="hat4"/>
             <Button x:Name ="hat5" Click="hat_btn"  Height="99" Canvas.Left="606" Canvas.Top="159" Width="150" Style="{StaticResource KinectButtonZoomHat5}" Tag="hat5"/>
-            <Button x:Name ="hat6" Click="hat_btn"  Height="105" Canvas.Left="717" Canvas.Top="594" Width="159" Style="{StaticResource KinectButtonZoomHat6}" Tag="hat6"/>
+            <Button x:Name ="hat6" Click="hat_btn"  Height="105" Width="159" Style="{StaticResource KinectButtonZoomHat6}" Tag="hat6"/>
         </Canvas>
         <Canvas x:Name="Bedroom_Image"  Width="1920" Height="1080" Visibility="Hidden">
 

@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -52,6 +53,8 @@ namespace KillerWearsPrada.UC
         public string shirt6Image { get; set; }
         #endregion
 
+        public List<Button> listOfButtons { get; set; }
+
         public Room(string roomID)
         {
             // roomID contiene l'ID della stanza che devo caricare
@@ -85,10 +88,32 @@ namespace KillerWearsPrada.UC
             {
                 dir.Delete(true);
             }
+            listOfButtons = null;
+            listOfButtons = new List<Button>();
 
 
             InitializeComponent();
             this.DataContext = this;
+
+            listOfButtons.Add(trousers1);
+            listOfButtons.Add(trousers2);
+            listOfButtons.Add(trousers3);
+            listOfButtons.Add(trousers4);
+            listOfButtons.Add(trousers5);
+            listOfButtons.Add(trousers6);
+            listOfButtons.Add(hat1);
+            listOfButtons.Add(hat2);
+            listOfButtons.Add(hat3);
+            listOfButtons.Add(hat4);
+            listOfButtons.Add(hat5);
+            listOfButtons.Add(hat6);
+            listOfButtons.Add(shirt1);
+            listOfButtons.Add(shirt2);
+            listOfButtons.Add(shirt3);
+            listOfButtons.Add(shirt4);
+            listOfButtons.Add(shirt5);
+            listOfButtons.Add(shirt6);
+
             #region foreach per popolare bottoni stanze
             //dovrei prendere dal controller tutti gli items e metterli nelle varie stanze!!!
             foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
@@ -266,6 +291,8 @@ namespace KillerWearsPrada.UC
             MainWindow.attGameController.Game.ActualRoomIndex = 0;
             disable_buttons();
 
+            
+
             Livingroom_Image.Visibility = Visibility.Hidden;
             Kitchen_Image.Visibility = Visibility.Hidden;
             Bedroom_Image.Visibility = Visibility.Hidden;
@@ -278,6 +305,7 @@ namespace KillerWearsPrada.UC
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;
 
             // abilito i bottoni delle 3 porte e gli altri
+            yourParentWindow.changeDoorColor();
             yourParentWindow.StartRoom.change_Buttons_Status(true);
             
 
@@ -373,6 +401,12 @@ namespace KillerWearsPrada.UC
 
         }
 
-
+        private void moving(object sender, RoutedEventArgs e)
+        {
+            VisualStateManager.GoToState(trousers1, "Moving", true);
+         /*   Storyboard sb = this.FindResource("moveButton") as Storyboard;
+            Storyboard.SetTarget(sb, hat1);
+            sb.Begin();*/
+        }
     }
 }

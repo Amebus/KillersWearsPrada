@@ -7,6 +7,8 @@
     <Application.Resources>
 
         <Color x:Key="BlinkColor">#00FF00</Color>
+        <Color x:Key="StartedColor">#FFFFFF00</Color>
+        <Color x:Key="CompletedColor">#FFFFFFFF</Color>
 
         <!--#region Directories Paths and subPaths-->
         <sys:String x:Key="CurrentDirectory">s</sys:String>

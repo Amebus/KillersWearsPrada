@@ -212,24 +212,48 @@ namespace KillerWearsPrada
         {
             //se la ricerca del tizio è completato
             string cosamostrare = "Item added in Inventory";
-           // attGameController.Game.GetItem()
-          //  attGameController.Game.Rooms[]
+            // attGameController.Game.GetItem()
+            //  attGameController.Game.Rooms[]
+            bool wasActualRoom = false;
             foreach (Model.Room r in attGameController.Game.Rooms)
             {
                 foreach(Model.Item item in r.Items)
                     if(item.BarCode == Parameters.BarCode)
                     {
-                        cosamostrare = "Item " + item.ItemName + " added in Inventory\r\n\r\n";
+                        //Find the button to animate
+                      foreach(Button b in room.listOfButtons)
+                        {
+                            if(b.Tag.ToString() == Parameters.BarCode && attGameController.Game.ActualRoom.Name == r.Name)
+                            {
+                                //animation!!!
+                                VisualStateManager.GoToState(b, "Moving", true);
+                                wasActualRoom = true;
+                                break;
+                            }
+                               
+                        }
+
+                      //if the animation cannot be performed, a popup is shown
+                      if(wasActualRoom == false)
+                        {
+                            cosamostrare = "Item " + item.ItemName + " added in Inventory\r\n\r\n";
+                            Popup lastc = new Popup(cosamostrare);
+                            mainGrid.Children.Add(lastc);
+                            lastc.Focus();
+                        }
+                        
                     }
                 if (r.IsRoomCompleted == true && r.IsLastClueAlreadyShown == false)
                 {
                     cosamostrare += r.LastClue;
+                    Popup lastc = new Popup(cosamostrare);
+                    mainGrid.Children.Add(lastc);
+                    lastc.Focus();
                 }
             }
 
-            Popup lastc = new Popup(cosamostrare);
-            mainGrid.Children.Add(lastc);
-            lastc.Focus();
+            
+            
             //  string lastclue = attGameController.Game.ActualRoom.LastClue;
 
             //   MessageBoxResult result = MessageBox.Show(cosamostrare, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -362,6 +386,8 @@ namespace KillerWearsPrada
             {
                 case Model.E_RoomsName.START_ROOM:
                     {
+                        changeDoorColor();
+                       
                         startRoom.Visibility = Visibility.Visible;
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
@@ -509,6 +535,52 @@ namespace KillerWearsPrada
 
      /*       GC.Collect();
             GC.WaitForPendingFinalizers();*/
+        }
+
+        public void changeDoorColor()
+        {
+            foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
+            {
+                switch (r.Name)
+                //  switch (temp)
+                {
+                    case Model.E_RoomsName.BEDROOM:
+                        {
+                            if (r.DisclosedItemsClues.Count() > 0)
+                            {
+                                if (r.IsRoomCompleted == true)
+                                    VisualStateManager.GoToState(startRoom.dxDoorButton, "RoomCompleted", false);
+                                else
+                                    VisualStateManager.GoToState(startRoom.dxDoorButton, "Started", false);
+                            }
+                        }
+                        break;
+                    case Model.E_RoomsName.KITCHEN:
+                        {
+                            if (r.DisclosedItemsClues.Count() > 0)
+                            {
+                                if (r.IsRoomCompleted == true)
+                                    VisualStateManager.GoToState(startRoom.centerDoorButton, "RoomCompleted", false);
+                                else
+                                    VisualStateManager.GoToState(startRoom.centerDoorButton, "Started", false);
+                            }
+                        }
+                        break;
+                    case Model.E_RoomsName.LIVINGROOM:
+                        {
+                            if (r.DisclosedItemsClues.Count() > 0)
+                            {
+                                if (r.IsRoomCompleted == true)
+                                    VisualStateManager.GoToState(startRoom.sxDoorButton, "RoomCompleted", false);
+                                else
+                                    VisualStateManager.GoToState(startRoom.sxDoorButton, "Started", false);
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private void EnterKeyCommand(object sender, EventArgs e)
