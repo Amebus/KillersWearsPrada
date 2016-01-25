@@ -5,8 +5,58 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KillerWearsPrada.UC"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             d:DesignHeight="1080" d:DesignWidth="1920"
+             FontFamily="Chiller"
+             FontSize="70"
+             Focusable="True">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/KillerWearsPrada;component/Helpers/GraphicStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <!-- Completed="OnLoadedStoryboardCompleted" -->
+    </UserControl.Resources>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="OnLoadedStoryboard_BeginStoryboard">
+                <Storyboard Name="OnLoadedStoryboard"  >
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
+
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+                        <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+   
+
+    <Grid x:Name="layoutRoot"  >
+        <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5" Background="Gold" >
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <TextBlock x:Name="messageTextBlock" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                
+            </TextBlock>
+        </Grid>
     </Grid>
+
 </UserControl>

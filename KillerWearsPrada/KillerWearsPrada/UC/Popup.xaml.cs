@@ -16,15 +16,16 @@ using System.Windows.Shapes;
 namespace KillerWearsPrada.UC
 {
     /// <summary>
-    /// Logica di interazione per LeaveGame.xaml
+    /// Logica di interazione per Popup.xaml
     /// </summary>
-    public partial class LeaveGame : UserControl
+    public partial class Popup : UserControl
     {
-        public LeaveGame(string message)
+        public Popup(string message)
         {
             InitializeComponent();
             this.messageTextBlock.Text = message;
         }
+
 
         /// <summary>
         /// Called when the OnLoaded storyboard completes.

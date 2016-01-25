@@ -86,7 +86,7 @@ namespace KillerWearsPrada.UC
              //   ListClues.Add(it.Clue);
             }
 
-            #region prova per mettere bene la uniform grid
+            #region prova per mettere bene la uniform grid (da eliminare)
             /*       foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
                    {
                        foreach (Item it in r.Items)
@@ -118,8 +118,7 @@ namespace KillerWearsPrada.UC
             //  countItems = zoneList.Count;
             InitializeComponent();
             //Kinect
-
-
+            change_Status_Inventory_Buttons(true);
 
             this.DataContext = this;
 
@@ -192,7 +191,7 @@ namespace KillerWearsPrada.UC
         {
             // MainWindow.attGameController.ItemsInInventory = (List)zoneList;
 
-            saveItemsinModel();
+       //     saveItemsinModel();
 
             Canvas p = (Canvas)this.Parent;
 
@@ -204,7 +203,7 @@ namespace KillerWearsPrada.UC
 
         /// <summary>
         /// salvare le proprietà dressed ininventory e trashed dei vari items nel model alla chiusura dell'inventario, o alla submission
-        /// </summary>
+        /// </summary>.++.
         private void saveItemsinModel()
         {
             //non so se mi serve ancora
@@ -263,19 +262,38 @@ namespace KillerWearsPrada.UC
         // TODO
         private void submission_Click(object sender, RoutedEventArgs e)
         {
+            change_Status_Inventory_Buttons(false);
             //saveItemsinModel();
             int score =  MainWindow.attGameController.ComputeScore();
 
             //metto a true l'attributo has finished
+            MainWindow.attGameController.Game.SetAsFinished();
 
-            MessageBoxResult result = MessageBox.Show("CONGRATULATION!!!\r\n The percentage discount you earned is " + score + "%", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
-            {
-                Application.Current.Windows[0].Close();
-            }
+            string message = "CONGRATULATION!!!\r\n The percentage discount you earned is " + score + "%\r\n\r\nGo to the checkout to retrieve your discount!\r\nThank you to have played our game!\r\nBye!";
 
+            LeaveGame lg = new LeaveGame(message);
+            layoutRoot.Children.Add(lg);
+            lg.Focus();
+
+            /*      MessageBoxResult result = MessageBox.Show("CONGRATULATION!!!\r\n The percentage discount you earned is " + score + "%", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                  if (result == MessageBoxResult.Yes)
+                  {
+                      Application.Current.Windows[0].Close();
+                  }
+                  */
             //controllo se sono giudti gli item in dressed con quelli in solution?
             //prendere da game controller la attGameSolution?
+        }
+
+        private void change_Status_Inventory_Buttons(bool status)
+        {
+            CloseInventory.IsEnabled = status;
+            submission.IsEnabled = status;
+            AddButton.IsEnabled = status;
+            RemoveButton.IsEnabled = status;
+            LeftListBox.IsEnabled = status;
+            RightListBox.IsEnabled = status;
+            trash.IsEnabled = status;
         }
 
 
@@ -413,6 +431,7 @@ namespace KillerWearsPrada.UC
             return itemsList;
         }
 
+        #region Gestione aggiunta rimozione vestiti a Outfit killer e Cestino
         public Item currentItemText;
         public int currentItemIndex;
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -431,35 +450,33 @@ namespace KillerWearsPrada.UC
                 {
                     foreach (Item ite in r.Items)
                     {
-                        if (ite.BarCode == currentItemText.BarCode && SelectedItems2.Count < 3)
+                        if (ite.BarCode == currentItemText.BarCode)
                         {
-                            ite.Dress();
-                            SelectedItems2.Add((Item)currentItemText);
-                            itemInv.RemoveAt(currentItemIndex);
+                            //   ite.Dress();
+                            try
+                            {
+                                r.DressItem(ite.BarCode);
+                                SelectedItems2.Add((Item)currentItemText);
+                                itemInv.RemoveAt(currentItemIndex);
+                            }
+                            catch
+                            {
+                                //Show an error message
+                                Popup mex = new Popup(e.ToString());
+                                layoutRoot.Children.Add(mex);
+                                mex.Focus();
+                            }
+                            
                         }
                     }
 
                 }
-
-            //    SelectedItems2.Add((Item)currentItemText);
-            //    itemInv.RemoveAt(currentItemIndex);
             }
-
-            // Refresh data binding
-            // ApplyDataBinding();
         }
 
+       
 
-        /// <summary>
-        /// Refreshes data binding
-        /// </summary>
-        private void ApplyDataBinding()
-        {
-            LeftListBox.ItemsSource = null;
-            // Bind ArrayList with the ListBox
-            LeftListBox.ItemsSource = myDataList;
-        }
-
+       
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             // Find the right item and it's value and index
@@ -490,44 +507,73 @@ namespace KillerWearsPrada.UC
 
 
         
-
+        /// <summary>
+        /// This method allow to trash items from both the listboxes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddTrash_Click(object sender, RoutedEventArgs e)
         {
+            ListBox l = null;
             // Find the right item and it's value and index
-            currentItemText = (Item)LeftListBox.SelectedValue;
-            currentItemIndex = LeftListBox.SelectedIndex;
-
-            
-            //  RightListBox.Items.Add(currentItemText);
-            if (currentItemText != null)
+            try
             {
-                foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
-                {
-                    foreach (Item ite in r.Items)
-                    {
-                        if (ite.BarCode == currentItemText.BarCode)
-                        {
-                            ite.SetAsTrashed();
-                        }
-                    }
-
-                }
-                // SelectedItems2.Add((Item)currentItemText);
-                itemInv.RemoveAt(currentItemIndex);
+                l = (ListBox)sender;
+                
+            }
+            catch
+            {
+                return; //non è una delle 2 listbox, quindi non fa nulla
             }
 
+            currentItemText = (Item)l.SelectedValue;
+            currentItemIndex = l.SelectedIndex;
+
+            //     currentItemText = (Item)LeftListBox.SelectedValue;
+            //     currentItemIndex = LeftListBox.SelectedIndex;
+        //  RightListBox.Items.Add(currentItemText);
+                if (currentItemText != null)
+                {
+                    foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
+                    {
+                        foreach (Item ite in r.Items)
+                        {
+                            if (ite.BarCode == currentItemText.BarCode)
+                            {
+                                ite.SetAsTrashed();
+                            }
+                        }
+
+                    }
+                    // SelectedItems2.Add((Item)currentItemText);
+                    itemInv.RemoveAt(currentItemIndex);
+                }
+            
             // Refresh data binding
             // ApplyDataBinding();
         }
+        #endregion
 
         private void EnterKeyCommand(object sender, MouseButtonEventArgs e)
         {
 
         }
+
+        #region da eliminare
+        /// <summary>
+        /// Refreshes data binding
+        /// </summary>
+        private void ApplyDataBinding()
+        {
+            LeftListBox.ItemsSource = null;
+            // Bind ArrayList with the ListBox
+            LeftListBox.ItemsSource = myDataList;
+        }
+        #endregion
     }
 
 
-
+    #region da eliminare
     public class GraphicInventoryItem
     {
 
@@ -572,6 +618,6 @@ namespace KillerWearsPrada.UC
 
 
     }
-
+    #endregion
 
 }

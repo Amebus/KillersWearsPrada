@@ -70,7 +70,7 @@ namespace KillerWearsPrada
 
             //imposta già tutti i path giusti, di tutte le immagini, forse è da mettere altrove
             modifyAllPath();
-
+            Helpers.SketchHelper.SetDirectories();
             //txtDisplay.AppendText(dir_ok);
             InitializeComponent();
 
@@ -159,10 +159,13 @@ namespace KillerWearsPrada
         /// which contains information passed by the event <see cref="Controller.GameController.ResumeGame"/></param>
         private void ResumeGame(GameController.ResumeGame.Arguments Parameters)
         {
+            txtDisplay.IsEnabled = true;
+            txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
             txtDisplay.AppendText("\r\n" + attGameController.Game.GameStarted.ToString());
-            attGameController.SetGameStarted();
-
+            
+            ResumeGameFinto();
+           
             // qui faccio allocare tutti gli user control?
             //allocate_All_UC();
 
@@ -178,15 +181,40 @@ namespace KillerWearsPrada
         /// which contains information passed by the event <see cref="GameController.UnloadGame"/></param>
         private void UnloadGame(GameController.UnloadGame.Arguments Parameters)
         {
+            //devo eliminare tutte le immagini nella directory degli sketches TODO
+            txtDisplay.IsEnabled = true;
+            txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Unload";
+            
+            disable_Buttons_Labels();
+
+            title_game.Visibility = Visibility.Visible;
+
+            ib = null;
+            backgroundPath = Application.Current.Resources[E_GenericImages.Application_Start_Image.ToString()].ToString();
+            ib = new ImageBrush();
+            ib.ImageSource = new BitmapImage(new Uri(@backgroundPath, UriKind.Absolute));
+            this.Background = ib;
+
+            mainGrid.Children.Remove(startRoom);
+            mainGrid.Children.Remove(room);
+
+            startRoom = null;
+            room = null;
+
+          //  backgroundPath = Application.Current.Resources[E_GenericImages.Application_Start_Image.ToString()].ToString();
+            this.Background.Opacity = 1;
+
+
         }
 
         private void UpdateInventory(GameController.UpdateInventory.Arguments Parameters)
         {
             //se la ricerca del tizio è completato
             string cosamostrare = "Item added in Inventory";
-           
-            foreach(Model.Room r in attGameController.Game.Rooms)
+           // attGameController.Game.GetItem()
+          //  attGameController.Game.Rooms[]
+            foreach (Model.Room r in attGameController.Game.Rooms)
             {
                 foreach(Model.Item item in r.Items)
                     if(item.BarCode == Parameters.BarCode)
@@ -198,11 +226,14 @@ namespace KillerWearsPrada
                     cosamostrare += r.LastClue;
                 }
             }
-            
-          //  string lastclue = attGameController.Game.ActualRoom.LastClue;
 
-            MessageBoxResult result = MessageBox.Show(cosamostrare, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-           
+            Popup lastc = new Popup(cosamostrare);
+            mainGrid.Children.Add(lastc);
+            lastc.Focus();
+            //  string lastclue = attGameController.Game.ActualRoom.LastClue;
+
+            //   MessageBoxResult result = MessageBox.Show(cosamostrare, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
 
             //  throw new NotImplementedException("Qui aggiornare l'inventario");
         }
@@ -230,7 +261,7 @@ namespace KillerWearsPrada
         private void btnEntrance_Click(object sender, RoutedEventArgs e)
         {
 
-
+            attGameController.SetGameStarted();
             // modificare
             //   startRoom = new StartingRoom();
 
@@ -282,10 +313,11 @@ namespace KillerWearsPrada
 
         private ImageBrush ib;
 
-        private void ResumeGameFinto(String idUser)
+        private void ResumeGameFinto()
         {
-            attGameController.LoadGame("15-01-2016-10-50-42_alberto");
-            Helpers.SketchHelper.SetDirectories();
+         //   attGameController.LoadGame("15-01-2016-10-50-42_alberto");
+         
+            
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
             name_player.Content = attGameController.Game.PlayerName + "!";
@@ -379,7 +411,7 @@ namespace KillerWearsPrada
         {
 
          //   attGameController.GetResumeGame.RaiseEvent();
-            ResumeGameFinto("ciao");  
+            ResumeGameFinto();  
             /*
             
             backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
@@ -475,8 +507,8 @@ namespace KillerWearsPrada
             mainGrid.Children.Add(startRoom);
             mainGrid.Children.Add(room);
 
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+     /*       GC.Collect();
+            GC.WaitForPendingFinalizers();*/
         }
 
         private void EnterKeyCommand(object sender, EventArgs e)

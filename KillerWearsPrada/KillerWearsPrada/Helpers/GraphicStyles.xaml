@@ -282,13 +282,8 @@
         </Setter>
     </Style> -->
 
-
+    <!--#region Styles for hat buttons-->
     <Style x:Key="KinectButtonZoomHat1" TargetType="{x:Type Button}" >
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Hat1}}"/>
-            </Setter.Value>
-        </Setter>
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="0" />
@@ -358,12 +353,77 @@
         </Setter>
     </Style>
 
-    <Style x:Key="KinectButtonZoomHat3" TargetType="{x:Type Button}" >
-        <Setter Property="Background">
+    <Style x:Key="KinectButtonZoomHat2" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
             <Setter.Value>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Hat3}}"/>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding hat2Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomHat3" TargetType="{x:Type Button}" >
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="0" />
@@ -433,15 +493,499 @@
         </Setter>
     </Style>
 
+    <Style x:Key="KinectButtonZoomHat4" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
 
-
-
-    <Style x:Key="KinectButtonZoomShirt3" TargetType="{x:Type Button}" >
-        <Setter Property="Background">
+        <Setter Property="Template">
             <Setter.Value>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Shirt3}}"/>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding hat4Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomHat5" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding hat5Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomHat6" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding hat6Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+    
+    <!--#region Styles for shirts buttons-->
+    <Style x:Key="KinectButtonZoomShirt1" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding shirt1Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomShirt2" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding shirt2Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomShirt5" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding shirt5Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomShirt6" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding shirt6Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomShirt3" TargetType="{x:Type Button}" >
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="0" />
@@ -511,13 +1055,7 @@
         </Setter>
     </Style>
 
-
     <Style x:Key="KinectButtonZoomShirt4" TargetType="{x:Type Button}" >
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Shirt4}}"/>
-            </Setter.Value>
-        </Setter>
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="0" />
@@ -586,14 +1124,10 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion-->
 
-
+    <!--#region Styles for trousers buttons-->
     <Style x:Key="KinectButtonZoomTrousers1" TargetType="{x:Type Button}" >
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Trousers1}}"/>
-            </Setter.Value>
-        </Setter>
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="0" />
@@ -672,13 +1206,7 @@
         </Setter>
     </Style>
 
-
     <Style x:Key="KinectButtonZoomTrousers3" TargetType="{x:Type Button}" >
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Trousers3}}"/>
-            </Setter.Value>
-        </Setter>
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="0" />
@@ -748,6 +1276,305 @@
         </Setter>
     </Style>
 
+    <Style x:Key="KinectButtonZoomTrousers2" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <!-- Qui ci va l'immagine mask di trousers1 con la giusta texture-->
+                                        <!--  <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Trousers1}}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image> -->
+
+
+                                        <Image x:Name="image2" Source="{Binding trousers2Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomTrousers4" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding trousers4Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomTrousers5" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <!-- Qui ci va l'immagine mask di trousers1 con la giusta texture-->
+                                        <!--  <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Trousers1}}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image> -->
+
+
+                                        <Image x:Name="image2" Source="{Binding trousers5Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="KinectButtonZoomTrousers6" TargetType="{x:Type Button}" >
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1.5" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1.5" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
+        To="1" Duration="0:0:0.2" />
+                                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
+        To="1" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Border BorderThickness="0" BorderBrush="Transparent"
+                            x:Name="transparentBorder">
+                            <Viewbox  Stretch="UniformToFill">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+
+                                    <Grid Height="{TemplateBinding ActualHeight}" Width="{TemplateBinding ActualWidth}" >
+
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Content="{TemplateBinding Content}" />
+
+                                        <Image x:Name="image2" Source="{Binding trousers6Image}" RenderTransformOrigin="0.5,0.5"  >
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                            </Image.RenderTransform>
+
+                                        </Image>
+
+                                    </Grid>
+                                </Border>
+                            </Viewbox>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+    
     <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBox}">
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="BorderBrush" Value="{x:Null}" />

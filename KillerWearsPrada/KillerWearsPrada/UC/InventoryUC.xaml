@@ -27,13 +27,13 @@
                 <Storyboard Name="OnLoadedStoryboard"  >
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
 
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
                     </DoubleAnimationUsingKeyFrames>
                 </Storyboard>
@@ -45,8 +45,8 @@
         <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Selection_Background}}" Opacity="0.5"/>
     </UserControl.Background>
 
-    <Grid x:Name="layoutRoot" Height="850" Width="1680">
-        <Grid x:Name="grid"  RenderTransformOrigin="0.5,0.5" Margin="-45,-28,45,28">
+    <Grid x:Name="layoutRoot" Height="850" Width="1680" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid x:Name="grid"  RenderTransformOrigin="0.5,0.5" Margin="0,0,0,0">
             <Grid.Background>
                 <ImageBrush Stretch="UniformToFill" ImageSource="{Binding Mode=OneWay, Source={StaticResource Inventory_Background}}"/>
             </Grid.Background>
@@ -275,14 +275,14 @@
                             <Storyboard Name="closeUC" Completed="OnClosedStoryboardCompleted">
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
                                     <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                                 </DoubleAnimationUsingKeyFrames>
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
                                     <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                                 </DoubleAnimationUsingKeyFrames>
                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid" >
-                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
                                 </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
                         </BeginStoryboard>

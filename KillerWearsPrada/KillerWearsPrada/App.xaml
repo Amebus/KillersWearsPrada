@@ -151,9 +151,19 @@ NOTA si può lasciare il gioco in ogni momento inviando un Identikit
         
         <!-- #region Mask names -->
         <!--#region Nomi cappelli -->
-        <sys:String x:Key="Hat1">hat_1meleOk.png</sys:String>
-        <sys:String x:Key="Hat3">hat_3tablewhiteOk.png</sys:String>
+        <sys:String x:Key="Hat1hat">hat_1meleOk.png</sys:String>
+        <sys:String x:Key="Hat3hat">hat_3tablewhiteOk.png</sys:String>
+        <sys:String x:Key="Hat2hat">hat_1meleOk.png</sys:String>
+        <sys:String x:Key="Hat4hat">hat_6sediaOk.png</sys:String>
+        <sys:String x:Key="Hat5hat">hat_6sediaOk.png</sys:String>
+        <sys:String x:Key="Hat6hat">hat_6sediaOk.png</sys:String>
 
+        <sys:String x:Key="Hat1cap">hat_2tablebluOkwhite.png</sys:String>
+        <sys:String x:Key="Hat2cap">hat_2tablebluOkwhite.png</sys:String>
+        <sys:String x:Key="Hat3cap">hat_4marmoOkwhite.png</sys:String>
+        <sys:String x:Key="Hat4cap">hat_4marmoOkwhite.png</sys:String>
+        <sys:String x:Key="Hat5cap">hat_5antaOkwhite.png</sys:String>
+        <sys:String x:Key="Hat6cap">hat_2tablebluOkwhite.png</sys:String>
         <!--#endregion-->
 
         <!--#region Nomi shirts -->
@@ -169,6 +179,10 @@ NOTA si può lasciare il gioco in ogni momento inviando un Identikit
         <!--#region Nomi pantaloni -->
         <sys:String x:Key="Trousers1">panta_1divanoOkmask.png</sys:String>
         <sys:String x:Key="Trousers3">panta_3tableOkMask.png</sys:String>
+        <sys:String x:Key="Trousers2">panta_2piegatiOk.png</sys:String>
+        <sys:String x:Key="Trousers4">panta_4tappetoOk.png</sys:String>
+        <sys:String x:Key="Trousers5">panta_5appesiOk.png</sys:String>
+        <sys:String x:Key="Trousers6">panta_6tvOk.png</sys:String>
 
         <!--#endregion-->
         <!-- #endregion -->

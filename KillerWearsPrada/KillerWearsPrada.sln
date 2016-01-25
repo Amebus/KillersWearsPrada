@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KillerWearsPrada", "KillerWearsPrada\KillerWearsPrada.csproj", "{C46FAFB1-7165-4411-B23D-373A1A7FD239}"
 EndProject
@@ -431,10 +431,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Masks", "Masks", "{CAC4F376-C63A-46E4-9CDB-59BAA9D37EE4}"
 	ProjectSection(SolutionItems) = preProject
 		KillerWearsPrada\Images\Masks\hat_1meleOk.png = KillerWearsPrada\Images\Masks\hat_1meleOk.png
+		KillerWearsPrada\Images\Masks\hat_2tablebluOkwhite.png = KillerWearsPrada\Images\Masks\hat_2tablebluOkwhite.png
 		KillerWearsPrada\Images\Masks\hat_3tablewhiteOk.png = KillerWearsPrada\Images\Masks\hat_3tablewhiteOk.png
+		KillerWearsPrada\Images\Masks\hat_4marmoOkwhite.png = KillerWearsPrada\Images\Masks\hat_4marmoOkwhite.png
+		KillerWearsPrada\Images\Masks\hat_5antaOkwhite.png = KillerWearsPrada\Images\Masks\hat_5antaOkwhite.png
 		KillerWearsPrada\Images\Masks\hat_6sediaOk.png = KillerWearsPrada\Images\Masks\hat_6sediaOk.png
 		KillerWearsPrada\Images\Masks\panta_1divanoOkmask.png = KillerWearsPrada\Images\Masks\panta_1divanoOkmask.png
+		KillerWearsPrada\Images\Masks\panta_2piegatiOk.png = KillerWearsPrada\Images\Masks\panta_2piegatiOk.png
 		KillerWearsPrada\Images\Masks\panta_3tableOkMask.png = KillerWearsPrada\Images\Masks\panta_3tableOkMask.png
+		KillerWearsPrada\Images\Masks\panta_4tappetoOk.png = KillerWearsPrada\Images\Masks\panta_4tappetoOk.png
+		KillerWearsPrada\Images\Masks\panta_5appesiOk.png = KillerWearsPrada\Images\Masks\panta_5appesiOk.png
+		KillerWearsPrada\Images\Masks\panta_6tvOk.png = KillerWearsPrada\Images\Masks\panta_6tvOk.png
 		KillerWearsPrada\Images\Masks\shirt_1libriOk.png = KillerWearsPrada\Images\Masks\shirt_1libriOk.png
 		KillerWearsPrada\Images\Masks\shirt_2muroOk.png = KillerWearsPrada\Images\Masks\shirt_2muroOk.png
 		KillerWearsPrada\Images\Masks\shirt_3bedOkscalata.png = KillerWearsPrada\Images\Masks\shirt_3bedOkscalata.png

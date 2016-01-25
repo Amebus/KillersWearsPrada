@@ -64,12 +64,19 @@ namespace KillerWearsPrada.Helpers
 
         public enum E_KitchenImages
         {
-            Hat1,
-            Hat2,
-            Hat3,
-            Hat4,
-            Hat5,
-            Hat6
+            Hat1hat,
+            Hat2hat,
+            Hat3hat,
+            Hat4hat,
+            Hat5hat,
+            Hat6hat,
+
+            Hat1cap,
+            Hat2cap,
+            Hat3cap,
+            Hat4cap,
+            Hat5cap,
+            Hat6cap
         }
 
         public enum E_LivingroomImages
@@ -255,8 +262,8 @@ namespace KillerWearsPrada.Helpers
             }
         }
 
-        /*     #region path per magick directories
-             /// <summary>
+        #region path per magick directories (da rimuovere credo)
+        /*     /// <summary>
              /// 
              /// </summary>
              public static string MagicksDirectory
@@ -328,8 +335,8 @@ namespace KillerWearsPrada.Helpers
                  wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
                  wvRightPath += CreatePath(GetResource(E_GenericImages.Application_Start_Image));
                  SetResource(E_GenericImages.Application_Start_Image, wvRightPath);
-             }
-             #endregion */
+             }*/
+        #endregion
 
         /// <summary>
         /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.SavesDir"/> directory
@@ -522,6 +529,10 @@ namespace KillerWearsPrada.Helpers
             return wvRightPath;
         }
 
+        /// <summary>
+        /// This method returns the absolute path to the sketches directory plus the string "\\"
+        /// </summary>
+        /// <returns></returns>
         public static string SketchesPath()
         {
             string wvRightPath = CurrentDirectory;
@@ -531,6 +542,10 @@ namespace KillerWearsPrada.Helpers
             return wvRightPath;
         }
 
+        /// <summary>
+        /// This method returns the absolute path to the sketches directory
+        /// </summary>
+        /// <returns></returns>
         public static string SketchesPathsFile()
         {
             string wvRightPath = CurrentDirectory;

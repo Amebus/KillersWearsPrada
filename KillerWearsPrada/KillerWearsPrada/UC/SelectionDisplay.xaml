@@ -29,13 +29,13 @@
                 <Storyboard Name="OnLoadedStoryboard"  >
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
 
                     </DoubleAnimationUsingKeyFrames>
                     <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
                         <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
-                        <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                         <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
                     </DoubleAnimationUsingKeyFrames>
                 </Storyboard>
@@ -107,17 +107,17 @@
 
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
 
                             </DoubleAnimationUsingKeyFrames>
                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
                                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
 
                             </DoubleAnimationUsingKeyFrames>
 
                             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid" >
-                                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+                                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
                             </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
                             <!--      <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
