@@ -302,14 +302,12 @@
             </Button>
 
 
+            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1373,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}" >
 
-
-            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1373,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}" Drop="Trash_Drop" AllowDrop="True">
-                <Button.Background>
-                    <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Trash_Empty}}" Stretch="UniformToFill"/>
-                </Button.Background>
 
             </Button>
+
+
             <Button x:Name="AddButton_Copy" Height="101" Margin="312,681,1071,0" VerticalAlignment="Top"
             	Click="AddTrash_Click" Content="Add to Trash"/>
 

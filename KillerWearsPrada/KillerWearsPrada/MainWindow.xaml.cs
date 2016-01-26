@@ -22,13 +22,13 @@ using System.Threading;
 using static KillerWearsPrada.Helpers.ResourcesHelper;
 
 namespace KillerWearsPrada
-{   
+{
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        //const int REFRESH_TIME = 1000;
+       // const int REFRESH_TIME = 1000;
 
 
         //Controller.KinectInterrogator attKinectInterrogator;
@@ -55,11 +55,11 @@ namespace KillerWearsPrada
         #endregion
 
 
-        public  string provamw { get { return "ciaone"; } }
+        public string provamw { get { return "ciaone"; } }
 
         Window attDebug;
 
-        
+
 
 
         public MainWindow()
@@ -134,7 +134,7 @@ namespace KillerWearsPrada
             else
             {
                 //Altrimenti invoca il delegato sul thread corretto
-                this.Dispatcher.Invoke(attResumeGameHandlerDelegate, Parameters );
+                this.Dispatcher.Invoke(attResumeGameHandlerDelegate, Parameters);
             }
         }
 
@@ -147,7 +147,7 @@ namespace KillerWearsPrada
             }
             else
             {
-                this.Dispatcher.Invoke(attUnloadGameHandlerDelegate, Parameters );
+                this.Dispatcher.Invoke(attUnloadGameHandlerDelegate, Parameters);
             }
         }
 
@@ -163,9 +163,9 @@ namespace KillerWearsPrada
             txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
             txtDisplay.AppendText("\r\n" + attGameController.Game.IsGameStarted.ToString());
-            
+
             ResumeGameFinto();
-           
+
             // qui faccio allocare tutti gli user control?
             //allocate_All_UC();
 
@@ -185,7 +185,7 @@ namespace KillerWearsPrada
             txtDisplay.IsEnabled = true;
             txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Unload";
-            
+
             disable_Buttons_Labels();
 
             title_game.Visibility = Visibility.Visible;
@@ -202,7 +202,7 @@ namespace KillerWearsPrada
             startRoom = null;
             room = null;
 
-          //  backgroundPath = Application.Current.Resources[E_GenericImages.Application_Start_Image.ToString()].ToString();
+            //  backgroundPath = Application.Current.Resources[E_GenericImages.Application_Start_Image.ToString()].ToString();
             this.Background.Opacity = 1;
 
 
@@ -217,31 +217,31 @@ namespace KillerWearsPrada
             bool wasActualRoom = false;
             foreach (Model.Room r in attGameController.Game.Rooms)
             {
-                foreach(Model.Item item in r.Items)
-                    if(item.BarCode == Parameters.BarCode)
+                foreach (Model.Item item in r.Items)
+                    if (item.BarCode == Parameters.BarCode)
                     {
                         //Find the button to animate
-                      foreach(Button b in room.listOfButtons)
+                        foreach (Button b in room.listOfButtons)
                         {
-                            if(b.Tag.ToString() == Parameters.BarCode && attGameController.Game.ActualRoom.Name == r.Name)
+                            if (b.Tag.ToString() == Parameters.BarCode && attGameController.Game.ActualRoom.Name == r.Name)
                             {
                                 //animation!!!
                                 VisualStateManager.GoToState(b, "Moving", true);
                                 wasActualRoom = true;
                                 break;
                             }
-                               
+
                         }
 
-                      //if the animation cannot be performed, a popup is shown
-                      if(wasActualRoom == false)
+                        //if the animation cannot be performed, a popup is shown
+                        if (wasActualRoom == false)
                         {
                             cosamostrare = "Item " + item.ItemName + " added in Inventory\r\n\r\n";
                             Popup lastc = new Popup(cosamostrare);
                             mainGrid.Children.Add(lastc);
                             lastc.Focus();
                         }
-                        
+
                     }
                 if (r.IsRoomCompleted == true && r.IsLastClueAlreadyShown == false)
                 {
@@ -252,8 +252,8 @@ namespace KillerWearsPrada
                 }
             }
 
-            
-            
+
+
             //  string lastclue = attGameController.Game.ActualRoom.LastClue;
 
             //   MessageBoxResult result = MessageBox.Show(cosamostrare, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -264,7 +264,7 @@ namespace KillerWearsPrada
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnDebug_Click(object sender, RoutedEventArgs e)
@@ -278,7 +278,7 @@ namespace KillerWearsPrada
                 attDebug = new DebugWindow(attGameController);
                 attDebug.Show();
             }
-            
+
         }
 
         //Dovrebbe passare alla user control StartingRoom ma non lo fa e non so perchè
@@ -339,9 +339,9 @@ namespace KillerWearsPrada
 
         private void ResumeGameFinto()
         {
-         //   attGameController.LoadGame("15-01-2016-10-50-42_alberto");
-         
-            
+            //   attGameController.LoadGame("15-01-2016-10-50-42_alberto");
+
+
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
             name_player.Content = attGameController.Game.PlayerName + "!";
@@ -356,11 +356,11 @@ namespace KillerWearsPrada
 
             //guardo se ha già iniziato a giocare o no
             //quello giusto
-               if (attGameController.Game.IsGameStarted == false)
+            if (attGameController.Game.IsGameStarted == false)
             //vai alla welcome home
             //devo bindare lo username...
-          //  bool t = false;
-          //  if (t == false)
+            //  bool t = false;
+            //  if (t == false)
             {
                 backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
                 ib = new ImageBrush();
@@ -380,14 +380,14 @@ namespace KillerWearsPrada
 
         private void loadRoom()
         {
-         //   string temp = "Livingroom";
+            //   string temp = "Livingroom";
             switch (attGameController.Game.ActualRoom.Name)
-          //  switch (temp)
+            //  switch (temp)
             {
                 case Model.E_RoomsName.START_ROOM:
                     {
                         changeDoorColor();
-                       
+
                         startRoom.Visibility = Visibility.Visible;
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
@@ -436,8 +436,8 @@ namespace KillerWearsPrada
         private void homepage(object sender, RoutedEventArgs e)
         {
 
-         //   attGameController.GetResumeGame.RaiseEvent();
-            ResumeGameFinto();  
+            //   attGameController.GetResumeGame.RaiseEvent();
+            ResumeGameFinto();
             /*
             
             backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
@@ -467,7 +467,8 @@ namespace KillerWearsPrada
         }
 
 
-        private void modifyAllPath() {
+        private void modifyAllPath()
+        {
             // path delle stanze
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Doors_Image);
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Livingroom_Image);
@@ -480,6 +481,7 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Crime);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Background);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Trash_Empty);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Trash_Full);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Fumetto);
 
             //path delle immagini delle porte
@@ -524,7 +526,7 @@ namespace KillerWearsPrada
         {
             startRoom = new StartingRoom();
             room = new Room();
-            
+
             // se uso hidden al posto di collapsed carica prima!
             startRoom.Visibility = Visibility.Collapsed;
             room.Visibility = Visibility.Collapsed;
@@ -533,8 +535,8 @@ namespace KillerWearsPrada
             mainGrid.Children.Add(startRoom);
             mainGrid.Children.Add(room);
 
-     /*       GC.Collect();
-            GC.WaitForPendingFinalizers();*/
+            /*       GC.Collect();
+                   GC.WaitForPendingFinalizers();*/
         }
 
         public void changeDoorColor()

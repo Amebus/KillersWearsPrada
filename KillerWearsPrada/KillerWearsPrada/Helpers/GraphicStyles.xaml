@@ -63,10 +63,28 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="MouseOver"/>
                                 <VisualState x:Name="Pressed"/>
-                                <VisualState x:Name="Disabled"/>
+                                <!--non va!-->
+                                
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckedStates">
+                                    <VisualState x:Name="trashFull33">
+                                        <Storyboard Name="tFull2" Storyboard.TargetName="trashFull" >
+                                            <DoubleAnimation Storyboard.TargetName="trashFull" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
+                                        </Storyboard>
+                                    </VisualState>
+
+                                    
+                                    <VisualState x:Name="trashempty">
+                                        <Storyboard Name="empty" Storyboard.TargetName="emptyTr" >
+                                            <DoubleAnimation Storyboard.TargetName="emptyTr" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                
+                                    
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Image Source="{Binding Mode=OneWay, Source={StaticResource Trash_Empty}}"  Stretch="UniformToFill"/>
+                        <Image x:Name="emptyTr" Source="{Binding Mode=OneWay, Source={StaticResource Trash_Empty}}"  Stretch="UniformToFill" />
+                        <Image x:Name="trashFull" Source="{Binding Mode=OneWay, Source={StaticResource Trash_Full}}" Opacity="0" Stretch="UniformToFill"  />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
