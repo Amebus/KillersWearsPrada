@@ -151,7 +151,7 @@ namespace KillerWearsPrada.Controller
         public void CreateGameAndPlayer(string PlayerName)
         {
             string wvPath = Helpers.ResourcesHelper.SavesDirectory;
-            string wvID="";// = DateTime.Now.ToString();
+            string wvID= DateTime.Now.ToString();
 
             wvID = wvID.Replace(' ', '-');
             wvID = wvID.Replace('/', '-');
