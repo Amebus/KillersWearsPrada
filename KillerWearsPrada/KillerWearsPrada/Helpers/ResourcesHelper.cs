@@ -40,6 +40,7 @@ namespace KillerWearsPrada.Helpers
             Selection_Background,
 
             Trash_Empty,
+            Trash_Full,
             Fumetto
         }
 

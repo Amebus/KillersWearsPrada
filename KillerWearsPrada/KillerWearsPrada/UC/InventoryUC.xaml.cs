@@ -120,6 +120,18 @@ namespace KillerWearsPrada.UC
             //Kinect
             change_Status_Inventory_Buttons(true);
 
+            if (MainWindow.attGameController.Game.ItemsInTrash.Count() > 0)
+            {
+                VisualStateManager.GoToState(trash, "trashFull33", false);
+                trash.IsEnabled = true;
+            }
+            else
+            {
+                VisualStateManager.GoToState(trash, "trashempty", false);
+                trash.IsEnabled = false;
+            }
+            
+
             this.DataContext = this;
 
             //   lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
