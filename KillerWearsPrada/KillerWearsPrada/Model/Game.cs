@@ -80,13 +80,12 @@ namespace KillerWearsPrada.Model
         /// <summary>
         /// Get or Set a value that idicate if the Game is alredy started or not
         /// </summary>
-        public bool GameStarted
+        public bool IsGameStarted
         {
             get { return attStarted; }
-            set { attStarted = value; }
         }
         
-        public bool IsFinisced
+        public bool IsFinished
         {
             get { return attFinished; }
 
@@ -210,6 +209,10 @@ namespace KillerWearsPrada.Model
         #endregion
 
         #region Methods
+        public void SetAsStarted()
+        {
+            attStarted = true;
+        }
         public void SetAsFinished()
         {
             attFinished = true;

@@ -10,7 +10,8 @@ namespace KillerWearsPrada.Model
     [Serializable]
     public class ItemGraficalProperty : ISerializable
     {
-        public object Property { get; private set; }
+        public object Content { get; private set; }
+
 
         public E_PropertiesKind PropertyKind { get; private set; }
         
@@ -18,26 +19,26 @@ namespace KillerWearsPrada.Model
         public ItemGraficalProperty()
         {
             PropertyKind = E_PropertiesKind._NULL;
-            Property = null;
+            Content = null;
         }
         
-        public void SetProperty (E_PropertiesKind PropertyKind, object ItemProperty)
+        public void SetContent (E_PropertiesKind PropertyKind, object ItemProperty)
         {
             this.PropertyKind = PropertyKind;
-            Property = ItemProperty;
+            Content = ItemProperty;
         }
 
-        public void SetProperty (ItemGraficalProperty IGP)
+        public void SetContent (ItemGraficalProperty IGP)
         {
             PropertyKind = IGP.PropertyKind;
-            this.Property = IGP.Property;
+            this.Content = IGP.Content;
         }
 
         internal bool EqualsTo(ItemGraficalProperty AI)
         {
             if (this.PropertyKind != AI.PropertyKind)
                 return false;
-            if (this.Property != AI.Property)
+            if (this.Content != AI.Content)
                 return false;
 
             return true;

@@ -73,15 +73,15 @@ namespace KillerWearsPrada.Helpers
 
             #region A -> ID 19
             wvAbstract = new AbstractItem(E_ItemType.A, E_ItemKind.TROUSERS);
-            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.BLUE);
+            wvProperty.SetContent(E_PropertiesKind.COLOR, E_Color.BLUE);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
+            wvProperty.SetContent(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.SCOTTISH);
+            wvProperty.SetContent(E_PropertiesKind.TEXTURE, E_Texture.SCOTTISH);
             wvAbstract.AddProperty(wvProperty);
 
             wvItems.Add(GetItem(wvAbstract, E_Items.AOne));
@@ -91,15 +91,15 @@ namespace KillerWearsPrada.Helpers
             #region B One -> 18
             wvAbstract = new AbstractItem(E_ItemType.B, E_ItemKind.TROUSERS);
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.BLUE);
+            wvProperty.SetContent(E_PropertiesKind.COLOR, E_Color.BLUE);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
+            wvProperty.SetContent(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.PLAINCOLOR);
+            wvProperty.SetContent(E_PropertiesKind.TEXTURE, E_Texture.PLAINCOLOR);
             wvAbstract.AddProperty(wvProperty);
 
             wvItems.Add(GetItem(wvAbstract, E_Items.BOne));
@@ -114,15 +114,15 @@ namespace KillerWearsPrada.Helpers
             #region A Two -> 71
             wvAbstract = new AbstractItem(E_ItemType.A, E_ItemKind.HAT);
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.GREEN);
+            wvProperty.SetContent(E_PropertiesKind.COLOR, E_Color.GREEN);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.DARK);
+            wvProperty.SetContent(E_PropertiesKind.GRADIATION, E_Gradiation.DARK);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.STRIPES);
+            wvProperty.SetContent(E_PropertiesKind.TEXTURE, E_Texture.STRIPES);
             wvAbstract.AddProperty(wvProperty);
 
             wvSolution.AddItem(wvAbstract);
@@ -132,15 +132,15 @@ namespace KillerWearsPrada.Helpers
             #region B Two  -> 68
             wvAbstract = new AbstractItem(E_ItemType.B, E_ItemKind.HAT);
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.GREEN);
+            wvProperty.SetContent(E_PropertiesKind.COLOR, E_Color.GREEN);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.DARK);
+            wvProperty.SetContent(E_PropertiesKind.GRADIATION, E_Gradiation.DARK);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.POIS);
+            wvProperty.SetContent(E_PropertiesKind.TEXTURE, E_Texture.POIS);
             wvAbstract.AddProperty(wvProperty);
 
             wvItems.Add(GetItem(wvAbstract, E_Items.BTwo));
@@ -155,15 +155,15 @@ namespace KillerWearsPrada.Helpers
             #region A Three  -> 127
             wvAbstract = new AbstractItem(E_ItemType.A, E_ItemKind.T_SHIRT);
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.PURPLE);
+            wvProperty.SetContent(E_PropertiesKind.COLOR, E_Color.PURPLE);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
+            wvProperty.SetContent(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.POIS);
+            wvProperty.SetContent(E_PropertiesKind.TEXTURE, E_Texture.POIS);
             wvAbstract.AddProperty(wvProperty);
 
             wvSolution.AddItem(wvAbstract);
@@ -173,15 +173,15 @@ namespace KillerWearsPrada.Helpers
             #region B Three -> 121
             wvAbstract = new AbstractItem(E_ItemType.B, E_ItemKind.T_SHIRT);
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.COLOR, E_Color.PURPLE);
+            wvProperty.SetContent(E_PropertiesKind.COLOR, E_Color.PURPLE);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
+            wvProperty.SetContent(E_PropertiesKind.GRADIATION, E_Gradiation.LIGHT);
             wvAbstract.AddProperty(wvProperty);
 
             wvProperty = new ItemGraficalProperty();
-            wvProperty.SetProperty(E_PropertiesKind.TEXTURE, E_Texture.FLOWERS);
+            wvProperty.SetContent(E_PropertiesKind.TEXTURE, E_Texture.FLOWERS);
             wvAbstract.AddProperty(wvProperty);
 
             wvItems.Add(GetItem(wvAbstract, E_Items.BThree));

@@ -28,7 +28,7 @@ namespace KillerWearsPrada
     /// </summary>
     public partial class MainWindow : Window
     {
-        const int REFRESH_TIME = 1000;
+        //const int REFRESH_TIME = 1000;
 
 
         //Controller.KinectInterrogator attKinectInterrogator;
@@ -162,7 +162,7 @@ namespace KillerWearsPrada
             txtDisplay.IsEnabled = true;
             txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
-            txtDisplay.AppendText("\r\n" + attGameController.Game.GameStarted.ToString());
+            txtDisplay.AppendText("\r\n" + attGameController.Game.IsGameStarted.ToString());
             
             ResumeGameFinto();
            
@@ -356,7 +356,7 @@ namespace KillerWearsPrada
 
             //guardo se ha già iniziato a giocare o no
             //quello giusto
-               if (attGameController.Game.GameStarted == false)
+               if (attGameController.Game.IsGameStarted == false)
             //vai alla welcome home
             //devo bindare lo username...
           //  bool t = false;

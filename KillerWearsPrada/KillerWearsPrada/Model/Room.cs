@@ -200,7 +200,7 @@ namespace KillerWearsPrada.Model
                     Item wvItem = Items[0];
 
                     wvClue = wvClue.Replace("@p1", wvItem.ItemKind.ToString());
-                    wvClue = wvClue.Replace("@p2", wvItem.LastProperty.Property.ToString());
+                    wvClue = wvClue.Replace("@p2", wvItem.LastProperty.Content.ToString());
                 }
 
 

@@ -65,8 +65,8 @@ namespace KillerWearsPrada.Controller
         {
             attBackGroundWorkerBusy = true;
             attScreenshotWorker = new BackgroundWorker();
-            attScreenshotWorker.WorkerReportsProgress = true;
-            attScreenshotWorker.WorkerSupportsCancellation = true;
+            //attScreenshotWorker.WorkerReportsProgress = true;
+            //attScreenshotWorker.WorkerSupportsCancellation = true;
             attScreenshotWorker.DoWork += worker_DoWork;
             attScreenshotWorker.RunWorkerCompleted += worker_WorkEnded;
             attBackGroundWorkerBusy = false;

@@ -94,7 +94,12 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public void SetGameStarted ()
         {
-            attGame.GameStarted = true;
+            attGame.SetAsStarted();
+        }
+
+        public void SetGameFinished()
+        {
+            attGame.SetAsFinished();
         }
 
         /// <summary>
@@ -114,9 +119,6 @@ namespace KillerWearsPrada.Controller
         {
             string wvPath = CombinePath(Helpers.ResourcesHelper.SavesDirectory, ID);
             attGame = Helpers.SerializerHelper.Deserialize(wvPath);
-            bool r = true;
-            if (r)
-                r = false;
         }
         
         /// <summary>
@@ -159,8 +161,8 @@ namespace KillerWearsPrada.Controller
 
             attGame = CreateGame(wvID, PlayerName, ITEMS_PER_ROOM);
 
-            //wvPath = System.IO.Path.Combine(wvPath, wvID);
-            //Helpers.SerializerHelper.Serialize(wvPath, wvGame);
+            wvPath = System.IO.Path.Combine(wvPath, wvID);
+            Helpers.SerializerHelper.Serialize(wvPath, attGame);
 
             //throw new NotImplementedException("Implementare qui la stampa dei QRCODE");
         }
@@ -227,12 +229,12 @@ namespace KillerWearsPrada.Controller
                 wvIgp = CorrectItem.ItemProperties[i];
                 if(wvVctor[i])
                 {
-                    wvProperty.SetProperty(wvIgp.PropertyKind, wvIgp.Property);
+                    wvProperty.SetContent(wvIgp.PropertyKind, wvIgp.Content);
                 }
                 else
                 {
 
-                    wvProperty.SetProperty(InvertProperty(wvIgp));
+                    wvProperty.SetContent(InvertProperty(wvIgp));
                     
                 }
 
@@ -257,7 +259,7 @@ namespace KillerWearsPrada.Controller
                     {
                         for (int j = (int)E_Color._NULL + 1; j < (int)E_Color._END; j++)
                         {
-                            if (((E_Color)j).ToString() != IGP.Property.ToString())
+                            if (((E_Color)j).ToString() != IGP.Content.ToString())
                                 wvColors.Add((E_Color)j);
                         }
                     }
@@ -268,40 +270,40 @@ namespace KillerWearsPrada.Controller
                             if (
                                     (E_Color)j != E_Color.BLACK &&
                                     (E_Color)j != E_Color.WHITE &&
-                                    ((E_Color)j).ToString() != IGP.Property.ToString())
+                                    ((E_Color)j).ToString() != IGP.Content.ToString())
                                 wvColors.Add((E_Color)j);
                         }
                     }
                     wvRandom = attRandom.Next(wvColors.Count);
-                    wvProperty.SetProperty(IGP.PropertyKind, wvColors[wvRandom]);
+                    wvProperty.SetContent(IGP.PropertyKind, wvColors[wvRandom]);
                     #endregion
                     
                     break;
                 case E_PropertiesKind.GRADIATION:
                     E_Gradiation wvGradiation = E_Gradiation.DARK;
 
-                    if (IGP.Property.ToString() == E_Gradiation.DARK.ToString())
+                    if (IGP.Content.ToString() == E_Gradiation.DARK.ToString())
                         wvGradiation = E_Gradiation.LIGHT;
-                    wvProperty.SetProperty(IGP.PropertyKind, wvGradiation);
+                    wvProperty.SetContent(IGP.PropertyKind, wvGradiation);
                     break;
                 case E_PropertiesKind.SHAPE:
                     E_Shape wvShape = E_Shape.LONG;
 
-                    if (IGP.Property.ToString() == E_Shape.LONG.ToString())
+                    if (IGP.Content.ToString() == E_Shape.LONG.ToString())
                         wvShape = E_Shape.SHORT;
-                    wvProperty.SetProperty(IGP.PropertyKind, wvShape);
+                    wvProperty.SetContent(IGP.PropertyKind, wvShape);
                     break;
                 case E_PropertiesKind.TEXTURE:
                     List<E_Texture> wvTextures = new List<E_Texture>();
 
                     for (int j = (int)E_Texture._NULL + 1; j < (int)E_Texture._END; j++)
                     {
-                        if (((E_Texture)j).ToString() !=IGP.Property.ToString())
+                        if (((E_Texture)j).ToString() !=IGP.Content.ToString())
                             wvTextures.Add((E_Texture)j);
                     }
 
                     wvRandom = attRandom.Next(wvTextures.Count);
-                    wvProperty.SetProperty(IGP.PropertyKind, wvTextures[wvRandom]);
+                    wvProperty.SetContent(IGP.PropertyKind, wvTextures[wvRandom]);
                     break;
 
                 default:
@@ -372,22 +374,22 @@ namespace KillerWearsPrada.Controller
                         #endregion
 
 
-                        wvProperty.SetProperty(pk, wvColor);
+                        wvProperty.SetContent(pk, wvColor);
                         break;
                     case E_PropertiesKind.GRADIATION:
                         wvRandom = attRandom.Next(1 + (int)E_Gradiation._NULL, (int)E_Gradiation._END);
                         wvGradiation = (E_Gradiation)wvRandom;
-                        wvProperty.SetProperty(pk, wvGradiation);
+                        wvProperty.SetContent(pk, wvGradiation);
                         break;
                     case E_PropertiesKind.SHAPE:
                         wvRandom = attRandom.Next(1 + (int)E_Shape._NULL, (int)E_Shape._END);
                         wvShape = (E_Shape)wvRandom;
-                        wvProperty.SetProperty(pk, wvShape);
+                        wvProperty.SetContent(pk, wvShape);
                         break;
                     default: //TEXTURE
                         wvRandom = attRandom.Next(1 + (int)E_Texture._NULL, (int)E_Texture._END);
                         wvTexture = (E_Texture)wvRandom;
-                        wvProperty.SetProperty(pk, wvTexture);
+                        wvProperty.SetContent(pk, wvTexture);
                         break;
 
                 }
@@ -422,6 +424,8 @@ namespace KillerWearsPrada.Controller
         private void HandlePlayerEnterKinectSensor(object Sender, PlayerChecker.PlayerEnterKinectSensor.Arguments Parameters)
         {
             LoadGame(Parameters.ID);
+            if (attGame.IsFinished)
+                return;
             attResumeGame.RaiseEvent();
         }
 

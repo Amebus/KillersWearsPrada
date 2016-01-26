@@ -183,13 +183,13 @@ namespace KillerWearsPrada.Model
             switch (Property.PropertyKind)
             {
                 case E_PropertiesKind.COLOR:
-                    return ((E_Color)Property.Property).ToString();
+                    return ((E_Color)Property.Content).ToString();
                 case E_PropertiesKind.GRADIATION:
-                    return ((E_Gradiation)Property.Property).ToString();
+                    return ((E_Gradiation)Property.Content).ToString();
                 case E_PropertiesKind.SHAPE:
-                    return ((E_Shape)Property.Property).ToString();
+                    return ((E_Shape)Property.Content).ToString();
                 case E_PropertiesKind.TEXTURE:
-                    return ((E_Texture)Property.Property).ToString();
+                    return ((E_Texture)Property.Content).ToString();
                 default:
                     return string.Empty;
             }
@@ -323,10 +323,22 @@ namespace KillerWearsPrada.Model
                 string wvClue = BASE.Replace("@p1", ItemKind.ToString().Replace('_', ' '));
                 string wvTemp;
                 if (ItemType == E_ItemType.A || ItemType == E_ItemType.C || ItemType == E_ItemType.D)
-                    wvTemp = this.ItemProperties[0].Property.ToString();
+                    wvTemp = this.ItemProperties[0].Content.ToString();
                 else
-                    wvTemp = this.ItemProperties[1].Property.ToString();
+                    wvTemp = this.ItemProperties[1].Content.ToString();
                 wvClue = wvClue.Replace("@p2", wvTemp);
+
+                if (this.ItemKind == E_ItemKind.HAT)
+                {
+                    string wvProperty = GetProperty(E_PropertiesKind.SHAPE);
+                    if (wvProperty!=null)
+                    {
+                        if (wvProperty == E_Shape.LONG.ToString())
+                            wvClue.Replace(E_Shape.LONG.ToString(), "FEDORA");
+                        else
+                            wvClue.Replace(E_Shape.LONG.ToString(), "BASEBALL CAP");
+                    }
+                }
 
                 return wvClue;
             }

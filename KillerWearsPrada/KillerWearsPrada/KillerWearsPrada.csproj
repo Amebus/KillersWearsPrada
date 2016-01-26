@@ -154,7 +154,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\GrabImage.cs" />
     <Compile Include="Helpers\QRReaderHelper.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="KWP_DB_TestDataSet.Designer.cs">
