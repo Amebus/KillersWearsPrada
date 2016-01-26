@@ -87,22 +87,21 @@
         <!--#region Nomi della welcome image -->
         <sys:String x:Key="Welcome_Image">welcome0.png</sys:String>
         <sys:String x:Key="Player_Name">Nome del giocatore!</sys:String>
-        <sys:String x:Key="Rules" xml:space="preserve">Rules of the game:
-         
-This game is a "find a clue" in a fashion designer house
-Search each room for clues by selecting items
-Select items and doors pressing on it with the cursor mimic a simple press with the hand.
-Each rooms contains 2 items corresponding to Clues.
-Pick real items that corresponds to those 2 items and show their Barcode to the Kinect
-When all the clues an items had been connected visit the Inventory to create an dentikit nd then submit it
+        <sys:String x:Key="Rules" xml:space="preserve">Rules of the game:         
+This game is a "find a clue" set in a fashion designer house.
+Search each room for clues by selecting items.
+Select items and doors pressing on it with the cursor and mimic a simple press with the hand.
+Each rooms contains 2 items fully corresponding to the clues for that room.
+Pick real items that corresponds to those 2 items in the shop and show their Barcode to the Kinect.
+When all the clues and items had been collected for each room visit the Inventory to create an identikit and submit it.
 
             
  </sys:String>
         <sys:String x:Key="RulesLong" xml:space="preserve">Rules of the game:
          
-This game is a "find a clue" in a fashion designer house
-From the initial room - the hall - you can visit other rooms by pressing on each door
-Every room is filled with 6 Items, each one of them represents  a real object in the shop
+This game is a "find a clue" set in a fashion designer house.
+From the initial room - the hall - you can visit other rooms by pressing on each door.
+Every room is filled with 6 Items, each one of them represents  a real object in the shop.
 By pressing on an Item you select it, revealing its data and a Clue
 Each Item reveals a Clue, and the combination of Clues allows you to choose 2 Items that best fit the Clues
 Then you should look for the 2 clothes in the shop which correspond to the Items in the room, bring them to the Kinect and let it recognize them by showing the cloth's barcode
