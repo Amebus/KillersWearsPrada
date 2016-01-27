@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KillerWearsPrada.Model.Game" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAUAApABQAAAAEoUgAAAAJTiAAgAAEDBBAAAAQAEBAA=</HashCode>
+      <FileName>Model\Game.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KillerWearsPrada.Model.AbstractItem">
+    <Position X="2.75" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAABAgAAAAAAAAAIAAAAAAMQAAAAAAAJAAAAQCAAAgA=</HashCode>
+      <FileName>Model\Item.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KillerWearsPrada.Model.Item">
+    <Position X="5.75" Y="1.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQAECgAAAQQgMAgFAECgAgQGAAAAAAAgAQAAEAQAAQg=</HashCode>
+      <FileName>Model\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Model.ItemGraficalProperty" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgIAAAAAAIAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ItemGraficalProperties.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KillerWearsPrada.Model.Player" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KillerWearsPrada.Model.Room" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAoAAAAAgCEAUAAAAAQQAAAAAAATACAgAAAAEACA=</HashCode>
+      <FileName>Model\Room.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="KillerWearsPrada.Model.AlredyWearingAnItemException">
+    <Position X="7.75" Y="5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Model.Solution" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAgAAAAAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Solution.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="KillerWearsPrada.Model.ISerializable" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ISerializable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="KillerWearsPrada.Model.E_ItemType" Collapsed="true">
+    <Position X="1" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtgEAAAA=</HashCode>
+      <FileName>Model\Item.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KillerWearsPrada.Model.E_PropertiesKind" Collapsed="true">
+    <Position X="1" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgEAAQAAAgAA=</HashCode>
+      <FileName>Model\ItemGraficalProperties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KillerWearsPrada.Model.E_Color" Collapsed="true">
+    <Position X="1" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAgAQIAAAAAAAABAAgAAAAAAkAAAQAAgAAA=</HashCode>
+      <FileName>Model\ItemGraficalProperties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KillerWearsPrada.Model.E_Gradiation" Collapsed="true">
+    <Position X="1" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAhAAAQAAAAAA=</HashCode>
+      <FileName>Model\ItemGraficalProperties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KillerWearsPrada.Model.E_Shape" Collapsed="true">
+    <Position X="1" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAABAAAAgAAAQAAAAAA=</HashCode>
+      <FileName>Model\ItemGraficalProperties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KillerWearsPrada.Model.E_Texture" Collapsed="true">
+    <Position X="2.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAiAAAAABACAAAAAAAAAAAAAAgAAAQAAAAAA=</HashCode>
+      <FileName>Model\ItemGraficalProperties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KillerWearsPrada.Model.E_ItemKind" Collapsed="true">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAQAAAAAA=</HashCode>
+      <FileName>Model\ItemGraficalProperties.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KillerWearsPrada.Model.E_RoomsName" Collapsed="true">
+    <Position X="8.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAgCAAQAEAgAA=</HashCode>
+      <FileName>Model\Room.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
