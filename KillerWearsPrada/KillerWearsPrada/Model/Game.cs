@@ -282,20 +282,70 @@ namespace KillerWearsPrada.Model
         /// <returns></returns>
         public bool SetInInventory(string BarCode)
         {
-
-            foreach(Item i in ItemsNotInInventory)
+            foreach(Room r in Rooms)
             {
-                if (i.BarCode == BarCode)
+                foreach(Item i in r.Items)
                 {
-                    i.SetAsInInventory();
-                    return true;
+                    if (i.BarCode == BarCode)
+                    {
+                        if (i.IsInInventory)
+                            throw new ItemAlreadyInInvetory(i.ItemName, i.BarCode);
+                        i.SetAsInInventory();
+                        return true;
+                    }
+
                 }
             }
 
-            return false;
-
+            throw new ItemNotInGameException();
         }
 
         #endregion
+    }
+
+    /// <summary>
+    /// fnire la classe
+    /// </summary>
+    public class ItemAlreadyInInvetory : Exception
+    {
+        private const string BASE = "You alredy added @p1 to the inventory";
+
+        public ItemAlreadyInInvetory(string ItemName, string BarCode)
+        {
+            this.ItemName = ItemName;
+            this.BarCode = BarCode;
+        }
+
+        public string BarCode { get; private set; }
+        public string ItemName { get; private set; }
+
+        public override string Message
+        {
+            get
+            {
+                return BASE + ItemName.Replace("@p1", ItemName);
+            }
+        }
+    }
+
+    /// <summary>
+    /// finire la classe
+    /// </summary>
+    public class ItemNotInGameException : Exception
+    {
+        private const string BASE = "The item you are attempting to add to your inventory is not part of the Game";
+
+        public ItemNotInGameException()
+        {
+        }
+
+
+        public override string Message
+        {
+            get
+            {
+                return BASE;
+            }
+        }
     }
 }

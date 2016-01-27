@@ -39,10 +39,13 @@ namespace KillerWearsPrada
         private delegate void ResumeGameHandler(GameController.ResumeGame.Arguments Parameters);
         private delegate void UnloadGameHandler(GameController.UnloadGame.Arguments Parameters);
         private delegate void UpdateInventorydHandler(GameController.UpdateInventory.Arguments Parameters);
+        private delegate void NotifyItemExceptionHandler(GameController.NotifyItemException.Arguments Parameters);
+
 
         private ResumeGameHandler attResumeGameHandlerDelegate;
         private UnloadGameHandler attUnloadGameHandlerDelegate;
         private UpdateInventorydHandler attUpdateInventoryDelegate;
+        private NotifyItemExceptionHandler attNotifyItemExceptionDelegate;
 
         #endregion
 
@@ -89,10 +92,12 @@ namespace KillerWearsPrada
             attGameController.GetResumeGame.ResumeGameEvent += CaptureResumeGameEvent;
             attGameController.GetUnloadGame.UnloadGameEvent += CaptureUnloadGameEvent;
             attGameController.GetUpdateInventory.UpdateInventoryEvent += CaptureUpdateInventoryEvent;
+            attGameController.GetNotifyItemException.NotifyItemExceptionEvent += CaptureNotifyItemException;
 
             attResumeGameHandlerDelegate = new ResumeGameHandler(this.ResumeGame);
             attUnloadGameHandlerDelegate = new UnloadGameHandler(this.UnloadGame);
             attUpdateInventoryDelegate = new UpdateInventorydHandler(this.UpdateInventory);
+            attNotifyItemExceptionDelegate = new NotifyItemExceptionHandler(this.NotifyItemException);
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -105,6 +110,21 @@ namespace KillerWearsPrada
 
             attGameController.StartTakingScreenshots();
         }
+
+        private void CaptureNotifyItemException(object sender, GameController.NotifyItemException.Arguments Parameters)
+        {
+            if (this.Dispatcher.CheckAccess())
+            {
+                //Se siamo su quello dei controlli, chiama il delegato normalmente
+                attNotifyItemExceptionDelegate.Invoke(Parameters);
+            }
+            else
+            {
+                //Altrimenti invoca il delegato sul thread corretto
+                this.Dispatcher.Invoke(attNotifyItemExceptionDelegate, Parameters);
+            }
+        }
+
 
         private void CaptureUpdateInventoryEvent(object Sender, GameController.UpdateInventory.Arguments Parameters)
         {
@@ -261,6 +281,12 @@ namespace KillerWearsPrada
 
             //  throw new NotImplementedException("Qui aggiornare l'inventario");
         }
+
+        private void NotifyItemException(GameController.NotifyItemException.Arguments Parameters)
+        {
+            throw new NotImplementedException();
+        }
+
 
         private void Window_Initialized(object sender, EventArgs e)
         {

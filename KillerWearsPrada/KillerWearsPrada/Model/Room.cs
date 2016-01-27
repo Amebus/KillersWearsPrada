@@ -266,7 +266,7 @@ namespace KillerWearsPrada.Model
         
     }
 
-    public class AlredyWearingAnItemException :Exception
+    public class AlredyWearingAnItemException : Exception
     {
 
         private const string BASE = "The killer is already wearing an ";

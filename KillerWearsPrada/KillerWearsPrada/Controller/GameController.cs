@@ -19,6 +19,7 @@ namespace KillerWearsPrada.Controller
         private ResumeGame attResumeGame;
         private UnloadGame attUnloadGame;
         private UpdateInventory attUpdateInventory;
+        private NotifyItemException attNotifyItemException;
 
         private readonly bool[][] attPopulationMatrix =
         { 
@@ -44,6 +45,7 @@ namespace KillerWearsPrada.Controller
             attResumeGame = new ResumeGame();
             attUnloadGame = new UnloadGame();
             attUpdateInventory = new UpdateInventory();
+            attNotifyItemException = new NotifyItemException();
 
             attKinectInterrogator.PlayerEnterKinectSensorEvent = HandlePlayerEnterKinectSensor;
             attKinectInterrogator.PlayerLeaveKinectSensorEvent = HandlePlayerLeaveKinectSensor;
@@ -54,6 +56,11 @@ namespace KillerWearsPrada.Controller
         public Model.Game Game
         {
             get { return attGame; }
+        }
+
+        public NotifyItemException GetNotifyItemException
+        {
+            get { return attNotifyItemException; }
         }
 
         public UpdateInventory GetUpdateInventory
@@ -412,8 +419,20 @@ namespace KillerWearsPrada.Controller
         private void HandleBarCodeRecognized(object Sender, BarCodeRecognized.Arguments Parameters)
         {
 
-            if(attGame.SetInInventory(Parameters.BarCode))
+            try
+            {
+                attGame.SetInInventory(Parameters.BarCode);
                 attUpdateInventory.RaiseEvent(Parameters.BarCode, attGame.ActualRoomIndex);
+            }
+            catch (ItemAlreadyInInvetory ex)
+            {
+                attNotifyItemException.RaiseEvent(ex.Message);
+            }
+            catch (ItemNotInGameException ex)
+            {
+                attNotifyItemException.RaiseEvent(ex.Message);
+            }
+            
         }
 
         /// <summary>
@@ -538,6 +557,12 @@ namespace KillerWearsPrada.Controller
 
             public class Arguments : EventArgs
             {
+                public Arguments(string BarCode)
+                {
+                    this.BarCode = BarCode;
+                    this.RoomIndex = -1;
+                }
+
                 public Arguments (string BarCode, int RoomIndex)
                 {
                     this.BarCode = BarCode;
@@ -547,6 +572,34 @@ namespace KillerWearsPrada.Controller
                 public string BarCode { get; private set; }
 
                 public int RoomIndex { get; private set; }
+            }
+        }
+
+        public class NotifyItemException
+        {
+            public event EventHandler<Arguments> NotifyItemExceptionEvent;
+
+            protected virtual void OnNotifyItemException(Arguments e)
+            {
+                if (NotifyItemExceptionEvent != null)
+                    NotifyItemExceptionEvent(this, e);
+            }
+
+            public void RaiseEvent(string Messagge)
+            {
+                Arguments wvParameters = new Arguments(Messagge);
+
+                OnNotifyItemException(wvParameters);
+            }
+
+            public class Arguments : EventArgs
+            {
+                public Arguments(string Message)
+                {
+                    this.Messagge = Messagge;
+                }
+
+                public string Messagge {get; private set;}
             }
         }
     }
