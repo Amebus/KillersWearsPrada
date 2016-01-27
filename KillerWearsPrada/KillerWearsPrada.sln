@@ -463,6 +463,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TempDirectory", "TempDirect
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "InteractionGraph", "ModelingProject3\InteractionGraph.modelproj", "{53F8C20E-740C-43A1-B8D4-F0C7C83AB21B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML", "UML", "{A795DBCC-8BCA-40EC-91BE-6FE1894DCEB1}"
+	ProjectSection(SolutionItems) = preProject
+		KillerWearsPrada\ControllerDigram.cd = KillerWearsPrada\ControllerDigram.cd
+		KillerWearsPrada\HelpersDiagram.cd = KillerWearsPrada\HelpersDiagram.cd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -495,5 +501,6 @@ Global
 		{7567AE2B-B98D-4D28-B93C-355DEAAC4ABF} = {A403A83C-CF18-4388-A21B-696DA69AD4F2}
 		{9A463ED8-84C8-4D1A-8F82-D4E883927DC8} = {A403A83C-CF18-4388-A21B-696DA69AD4F2}
 		{37CC66B0-6BAF-4066-8AB7-FCDF617C822F} = {A403A83C-CF18-4388-A21B-696DA69AD4F2}
+		{53F8C20E-740C-43A1-B8D4-F0C7C83AB21B} = {A795DBCC-8BCA-40EC-91BE-6FE1894DCEB1}
 	EndGlobalSection
 EndGlobal
