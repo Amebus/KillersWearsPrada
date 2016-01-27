@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KillerWearsPrada.Controller.BarCodeRecognized">
+    <Position X="1.5" Y="4.5" Width="2.75" />
+    <NestedTypes>
+      <Class Name="KillerWearsPrada.Controller.BarCodeRecognized.Arguments" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\BarCodeRecognized.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAA=</HashCode>
+      <FileName>Controller\BarCodeRecognized.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Controller.GameController">
+    <Position X="8.75" Y="0.5" Width="2.75" />
+    <Members>
+      <Method Name="CreateProfGame" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="KillerWearsPrada.Controller.GameController.ResumeGame" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\GameController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="KillerWearsPrada.Controller.GameController.UnloadGame" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\GameController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="KillerWearsPrada.Controller.GameController.UpdateInventory" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\GameController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAwIBAQCAACAxBCAAoUAwECwSTABCAAIGE=</HashCode>
+      <FileName>Controller\GameController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Controller.KinectInterrogator">
+    <Position X="5.25" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="KillerWearsPrada.Controller.KinectInterrogator.BackgroundWorkerParameters" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\KinectInterrogator.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BCAABABABAASAgCAAACAIQKgIAAAAAABIAQAAAIAAJA=</HashCode>
+      <FileName>Controller\KinectInterrogator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Controller.PlayerChecker">
+    <Position X="1.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="KillerWearsPrada.Controller.PlayerChecker.PlayerEnterKinectSensor" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\PlayerChecker.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="KillerWearsPrada.Controller.PlayerChecker.PlayerLeaveKinectSensor" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\PlayerChecker.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="KillerWearsPrada.Controller.PlayerChecker.Relation" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\PlayerChecker.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAgAAAAAAAAAAAAAEAEggAogAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\PlayerChecker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

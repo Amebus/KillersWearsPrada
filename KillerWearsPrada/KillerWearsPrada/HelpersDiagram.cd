@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KillerWearsPrada.Helpers.DBHelper">
+    <Position X="5.5" Y="6.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="KillerWearsPrada.Helpers.DBHelper.E_Items" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\DBHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAACEgAABAAAAAAAAAEAAAAJAgABAAAAAA=</HashCode>
+      <FileName>Helpers\DBHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Helpers.QRReaderHelper">
+    <Position X="5.5" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAABAAAABAAAAAIAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Helpers\QRReaderHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Helpers.ResourcesHelper">
+    <Position X="7.25" Y="0.75" Width="4" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="KillerWearsPrada.Helpers.ResourcesHelper.E_BedroomImages" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\ResourcesHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="KillerWearsPrada.Helpers.ResourcesHelper.E_Direcetories" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\ResourcesHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="KillerWearsPrada.Helpers.ResourcesHelper.E_DoorsImages" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\ResourcesHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="KillerWearsPrada.Helpers.ResourcesHelper.E_GenericImages" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\ResourcesHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="KillerWearsPrada.Helpers.ResourcesHelper.E_KitchenImages" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\ResourcesHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="KillerWearsPrada.Helpers.ResourcesHelper.E_LivingroomImages" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\ResourcesHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="KillerWearsPrada.Helpers.ResourcesHelper.E_Magick_Dirs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\ResourcesHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="KillerWearsPrada.Helpers.ResourcesHelper.E_RoomsImages" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Helpers\ResourcesHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ACAAAAgAgACBAEAEAIAAAAAAQgoAAIAAEEAACQgDKAQ=</HashCode>
+      <FileName>Helpers\ResourcesHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Helpers.SerializerHelper">
+    <Position X="5.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\SerializerHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KillerWearsPrada.Helpers.SketchHelper">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAABAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\SketchHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

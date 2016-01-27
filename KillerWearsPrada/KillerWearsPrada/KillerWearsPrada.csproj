@@ -213,6 +213,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ControllerDigram.cd" />
+    <None Include="HelpersDiagram.cd" />
     <None Include="KWP_DB_TestDataSet.xsc">
       <DependentUpon>KWP_DB_TestDataSet.xsd</DependentUpon>
     </None>
