@@ -32,7 +32,7 @@
     <Content Include="ControllerGraph.dgml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\ModelingProject3.uml">
+    <Content Include="ModelDefinition\GrephingProject.uml">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
