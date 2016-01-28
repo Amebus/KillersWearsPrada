@@ -53,7 +53,7 @@ namespace KillerWearsPrada.Controller
         }
 
         #region Proprietà
-        public Model.Game Game
+        public Game Game
         {
             get { return attGame; }
         }
@@ -204,6 +204,12 @@ namespace KillerWearsPrada.Controller
             
         }
         
+        /// <summary>
+        /// Generate a populated <see cref="Room"/> 
+        /// </summary>
+        /// <param name="Name">The name of the room to be generated</param>
+        /// <param name="CorrectItem">The correct <see cref="Item"/> to be conteined in the room</param>
+        /// <returns></returns>
         private Room GenerateRoom(E_RoomsName Name, Item CorrectItem)
         {
             Room wvRoom = null;
@@ -224,6 +230,14 @@ namespace KillerWearsPrada.Controller
             return wvRoom;
         }
         
+        /// <summary>
+        /// Generate an <see cref="AbstractItem"/> of the specified kind starting from a specified correct item.
+        /// The every element of <see cref="E_ItemType"/> is associated an index of the <see cref="attPopulationMatrix"/> 
+        /// so that the vector corresponding to the passed index is used in creating the new <see cref="AbstractItem"/> 
+        /// </summary>
+        /// <param name="CorrectItem">The <see cref="AbstractItem"/> which is considered as correct</param>
+        /// <param name="ItemTypeToGenerate">The <see cref="E_ItemType"/> which must be generated</param>
+        /// <returns></returns>
         private AbstractItem InvertByItemType(AbstractItem CorrectItem, E_ItemType ItemTypeToGenerate)
         {
             ItemGraficalProperty wvIgp;
@@ -252,6 +266,12 @@ namespace KillerWearsPrada.Controller
             return wvInvertedAbstractItem;   
         }
 
+        /// <summary>
+        /// Generate an <see cref="ItemGraficalProperty"/>, starting from a specified one, 
+        /// which differs in <see cref="ItemGraficalProperty.Content"/>
+        /// </summary>
+        /// <param name="IGP">The <see cref="ItemGraficalProperty"/> to be passed to generate a new one</param>
+        /// <returns></returns>
         private ItemGraficalProperty InvertProperty(ItemGraficalProperty IGP)
         {
             int wvRandom;
@@ -261,6 +281,7 @@ namespace KillerWearsPrada.Controller
             {
                 case E_PropertiesKind.COLOR:
 
+                    //if the gradiation is a content, we must assure that the item color !=BLACK and !=WHITE
                     #region Color from Gradiation
                     List<E_Color> wvColors = new List<E_Color>();
                     if (IGP.PropertyKind == E_PropertiesKind.GRADIATION)
@@ -321,6 +342,11 @@ namespace KillerWearsPrada.Controller
             return wvProperty;
         }
 
+        /// <summary>
+        /// Generate an <see cref="AbstractItem"/> that is correct for the game solution
+        /// </summary>
+        /// <param name="ItemKind"></param>
+        /// <returns></returns>
         private AbstractItem GenerateCorrectAbstractItem(E_ItemKind ItemKind)
         {
             int wvRandom;
@@ -406,7 +432,7 @@ namespace KillerWearsPrada.Controller
 
             return wvAbstractItem;
         }
-
+        
         public static void DeleteAllGames()
         {
             System.IO.DirectoryInfo wvDirInfo = new System.IO.DirectoryInfo(Helpers.ResourcesHelper.SavesDirectory);
@@ -417,6 +443,11 @@ namespace KillerWearsPrada.Controller
         }
         #endregion
 
+        /// <summary>
+        /// Called to handle the <see cref="BarCodeRecognized"/> event
+        /// </summary>
+        /// <param name="Sender"></param>
+        /// <param name="Parameters"></param>
         private void HandleBarCodeRecognized(object Sender, BarCodeRecognized.Arguments Parameters)
         {
 
@@ -576,6 +607,9 @@ namespace KillerWearsPrada.Controller
             }
         }
 
+        /// <summary>
+        ///  
+        /// </summary>
         public class NotifyItemException
         {
             public event EventHandler<Arguments> NotifyItemExceptionEvent;

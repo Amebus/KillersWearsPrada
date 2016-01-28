@@ -38,9 +38,10 @@ namespace KillerWearsPrada.Controller
         }
         
         /// <summary>
-        /// 
+        /// Check if there is a palyer standing before the kinect and if so check if it is just arrived or if he was there since before
         /// </summary>
-        /// <param name="ID"></param>
+        /// <param name="ID">A <see cref="string"/> representing the ID of the Player standing before the kinect,
+        ///  set to null if there is no player or if there is unkwon</param>
         public void CheckPlayer(string ID)
         {
             Relation wvRel = CheckRelation(attIDCurrentPalyer, ID);
@@ -89,7 +90,7 @@ namespace KillerWearsPrada.Controller
         }
 
 
-        #region Sezione per scatenare dell'evento PlayerEnterKinectSensor
+        #region Section to raise the event PlayerEnterKinectSensor
         /// <summary>
         /// 
         /// </summary>
@@ -114,7 +115,7 @@ namespace KillerWearsPrada.Controller
         }
         #endregion
 
-        #region Sezione per scatenare dell'evento PlayerLeaveKinectSensor
+        #region Section to raise the event PlayerLeaveKinectSensor
         /// <summary>
         /// 
         /// </summary>

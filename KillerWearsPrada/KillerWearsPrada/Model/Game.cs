@@ -107,6 +107,9 @@ namespace KillerWearsPrada.Model
             get { return attScore; }
         }
 
+        /// <summary>
+        /// Return a <see cref="List{string}"/> of strings which represents the disclosed clues of the game
+        /// </summary>
         public List<string> DisclosedClues
         {
             get
@@ -266,7 +269,7 @@ namespace KillerWearsPrada.Model
 
             attScore = wvScore;
         }
-
+        
         public void EmptyTrash ()
         {
             foreach(Room r in attRooms)
@@ -304,7 +307,7 @@ namespace KillerWearsPrada.Model
     }
 
     /// <summary>
-    /// fnire la classe
+    /// Exception that must be raised when the item that the user is trying to add an item already contained in the inventory
     /// </summary>
     public class ItemAlreadyInInvetory : Exception
     {
@@ -329,7 +332,7 @@ namespace KillerWearsPrada.Model
     }
 
     /// <summary>
-    /// finire la classe
+    /// Exception that must be raised when the item that the user is trying to add is not part of the game
     /// </summary>
     public class ItemNotInGameException : Exception
     {

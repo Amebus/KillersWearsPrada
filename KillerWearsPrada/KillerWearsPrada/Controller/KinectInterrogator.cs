@@ -17,9 +17,7 @@ namespace KillerWearsPrada.Controller
     /// </summary>
     class KinectInterrogator
     {
-
-        //TODO Scatenare l'evento qundo viene salvato uno screenshot e si riconosce il giocatore 
-        private const string attScreen = "screenshot.png";
+        
         private int attWaitingTime;
 
         private KinectSensor attKinectSensor;
@@ -54,7 +52,6 @@ namespace KillerWearsPrada.Controller
             
             attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
             attColorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
-            //attScreenshotSaver = new Thread(new ThreadStart(TakeScreenshot));
 
             attLastcheck = DateTime.Now;
 
@@ -140,15 +137,11 @@ namespace KillerWearsPrada.Controller
             wvEncoder.Save(wvMemoryImege);
 
             wvImage = new Bitmap(wvMemoryImege);
-
-            //attSavePath = Helpers.ResourcesHelper.ImagesDirectory + "\\" + attScreen;
-
-            //creao uno stream per convertire writablebitmap in bitmap, in questo modo posso usare subito l'immagine
-            //wvImage = wvBWP.ImageToBeChecked;
-
+            
+            //QRCode found = Player found
             attPlayerChecker.CheckPlayer(Helpers.QRReaderHelper.QRCode(out wvQRCodeFound, wvImage));
 
-            if(wvQRCodeFound)
+            if(wvQRCodeFound)//if a player has been found check for a BarCode
             {
                 bool wvBarCodeFound;
                 string r = Helpers.QRReaderHelper.BarCode(out wvBarCodeFound, wvImage);
@@ -158,28 +151,7 @@ namespace KillerWearsPrada.Controller
 
 
             wvMemoryImege.Close();
-
-
-
-            //throw new NotImplementedException("Mettere i controlli sulla disponibilità del kinect");
-            /*codice utile per scatenare gli eventi del backgroundworker
-            int max = (int)e.Argument;
-            int result = 0;
-            for (int i = 0; i < max; i++)
-            {
-                int progressPercentage = Convert.ToInt32(((double)i / max) * 100);
-                if (i % 42 == 0)
-                {
-                    result++;
-                    (sender as BackgroundWorker).ReportProgress(progressPercentage, i);
-                }
-                else
-                    (sender as BackgroundWorker).ReportProgress(progressPercentage);
-                System.Threading.Thread.Sleep(1);
-
-            }
-            e.Result = result;
-            */
+            
         }
 
         private void worker_WorkEnded(object sender, RunWorkerCompletedEventArgs e)
@@ -198,7 +170,7 @@ namespace KillerWearsPrada.Controller
             if (!attEnableTakingScreenshot)
                 return;
             
-            if (attBackGroundWorkerBusy)//prima era attScreenshotWorker.IsBusy
+            if (attBackGroundWorkerBusy)//if the backgroundworker is still checking the existance of a player in front of the kinect return and wait for another screenshot
                 return;
 
             DateTime wvNow = DateTime.Now;
@@ -234,18 +206,8 @@ namespace KillerWearsPrada.Controller
 
             wvColorBitmap.Unlock();
 
-
-            //BitmapEncoder wvEncoder = new PngBitmapEncoder();
-            // create a png bitmap encoder which knows how to save a .png file
-            //wvEncoder.Frames.Add(BitmapFrame.Create(wvColorBitmap));
-
-            //Stream wvMemoryImege = new MemoryStream();
-            //wvEncoder.Save(wvMemoryImege);
-
-
-            //Bitmap wvImage = new Bitmap(wvMemoryImege);
-            //wvMemoryImege.Close();
-            wvColorBitmap.Freeze();
+            
+            wvColorBitmap.Freeze();//to allow a read of the captured frame in another thread
             BackgroundWorkerParameters wvBWP = new BackgroundWorkerParameters();
             wvBWP.ImageToBeChecked = wvColorBitmap;
             attBackGroundWorkerBusy = true;
