@@ -272,12 +272,14 @@ namespace KillerWearsPrada
         }
 
         private void NotifyItemException(GameController.NotifyItemException.Arguments Parameters)
-         {
-             throw new NotImplementedException();
-         }
+        {
+            Popup it = new Popup(Parameters.Messagge);
+            mainGrid.Children.Add(it);
+            it.Focus();
+        }
 
 
-    private void Window_Initialized(object sender, EventArgs e)
+        private void Window_Initialized(object sender, EventArgs e)
         {
 
         }
