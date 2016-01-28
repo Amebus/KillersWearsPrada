@@ -31,11 +31,11 @@ namespace KillerWearsPrada.Model
         {
             foreach(AbstractItem ai in attSolutionItems)
             {
-                if (!ai.Equals(Item))
-                    return false;
+                if (ai.Equals(Item))
+                    return true;
             }
 
-            return true;
+            return false;
         }
 
     }

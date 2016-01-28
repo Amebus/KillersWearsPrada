@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KillerWearsPrada.UC"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1920">
+             d:DesignHeight="1080" d:DesignWidth="1920" Loaded="UserControl_Loaded">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -17,7 +17,7 @@
 
     <Canvas Name="room_Canvas">
 
-        <Button Name="exit"  Click="moving" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}">
+        <Button Name="exit"  Click="moving" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Canvas.Left="381" Canvas.Top="795" Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
@@ -26,7 +26,7 @@
 
         <!--     <Button x:Name="close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="1678" Canvas.Top="22"/>  -->
 
-        <Button x:Name="back" Click="back_button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="362" Height="93" FontSize="48" Canvas.Left="1523" Style="{StaticResource GlassButtonKinect}" Foreground="#FFE8FF00" Canvas.Top="23">
+        <Button x:Name="back" Click="back_button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="362" Height="93" FontSize="48" Canvas.Left="173" Style="{StaticResource GlassButtonKinect}" Foreground="#FFE8FF00" Canvas.Top="65">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="300"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,33,50,31" FontSize="40" Text="Go to Entrance" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="297"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->

@@ -331,12 +331,12 @@ namespace KillerWearsPrada.Model
                 if (this.ItemKind == E_ItemKind.HAT)
                 {
                     string wvProperty = GetProperty(E_PropertiesKind.SHAPE);
-                    if (wvProperty!=null)
+                    if (wvProperty != null)
                     {
                         if (wvProperty == E_Shape.LONG.ToString())
-                            wvClue.Replace(E_Shape.LONG.ToString(), "FEDORA");
+                            wvClue = wvClue.Replace(E_Shape.LONG.ToString(), "WIDE-BRIMMED HAT");
                         else
-                            wvClue.Replace(E_Shape.LONG.ToString(), "BASEBALL CAP");
+                            wvClue = wvClue.Replace(E_Shape.SHORT.ToString(), "BASEBALL CAP");
                     }
                 }
 

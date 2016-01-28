@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KillerWearsPrada.UC"
              mc:Ignorable="d" 
-             d:DesignHeight="1080" d:DesignWidth="1920"
+             d:DesignHeight="850" d:DesignWidth="1680"
              FontFamily="Chiller"
-             FontSize="70"
+             FontSize="80"
              Focusable="True">
 
     <UserControl.Resources>

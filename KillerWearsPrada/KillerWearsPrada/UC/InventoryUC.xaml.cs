@@ -28,8 +28,12 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class InventoryUC : UserControl
     {
+        
+        public Trash attTrash;
+        
         // observable collection construita con tutti gli item nella lista nell'inventario
         public ObservableCollection<Item> itemInv { get; set; }
+        public ObservableCollection<Item> itemOutfit { get; set; }
         // = new ObservableCollection<Item>();
 
         ObservableCollection<ItemProva> p;
@@ -45,95 +49,28 @@ namespace KillerWearsPrada.UC
 
 
         public List<string> ListClues { get; set; }
-
-    ObservableCollection<ItemProva> SelectedItems = new ObservableCollection<ItemProva>();
-        public ObservableCollection<Item> SelectedItems2 { get; set; }
-
+        
         public string ImageFileNameOC { get; set; }
 
         public int countItems { get; set; }
 
         public InventoryUC()
         {
-            ListClues = new List<string>();
-            itemInv = new ObservableCollection<Item>();
-            SelectedItems2 = new ObservableCollection<Item>();
+          //  ciao = new EventHandler(this.RestoreFromTrash);
 
-            zoneList = new ObservableCollection<TimeZoneInfo>();
-
-            ListClues.Add("ciao bela");
-            ListClues.Add("ciao bellllaaasssssssssssssssssssssssssssssssssssssssssssssssssssb jdnbl flhfcl.enf fllfnaòc knlfsndfcln ldnncl  kdenfclnc lihdfclan ilhfcla oiashfials jluofhcab jkfaegfoueasb kfeagfoueb cakjefb aa2");
-            ListClues.Add("ciao bellllaaaaa2");
-            ListClues.Add("ciao bellllaaaaa2");
-
-            //carico tutti gli elementi che ho (prova)
-            /*       foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
-                   {
-                       foreach (Item ite in r.Items)
-                       {
-                           ite.SetAsInInventory();
-                       }
-
-                   }*/
-
-            //carico elementi da mettere nell'inventario, non indossati e non nel cestino
-            // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
-            foreach (Item it in MainWindow.attGameController.Game.ItemsInInventory)
-            {
-                if(it.IsDressed==false)
-                    itemInv.Add(it);
-                //prova per mostrare la clue!!!
-             //   ListClues.Add(it.Clue);
-            }
-
-            #region prova per mettere bene la uniform grid (da eliminare)
-            /*       foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
-                   {
-                       foreach (Item it in r.Items)
-                       {
-                           if (it.IsDressed == false)
-                               itemInv.Add(it);
-                           //prova per mostrare la clue!!!
-                           ListClues.Add(it.Clue);
-                       }
-                   }*/
-            #endregion
-
-            //metto tutti gli elementi dressed nella listbox dei dressed!
-            foreach (Item it in MainWindow.attGameController.Game.ItemsDressed)
-            {
-                SelectedItems2.Add(it);
-            }
 
             
-
-
-            //conto e mostro gli item che ha nell'inventariooo
-            // ma devo farlo cambiare runtime!!!
-            //countItems = "You have " + zoneList.Count.ToString() + " items in your inventory";
-
-
-
-
-            //  countItems = zoneList.Count;
             InitializeComponent();
-            //Kinect
-            change_Status_Inventory_Buttons(true);
 
-            if (MainWindow.attGameController.Game.ItemsInTrash.Count() > 0)
-            {
-                VisualStateManager.GoToState(trash, "trashFull33", false);
-                trash.IsEnabled = true;
-            }
-            else
-            {
-                VisualStateManager.GoToState(trash, "trashempty", false);
-                trash.IsEnabled = false;
-            }
-            
+        //    attTrash.Unloaded += Captu
+
+         //   attTrash.GetRestoreItem.RestoreEvent += CaptureRestoreItemEvent;//.UnloadGameEvent += CaptureUnloadGameEvent;
+        //    attRestoreHandlerDelegate = new RestoreItemHandler(this.RestoreFromTrash);
+
+          //  attRestoreHandlerDelegate += attTrash.Unloaded;
 
             this.DataContext = this;
-
+          //  trash.IsEnabledChanged
             //   lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
 
 
@@ -182,57 +119,28 @@ namespace KillerWearsPrada.UC
             /*
                              lbOne.ItemsSource = itemInv;
 
-                             lbTwo.ItemsSource = SelectedItems2;
+                             lbTwo.ItemsSource = itemOutfit;
             */
             #endregion
 
 
 
-            // Get data from somewhere and fill in my local ArrayList
-            //myDataList = LoadListBoxData();
-            // Bind ArrayList with the ListBox
-            LeftListBox.ItemsSource = itemInv;
-            RightListBox.ItemsSource = SelectedItems2;
-
-            #region popolo la lista di tutte le clues trovate fino ad allora
-            cluesList.ItemsSource = MainWindow.attGameController.Game.DisclosedClues;
-            #endregion
-        }
-
-        private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
-        {
-            // MainWindow.attGameController.ItemsInInventory = (List)zoneList;
-
-       //     saveItemsinModel();
-
-            Canvas p = (Canvas)this.Parent;
-
-            enable_Right_Buttons(ref p);
-
-            p.Children.Remove(this);
-
+           
         }
 
         /// <summary>
-        /// salvare le proprietà dressed ininventory e trashed dei vari items nel model alla chiusura dell'inventario, o alla submission
-        /// </summary>.++.
-        private void saveItemsinModel()
+        /// On inventory closing this method enables the right buttons according to the room in which the player was before 
+        /// opening the inventory
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
-            //non so se mi serve ancora
-            /*     foreach (Item r in MainWindow.attGameController.ItemsInInventory)
-                 {
-                     foreach (Item i in itemInv)
-                     {
-                         if (i.BarCode == r.BarCode)
-                         {
-                             r.SetAsInInventory = i.IsInInventory;
-                             r.Dress = i.IsDressed;
-                             r.IsTrashed = i.IsTrashed;
-                         }
-                     }
-                 }*/
+            Canvas p = (Canvas)this.Parent;
+            enable_Right_Buttons(ref p);
+            p.Children.Remove(this);
         }
-
+        
         /// <summary>
         /// Enable only the buttons in the room in which inventory was opened
         /// </summary>
@@ -266,14 +174,35 @@ namespace KillerWearsPrada.UC
             }
         }
 
+       
+
         private void trashare_Click(object sender, RoutedEventArgs e)
         {
-
+            /*   CloseInventory.IsEnabled = false;
+               trash.IsEnabled = false;
+               attTrash = null;
+               attTrash = new Trash();*/
+            change_Visibility_CloseButton(Visibility.Hidden);
+            change_Status_Inventory_Buttons(false);
+            attTrash = null;
+            attTrash = new Trash();
+            layoutRoot.Children.Add(attTrash);
+            attTrash.Unloaded += UpdateContent;
         }
 
-        // TODO
+        private void UpdateContent(object sender, RoutedEventArgs e)
+        {
+            change_Visibility_CloseButton(Visibility.Visible);
+            change_Status_Inventory_Buttons(true);
+            BindLeftListBox();
+        }
+
+        
+
+       
         private void submission_Click(object sender, RoutedEventArgs e)
         {
+            change_Visibility_CloseButton(Visibility.Hidden);
             change_Status_Inventory_Buttons(false);
             //saveItemsinModel();
             int score =  MainWindow.attGameController.ComputeScore();
@@ -286,15 +215,15 @@ namespace KillerWearsPrada.UC
             LeaveGame lg = new LeaveGame(message);
             layoutRoot.Children.Add(lg);
             lg.Focus();
+        }
 
-            /*      MessageBoxResult result = MessageBox.Show("CONGRATULATION!!!\r\n The percentage discount you earned is " + score + "%", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                  if (result == MessageBoxResult.Yes)
-                  {
-                      Application.Current.Windows[0].Close();
-                  }
-                  */
-            //controllo se sono giudti gli item in dressed con quelli in solution?
-            //prendere da game controller la attGameSolution?
+        /// <summary>
+        /// Change the visibility of the CloseInventory button
+        /// </summary>
+        /// <param name="v"></param>
+        private void change_Visibility_CloseButton(Visibility v)
+        {
+            CloseInventory.Visibility = v;
         }
 
         private void change_Status_Inventory_Buttons(bool status)
@@ -306,10 +235,11 @@ namespace KillerWearsPrada.UC
             LeftListBox.IsEnabled = status;
             RightListBox.IsEnabled = status;
             trash.IsEnabled = status;
+            Trash_Button.IsEnabled = status;
         }
 
-
-        /// <summary>
+        #region da rimuovere
+    /*    /// <summary>
         /// quindi lo fa?
         /// </summary>
         /// <param name="sender"></param>
@@ -337,8 +267,8 @@ namespace KillerWearsPrada.UC
         ObservableCollection<string> zoneListDest = new ObservableCollection<string>();
 
         ListBox dragSource = null;
-        ListBox dragDestination = null;
 
+        #region GetDataFromListBox(ListBox,Point) e drag drop
         public bool IsPressable
         {
             get
@@ -370,7 +300,7 @@ namespace KillerWearsPrada.UC
             }
         }
 
-        #region GetDataFromListBox(ListBox,Point)
+        
         private static object GetDataFromListBox(ListBox source, Point point)
         {
             UIElement element = source.InputHitTest(point) as UIElement;
@@ -397,7 +327,7 @@ namespace KillerWearsPrada.UC
             return null;
         }
 
-        #endregion
+       
 
         private void ListBox_Drop(object sender, DragEventArgs e)
         {
@@ -405,7 +335,7 @@ namespace KillerWearsPrada.UC
             object data = e.Data.GetData(typeof(Item));
             ((IList)dragSource.ItemsSource).Remove(data);
             parent.Items.Add(data.ToString());
-            SelectedItems2.Add((Item)data);
+            itemOutfit.Add((Item)data);
 
         }
 
@@ -421,27 +351,10 @@ namespace KillerWearsPrada.UC
         {
             throw new NotImplementedException();
         }
+        #endregion
 
-        public ArrayList myDataList;
-
-        /// <summary>
-        /// Generate data. This method can bring data from a database or XML file
-        /// or from a Web service or generate data dynamically
-        /// </summary>
-        /// <returns></returns>
-        private ArrayList LoadListBoxData()
-        {
-            ArrayList itemsList = new ArrayList();
-            itemsList.Add("Coffie");
-            itemsList.Add("Tea");
-            itemsList.Add("Orange Juice");
-            itemsList.Add("Milk");
-            itemsList.Add("Mango Shake");
-            itemsList.Add("Iced Tea");
-            itemsList.Add("Soda");
-            itemsList.Add("Water");
-            return itemsList;
-        }
+            */
+        #endregion
 
         #region Gestione aggiunta rimozione vestiti a Outfit killer e Cestino
         public Item currentItemText;
@@ -453,7 +366,10 @@ namespace KillerWearsPrada.UC
             currentItemText = (Item)LeftListBox.SelectedValue;
             currentItemIndex = LeftListBox.SelectedIndex;
 
-
+            if(currentItemIndex < 0)
+            {
+                return;
+            }
             //  RightListBox.Items.Add(currentItemText);
             if (currentItemText != null)
             {
@@ -468,13 +384,13 @@ namespace KillerWearsPrada.UC
                             try
                             {
                                 r.DressItem(ite.BarCode);
-                                SelectedItems2.Add((Item)currentItemText);
+                                itemOutfit.Add((Item)currentItemText);
                                 itemInv.RemoveAt(currentItemIndex);
                             }
-                            catch
+                            catch (AlredyWearingAnItemException ex)
                             {
                                 //Show an error message
-                                Popup mex = new Popup(e.ToString());
+                                Popup mex = new Popup(ex.Message);
                                 layoutRoot.Children.Add(mex);
                                 mex.Focus();
                             }
@@ -506,19 +422,16 @@ namespace KillerWearsPrada.UC
                     }
 
                 }
-
                 itemInv.Add((Item)currentItemText);
-
-                // RightListBox.Items.RemoveAt(RightListBox.Items.IndexOf(RightListBox.SelectedItem));
-
-                SelectedItems2.RemoveAt(RightListBox.Items.IndexOf(RightListBox.SelectedItem));
+                itemOutfit.RemoveAt(RightListBox.Items.IndexOf(RightListBox.SelectedItem));
             }
-            // Refresh data binding non mi dovrebbe servire perchè io ho observable collection
-            //  ApplyDataBinding();
         }
 
+        private int currentItemIndexLeft;
+        private int currentItemIndexRight;
+        private Item currentItemTextLeft;
+        private Item currentItemTextRight;
 
-        
         /// <summary>
         /// This method allow to trash items from both the listboxes
         /// </summary>
@@ -526,20 +439,46 @@ namespace KillerWearsPrada.UC
         /// <param name="e"></param>
         private void AddTrash_Click(object sender, RoutedEventArgs e)
         {
-            ListBox l = null;
+               ListBox l = null;
+           //    l = (ListBox)sender;
             // Find the right item and it's value and index
-            try
+            /*   try
+               {
+                   l = (ListBox)sender;
+
+               }
+               catch (System.InvalidCastException ex)
+               {
+                   return; //non è una delle 2 listbox, quindi non fa nulla
+               }*/
+
+
+            currentItemIndexLeft = LeftListBox.SelectedIndex;
+            currentItemIndexRight = RightListBox.SelectedIndex;
+            currentItemTextLeft = (Item)LeftListBox.SelectedValue;
+            currentItemTextRight = (Item)RightListBox.SelectedValue;
+
+            //non ho selezionato nessun item dalle 2 liste, quindi concludo
+            if (currentItemIndexLeft < 0 && currentItemIndexRight < 0)
             {
-                l = (ListBox)sender;
-                
-            }
-            catch
-            {
-                return; //non è una delle 2 listbox, quindi non fa nulla
+                return;
             }
 
-            currentItemText = (Item)l.SelectedValue;
-            currentItemIndex = l.SelectedIndex;
+            if(currentItemIndexRight < 0)
+            {
+                l = LeftListBox;
+                currentItemText = currentItemTextLeft;
+                currentItemIndex = currentItemIndexLeft;
+            }
+            else
+            {
+                l = RightListBox;
+                currentItemText = currentItemTextRight;
+                currentItemIndex = currentItemIndexRight;
+            }
+
+      /*      currentItemText = (Item)l.SelectedValue;
+            currentItemIndex = l.SelectedIndex;*/
 
             //     currentItemText = (Item)LeftListBox.SelectedValue;
             //     currentItemIndex = LeftListBox.SelectedIndex;
@@ -553,35 +492,129 @@ namespace KillerWearsPrada.UC
                             if (ite.BarCode == currentItemText.BarCode)
                             {
                                 ite.SetAsTrashed();
+                            //finisce la scansione in questa stanza, ma le altre le fa cmq...
+                                VisualStateManager.GoToState(trash, "trashFull33", true);
+                                trash.IsEnabled = true;
+                                break;
                             }
                         }
 
                     }
-                    // SelectedItems2.Add((Item)currentItemText);
+                if (currentItemIndexRight < 0)
+                {
+                    /*    l.Items.RemoveAt(currentItemIndex);
+                            itemOutfit.RemoveAt(currentItemIndex); */
                     itemInv.RemoveAt(currentItemIndex);
                 }
+                else
+                {
+                    itemOutfit.RemoveAt(currentItemIndex);
+                    
+                }
+            }
             
             // Refresh data binding
             // ApplyDataBinding();
         }
         #endregion
 
+
+
+        
+
         private void EnterKeyCommand(object sender, MouseButtonEventArgs e)
         {
 
         }
 
-        #region da eliminare
-        /// <summary>
-        /// Refreshes data binding
-        /// </summary>
-        private void ApplyDataBinding()
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            LeftListBox.ItemsSource = null;
+            itemInv = new ObservableCollection<Item>();
+            itemOutfit = new ObservableCollection<Item>();
+
+        //    zoneList = new ObservableCollection<TimeZoneInfo>();
+
+            //carico tutti gli elementi che ho (prova)
+            /*       foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
+                   {
+                       foreach (Item ite in r.Items)
+                       {
+                           ite.SetAsInInventory();
+                       }
+
+                   }*/
+
+            //carico elementi da mettere nell'inventario, non indossati e non nel cestino
+            // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
+            foreach (Item it in MainWindow.attGameController.Game.ItemsInInventory)
+            {
+                if (it.IsDressed == false)
+                    itemInv.Add(it);
+                //prova per mostrare la clue!!!
+                //   ListClues.Add(it.Clue);
+            }
+            
+            //metto tutti gli elementi dressed nella listbox dei dressed!
+            foreach (Item it in MainWindow.attGameController.Game.ItemsDressed)
+            {
+                itemOutfit.Add(it);
+            }
+            
+            change_Status_Inventory_Buttons(true);
+
+            change_TrashImage();
+
+            // Get data from somewhere and fill in my local ArrayList
+            //myDataList = LoadListBoxData();
             // Bind ArrayList with the ListBox
-            LeftListBox.ItemsSource = myDataList;
+            LeftListBox.ItemsSource = itemInv;
+            RightListBox.ItemsSource = itemOutfit;
+
+            #region popolo la lista di tutte le clues trovate fino ad allora
+            cluesList.ItemsSource = MainWindow.attGameController.Game.DisclosedClues;
+            #endregion
+
         }
-        #endregion
+
+        /// <summary>
+        /// This method change the image of Trash according to its state (Empty or with elements)
+        /// </summary>
+        private void change_TrashImage()
+        {
+            if (MainWindow.attGameController.Game.ItemsInTrash.Count() > 0)
+            {
+                VisualStateManager.GoToState(trash, "trashFull33", false);
+                trash.IsEnabled = true;
+            }
+            else
+            {
+                VisualStateManager.GoToState(trash, "trashempty", false);
+                trash.IsEnabled = false;
+            }
+        }
+
+        private void BindLeftListBox()
+        {
+            itemInv = null;
+            itemInv = new ObservableCollection<Item>();
+
+            foreach (Item it in MainWindow.attGameController.Game.ItemsInInventory)
+            {
+                if (it.IsDressed == false)
+                    itemInv.Add(it);
+                //prova per mostrare la clue!!!
+                //   ListClues.Add(it.Clue);
+            }
+
+            LeftListBox.ItemsSource = itemInv;
+            
+            change_TrashImage();
+        }
+
+       
+       
+        
     }
 
 

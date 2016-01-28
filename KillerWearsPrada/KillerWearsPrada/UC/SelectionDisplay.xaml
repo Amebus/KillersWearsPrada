@@ -10,7 +10,7 @@
              Width="1920"
              FontFamily="Segoe UI"
              FontSize="30"
-             Focusable="True">
+             Focusable="True" Loaded="UserControl_Loaded">
 
     <!-- Servono Height e Width non design affinchè mantenga le giuste misure!!!-->
 

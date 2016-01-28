@@ -142,6 +142,13 @@
     <Compile Include="UC\StartingRoom.xaml.cs">
       <DependentUpon>StartingRoom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UC\Trash.xaml.cs">
+      <DependentUpon>Trash.xaml</DependentUpon>
+    </Compile>
+    <Page Include="UC\Trash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Resource Include="Helpers\GraphicStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

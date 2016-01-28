@@ -10,7 +10,7 @@
              Width="1920"
              FontFamily="Chiller"
              FontSize="30"
-             Focusable="True">
+             Focusable="True" Loaded="UserControl_Loaded">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -60,31 +60,16 @@
                 </TransformGroup>
             </Grid.RenderTransform>
 
-            <Label Margin="278,-39,953,739" Content="Inventory" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="96" Height="150" Foreground="Red" />
+            <Label Margin="588,-39,392,695" Content="Inventory" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="130" Height="194" Foreground="Red" Width="700" />
 
-            <Label Margin="1020,0,578,733" Content="{Binding itemInv.Count, Mode=OneWay}" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="82" />
+            <Label Visibility="Collapsed" Margin="1020,0,578,733" Content="{Binding itemInv.Count, Mode=TwoWay}" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="82" />
 
-            <Label Margin="764,0,686,733" Content="You have " FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="230" />
+            <Label Visibility="Collapsed" Margin="764,0,686,733" Content="You have " FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="230" />
 
-            <Label Margin="1107,0,0,733" Content="items in your inventory" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="573" />
+            <Label Visibility="Collapsed" Margin="1107,0,0,733" Content="items in your inventory" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="573" />
 
 
-            <ListView Margin="1043,0,0,198" Name="lvDataBinding" Visibility="Collapsed">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel>
-                            <Label Content="Name cloth: " />
-                            <Label Content="{Binding ImageFileName}" FontWeight="Bold" />
-                            <Label Content=", " />
-                            <Label Content="Age: " />
-                            <Label Content="{Binding BarCode}" FontWeight="Bold" />
-                            <Label Content=" (" />
-                            <Label Content="{Binding ItemName}" />
-                            <Label Content=")" />
-                        </WrapPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+          
 
             <!--        <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="548,0,642,198">
                 <ListView.ItemTemplate>
@@ -103,44 +88,8 @@
             </ListView>
 -->
 
-            <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="93,87,1097,111" Visibility="Collapsed">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <!--   <Image x:Name="Image_GridViewColumnName" Width="150" Height="150" Source="{Binding ImageFileName}" />
-                            <CheckBox x:Name="trashare" Content="cestino?" Click="trashare_Click"></CheckBox> -->
-                            <Label x:Name="imaget" Width="300" Height="150" Content="{Binding NomeItem}" ></Label>
-                            <Label x:Name="i" Width="150" Height="150" Content="{Binding isDressed}" ></Label>
-                            <!-- Credo che PropertyChanged serva a noi-->
-                            <CheckBox x:Name="check" IsChecked="{Binding Path=isDressed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="check_Checked">
+           
 
-                            </CheckBox>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <!--       <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="IsSelected" Value="{Binding isDressed}"/>
-                    </Style>
-                </ListView.ItemContainerStyle> -->
-            </ListView>
-
-            <ListBox  SelectionMode="Multiple" x:Name="lbOne"  PreviewMouseLeftButtonDown="ListBox_PreviewMouseLeftButtonDown" SelectedItem="{Binding SelectedItems,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 HorizontalAlignment="Left" Margin="672,223,0,184" Width="517" 
-                 ScrollViewer.CanContentScroll="True" Visibility="Collapsed">
-                <ItemsControl ItemsSource="{Binding itemInv}"/>
-                <!-- ItemsPanelTemplate -->
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-
-                        <StackPanel Orientation="Horizontal" Height="200" >
-                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-
-
-            </ListBox>
             <!--        <ListBox.ItemTemplate>
                     <DataTemplate>
 
@@ -150,9 +99,7 @@
                     </DataTemplate>
                     </ListBox.ItemTemplate> -->
 
-            <ListBox SelectionMode="Multiple" x:Name="lbTwo"  Drop="ListBox_Drop" AllowDrop="True"  
-                 HorizontalAlignment="Right" Margin="0,223,12,156" Width="429" 
-                 ScrollViewer.VerticalScrollBarVisibility="Visible" Visibility="Collapsed"/>
+          
             <!--         <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="200" >
@@ -161,9 +108,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate> -->
 
-            <Label Name="Dressed" Margin="514,117,823,676" Content="Items in inventory" FontSize="48" Background="#FF17FF00"></Label>
-            <Label Name="NotDressed" Content="Item dressed by The Killer" Margin="1136,112,136,682" FontSize="48" Background="#FF17FF00"></Label>
-            <ListBox Margin="413,187,793,184" Name="LeftListBox" Background="{x:Null}" >
+            <Label Name="Dressed" Margin="418,160,829,605" Content="Items in inventory" FontSize="68" Background="#FF17FF00"></Label>
+            <Label Name="NotDressed" Content="Items dressed by The Killer" Margin="1068,164,34,605" FontSize="68" Background="#FF17FF00"></Label>
+            <ListBox Margin="418,255,788,116" Name="LeftListBox" Background="{x:Null}" >
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="2"/>
@@ -177,7 +124,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox Margin="0,173,180,209" Name="RightListBox" HorizontalAlignment="Right" Width="306" Background="{x:Null}">
+            <ListBox Margin="0,258,135,124" Name="RightListBox" HorizontalAlignment="Right" Width="306" Background="{x:Null}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="200" >
@@ -186,10 +133,30 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button Name="AddButton" Height="101" Margin="892,271,491,0" VerticalAlignment="Top"
-        Click="AddButton_Click">Add &gt;&gt;</Button>
-            <Button Name="RemoveButton" Margin="892,455,491,300"
-        Click="RemoveButton_Click">&lt;&lt; Remove</Button>
+
+            <Button Name="AddButton" Height="101" Margin="0,342,476,407" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="AddButton_Click" Width="292">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
+                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="67" Text="Add &gt;&gt;" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
+                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
+                </StackPanel>
+
+            </Button>
+
+            <Button Name="RemoveButton" Height="101" Margin="0,518,466,231" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="RemoveButton_Click" Width="302">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
+                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="60" Text="&lt;&lt;Remove" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
+                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
+                </StackPanel>
+
+            </Button>
+
+            
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="49,126,1272,305" BorderThickness="2">
                 <ItemsControl Name="cluesList" >
@@ -209,59 +176,7 @@
             </ScrollViewer>
 
 
-            <ListBox  x:Name="ItemsListBox" SelectionMode="Multiple" Height="300" 
-          ItemsSource="{Binding SelectedItems, UpdateSourceTrigger=PropertyChanged}"
-          SelectedItem="{Binding SelectedItems2,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,550,746,0" Visibility="Collapsed">
-                <ListBox.ItemTemplate>
-
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-
-                            <!--   <Image x:Name="Image_GridViewColumnName" Width="150" Height="150" Source="{Binding ImageFileName}" />
-                            <CheckBox x:Name="trashare" Content="cestino?" Click="trashare_Click"></CheckBox> -->
-                            <Label x:Name="imaget" Width="300" Height="150" Content="{Binding NomeItem}" ></Label>
-                            <Label x:Name="i" Width="150" Height="150" Content="{Binding isDressed}" ></Label>
-                            <!-- Credo che PropertyChanged serva a noi
-                            <CheckBox x:Name="check" IsChecked="{Binding Path=isDressed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="check_Checked"> 
-                            </CheckBox>-->
-
-
-
-                        </StackPanel>
-
-                    </DataTemplate>
-
-                </ListBox.ItemTemplate>
-            </ListBox>
-
-
-            <ListBox Name="listMyItems" Margin="10,61,1171,318"  SelectionMode="Multiple" SelectionChanged="listMyItems_SelectionChanged"  SelectedItem="{Binding SelectedItems,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed">
-
-                <ListBox.ItemTemplate>
-
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-
-                            <!--   <Image x:Name="Image_GridViewColumnName" Width="150" Height="150" Source="{Binding ImageFileName}" />
-                            <CheckBox x:Name="trashare" Content="cestino?" Click="trashare_Click"></CheckBox> -->
-                            <Label x:Name="imaget" Width="300" Height="150" Content="{Binding NomeItem}" ></Label>
-                            <Label x:Name="i" Width="150" Height="150" Content="{Binding isDressed}" ></Label>
-                            <!-- Credo che PropertyChanged serva a noi
-                            <CheckBox x:Name="check" IsChecked="{Binding Path=isDressed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="check_Checked"> 
-                            </CheckBox>-->
-
-                            <ListBoxItem Selected="ListBoxItem_Selected"></ListBoxItem>
-
-                        </StackPanel>
-
-                    </DataTemplate>
-
-                </ListBox.ItemTemplate>
-
-            </ListBox>
-
-
-            <Button Name="CloseInventory" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-58,-39,1440,789">
+            <Button Name="CloseInventory" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-58,-39,1440,789" >
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
@@ -290,7 +205,7 @@
                 </Button.Triggers>
             </Button>
 
-            <Button Name="submission" Width="645" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,666,58,10" Click="submission_Click">
+            <Button Name="submission" Width="645" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,726,58,10" Click="submission_Click">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
@@ -308,8 +223,16 @@
             </Button>
 
 
-            <Button x:Name="AddButton_Copy" Height="101" Margin="312,681,1071,0" VerticalAlignment="Top"
-            	Click="AddTrash_Click" Content="Add to Trash"/>
+            <Button Name="Trash_Button" Height="101" Margin="0,744,919,5" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="AddTrash_Click" Width="418">
+                <Button.Background>
+                    <ImageBrush/>
+                </Button.Background>
+                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="Add to Trash" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="99" />
+                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
+                </StackPanel>
+
+            </Button>
 
         </Grid>
     </Grid>

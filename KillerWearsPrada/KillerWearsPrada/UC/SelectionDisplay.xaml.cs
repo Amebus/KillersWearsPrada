@@ -45,6 +45,8 @@ namespace KillerWearsPrada.UC
         {
             get; set;
         }
+
+        private string itemId { get; set; }
         
         /// <summary>
         /// Display the information and the clue related to the item chosen 
@@ -52,8 +54,7 @@ namespace KillerWearsPrada.UC
         /// <param name="itemId"></param> is the barcode of the item associated to the button pressed
         public SelectionDisplay(string itemId)
         {
-
-
+          //  itemId = idItem;
             #region Load information related to the button selected, found by barcode, which is the tag button pressed
             Model.Item it = MainWindow.attGameController.Game.ActualRoom.GetItem(itemId);
             ClothName = it.ItemName;
@@ -63,17 +64,19 @@ namespace KillerWearsPrada.UC
             if (temp.Length != 2)
                 temp[0] += ",00";
             else
-            { if (temp[1].Length == 1)
+            {
+                if (temp[1].Length == 1)
                     temp[1] += "0";
                 temp[0] += ("," + temp[1]);
             }
-            ItemPrice = temp[0]+" €";
-            
+            ItemPrice = temp[0] + " €";
+
             ItemClue = it.Clue;
 
             ImagePath = it.ItemsImagePath; //calcolo l'image path se non l'ho già fatto! però con la giusta directory in cui ci saranno tutti i capi
 
             #endregion
+
 
             InitializeComponent();
 
@@ -128,6 +131,9 @@ namespace KillerWearsPrada.UC
 
         }
 
-        
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+           
+        }
     }
 }

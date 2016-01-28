@@ -20,7 +20,7 @@ namespace KillerWearsPrada.Model
     [Serializable]
     public class Room : ISerializable
     {
-        
+
         public Room(E_RoomsName Name)
         {
             this.Name = Name;
@@ -35,21 +35,21 @@ namespace KillerWearsPrada.Model
             this.Items = Items;
             // ogni stanza contnene anche le clues che verranno mostate nelle finestre degli item
             // più una Clue che sarà risolutiva per un'altra stanza
-            
-        } 
-        
+
+        }
+
         public E_RoomsName Name
         {
             get;
             private set;
         }
-        
+
         public List<Item> Items
         {
             get;
             private set;
         }
-        
+
         private bool LastClueAlreadyShown { get; set; }
 
         public bool IsLastClueAlreadyShown
@@ -66,7 +66,7 @@ namespace KillerWearsPrada.Model
             {
                 bool wvAAdded = false;
                 bool wvBAdded = false;
-                foreach(Item i in ItemsInInventory)
+                foreach (Item i in ItemsInInventory)
                 {
                     if (i.Type == E_ItemType.A)
                         wvAAdded = true;
@@ -86,10 +86,10 @@ namespace KillerWearsPrada.Model
             get
             {
                 List<string> wvCLues = new List<string>();
-                foreach(Item i in Items)
+                foreach (Item i in Items)
                 {
                     if (i.IsClueDisclosed)
-                        if(!wvCLues.Contains(i.Clue))
+                        if (!wvCLues.Contains(i.Clue))
                             wvCLues.Add(i.Clue);
                 }
                 return wvCLues;
@@ -130,7 +130,7 @@ namespace KillerWearsPrada.Model
             get
             {
                 List<Item> wvItems = new List<Item>();
-                foreach(Item i in Items)
+                foreach (Item i in Items)
                 {
                     if (i.IsInInventory)
                         wvItems.Add(i);
@@ -170,7 +170,7 @@ namespace KillerWearsPrada.Model
         public void DressItem(int Code)
         {
 
-            if(ItemsDressed.Count == 0)
+            if (ItemsDressed.Count == 0)
                 GetItem(Code).Dress();
             else
                 throw new AlredyWearingAnItemException(GetItem(Code).ItemKind);
@@ -191,7 +191,7 @@ namespace KillerWearsPrada.Model
             get
             {
                 LastClueAlreadyShown = true;
-                string wvClue = "There is no LastClue for the " + Name.ToString().Replace('_',' ');
+                string wvClue = "There is no LastClue for the " + Name.ToString().Replace('_', ' ');
 
                 if (Name != E_RoomsName.START_ROOM)
                 {
@@ -218,7 +218,7 @@ namespace KillerWearsPrada.Model
             get
             {
                 int count = 0;
-                foreach(Item i in this.Items)
+                foreach (Item i in this.Items)
                 {
                     if (i.IsInInventory)
                         count++;
@@ -228,9 +228,9 @@ namespace KillerWearsPrada.Model
             }
         }
 
-        public Item GetItem (string BarCode)
+        public Item GetItem(string BarCode)
         {
-            foreach(Item it in this.Items)
+            foreach (Item it in this.Items)
             {
                 if (it.BarCode == BarCode)
                     return it;
@@ -252,7 +252,7 @@ namespace KillerWearsPrada.Model
 
         public void EmptyTrash()
         {
-            foreach(Item i in ItemsTrashed)
+            foreach (Item i in ItemsTrashed)
             {
                 i.SetAsEliminated();
             }
@@ -263,7 +263,7 @@ namespace KillerWearsPrada.Model
         {
             return LastClue;
         }
-        
+
     }
 
     public class AlredyWearingAnItemException : Exception
@@ -271,7 +271,7 @@ namespace KillerWearsPrada.Model
 
         private const string BASE = "The killer is already wearing an ";
 
-        public AlredyWearingAnItemException (E_ItemKind ItemKind)
+        public AlredyWearingAnItemException(E_ItemKind ItemKind)
         {
             this.ItemKind = ItemKind;
         }
@@ -282,7 +282,7 @@ namespace KillerWearsPrada.Model
         {
             get
             {
-                return BASE + ItemKind.ToString().Replace('_',' ');
+                return BASE + ItemKind.ToString().Replace('_', ' ');
             }
         }
     }

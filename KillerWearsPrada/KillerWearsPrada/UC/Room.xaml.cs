@@ -78,6 +78,7 @@ namespace KillerWearsPrada.UC
             //   tr1 = Application.Current.Resources[Helpers.ResourcesHelper.E_LivingroomImages.Trousers1.ToString()].ToString();
 
             //svuoto la directory con gli sketches!!!
+
             System.IO.DirectoryInfo di = new DirectoryInfo(SketchesPathsFile());
 
             foreach (FileInfo file in di.GetFiles())
@@ -91,8 +92,10 @@ namespace KillerWearsPrada.UC
             listOfButtons = null;
             listOfButtons = new List<Button>();
 
+           
 
             InitializeComponent();
+
             this.DataContext = this;
 
             listOfButtons.Add(trousers1);
@@ -137,28 +140,28 @@ namespace KillerWearsPrada.UC
                             trousers3Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers3)), ResourcesHelper.TexturesPath(r.Items[2].TextureFilename), "panta3image.png");
 
                             //altri bottoni da aggiungere
-                                trousers2.Tag = r.Items[1].BarCode;
-                                trousers2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers2)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "panta2image.png");
-                                trousers4.Tag = r.Items[3].BarCode;
-                                trousers4Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers4)), ResourcesHelper.TexturesPath(r.Items[3].TextureFilename), "panta4image.png");
-                                trousers5.Tag = r.Items[4].BarCode;
-                                trousers5Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers5)), ResourcesHelper.TexturesPath(r.Items[4].TextureFilename), "panta5image.png");
-                                trousers6.Tag = r.Items[5].BarCode;
-                                trousers6Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers6)), ResourcesHelper.TexturesPath(r.Items[5].TextureFilename), "panta6image.png");
-                              
+                            trousers2.Tag = r.Items[1].BarCode;
+                            trousers2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers2)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "panta2image.png");
+                            trousers4.Tag = r.Items[3].BarCode;
+                            trousers4Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers4)), ResourcesHelper.TexturesPath(r.Items[3].TextureFilename), "panta4image.png");
+                            trousers5.Tag = r.Items[4].BarCode;
+                            trousers5Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers5)), ResourcesHelper.TexturesPath(r.Items[4].TextureFilename), "panta5image.png");
+                            trousers6.Tag = r.Items[5].BarCode;
+                            trousers6Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers6)), ResourcesHelper.TexturesPath(r.Items[5].TextureFilename), "panta6image.png");
+
 
                         }
                         break;
                     case Model.E_RoomsName.KITCHEN:
                         {
-                   /*         string[] hatmasks = new string[6] { "", "", "", "", "", "" };
-                            for(int i =0; i<hatmasks.Count(); i++)
-                            {
-                                hatmasks[i] = ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.)
-                            }
-                            */
+                            /*         string[] hatmasks = new string[6] { "", "", "", "", "", "" };
+                                     for(int i =0; i<hatmasks.Count(); i++)
+                                     {
+                                         hatmasks[i] = ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.)
+                                     }
+                                     */
                             hat1.Tag = r.Items[0].BarCode;
-                            if(r.Items[0].Shape == Model.E_Shape.LONG)
+                            if (r.Items[0].Shape == Model.E_Shape.LONG)
                                 hat1Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat1hat)), ResourcesHelper.TexturesPath(r.Items[0].TextureFilename), "hat1image.png");
                             else
                                 hat1Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat1cap)), ResourcesHelper.TexturesPath(r.Items[0].TextureFilename), "hat1image.png");
@@ -171,8 +174,8 @@ namespace KillerWearsPrada.UC
                                 hat3Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat3cap)), ResourcesHelper.TexturesPath(r.Items[2].TextureFilename), "hat3image.png");
                             /*    hat6.Tag = r.Items[5].BarCode;
                                 hat6Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat6)), ResourcesHelper.TexturesPath(r.Items[5].TextureFilename), "hat6image.png");*/
-                  
-                                  hat2.Tag = r.Items[1].BarCode;
+
+                            hat2.Tag = r.Items[1].BarCode;
                             if (r.Items[1].Shape == Model.E_Shape.LONG)
                                 hat2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat2hat)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "hat2image.png");
                             else
@@ -220,6 +223,7 @@ namespace KillerWearsPrada.UC
                 }
             }
             #endregion
+
         }
 
 
@@ -300,14 +304,15 @@ namespace KillerWearsPrada.UC
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
             yourParentWindow.Room.Visibility = Visibility.Hidden;
 
- //           yourParentWindow.StartRoom.UpdateLayout(); // <---------------------------------------------QUI
+            //           yourParentWindow.StartRoom.UpdateLayout(); // <---------------------------------------------QUI
 
+            
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;
 
             // abilito i bottoni delle 3 porte e gli altri
-            yourParentWindow.changeDoorColor();
+           
             yourParentWindow.StartRoom.change_Buttons_Status(true);
-            
+            yourParentWindow.changeDoorColor();
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -407,6 +412,12 @@ namespace KillerWearsPrada.UC
          /*   Storyboard sb = this.FindResource("moveButton") as Storyboard;
             Storyboard.SetTarget(sb, hat1);
             sb.Begin();*/
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+
         }
     }
 }

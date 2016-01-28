@@ -148,7 +148,8 @@ namespace KillerWearsPrada.Controller
         {
             attGame.ComputeScore();
 
-            return new Random().Next(16, 31);
+            //return new Random().Next(16, 31);
+            return attGame.Score;
         }
 
         /// <summary>

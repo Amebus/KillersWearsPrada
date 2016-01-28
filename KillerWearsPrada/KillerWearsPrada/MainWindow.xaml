@@ -14,7 +14,8 @@
         Loaded="Window_Loaded" 
         Initialized="Window_Initialized" 
         Closing="Window_Closing"
-        ResizeMode="CanResize"
+        WindowStyle="None"
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Name="start_Window">
 
@@ -30,8 +31,8 @@
     <Window.Background>
         <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Application_Start_Image}}"/>
     </Window.Background>
-    <k:KinectRegion x:Name="kinectRegion">
-        <Grid HorizontalAlignment="Left" Height="1080" Margin="0,-31,-8,0" VerticalAlignment="Top" Width="1920" Name="mainGrid">
+    <k:KinectRegion x:Name="kinectRegion" Height="1080" VerticalAlignment="Bottom">
+        <Grid HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="1920" Name="mainGrid">
 
 
             <Label Content="{StaticResource ResourceKey=ApplicationTitleMaiusc}" x:Name="title_game" FontFamily="Chiller" FontSize="200" FontWeight="ExtraBold" Margin="0,0,0,857" Foreground="#FF720000" FontStretch="UltraExpanded" >

@@ -42,9 +42,7 @@ namespace KillerWearsPrada.UC
             dxDoorButton.Content = E_RoomsImages.Bedroom_Image;
             */
 
-            sxDoorButton.Content = E_RoomsImages.Livingroom_Image;
-            centerDoorButton.Content = E_RoomsImages.Kitchen_Image;
-            dxDoorButton.Content = E_RoomsImages.Bedroom_Image;
+           
         }
 
         private void exit_button(object sender, RoutedEventArgs e)
@@ -267,5 +265,15 @@ namespace KillerWearsPrada.UC
             inventory_btn.IsEnabled = b;
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            sxDoorButton.Content = E_RoomsImages.Livingroom_Image;
+            centerDoorButton.Content = E_RoomsImages.Kitchen_Image;
+            dxDoorButton.Content = E_RoomsImages.Bedroom_Image;
+
+
+            MainWindow m = (MainWindow)Window.GetWindow(this);
+            m.changeDoorColor();
+        }
     }
 }

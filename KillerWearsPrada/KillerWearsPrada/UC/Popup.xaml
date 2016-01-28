@@ -45,7 +45,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <TextBlock x:Name="messageTextBlock" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="messageTextBlock" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
         </Grid>
     </Grid>
 </UserControl>

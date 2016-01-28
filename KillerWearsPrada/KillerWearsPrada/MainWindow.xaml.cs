@@ -28,7 +28,7 @@ namespace KillerWearsPrada
     /// </summary>
     public partial class MainWindow : Window
     {
-       // const int REFRESH_TIME = 1000;
+        // const int REFRESH_TIME = 1000;
 
 
         //Controller.KinectInterrogator attKinectInterrogator;
@@ -41,7 +41,6 @@ namespace KillerWearsPrada
         private delegate void UpdateInventorydHandler(GameController.UpdateInventory.Arguments Parameters);
         private delegate void NotifyItemExceptionHandler(GameController.NotifyItemException.Arguments Parameters);
 
-
         private ResumeGameHandler attResumeGameHandlerDelegate;
         private UnloadGameHandler attUnloadGameHandlerDelegate;
         private UpdateInventorydHandler attUpdateInventoryDelegate;
@@ -52,8 +51,8 @@ namespace KillerWearsPrada
         #region User Controls
         private StartingRoom startRoom;
         private Room room;
-        private InventoryUC inventory;
-        private SelectionDisplay selection_Display;
+
+        //perchè mi da questo errore???!
         string backgroundPath;
         #endregion
 
@@ -112,19 +111,18 @@ namespace KillerWearsPrada
         }
 
         private void CaptureNotifyItemException(object sender, GameController.NotifyItemException.Arguments Parameters)
-        {
-            if (this.Dispatcher.CheckAccess())
-            {
-                //Se siamo su quello dei controlli, chiama il delegato normalmente
-                attNotifyItemExceptionDelegate.Invoke(Parameters);
+         {
+             if (this.Dispatcher.CheckAccess())
+             {
+                 //Se siamo su quello dei controlli, chiama il delegato normalmente
+                 attNotifyItemExceptionDelegate.Invoke(Parameters);
+             }
+             else
+             {
+                 //Altrimenti invoca il delegato sul thread corretto
+                 this.Dispatcher.Invoke(attNotifyItemExceptionDelegate, Parameters);
             }
-            else
-            {
-                //Altrimenti invoca il delegato sul thread corretto
-                this.Dispatcher.Invoke(attNotifyItemExceptionDelegate, Parameters);
-            }
-        }
-
+         }
 
         private void CaptureUpdateInventoryEvent(object Sender, GameController.UpdateInventory.Arguments Parameters)
         {
@@ -271,24 +269,15 @@ namespace KillerWearsPrada
                     lastc.Focus();
                 }
             }
-
-
-
-            //  string lastclue = attGameController.Game.ActualRoom.LastClue;
-
-            //   MessageBoxResult result = MessageBox.Show(cosamostrare, "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-
-            //  throw new NotImplementedException("Qui aggiornare l'inventario");
         }
 
         private void NotifyItemException(GameController.NotifyItemException.Arguments Parameters)
-        {
-            throw new NotImplementedException();
-        }
+         {
+             throw new NotImplementedException();
+         }
 
 
-        private void Window_Initialized(object sender, EventArgs e)
+    private void Window_Initialized(object sender, EventArgs e)
         {
 
         }
@@ -366,7 +355,7 @@ namespace KillerWearsPrada
         private void ResumeGameFinto()
         {
             //   attGameController.LoadGame("15-01-2016-10-50-42_alberto");
-
+            attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
 
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
@@ -412,9 +401,12 @@ namespace KillerWearsPrada
             {
                 case Model.E_RoomsName.START_ROOM:
                     {
+                        /*    StartRoom.change_Buttons_Status(true);
+                            changeDoorColor();*/
+                        startRoom.Visibility = Visibility.Visible;
+                        StartRoom.change_Buttons_Status(true);
                         changeDoorColor();
 
-                        startRoom.Visibility = Visibility.Visible;
                         GC.Collect();
                         GC.WaitForPendingFinalizers();
                     }
@@ -536,30 +528,24 @@ namespace KillerWearsPrada
         {
             get { return room; }
         }
-
-        public InventoryUC Inventory
-        {
-            get { return inventory; }
-        }
-
-        public SelectionDisplay Get_SelectionDisplay
-        {
-            get { return selection_Display; }
-        }
         #endregion
 
         private void allocate_All_UC()
         {
+
             startRoom = new StartingRoom();
             room = new Room();
-
+            //   changeDoorColor();
             // se uso hidden al posto di collapsed carica prima!
-            startRoom.Visibility = Visibility.Collapsed;
-            room.Visibility = Visibility.Collapsed;
+
 
             // aggiungo tutti gli usercontrol come figli della mainGrid
             mainGrid.Children.Add(startRoom);
             mainGrid.Children.Add(room);
+            startRoom.Visibility = Visibility.Hidden;
+            room.Visibility = Visibility.Hidden;
+
+
 
             /*       GC.Collect();
                    GC.WaitForPendingFinalizers();*/
@@ -577,9 +563,9 @@ namespace KillerWearsPrada
                             if (r.DisclosedItemsClues.Count() > 0)
                             {
                                 if (r.IsRoomCompleted == true)
-                                    VisualStateManager.GoToState(startRoom.dxDoorButton, "RoomCompleted", false);
+                                    VisualStateManager.GoToState(StartRoom.dxDoorButton, "RoomCompleted", true);
                                 else
-                                    VisualStateManager.GoToState(startRoom.dxDoorButton, "Started", false);
+                                    VisualStateManager.GoToState(StartRoom.dxDoorButton, "Started", true);
                             }
                         }
                         break;
@@ -588,9 +574,9 @@ namespace KillerWearsPrada
                             if (r.DisclosedItemsClues.Count() > 0)
                             {
                                 if (r.IsRoomCompleted == true)
-                                    VisualStateManager.GoToState(startRoom.centerDoorButton, "RoomCompleted", false);
+                                    VisualStateManager.GoToState(StartRoom.centerDoorButton, "RoomCompleted", false);
                                 else
-                                    VisualStateManager.GoToState(startRoom.centerDoorButton, "Started", false);
+                                    VisualStateManager.GoToState(StartRoom.centerDoorButton, "Started", false);
                             }
                         }
                         break;
@@ -599,9 +585,9 @@ namespace KillerWearsPrada
                             if (r.DisclosedItemsClues.Count() > 0)
                             {
                                 if (r.IsRoomCompleted == true)
-                                    VisualStateManager.GoToState(startRoom.sxDoorButton, "RoomCompleted", false);
+                                    VisualStateManager.GoToState(StartRoom.sxDoorButton, "RoomCompleted", false);
                                 else
-                                    VisualStateManager.GoToState(startRoom.sxDoorButton, "Started", false);
+                                    VisualStateManager.GoToState(StartRoom.sxDoorButton, "Started", false);
                             }
                         }
                         break;
