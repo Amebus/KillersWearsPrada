@@ -97,9 +97,7 @@ namespace KillerWearsPrada
             attUnloadGameHandlerDelegate = new UnloadGameHandler(this.UnloadGame);
             attUpdateInventoryDelegate = new UpdateInventorydHandler(this.UpdateInventory);
             attNotifyItemExceptionDelegate = new NotifyItemExceptionHandler(this.NotifyItemException);
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -303,23 +301,11 @@ namespace KillerWearsPrada
         {
 
             attGameController.SetGameStarted();
-            // modificare
-            //   startRoom = new StartingRoom();
-
-            //   mainGrid.Children.Add(startRoom);
-
-            //  mainGrid.Background.Opacity = 0;
-            // vorrei disallocare questo sfondo ???
             this.Background.Opacity = 0;
-
-
+            
             disable_Buttons_Labels();
-
             startRoom.Visibility = Visibility.Visible;
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
+            
         }
 
         private void disable_Buttons_Labels()
@@ -332,9 +318,7 @@ namespace KillerWearsPrada
             goToEntrance.IsEnabled = false;
             exit.Visibility = Visibility.Hidden;
             exit.IsEnabled = false;
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -356,8 +340,8 @@ namespace KillerWearsPrada
 
         private void ResumeGameFinto()
         {
-              attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
-         //   attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
+         //     attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
+            attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
 
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
@@ -408,9 +392,6 @@ namespace KillerWearsPrada
                         startRoom.Visibility = Visibility.Visible;
                         StartRoom.change_Buttons_Status(true);
                         changeDoorColor();
-
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
                     }
                     break;
                 case Model.E_RoomsName.KITCHEN:
@@ -422,8 +403,6 @@ namespace KillerWearsPrada
                         //qui devo abilitare solo i giusti bottoni...
                         Room.change_KitchenButtons_Status(true);
                         Room.change_CommonButtons_Status(true);
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
                     }
                     break;
                 case Model.E_RoomsName.LIVINGROOM:
@@ -434,9 +413,7 @@ namespace KillerWearsPrada
 
                         Room.change_LivingroomButtons_Status(true);
                         Room.change_CommonButtons_Status(true);
-
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
+                        
                     }
                     break;
                 default:
@@ -446,8 +423,6 @@ namespace KillerWearsPrada
                         Room.setBackgroundCanvas(Application.Current.Resources[E_RoomsImages.Bedroom_Image.ToString()].ToString());
                         Room.change_BedroomButtons_Status(true);
                         Room.change_CommonButtons_Status(true);
-                        GC.Collect();
-                        GC.WaitForPendingFinalizers();
                     }
                     break;
             }
@@ -481,9 +456,7 @@ namespace KillerWearsPrada
             Welcome.Visibility = Visibility.Visible;
             goToEntrance.Visibility = Visibility.Visible;
             goToEntrance.IsEnabled = true;
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
+            
         }
 
 
@@ -517,6 +490,9 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartOver_Image);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartPressed_Image);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Image);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Sagoma);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Pergamena);
+
 
         }
 

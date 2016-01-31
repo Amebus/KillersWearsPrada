@@ -303,19 +303,12 @@ namespace KillerWearsPrada.UC
             
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
             yourParentWindow.Room.Visibility = Visibility.Hidden;
-
-            //           yourParentWindow.StartRoom.UpdateLayout(); // <---------------------------------------------QUI
-
-            
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;
 
             // abilito i bottoni delle 3 porte e gli altri
            
             yourParentWindow.StartRoom.change_Buttons_Status(true);
             yourParentWindow.changeDoorColor();
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
         }
 
         private void hat_btn(object sender, RoutedEventArgs e)
@@ -408,10 +401,8 @@ namespace KillerWearsPrada.UC
 
         private void moving(object sender, RoutedEventArgs e)
         {
-            VisualStateManager.GoToState(trousers1, "Moving", true);
-         /*   Storyboard sb = this.FindResource("moveButton") as Storyboard;
-            Storyboard.SetTarget(sb, hat1);
-            sb.Begin();*/
+            VisualStateManager.GoToState(trousers3, "Moving", true);
+            
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

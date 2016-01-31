@@ -53,7 +53,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <TextBlock x:Name="messageTextBlock" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <TextBlock x:Name="messageTextBlock" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" >
                 
             </TextBlock>
         </Grid>

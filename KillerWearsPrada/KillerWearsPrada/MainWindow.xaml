@@ -51,7 +51,7 @@
                 </Label.Effect>
             </Label>
 
-            <Button x:Name="btnDebug" Content="Apri finestra debug" HorizontalAlignment="Left" Margin="147,777,0,0" VerticalAlignment="Top" Width="174" Height="59" Click="btnDebug_Click"/>
+            <Button x:Name="btnDebug" Content="Apri finestra debug" HorizontalAlignment="Left" Margin="147,777,0,0" VerticalAlignment="Top" Width="174" Height="59" Click="btnDebug_Click" Visibility="Hidden"/>
 
             <Label  x:Name="Welcome" Margin="10,172,1280,668" FontSize="66.667" FontFamily="Showcard Gothic" FontWeight="Bold" Visibility="Collapsed">
                 <Label.Background>
@@ -72,13 +72,13 @@
                 </TextBox.Effect>
             </TextBox>
 
-            <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441"/>
+            <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="224" Margin="41,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="441" Visibility="Hidden"/>
             <Button x:Name="recognise" Click="homepage" Content="Giocatore &#xD;&#xA;Riconosciuto" HorizontalAlignment="Left" Margin="989,560,0,0" VerticalAlignment="Top" Width="215" Height="93" FontSize="32"/>
 
             
             
             <!-- Per ora lo lascio attivo anche qui -->
-            <Button Name="exit"  Click="close_button" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Margin="81,889,1566,53" >
+            <Button Name="exit"  Click="close_button" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Margin="81,889,1566,53" Visibility="Hidden">
                 <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                     

@@ -124,11 +124,14 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox Margin="0,258,135,124" Name="RightListBox" HorizontalAlignment="Right" Width="306" Background="{x:Null}">
+            <ListBox Margin="0,258,135,124" Name="RightListBox" HorizontalAlignment="Right" Width="200">
+                <ListBox.Background>
+                    <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Sagoma}}" Stretch="Fill"></ImageBrush>
+                </ListBox.Background>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Height="200" >
-                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
+                        <StackPanel Orientation="Horizontal" Height="200">
+                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

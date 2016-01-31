@@ -51,6 +51,10 @@
 
         <sys:String x:Key="Fumetto">fumetto1.png</sys:String>
 
+        <sys:String x:Key="Sagoma">sok.png</sys:String>
+
+        <sys:String x:Key="Pergamena">pergamena1.png</sys:String>
+
         <!--#region Immagini Porte-->
         <sys:String x:Key="Doors_Image">doors3empty1.jpg</sys:String>
 

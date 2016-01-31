@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KillerWearsPrada.UC"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500"
-             Height="300" Width="500"
+             d:DesignHeight="500" d:DesignWidth="900"
+             Height="500" Width="900"
              Background="Transparent"
              FontFamily="Chiller"
              FontSize="30"
@@ -36,7 +36,10 @@
         </EventTrigger>
     </UserControl.Triggers>
     <Grid x:Name="layoutRoot">
-        <Grid x:Name="grid" Background="Green" RenderTransformOrigin="0.5,0.5">
+        <Grid x:Name="grid"  RenderTransformOrigin="0.5,0.5">
+            <Grid.Background>
+                <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Pergamena}}"></ImageBrush>
+            </Grid.Background>
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -45,7 +48,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <TextBlock x:Name="messageTextBlock" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+            <TextBlock x:Name="messageTextBlock" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="60" FontWeight="Bold" Padding="100,0,100,0"/>
         </Grid>
     </Grid>
 </UserControl>

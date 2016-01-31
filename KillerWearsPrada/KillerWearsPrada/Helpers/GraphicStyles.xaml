@@ -337,7 +337,6 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
-
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -371,13 +370,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        From="0" To="1200" Duration="0:0:2"  />
+                                        To="1176" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        From="0" To="300" Duration="0:0:3"  />
+                                        To="265" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="1176" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="265" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -464,13 +469,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        From="0" To="1200" Duration="0:0:2"  />
+                                        To="459" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        From="0" To="300" Duration="0:0:3"  />
+                                        To="335" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="459" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="335" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -907,13 +918,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="520" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="677" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="520" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="677" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -993,13 +1010,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="124" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="699" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="124" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="699" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1401,6 +1424,8 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal">
                                     <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1409,6 +1434,8 @@
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1.5" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1417,6 +1444,8 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1425,13 +1454,31 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+
+                             <!--       <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" Completed="cambiastato"> -->
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="1230" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="381" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="1230" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="381" Duration="0:0:2.5" />
+                                        
+                                        
+                                    </Storyboard>
+
+                                </VisualState>
+                                <VisualState x:Name="bbb">
+                                    <Storyboard Name="bb2" Storyboard.TargetName="imageToMove">
+                                        <DoubleAnimation 
+          Storyboard.TargetProperty="Opacity" From="1"
+          To="0" Duration="0" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1449,16 +1496,7 @@
                                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                             ContentTemplate="{TemplateBinding ContentTemplate}" 
                                             Content="{TemplateBinding Content}" />
-
-                                        <!-- Qui ci va l'immagine mask di trousers1 con la giusta texture-->
-                                        <!--  <Image x:Name="image2" Source="{Binding Mode=OneWay, Source={StaticResource Trousers1}}" RenderTransformOrigin="0.5,0.5"  >
-                                            <Image.RenderTransform>
-                                                <ScaleTransform ScaleX="1" ScaleY="1"/>
-                                            </Image.RenderTransform>
-
-                                        </Image> -->
-
-
+                                        
                                         <Image x:Name="imageToMove" Source="{Binding trousers1Image}" >
                                             <Image.RenderTransform>
                                                 <TranslateTransform X="0" Y="0" />
@@ -1496,6 +1534,7 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal">
                                     <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1504,6 +1543,7 @@
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1.5" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1512,6 +1552,7 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1520,14 +1561,21 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="735" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="304" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="735" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="304" Duration="0:0:2.5" />
                                     </Storyboard>
+
                                 </VisualState>
 
                             </VisualStateGroup>
@@ -1582,6 +1630,7 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal">
                                     <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1590,6 +1639,7 @@
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1.5" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1598,6 +1648,7 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1606,13 +1657,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="1202" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="134" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="1202" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="134" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1677,6 +1734,7 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal">
                                     <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1685,6 +1743,7 @@
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1.5" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1693,6 +1752,7 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1763,6 +1823,7 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal">
                                     <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1771,6 +1832,7 @@
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1.5" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1779,6 +1841,7 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1857,6 +1920,7 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal">
                                     <Storyboard Name="shrinkStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1865,6 +1929,7 @@
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard Name="expandStoryboard" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1.5" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 
@@ -1873,6 +1938,7 @@
                                 </VisualState>
                                 <VisualState x:Name="Pressed">
                                     <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image2" >
+                                        <DoubleAnimation Storyboard.TargetName="imageToMove" Storyboard.TargetProperty="Opacity" Duration="0" From="1" To="0"/>
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX" 
         To="1" Duration="0:0:0.2" />
                                         <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY" 

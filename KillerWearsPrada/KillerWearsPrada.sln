@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KillerWearsPrada", "KillerWearsPrada\KillerWearsPrada.csproj", "{C46FAFB1-7165-4411-B23D-373A1A7FD239}"
 EndProject
@@ -39,6 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5622C0
 		KillerWearsPrada\Images\pergamena1.png = KillerWearsPrada\Images\pergamena1.png
 		KillerWearsPrada\Images\shirt_3bedOk.png = KillerWearsPrada\Images\shirt_3bedOk.png
 		KillerWearsPrada\Images\shirt_4armadiofuoriOk.png = KillerWearsPrada\Images\shirt_4armadiofuoriOk.png
+		KillerWearsPrada\Images\sok.png = KillerWearsPrada\Images\sok.png
 		KillerWearsPrada\Images\start.png = KillerWearsPrada\Images\start.png
 		KillerWearsPrada\Images\startover.png = KillerWearsPrada\Images\startover.png
 		KillerWearsPrada\Images\startpressed.png = KillerWearsPrada\Images\startpressed.png

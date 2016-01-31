@@ -17,7 +17,7 @@
 
     <Canvas Name="room_Canvas">
 
-        <Button Name="exit"  Click="moving" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Canvas.Left="381" Canvas.Top="795" Visibility="Collapsed">
+        <Button Name="exit"  Click="moving" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Canvas.Left="819" Canvas.Top="838" Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->

@@ -131,9 +131,6 @@ namespace KillerWearsPrada.UC
             change_Buttons_Status(false);
 
             yourParentWindow.Room.Visibility = Visibility.Visible;
-            
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
         }
 
         private void enable_RightRoom_Buttons(ref Canvas prepareRoom)
