@@ -97,10 +97,7 @@ Search each room for clues by selecting items.
 Select items and doors pressing on it with the cursor and mimic a simple press with the hand.
 Each rooms contains 2 items fully corresponding to the clues for that room.
 Pick real items that corresponds to those 2 items in the shop and show their Barcode to the Kinect.
-When all the clues and items had been collected for each room visit the Inventory to create an identikit and submit it.
-
-            
- </sys:String>
+When all the clues and items had been collected for each room visit the Inventory to create an identikit and submit it.</sys:String>
         <sys:String x:Key="RulesLong" xml:space="preserve">Rules of the game:
          
 This game is a "find a clue" set in a fashion designer house.
@@ -121,9 +118,7 @@ NOTICE that you can leave anytime simply by submitting an Identkit
  - Interaction :
 1. To select something, press on it with the cursor mimic a simple press with the hand
 2. In order to see a long list, scoll the cursor close the hand and move it up or down
-3. To add an Item in the Identikit, drag and drop it close the hand over the Item, then move it on the right spot, then open the hand 
-            
- </sys:String>
+3. To add an Item in the Identikit, drag and drop it close the hand over the Item, then move it on the right spot, then open the hand</sys:String>
 
         <sys:String x:Key="Regole" xml:space="preserve">Rules of the game:
          

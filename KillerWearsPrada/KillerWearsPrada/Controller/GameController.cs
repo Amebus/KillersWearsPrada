@@ -629,12 +629,13 @@ namespace KillerWearsPrada.Controller
 
             public class Arguments : EventArgs
             {
-                public Arguments(string Message)
+                string attMessage;
+                public Arguments(string message)
                 {
-                    this.Messagge = Messagge;
+                    attMessage = message;
                 }
 
-                public string Messagge {get; private set;}
+                public string Messagge { get { return attMessage; }}
             }
         }
     }

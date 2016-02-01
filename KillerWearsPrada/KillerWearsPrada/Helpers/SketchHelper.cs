@@ -72,7 +72,25 @@ namespace KillerWearsPrada.Helpers
             Mask.Composite(Texture, CompositeOperator.Multiply);
             MagickImage sketch = Mask;
 
-            sketch.Write(Helpers.ResourcesHelper.SketchesPath() + nameSketch);
+            try
+            {
+                // sketch.Write(Helpers.ResourcesHelper.SketchesPath() + nameSketch);
+                string p = Helpers.ResourcesHelper.SketchesPath() + nameSketch;
+                System.IO.Stream s = new System.IO.FileStream(p, System.IO.FileMode.Create);
+                
+                sketch.Write(s);
+                s.Close();
+            }
+            catch (MagickException ex)
+            {
+                string s= ex.Message;
+            }
+            catch
+            {
+
+            }
+            sketch.Dispose();
+            
             string path = Helpers.ResourcesHelper.SketchesPath() + nameSketch;
             return path;
 

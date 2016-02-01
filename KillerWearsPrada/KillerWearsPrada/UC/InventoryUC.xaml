@@ -130,8 +130,8 @@
                 </ListBox.Background>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Height="200">
-                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Orientation="Horizontal" Height="200" Width="200">
+                            <Image x:Name="Image_GridViewColumnName" Source="{Binding ItemsImagePath}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

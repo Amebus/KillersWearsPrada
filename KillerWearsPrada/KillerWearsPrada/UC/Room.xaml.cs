@@ -79,16 +79,7 @@ namespace KillerWearsPrada.UC
 
             //svuoto la directory con gli sketches!!!
 
-            System.IO.DirectoryInfo di = new DirectoryInfo(SketchesPathsFile());
-
-            foreach (FileInfo file in di.GetFiles())
-            {
-                file.Delete();
-            }
-            foreach (DirectoryInfo dir in di.GetDirectories())
-            {
-                dir.Delete(true);
-            }
+           
             listOfButtons = null;
             listOfButtons = new List<Button>();
 
