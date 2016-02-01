@@ -341,7 +341,7 @@ namespace KillerWearsPrada
         private void ResumeGameFinto()
         {
          //     attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
-            attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
+           // attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
 
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
