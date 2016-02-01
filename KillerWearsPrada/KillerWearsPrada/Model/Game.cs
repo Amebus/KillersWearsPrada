@@ -326,7 +326,7 @@ namespace KillerWearsPrada.Model
         {
             get
             {
-                return BASE + ItemName.Replace("@p1", ItemName);
+                return BASE.Replace("@p1", ItemName);
             }
         }
     }

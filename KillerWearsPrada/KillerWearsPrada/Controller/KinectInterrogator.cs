@@ -177,7 +177,7 @@ namespace KillerWearsPrada.Controller
             if (wvNow.Subtract(attLastcheck).Seconds < attWaitingTime)
                 return;
             attLastcheck = wvNow;
-
+            //attKinectSensor.BodyFrameSource.BodyCount >= 1;
             ColorFrame wvColorFrame = e.FrameReference.AcquireFrame();
 
             if (wvColorFrame == null)

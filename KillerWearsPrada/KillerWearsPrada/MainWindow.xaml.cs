@@ -103,7 +103,7 @@ namespace KillerWearsPrada
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             attDebug = new UC.DebugWindow(attGameController);
-            attDebug.Show();
+            //attDebug.Show();
 
             attGameController.StartTakingScreenshots();
         }
@@ -175,6 +175,7 @@ namespace KillerWearsPrada
         /// which contains information passed by the event <see cref="Controller.GameController.ResumeGame"/></param>
         private void ResumeGame(GameController.ResumeGame.Arguments Parameters)
         {
+            Delete_Sketches_Files();
             txtDisplay.IsEnabled = true;
             txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
@@ -218,10 +219,12 @@ namespace KillerWearsPrada
             startRoom = null;
             room = null;
 
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
             //  backgroundPath = Application.Current.Resources[E_GenericImages.Application_Start_Image.ToString()].ToString();
             this.Background.Opacity = 1;
 
-
+            Delete_Sketches_Files();
         }
 
         private void UpdateInventory(GameController.UpdateInventory.Arguments Parameters)
@@ -574,6 +577,39 @@ namespace KillerWearsPrada
                 }
             }
         }
+
+        /// <summary>
+        /// Deletes all the sketches files in directory Sketches
+        /// </summary>
+        private void Delete_Sketches_Files()
+        {
+            //delete all sketches files
+            System.IO.DirectoryInfo di = new DirectoryInfo(SketchesPathsFile());
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                try
+                {
+                    File.Delete(file.FullName);
+                    //file.Delete();
+                }
+                catch { }
+            }
+            /*
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                try
+                {
+                    dir.Delete(true);
+                }
+                catch
+                {
+
+                }
+
+            }*/
+        }
+
 
         private void EnterKeyCommand(object sender, EventArgs e)
         {
