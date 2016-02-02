@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:KillerWearsPrada.UC"
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="1680"
-             FontFamily="Chiller"
-             FontSize="80"
+             FontFamily="Comic Sans MS"
+             FontSize="78"
              Focusable="True">
 
     <UserControl.Resources>
@@ -41,10 +41,13 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-   
+
 
     <Grid x:Name="layoutRoot"  >
-        <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5" Background="Gold" >
+        <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5" >
+            <Grid.Background>
+                <ImageBrush ImageSource="{Binding Mode=OneTime, Source={StaticResource FireworksBackground}}"></ImageBrush>
+            </Grid.Background>
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -53,8 +56,11 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <TextBlock x:Name="messageTextBlock" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" >
-                
+            <TextBlock x:Name="messageTextBlock" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" >
+                <TextBlock.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </TextBlock.Background>
+
             </TextBlock>
         </Grid>
     </Grid>

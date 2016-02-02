@@ -95,7 +95,7 @@
 
             <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-352,-50,1254,725">
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,30,50,29" VerticalAlignment="Center" FontSize="30" Text="Back to The Room" TextWrapping="Wrap"/>
+                    <TextBlock Margin="5,30,50,29" VerticalAlignment="Center" FontSize="33" Text="{StaticResource BackRoomText}" TextWrapping="Wrap" FontStyle="Italic" FontFamily="Comic Sans MS" />
                     <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
 

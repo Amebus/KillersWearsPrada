@@ -255,7 +255,7 @@ namespace KillerWearsPrada
                         //if the animation cannot be performed, a popup is shown
                         if (wasActualRoom == false)
                         {
-                            cosamostrare = "Item " + item.ItemName + " added in Inventory\r\n\r\n";
+                            cosamostrare = "Item " + item.ItemName + " added in Inventory";
                             Popup lastc = new Popup(cosamostrare);
                             mainGrid.Children.Add(lastc);
                             lastc.Focus();
@@ -264,7 +264,7 @@ namespace KillerWearsPrada
                     }
                 if (r.IsRoomCompleted == true && r.IsLastClueAlreadyShown == false)
                 {
-                    cosamostrare += r.LastClue;
+                    cosamostrare += "\r\n" + r.LastClue;
                     Popup lastc = new Popup(cosamostrare);
                     mainGrid.Children.Add(lastc);
                     lastc.Focus();
@@ -343,8 +343,8 @@ namespace KillerWearsPrada
 
         private void ResumeGameFinto()
         {
-              attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
-         //   attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
+           attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
+      //     attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
 
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
@@ -495,7 +495,8 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Image);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Sagoma);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Pergamena);
-
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.TrashBackground);
+            Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.FireworksBackground);
 
         }
 

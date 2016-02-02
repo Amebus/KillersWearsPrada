@@ -209,7 +209,7 @@ namespace KillerWearsPrada.UC
             //metto a true l'attributo has finished
             MainWindow.attGameController.Game.SetAsFinished();
 
-            string message = "CONGRATULATION!!!\r\n The percentage discount you earned is " + score + "%\r\n\r\nGo to the checkout to retrieve your discount!\r\nThank you to have played our game!\r\nBye!";
+            string message = "GAME FINISHED!!!\r\nThe percentage discount you earned is " + score + "%\r\nGo away from the Kinect and go to the checkout to retrieve your discount!\r\nThank you to have played our game!";
 
             LeaveGame lg = new LeaveGame(message);
             layoutRoot.Children.Add(lg);

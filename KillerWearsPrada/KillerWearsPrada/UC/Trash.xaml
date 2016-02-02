@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="1680"
              Height="850" Width="1680"
-             FontFamily="Chiller"
+             FontFamily="Comic Sans MS"
              FontSize="70"
              Focusable="True" Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded">
 
@@ -46,7 +46,11 @@
 
 
     <Grid x:Name="layoutRoot"  >
-        <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5" Background="WhiteSmoke" >
+        <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+            <Grid.Background>
+                <ImageBrush ImageSource="{Binding Mode=OneWay,Source={StaticResource TrashBackground}}" >
+                </ImageBrush>
+            </Grid.Background>
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -76,7 +80,7 @@
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="Close Trash" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="99" />
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="{StaticResource CloseInventoryText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="99" />
 
                 </StackPanel>
                 <Button.Triggers>
@@ -101,23 +105,23 @@
 
             </Button>
 
-            <Button Name="Restore" Margin="0,59,39,550" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="Restore_Click" Width="418">
+            <Button Name="Restore" Margin="0,59,39,550" Foreground="SeaShell" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="Restore_Click" Width="418">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="233" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" FontSize="75" Text="Restore element" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" />
+                    <TextBlock Margin="5,0,5,0" FontSize="75" Text="{StaticResource RestoreElemText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" />
 
                 </StackPanel>
 
             </Button>
 
-            <Button Name="EmptyTrash" Margin="0,560,39,34" Foreground="Fuchsia" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="EmptyTrash_Click" Width="418">
+            <Button Name="EmptyTrash" Margin="0,560,39,34" Foreground="Tomato" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="EmptyTrash_Click" Width="418">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="233" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" FontSize="75" Text="Empty Trash" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="233" VerticalAlignment="Top" />
+                    <TextBlock Margin="5,0,5,0" FontSize="75" Text="{StaticResource EmptyTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="233" VerticalAlignment="Top" />
 
                 </StackPanel>
 

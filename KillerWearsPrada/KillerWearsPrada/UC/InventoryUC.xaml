@@ -8,7 +8,7 @@
              d:DesignHeight="1080" d:DesignWidth="1920"
              Height="1080"
              Width="1920"
-             FontFamily="Chiller"
+             FontFamily="Comic Sans MS"
              FontSize="30"
              Focusable="True" Loaded="UserControl_Loaded">
 
@@ -60,7 +60,7 @@
                 </TransformGroup>
             </Grid.RenderTransform>
 
-            <Label Margin="588,-39,392,695" Content="Inventory" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="130" Height="194" Foreground="Red" Width="700" />
+            <Label Margin="588,-39,392,695" Content="{StaticResource InventoryText}" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="130" Height="194" Foreground="Red" Width="700" />
 
             <Label Visibility="Collapsed" Margin="1020,0,578,733" Content="{Binding itemInv.Count, Mode=TwoWay}" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="82" />
 
@@ -108,9 +108,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate> -->
 
-            <Label Name="Dressed" Margin="418,160,829,605" Content="Items in inventory" FontSize="68" Background="#FF17FF00"></Label>
-            <Label Name="NotDressed" Content="Items dressed by The Killer" Margin="1068,164,34,605" FontSize="68" Background="#FF17FF00"></Label>
-            <ListBox Margin="418,255,788,116" Name="LeftListBox" Background="{x:Null}" >
+            <Label Name="Dressed" Margin="418,160,829,605" Content="{StaticResource ItemsInventoryText}" FontSize="49" Background="Honeydew"></Label>
+            <Label Name="NotDressed" Content="{StaticResource OutfitText}" Margin="1020,164,0,605" FontSize="49" Background="Honeydew"></Label>
+            <ListBox Margin="418,255,788,116" Name="LeftListBox" Background="{x:Null}" Width="Auto">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="2"/>
@@ -124,14 +124,14 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox Margin="0,258,135,124" Name="RightListBox" HorizontalAlignment="Right" Width="200">
+            <ListBox Margin="0,258,135,124" Name="RightListBox" HorizontalAlignment="Right" Width="Auto">
                 <ListBox.Background>
                     <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Sagoma}}" Stretch="Fill"></ImageBrush>
                 </ListBox.Background>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="200" Width="200">
-                            <Image x:Name="Image_GridViewColumnName" Source="{Binding ItemsImagePath}" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="UniformToFill"/>
+                            <Image x:Name="Image_GridViewColumnName" Height="200" Width="200" Source="{Binding ItemsImagePath}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -142,7 +142,7 @@
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="67" Text="Add &gt;&gt;" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="67" Text="{StaticResource AddText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
                     <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
 
@@ -153,7 +153,7 @@
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="60" Text="&lt;&lt;Remove" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="60" Text="{StaticResource RemoveText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
                     <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
 
@@ -184,7 +184,7 @@
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,29,50,28" VerticalAlignment="Center" FontSize="37" Text="Close Inventory" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="285" />
+                    <TextBlock Margin="5,29,50,28" VerticalAlignment="Center" FontSize="37" Text="{StaticResource CloseInventoryText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="285" />
                     <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
                 <Button.Triggers>
@@ -208,12 +208,12 @@
                 </Button.Triggers>
             </Button>
 
-            <Button Name="submission" Width="645" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,726,58,10" Click="submission_Click">
+            <Button Name="submission" Width="645" Foreground="Gold" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,726,58,10" Click="submission_Click">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,50,0" VerticalAlignment="Center" FontSize="67" Text="Submit your outfit!" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="637" Height="99" />
+                    <TextBlock Margin="5,0,50,0" VerticalAlignment="Center" FontSize="67" Text="{StaticResource SubmissionText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="637" Height="99" />
                     <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
 
@@ -231,7 +231,7 @@
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="Add to Trash" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="99" />
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="{StaticResource AddTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="99" />
                     <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
 

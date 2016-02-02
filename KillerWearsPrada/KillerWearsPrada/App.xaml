@@ -57,6 +57,9 @@
 
         <sys:String x:Key="Pergamena">pergamena1.png</sys:String>
 
+        <sys:String x:Key="TrashBackground">textureTrash.jpg</sys:String>
+        <sys:String x:Key="FireworksBackground">fireworks.jpg</sys:String>
+
         <!--#region Immagini Porte-->
         <sys:String x:Key="Doors_Image">doors3empty1.jpg</sys:String>
 
@@ -202,8 +205,22 @@ NOTA si può lasciare il gioco in ogni momento inviando un Identikit
         <!--#endregion-->
         <!-- #endregion -->
         
+        <!--#region strings for graphic content-->
+        <sys:String x:Key="InventoryText">Inventory</sys:String>
+        <sys:String x:Key="GoToEntranceText">Go to Entrance</sys:String>
+        <sys:String x:Key="CloseInventoryText">Close Inventory</sys:String>
+        <sys:String x:Key="BackRoomText">Back to The Room</sys:String>
+        <sys:String x:Key="CloseTrashText">Close Trash</sys:String>
+        <sys:String x:Key="RestoreElemText">Restore element</sys:String>
+        <sys:String x:Key="EmptyTrashText">Empty Trash</sys:String>
+        <sys:String x:Key="AddTrashText">Add to Trash</sys:String>
+        <sys:String x:Key="ItemsInventoryText">Items in inventory</sys:String>
+        <sys:String x:Key="OutfitText">Items dressed by The Killer</sys:String>
+        <sys:String x:Key="AddText">Add &gt;&gt;</sys:String>
+        <sys:String x:Key="RemoveText">&lt;&lt;Remove</sys:String>
+        <sys:String x:Key="SubmissionText">Submit your outfit!</sys:String>
         <sys:String x:Key="ApplicationTitle">Killer Wears Prada</sys:String>
         <sys:String x:Key="ApplicationTitleMaiusc">THE KILLER WEARS PRADA</sys:String>
-
+        <!--#endregion-->
     </Application.Resources>
 </Application>

@@ -43,7 +43,9 @@ namespace KillerWearsPrada.Helpers
             Trash_Full,
             Fumetto,
             Sagoma,
-            Pergamena
+            Pergamena,
+            TrashBackground,
+            FireworksBackground
         }
 
         public enum E_RoomsImages

@@ -36,7 +36,7 @@
 
         <Button x:Name="inventory_btn" Width="425" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}"  Click="inventory_button" Canvas.Left="1460" Canvas.Top="914" Height="134">
             <StackPanel HorizontalAlignment="Center" Width="429" Height="138" Orientation="Horizontal" VerticalAlignment="Center">
-                <TextBlock Margin="5,10,50,8" FontSize="70" Text="Inventory" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="422" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
+                <TextBlock Margin="5,10,50,8" FontSize="70" Text="{StaticResource InventoryText}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="422" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
             </StackPanel>
         </Button>
