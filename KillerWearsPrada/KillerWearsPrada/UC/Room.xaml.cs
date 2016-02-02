@@ -54,6 +54,7 @@ namespace KillerWearsPrada.UC
         #endregion
 
         public List<Button> listOfButtons { get; set; }
+        public SelectionDisplay selectionDisplay;
 
         public Room(string roomID)
         {
@@ -306,25 +307,20 @@ namespace KillerWearsPrada.UC
         private void hat_btn(object sender, RoutedEventArgs e)
         {
             disable_buttons();
-
             var myValue = ((Button)sender).Tag;
-
-            SelectionDisplay selectionDisplay = new SelectionDisplay(myValue.ToString());
+            selectionDisplay = null;
+            selectionDisplay = new SelectionDisplay(myValue.ToString());
             Kitchen_Image.Children.Add(selectionDisplay);
-
-
-            // Selection dialog covers the entire interact-able area, so the current press interaction
-            // should be completed. Otherwise hover capture will allow the button to be clicked again within
-            // the same interaction (even whilst no longer visible).
             selectionDisplay.Focus();
-
-            
+            selectionDisplay.Unloaded += UpdateButtons;
         }
+
+        public InventoryUC inventory;
 
         private void inventory_button(object sender, RoutedEventArgs e)
         {
-
-            InventoryUC inventory;
+            
+            inventory = null;
             inventory = new InventoryUC();
             if (Livingroom_Image.Visibility == Visibility.Visible)
             
@@ -335,8 +331,12 @@ namespace KillerWearsPrada.UC
                 Bedroom_Image.Children.Add(inventory);
                 
             inventory.Focus();
+            //lo devo fare dopo perchè mi serve sapere cosa c'era di visibile al momento!!!
             disable_buttons();
+            inventory.Unloaded += UpdateButtons;
         }
+
+        
 
         private void disable_buttons()
         {
@@ -349,19 +349,31 @@ namespace KillerWearsPrada.UC
         public void change_KitchenButtons_Status(bool b)
         {
             hat1.IsEnabled = b;
+            hat2.IsEnabled = b;
             hat3.IsEnabled = b;
+            hat4.IsEnabled = b;
+            hat5.IsEnabled = b;
+            hat6.IsEnabled = b;
         }
 
         public void change_LivingroomButtons_Status(bool b)
         {
             trousers1.IsEnabled = b;
+            trousers2.IsEnabled = b;
             trousers3.IsEnabled = b;
+            trousers4.IsEnabled = b;
+            trousers5.IsEnabled = b;
+            trousers6.IsEnabled = b;
         }
 
         public void change_BedroomButtons_Status(bool b)
         {
+            shirt1.IsEnabled = b;
+            shirt2.IsEnabled = b;
             shirt3.IsEnabled = b;
             shirt4.IsEnabled = b;
+            shirt5.IsEnabled = b;
+            shirt6.IsEnabled = b;
         }
 
         public void change_CommonButtons_Status(bool b)
@@ -375,21 +387,57 @@ namespace KillerWearsPrada.UC
         {
             disable_buttons();
             var myValue = ((Button)sender).Tag;
-            SelectionDisplay selectionDisplay = new SelectionDisplay(myValue.ToString());
+            selectionDisplay = null;
+            selectionDisplay = new SelectionDisplay(myValue.ToString());
             Livingroom_Image.Children.Add(selectionDisplay);
             selectionDisplay.Focus();
+            selectionDisplay.Unloaded += UpdateButtons;
+        }
+
+        
+        // se chiamato da qui, inventario non può essere stato aperto da startroom!!!
+        private void enable_Right_Buttons()
+        {
+            switch (MainWindow.attGameController.Game.ActualRoom.Name)
+            {
+                case Model.E_RoomsName.KITCHEN:
+                    {
+                        change_KitchenButtons_Status(true);
+                        change_CommonButtons_Status(true);
+                    }
+                    break;
+                case Model.E_RoomsName.LIVINGROOM:
+                    {
+                        change_LivingroomButtons_Status(true);
+                        change_CommonButtons_Status(true);
+                    }
+                    break;
+                default:
+                    {
+                        change_BedroomButtons_Status(true);
+                        change_CommonButtons_Status(true);
+                    }
+                    break;
+            }
         }
 
         private void shirt_btn(object sender, RoutedEventArgs e)
         {
             disable_buttons();
             var myValue = ((Button)sender).Tag;
-            SelectionDisplay selectionDisplay = new SelectionDisplay(myValue.ToString());
+            selectionDisplay = null;
+            selectionDisplay = new SelectionDisplay(myValue.ToString());
             Bedroom_Image.Children.Add(selectionDisplay);
             selectionDisplay.Focus();
-
-
+            selectionDisplay.Unloaded += UpdateButtons;
         }
+
+        private void UpdateButtons(object sender, RoutedEventArgs e)
+        {
+            enable_Right_Buttons();
+        }
+
+       
 
         private void moving(object sender, RoutedEventArgs e)
         {

@@ -9,6 +9,8 @@
         <Color x:Key="BlinkColor">#00FF00</Color>
         <Color x:Key="StartedColor">#FFFFFF00</Color>
         <Color x:Key="CompletedColor">#FFFFFFFF</Color>
+        <Color x:Key="OverTrashColor">#008DBDFF</Color>
+        <Color x:Key="PressedTrashColor">#FF6A6A6A</Color>
 
         <!--#region Directories Paths and subPaths-->
         <sys:String x:Key="CurrentDirectory">s</sys:String>

@@ -95,7 +95,6 @@ namespace KillerWearsPrada.UC
         private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
             Canvas parent = (Canvas)this.Parent;
-            enable_Right_Buttons(ref parent);
             parent.Children.Remove(this);
         }
 

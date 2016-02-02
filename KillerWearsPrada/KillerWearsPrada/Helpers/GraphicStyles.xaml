@@ -11,9 +11,42 @@
                     <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="MouseOver"/>
-                                <VisualState x:Name="Pressed"/>
+                                <VisualState x:Name="Normal">
+                                    <Storyboard x:Name="startRedBlinkNormal">
+                                    <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
+                                                Duration="0:0:1"
+                                                RepeatBehavior="Forever">
+                                        <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                    </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard x:Name="startRedBlink2">
+                                        <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
+                                                Duration="0:0:1"
+                                                RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0.8"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard x:Name="noBlink">
+                                        <ColorAnimation Duration="0" Storyboard.TargetName="dropShadow" Storyboard.TargetProperty="Color" To="{DynamicResource PressedTrashColor}" />
+                                        <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
+                                                Duration="0:0:1"
+                                                RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState> 
                                 <!--non va!-->
                                 
                             </VisualStateGroup>
@@ -34,8 +67,36 @@
                                     
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                <!--        <Border Opacity="0" HorizontalAlignment="Stretch" x:Name="glow" Width="Auto" Grid.RowSpan="2" CornerRadius="4,4,4,4">
+                            <Border.Background>
+                                <RadialGradientBrush>
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.702" ScaleY="2.243"/>
+                                            <SkewTransform AngleX="0" AngleY="0"/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform X="-0.368" Y="-0.152"/>
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#B28DBDFF" Offset="0"/>
+                                    <GradientStop Color="#008DBDFF" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <Border HorizontalAlignment="Stretch" Margin="0,0,0,0" x:Name="shine" Width="Auto" CornerRadius="4,4,0,0">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.494,0.889" StartPoint="0.494,0.028">
+                                    <GradientStop Color="#99FFFFFF" Offset="0"/>
+                                    <GradientStop Color="#33FFFFFF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border> -->
                         <Image x:Name="emptyTr" Source="{Binding Mode=OneWay, Source={StaticResource Trash_Empty}}"  Stretch="UniformToFill" />
-                        <Image x:Name="trashFull" Source="{Binding Mode=OneWay, Source={StaticResource Trash_Full}}" Opacity="0" Stretch="UniformToFill"  />
+                        <Image x:Name="trashFull" Source="{Binding Mode=OneWay, Source={StaticResource Trash_Full}}" Opacity="0" Stretch="UniformToFill">
+                            <Image.Effect>
+                                <DropShadowEffect Color="{DynamicResource OverTrashColor}" x:Name="dropShadow" ShadowDepth="1" BlurRadius="40" />
+                            </Image.Effect>
+                        </Image>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

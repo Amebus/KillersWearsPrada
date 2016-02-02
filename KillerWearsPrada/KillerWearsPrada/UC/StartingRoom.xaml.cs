@@ -22,7 +22,9 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class StartingRoom : UserControl
     {
-     //   private static int ok = 0;
+        //   private static int ok = 0;
+
+        public InventoryUC inventory;
 
         public StartingRoom()
         {
@@ -198,9 +200,16 @@ namespace KillerWearsPrada.UC
         {
             //Disable all buttons
             change_Buttons_Status(false);
-            InventoryUC inventory = new InventoryUC();
+            inventory = null;
+            inventory = new InventoryUC();
             room_Canvas.Children.Add(inventory);
             inventory.Focus();
+            inventory.Unloaded += UpdateButtonsStartroom;
+        }
+
+        private void UpdateButtonsStartroom(object sender, RoutedEventArgs e)
+        {
+            change_Buttons_Status(true);
         }
 
         /// <summary>

@@ -137,15 +137,16 @@ namespace KillerWearsPrada.UC
         private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
             Canvas p = (Canvas)this.Parent;
-            enable_Right_Buttons(ref p);
+       //     enable_Right_Buttons(ref p);
             p.Children.Remove(this);
         }
-        
+
+        #region non serve più perchè lo gestisco nei usercontro room e startroom con actualroom name      
         /// <summary>
         /// Enable only the buttons in the room in which inventory was opened
         /// </summary>
         /// <param name="p"></param>
-        private void enable_Right_Buttons(ref Canvas p)
+   /*     private void enable_Right_Buttons(ref Canvas p)
         {
             MainWindow i = (MainWindow)Application.Current.Windows[0];
             switch (p.Name.ToString())
@@ -172,9 +173,9 @@ namespace KillerWearsPrada.UC
                     }
                     break;
             }
-        }
+        }*/
 
-       
+        #endregion
 
         private void trashare_Click(object sender, RoutedEventArgs e)
         {
@@ -198,8 +199,6 @@ namespace KillerWearsPrada.UC
         }
 
         
-
-       
         private void submission_Click(object sender, RoutedEventArgs e)
         {
             change_Visibility_CloseButton(Visibility.Hidden);
