@@ -17,7 +17,7 @@
 
     <Canvas Name="room_Canvas">
 
-        <Button Name="exit"  Click="moving" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Canvas.Left="819" Canvas.Top="838" Visibility="Collapsed">
+        <Button Name="exit"  Click="moving" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Canvas.Left="819" Canvas.Top="838" >
             <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
                 <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
@@ -48,22 +48,7 @@
 -->
         <Canvas x:Name="Livingroom_Image" Width="1920" Height="1080" Visibility="Hidden">
 
-            <Button x:Name ="trousers1" Click="trousers_btn" Height="155" Canvas.Top="503" Width="265" Canvas.Left="260" Style="{StaticResource KinectButtonZoomTrousers1}" Tag="trousers1">
-                <!--       <Button.RenderTransform>
-                    <TranslateTransform />
-                </Button.RenderTransform>
-                <Button.Triggers>
-                    <EventTrigger RoutedEvent="">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="trousers1"
-                 Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                 From="1000" To="0" Duration="0:0:1" BeginTime="0:0:0" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Button.Triggers> -->
-            </Button>
+            <Button x:Name ="trousers1" Click="trousers_btn" Height="155" Canvas.Top="503" Width="265" Canvas.Left="260" Style="{StaticResource KinectButtonZoomTrousers1}" Tag="trousers1"/>
             <Button x:Name ="trousers2" Click="trousers_btn" Canvas.Left="288" Canvas.Top="750" Height="271" Width="203" Style="{StaticResource KinectButtonZoomTrousers2}" Tag="trousers2"/>
             <Button x:Name ="trousers3" Click="trousers_btn" Height="167" Canvas.Top="580" Width="381" Canvas.Left="755" Style="{StaticResource KinectButtonZoomTrousers3}" Tag="trousers3"/>
             <Button x:Name ="trousers4" Click="trousers_btn" Canvas.Left="1030" Canvas.Top="750" Height="296" Width="352" Style="{StaticResource KinectButtonZoomTrousers4}" Tag="trousers4"/>
@@ -80,7 +65,7 @@
             <Button x:Name ="hat3" Click="hat_btn"  Height="105" Canvas.Left="1421" Canvas.Top="518" Width="162" Style="{StaticResource KinectButtonZoomHat3}" Tag="hat3"/>
             <Button x:Name ="hat4" Click="hat_btn"  Height="88" Canvas.Left="1269" Canvas.Top="292" Width="137" Style="{StaticResource KinectButtonZoomHat4}" Tag="hat4"/>
             <Button x:Name ="hat5" Click="hat_btn"  Height="99" Canvas.Left="606" Canvas.Top="159" Width="150" Style="{StaticResource KinectButtonZoomHat5}" Tag="hat5"/>
-            <Button x:Name ="hat6" Click="hat_btn"  Height="105" Width="159" Style="{StaticResource KinectButtonZoomHat6}" Tag="hat6"/>
+            <Button x:Name ="hat6" Click="hat_btn"  Height="105" Width="159" Style="{StaticResource KinectButtonZoomHat6}" Tag="hat6" Canvas.Left="722" Canvas.Top="577"/>
         </Canvas>
         <Canvas x:Name="Bedroom_Image"  Width="1920" Height="1080" Visibility="Hidden">
 

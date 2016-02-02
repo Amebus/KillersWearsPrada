@@ -283,6 +283,7 @@ namespace KillerWearsPrada.UC
             // 0 credo sia l'entrata
             // MainWindow.attGameController.ActualRoomIndex = 0;
             //funziona
+
             MainWindow.attGameController.Game.ActualRoomIndex = 0;
             disable_buttons();
 
@@ -392,7 +393,7 @@ namespace KillerWearsPrada.UC
 
         private void moving(object sender, RoutedEventArgs e)
         {
-            VisualStateManager.GoToState(trousers3, "Moving", true);
+            VisualStateManager.GoToState(shirt6, "Moving", true);
             
         }
 

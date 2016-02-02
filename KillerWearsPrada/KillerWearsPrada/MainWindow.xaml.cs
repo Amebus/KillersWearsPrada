@@ -344,7 +344,7 @@ namespace KillerWearsPrada
         private void ResumeGameFinto()
         {
          //     attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
-           // attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
+            attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
 
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";
@@ -541,34 +541,37 @@ namespace KillerWearsPrada
                 {
                     case Model.E_RoomsName.BEDROOM:
                         {
-                            if (r.DisclosedItemsClues.Count() > 0)
+                            if (r.IsRoomCompleted == true)
                             {
-                                if (r.IsRoomCompleted == true)
-                                    VisualStateManager.GoToState(StartRoom.dxDoorButton, "RoomCompleted", true);
-                                else
-                                    VisualStateManager.GoToState(StartRoom.dxDoorButton, "Started", true);
+                                VisualStateManager.GoToState(StartRoom.dxDoorButton, "RoomCompleted", false);
+                            }
+                            else if (r.DisclosedItemsClues.Count() > 0)
+                            {
+                                VisualStateManager.GoToState(StartRoom.dxDoorButton, "Started", false);
                             }
                         }
                         break;
                     case Model.E_RoomsName.KITCHEN:
                         {
-                            if (r.DisclosedItemsClues.Count() > 0)
+                            if (r.IsRoomCompleted == true)
                             {
-                                if (r.IsRoomCompleted == true)
-                                    VisualStateManager.GoToState(StartRoom.centerDoorButton, "RoomCompleted", false);
-                                else
-                                    VisualStateManager.GoToState(StartRoom.centerDoorButton, "Started", false);
+                                VisualStateManager.GoToState(StartRoom.centerDoorButton, "RoomCompleted", false);
+                            }
+                            else if (r.DisclosedItemsClues.Count() > 0)
+                            {
+                                VisualStateManager.GoToState(StartRoom.centerDoorButton, "Started", false);
                             }
                         }
                         break;
                     case Model.E_RoomsName.LIVINGROOM:
                         {
-                            if (r.DisclosedItemsClues.Count() > 0)
+                            if (r.IsRoomCompleted == true)
                             {
-                                if (r.IsRoomCompleted == true)
-                                    VisualStateManager.GoToState(StartRoom.sxDoorButton, "RoomCompleted", false);
-                                else
-                                    VisualStateManager.GoToState(StartRoom.sxDoorButton, "Started", false);
+                                VisualStateManager.GoToState(StartRoom.sxDoorButton, "RoomCompleted", false);
+                            }
+                            else if(r.DisclosedItemsClues.Count() >0)
+                            {
+                                VisualStateManager.GoToState(StartRoom.sxDoorButton, "Started", false);
                             }
                         }
                         break;

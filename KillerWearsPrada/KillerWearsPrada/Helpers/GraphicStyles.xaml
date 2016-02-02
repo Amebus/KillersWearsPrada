@@ -2,56 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:KillerWearsPrada.Helpers">
 
-    <Style x:Key="BlinkBase" TargetType="{x:Type Button}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid>
-
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" >
-                                    <Storyboard x:Name="stopRedBlink2">
-                                        <DoubleAnimationUsingKeyFrames
-                                                Storyboard.TargetName="dropShadow"
-                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
-                                            <LinearDoubleKeyFrame Value="1"/>
-                                        </DoubleAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard x:Name="startRedBlink2">
-                                        <DoubleAnimationUsingKeyFrames
-                                                Storyboard.TargetName="dropShadow"
-                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
-                                                Duration="0:0:1"
-                                                RepeatBehavior="Forever">
-                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
-                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
-                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
-                                        </DoubleAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Pressed">
-
-                                </VisualState>
-                                <!-- Posso cambiare l'immagine della porta con una scura -->
-                                <VisualState x:Name="Disabled">
-                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image4" >
-                                        <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                        
-
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-
-        </Setter>
-    </Style>
-
+    
     <Style x:Key="trash_Style" TargetType="{x:Type Button}">
         
         <Setter Property="Template">
@@ -108,6 +59,57 @@
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#region styles for door buttons-->
+    <Style x:Key="BlinkBase" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" >
+                                    <Storyboard x:Name="stopRedBlink2">
+                                        <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)">
+                                            <LinearDoubleKeyFrame Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard x:Name="startRedBlink2">
+                                        <DoubleAnimationUsingKeyFrames
+                                                Storyboard.TargetName="dropShadow"
+                                                Storyboard.TargetProperty="(DropShadowEffect.Opacity)"
+                                                Duration="0:0:1"
+                                                RepeatBehavior="Forever">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0" Value="1"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="0.2"/>
+                                            <LinearDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+
+                                </VisualState>
+                                <!-- Posso cambiare l'immagine della porta con una scura -->
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard Name="shrinkStoryboardEnd" Storyboard.TargetName="image4" >
+                                        <DoubleAnimation Storyboard.TargetName="doorDisabled" Storyboard.TargetProperty="Opacity" Duration="0" From="0" To="1"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+
         </Setter>
     </Style>
 
@@ -311,9 +313,11 @@
             </Setter.Value>
 
         </Setter>
-    </Style> 
+    </Style>
 
-  <!--  <Style x:Key="RedBlink" TargetType="{x:Type Button}" BasedOn="{StaticResource RedBlinkCenter}">
+    <!--#endregion-->
+
+    <!--  <Style x:Key="RedBlink" TargetType="{x:Type Button}" BasedOn="{StaticResource RedBlinkCenter}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -564,13 +568,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        From="0" To="1200" Duration="0:0:2"  />
+                                        To="69" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        From="0" To="300" Duration="0:0:3"  />
+                                        To="396" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="69" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="396" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -652,13 +662,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        From="0" To="1200" Duration="0:0:2"  />
+                                        To="221" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        From="0" To="300" Duration="0:0:3"  />
+                                        To="622" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="221" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="622" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -740,13 +756,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        From="0" To="1200" Duration="0:0:2"  />
+                                        To="884" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        From="0" To="300" Duration="0:0:3"  />
+                                        To="755" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="884" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="755" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -829,13 +851,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="768" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="337" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="768" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="337" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -924,13 +952,13 @@
                                         To="520" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="677" Duration="0:0:2" />
+                                        To="707" Duration="0:0:2" />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
                                         To="520" Duration="0:0:2.5" />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="677" Duration="0:0:2.5" />
+                                        To="707" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1102,13 +1130,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="400" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="34" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="400" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="34" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1188,13 +1222,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="1468" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="850" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="1468" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="850" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1274,13 +1314,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="324" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="358" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="324" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="358" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1360,13 +1406,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="1170" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="556" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="1170" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="556" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1761,13 +1813,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="460" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="134" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="460" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="134" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1853,16 +1911,16 @@
                                     <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="830" Duration="0:0:2"  />
+                                        To="890" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="863" Duration="0:0:2" />
+                                        To="853" Duration="0:0:2" />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="830" Duration="0:0:2.5" />
+                                        To="890" Duration="0:0:2.5" />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="863" Duration="0:0:2.5" />
+                                        To="853" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
@@ -1953,13 +2011,19 @@
                                 </VisualState>
 
                                 <VisualState x:Name="Moving">
-                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" >
+                                    <Storyboard Name="moveButton" Storyboard.TargetName="imageToMove" FillBehavior="Stop">
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
-                                        To="1200" Duration="0:0:2"  />
+                                        To="69" Duration="0:0:2"  />
                                         <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
-                                        To="300" Duration="0:0:3"  />
+                                        To="674" Duration="0:0:2" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        To="69" Duration="0:0:2.5" />
+                                        <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.Y)"
+                                        To="674" Duration="0:0:2.5" />
                                     </Storyboard>
                                 </VisualState>
 
