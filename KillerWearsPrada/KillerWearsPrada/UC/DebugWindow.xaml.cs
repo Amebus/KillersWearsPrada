@@ -11,15 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Microsoft.Kinect;
 
 namespace KillerWearsPrada.UC
 {
+
+
     /// <summary>
     /// Interaction logic for DebugWindow.xaml
     /// </summary>
     public partial class DebugWindow : Window
     {
+        KinectSensor attks;
+        BodyFrameReader attBodyFrameReader;
         Controller.GameController attGameController;
         Helpers.DBHelper db;
         public DebugWindow(Controller.GameController GameController)
@@ -27,7 +31,12 @@ namespace KillerWearsPrada.UC
             InitializeComponent();
             db = new Helpers.DBHelper();
             attGameController = GameController;
-            
+
+            attks = KinectSensor.GetDefault();
+            attks.Open();
+            attBodyFrameReader = attks.BodyFrameSource.OpenReader();
+            attBodyFrameReader.FrameArrived += this.Reader_BodyFrameArrived;
+
         }
 
         private void btnTestDB_Click(object sender, RoutedEventArgs e)
@@ -40,7 +49,7 @@ namespace KillerWearsPrada.UC
         {
             //Model.Game wvGame = null;
             //Model.Room wvRoom = wvGame.ActualRoom;
-            
+
             db = new Helpers.DBHelper();
             try
             {
@@ -68,13 +77,13 @@ namespace KillerWearsPrada.UC
             {
                 txtDisplay.Text = ex.Message;
             }
-            
+
 
         }
 
         private void btnPopolazioneProva_Click(object sender, RoutedEventArgs e)
         {
-            try           
+            try
             {
                 attGameController.CreateGameAndPlayer("Giocatore1");
                 //attGameController.CreateProfGame();
@@ -89,5 +98,33 @@ namespace KillerWearsPrada.UC
 
 
         }
+
+        private void Reader_BodyFrameArrived(object sender, BodyFrameArrivedEventArgs e)
+        {
+            bool wvDataReceived = false;
+            BodyFrame wvBodyFrame = e.FrameReference.AcquireFrame();
+
+            if (wvBodyFrame == null)
+                return;
+
+            Body[] wvBodies = new Body[wvBodyFrame.BodyCount];
+
+            wvBodyFrame.GetAndRefreshBodyData(wvBodies);
+            wvDataReceived = true;
+
+
+            if (!wvDataReceived)
+                return;
+
+            int attBodyCount = 0;
+            foreach (Body b in wvBodies)
+            {
+                if (b.IsTracked)
+                    attBodyCount++;
+            }
+
+            txtDisplay.Text = attBodyCount.ToString();
+        }
+
     }
 }

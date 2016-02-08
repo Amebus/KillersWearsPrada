@@ -14,6 +14,8 @@ namespace KillerWearsPrada.Controller
         
         private string attIDCurrentPalyer;
 
+        private int attPreviousBodyCount;
+
         /// <summary>
         /// 
         /// </summary>
@@ -26,7 +28,7 @@ namespace KillerWearsPrada.Controller
         public PlayerChecker()
         {
             attIDCurrentPalyer = null;
-            
+            attPreviousBodyCount = 0;
         }
 
         /// <summary>
@@ -42,26 +44,49 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         /// <param name="ID">A <see cref="string"/> representing the ID of the Player standing before the kinect,
         ///  set to null if there is no player or if there is unkwon</param>
-        public void CheckPlayer(string ID)
+        /// <param name="BodyCount"></param>
+        public void CheckPlayer(string ID, int BodyCount)
         {
             Relation wvRel = CheckRelation(attIDCurrentPalyer, ID);
             switch (wvRel)
             {
                 case Relation.STILL_NOT_AVAILABLE:
-                    return;
-                case Relation.CP_NULL_NP_NULL:
-                    return;
+                    break;
+                case Relation.CP_NULL_NP_NULL:   
+                    if(attPreviousBodyCount > 0 && BodyCount>0)
+                    {
+                        attPreviousBodyCount = BodyCount;
+                        break;
+                    }          
+                    if (attPreviousBodyCount > 0 && BodyCount < 1)
+                    {
+                        attPreviousBodyCount = 0;
+                        attIDCurrentPalyer = null;
+                        RaisePlayerLeaveKinectSensorEvent();
+                        break;
+                    }
+                    break;
                 case Relation.CP_NULL_NP_VALUE:
                     attIDCurrentPalyer = ID;
+                    attPreviousBodyCount = BodyCount;
                     RaisePlayerEnterKinectSensorEvent(ID);
                     break;
                 case Relation.CP_VALUE_NP_NULL:
+                    if(BodyCount > 0)
+                    {
+                        attPreviousBodyCount = BodyCount;
+                        return;
+                    }
                     attIDCurrentPalyer = null;
                     RaisePlayerLeaveKinectSensorEvent();
                     break;
                 case Relation.CP_VALUE_NP_VALUE:
                     if (attIDCurrentPalyer != ID)
+                    {
+                        attPreviousBodyCount = 0;
+                        attIDCurrentPalyer = null;
                         RaisePlayerLeaveKinectSensorEvent();
+                    }
                     break;
                 default:
                     break;

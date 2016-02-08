@@ -19,10 +19,12 @@ namespace KillerWearsPrada.Controller
     {
         
         private int attWaitingTime;
+        private int attBodyCount;
 
         private KinectSensor attKinectSensor;
 
         private ColorFrameReader attColorFrameReader;
+        private BodyFrameReader attBodyFrameReader;
 
         private PlayerChecker attPlayerChecker;
         private BarCodeRecognized attBarcodeChecker;
@@ -44,19 +46,26 @@ namespace KillerWearsPrada.Controller
         /// <param name="Checker"></param>
         public KinectInterrogator(KinectSensor Sensor, int WaitingTime) 
         {
+            attBodyCount = 0;
             attEnableTakingScreenshot = false;
             attBarcodeChecker = new BarCodeRecognized();
             attPlayerChecker = new PlayerChecker();
             attWaitingTime = WaitingTime;
             this.attKinectSensor = Sensor;
-            
+
+            attBodyFrameReader = attKinectSensor.BodyFrameSource.OpenReader();
+            attBodyFrameReader.FrameArrived += this.Reader_BodyFrameArrived;
+
             attColorFrameReader = Sensor.ColorFrameSource.OpenReader();
             attColorFrameReader.FrameArrived += this.Reader_ColorFrameArrived;
+            
 
+            attKinectSensor.Open();
             attLastcheck = DateTime.Now;
 
             SetBackgroundWorker();
         }
+
 
         private void SetBackgroundWorker ()
         {
@@ -139,7 +148,7 @@ namespace KillerWearsPrada.Controller
             wvImage = new Bitmap(wvMemoryImege);
             
             //QRCode found = Player found
-            attPlayerChecker.CheckPlayer(Helpers.QRReaderHelper.QRCode(out wvQRCodeFound, wvImage));
+            attPlayerChecker.CheckPlayer(Helpers.QRReaderHelper.QRCode(out wvQRCodeFound, wvImage), wvBWP.BodyCount);
 
             if(wvQRCodeFound)//if a player has been found check for a BarCode
             {
@@ -158,6 +167,33 @@ namespace KillerWearsPrada.Controller
         {
             attBackGroundWorkerBusy = false;   
         }
+
+        private void Reader_BodyFrameArrived(object sender, BodyFrameArrivedEventArgs e)
+        {
+            bool wvDataReceived = false;
+            BodyFrame wvBodyFrame = e.FrameReference.AcquireFrame();
+
+            if (wvBodyFrame == null)
+                return;
+
+            Body[] wvBodies = new Body[wvBodyFrame.BodyCount];
+
+            wvBodyFrame.GetAndRefreshBodyData(wvBodies);
+            wvDataReceived = true;
+
+
+            if (!wvDataReceived)
+                return;
+
+            attBodyCount = 0;
+            foreach(Body b in wvBodies)
+            {
+                if (b.IsTracked)
+                    attBodyCount++;
+            }
+
+        }
+
 
 
         /// <summary>
@@ -210,6 +246,7 @@ namespace KillerWearsPrada.Controller
             wvColorBitmap.Freeze();//to allow a read of the captured frame in another thread
             BackgroundWorkerParameters wvBWP = new BackgroundWorkerParameters();
             wvBWP.ImageToBeChecked = wvColorBitmap;
+            wvBWP.BodyCount = attBodyCount;
             attBackGroundWorkerBusy = true;
             attScreenshotWorker.RunWorkerAsync(wvBWP);
 
@@ -219,6 +256,11 @@ namespace KillerWearsPrada.Controller
         {
 
             public WriteableBitmap ImageToBeChecked
+            {
+                get; set;
+            }
+
+            public int BodyCount
             {
                 get; set;
             }
