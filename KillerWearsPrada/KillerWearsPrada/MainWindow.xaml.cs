@@ -189,7 +189,7 @@ namespace KillerWearsPrada
         private void UnloadGame(GameController.UnloadGame.Arguments Parameters)
         {
             txtDisplay.IsEnabled = true;
-            txtDisplay.Visibility = Visibility.Visible;
+          //  txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Unload";
 
             disable_Buttons_Labels();
