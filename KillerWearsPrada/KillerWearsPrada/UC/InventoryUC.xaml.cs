@@ -34,20 +34,7 @@ namespace KillerWearsPrada.UC
         // observable collection construita con tutti gli item nella lista nell'inventario
         public ObservableCollection<Item> itemInv { get; set; }
         public ObservableCollection<Item> itemOutfit { get; set; }
-        // = new ObservableCollection<Item>();
-
-        ObservableCollection<ItemProva> p;
-
-
-
-        // string state =  Microsoft.Kinect.HandState.Closed.ToString();
-
-        /// <summary>
-        /// INotifyPropertyChangedPropertyChanged event to allow window controls to bind to changeable data
-        /// </summary>
-        //  public event PropertyChangedEventHandler PropertyChanged;
-
-
+        
         public List<string> ListClues { get; set; }
         
         public string ImageFileNameOC { get; set; }
@@ -56,76 +43,11 @@ namespace KillerWearsPrada.UC
 
         public InventoryUC()
         {
-          //  ciao = new EventHandler(this.RestoreFromTrash);
-
-
-            
             InitializeComponent();
-
-        //    attTrash.Unloaded += Captu
-
-         //   attTrash.GetRestoreItem.RestoreEvent += CaptureRestoreItemEvent;//.UnloadGameEvent += CaptureUnloadGameEvent;
-        //    attRestoreHandlerDelegate = new RestoreItemHandler(this.RestoreFromTrash);
-
-          //  attRestoreHandlerDelegate += attTrash.Unloaded;
-
+            
+            //setting datacontext to this
             this.DataContext = this;
-          //  trash.IsEnabledChanged
-            //   lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
-
-
-            // se non ci sono item nell'inventario, mostrare label 
-
-            #region togliere
-
-            //TODO sarebbe così
-            /*
-                lvDataBinding.ItemsSource = i.attGameController.ItemsInInventory;
-
-                ListView1.ItemsSource = i.attGameController.ItemsInInventory;
-                */
-
-            //        List<Item> items = i.attGameController.ActualRoomItems;
-            //       List<Item> s = new List<Item>();
-
-            // devo anche controllare che quelli nell'inventario non siano anche nel cestino???
-            /*
-                            s.Add(new Item (2, "bc", "name",9.04,"descr", "rep","texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\textures\blueTartan.jpg", "kind" ));
-                            s.Add(new Item(2, "bc", "name2", 9.04, "descr", "rep", "texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\hat_1meleOk.png", "kind"));
-                            s.Add(new Item(2, "bc", "name3", 9.04, "descr", "rep", "texture", @"C:\Users\Monica\Documents\polimi\AUI\project\repogithub\KillerWearsPrada\KillerWearsPrada\Images\trashEmpty.png", "kind"));
-                        */
-            /*      items.Add(new ItemProva() { code = 345, description = "eee333", itemName = "ciaone", price = 3.5 });
-                  items.Add(new ItemProva() { description = "Jane Doe", code = 39, imageFileName = "jane@doe-family.com", price = 0.888 });
-                  items.Add(new ItemProva() { maskFileName = "Sammy Doe", price = 13, reparto = "sammy.doe@gmail.com", code = 1234, description = "capo brutto brutto" });
-                  */
-            //Bindo nome listView.ItemsSource = Lista tipizzata!!!
-            //    lvDataBinding.ItemsSource = s;
-
-            #endregion
-
-            #region prova drag drop solo con mouse
-            /*         lbOne.PreviewMouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(ListBox_PreviewMouseLeftButtonDown);
-
-                     foreach (TimeZoneInfo tzi in TimeZoneInfo.GetSystemTimeZones())
-                     {
-                         if (zoneList.Count < 6)
-                             zoneList.Add(tzi);
-                     }
-                     lbOne.ItemsSource = zoneList; */
-
-
-            //drag drop solo mouse
-
-            /*
-                             lbOne.ItemsSource = itemInv;
-
-                             lbTwo.ItemsSource = itemOutfit;
-            */
-            #endregion
-
-
-
-           
+          
         }
 
         /// <summary>
@@ -137,52 +59,12 @@ namespace KillerWearsPrada.UC
         private void OnClosedStoryboardCompleted(object sender, System.EventArgs e)
         {
             Canvas p = (Canvas)this.Parent;
-       //     enable_Right_Buttons(ref p);
             p.Children.Remove(this);
         }
 
-        #region non serve più perchè lo gestisco nei usercontro room e startroom con actualroom name      
-        /// <summary>
-        /// Enable only the buttons in the room in which inventory was opened
-        /// </summary>
-        /// <param name="p"></param>
-   /*     private void enable_Right_Buttons(ref Canvas p)
-        {
-            MainWindow i = (MainWindow)Application.Current.Windows[0];
-            switch (p.Name.ToString())
-            {
-                case "room_Canvas":
-                    i.StartRoom.change_Buttons_Status(true);
-                    break;
-                case "Kitchen_Image":
-                    {
-                        i.Room.change_KitchenButtons_Status(true);
-                        i.Room.change_CommonButtons_Status(true);
-                    }
-                    break;
-                case "Livingroom_Image":
-                    {
-                        i.Room.change_LivingroomButtons_Status(true);
-                        i.Room.change_CommonButtons_Status(true);
-                    }
-                    break;
-                default:
-                    {
-                        i.Room.change_BedroomButtons_Status(true);
-                        i.Room.change_CommonButtons_Status(true);
-                    }
-                    break;
-            }
-        }*/
-
-        #endregion
-
+       
         private void trashare_Click(object sender, RoutedEventArgs e)
         {
-            /*   CloseInventory.IsEnabled = false;
-               trash.IsEnabled = false;
-               attTrash = null;
-               attTrash = new Trash();*/
             change_Visibility_CloseButton(Visibility.Hidden);
             change_Status_Inventory_Buttons(false);
             attTrash = null;
@@ -203,7 +85,6 @@ namespace KillerWearsPrada.UC
         {
             change_Visibility_CloseButton(Visibility.Hidden);
             change_Status_Inventory_Buttons(false);
-            //saveItemsinModel();
             int score =  MainWindow.attGameController.ComputeScore();
 
             //metto a true l'attributo has finished
@@ -237,124 +118,7 @@ namespace KillerWearsPrada.UC
             Trash_Button.IsEnabled = status;
         }
 
-        #region da rimuovere
-    /*    /// <summary>
-        /// quindi lo fa?
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void check_Checked(object sender, RoutedEventArgs e)
-        {
-            p.RemoveAt(0);
-        }
-
-        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
-        {
-            p.Remove((ItemProva)listMyItems.SelectedItem);
-        }
-
-        private void listMyItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            SelectedItems.Add((ItemProva)listMyItems.SelectedItem);
-        }
-
-        //TODO
-        //cose per implementare drag drop listboxes
-        public ObservableCollection<TimeZoneInfo> zoneList { get; set; }
-
-        //= new ObservableCollection<TimeZoneInfo>();
-        ObservableCollection<string> zoneListDest = new ObservableCollection<string>();
-
-        ListBox dragSource = null;
-
-        #region GetDataFromListBox(ListBox,Point) e drag drop
-        public bool IsPressable
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool IsManipulatable
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-
-
-        private void ListBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            ListBox parent = (ListBox)sender;
-
-            dragSource = parent;
-            object data = GetDataFromListBox(dragSource, e.GetPosition(parent));
-
-            if (data != null)
-            {
-                DragDrop.DoDragDrop(parent, data, DragDropEffects.Move);
-            }
-        }
-
-        
-        private static object GetDataFromListBox(ListBox source, Point point)
-        {
-            UIElement element = source.InputHitTest(point) as UIElement;
-            if (element != null)
-            {
-                object data = DependencyProperty.UnsetValue;
-                while (data == DependencyProperty.UnsetValue)
-                {
-                    data = source.ItemContainerGenerator.ItemFromContainer(element);
-                    if (data == DependencyProperty.UnsetValue)
-                    {
-                        element = VisualTreeHelper.GetParent(element) as UIElement;
-                    }
-                    if (element == source)
-                    {
-                        return null;
-                    }
-                }
-                if (data != DependencyProperty.UnsetValue)
-                {
-                    return data;
-                }
-            }
-            return null;
-        }
-
-       
-
-        private void ListBox_Drop(object sender, DragEventArgs e)
-        {
-            ListBox parent = (ListBox)sender;
-            object data = e.Data.GetData(typeof(Item));
-            ((IList)dragSource.ItemsSource).Remove(data);
-            parent.Items.Add(data.ToString());
-            itemOutfit.Add((Item)data);
-
-        }
-
-        private void Trash_Drop(object sender, DragEventArgs e)
-        {
-            //   ListBox parent = (ListBox)sender;
-            object data = e.Data.GetData(typeof(TimeZoneInfo));
-            ((IList)dragSource.ItemsSource).Remove(data);
-            //    parent.Items.Add(data.ToString());
-        }
-
-        public IKinectController CreateController(IInputModel inputModel, KinectRegion kinectRegion)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
-
-            */
-        #endregion
-
+      
         #region Gestione aggiunta rimozione vestiti a Outfit killer e Cestino
         public Item currentItemText;
         public int currentItemIndex;
@@ -517,10 +281,7 @@ namespace KillerWearsPrada.UC
         }
         #endregion
 
-
-
         
-
         private void EnterKeyCommand(object sender, MouseButtonEventArgs e)
         {
 
@@ -532,26 +293,13 @@ namespace KillerWearsPrada.UC
             itemInv = new ObservableCollection<Item>();
             itemOutfit = new ObservableCollection<Item>();
 
-        //    zoneList = new ObservableCollection<TimeZoneInfo>();
-
-            //carico tutti gli elementi che ho (prova)
-            /*       foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
-                   {
-                       foreach (Item ite in r.Items)
-                       {
-                           ite.SetAsInInventory();
-                       }
-
-                   }*/
-
+       
             //carico elementi da mettere nell'inventario, non indossati e non nel cestino
             // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
             foreach (Item it in MainWindow.attGameController.Game.ItemsInInventory)
             {
                 if (it.IsDressed == false)
                     itemInv.Add(it);
-                //prova per mostrare la clue!!!
-                //   ListClues.Add(it.Clue);
             }
             
             //metto tutti gli elementi dressed nella listbox dei dressed!
@@ -602,66 +350,13 @@ namespace KillerWearsPrada.UC
             {
                 if (it.IsDressed == false)
                     itemInv.Add(it);
-                //prova per mostrare la clue!!!
-                //   ListClues.Add(it.Clue);
             }
 
             LeftListBox.ItemsSource = itemInv;
-            
             change_TrashImage();
         }
-
-       
-       
+        
         
     }
-
-
-    #region da eliminare
-    public class GraphicInventoryItem
-    {
-
-        public GraphicInventoryItem()
-        {
-
-        }
-
-        // l'id è il barcode dell'item
-        public string id { get; set; }
-        public string ImageItem { get; set; }
-
-        public bool isDressed
-        {
-            get; set;
-        }
-
-        public bool isInInventory
-        {
-            get; set;
-        }
-
-        public bool isInTrash
-        {
-            get; set;
-        }
-
-    }
-
-    public class ItemProva
-    {
-        public ItemProva()
-        {
-
-        }
-
-        public string NomeItem { get; set; }
-        public bool isDressed
-        {
-            get; set;
-        }
-
-
-    }
-    #endregion
-
+    
 }

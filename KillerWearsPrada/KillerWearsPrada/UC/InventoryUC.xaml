@@ -18,7 +18,6 @@
                 <ResourceDictionary Source="pack://application:,,,/KillerWearsPrada;component/Helpers/GraphicStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        <!-- Completed="OnLoadedStoryboardCompleted" -->
     </UserControl.Resources>
 
     <UserControl.Triggers>
@@ -62,52 +61,6 @@
 
             <Label Margin="588,-39,392,695" Content="{StaticResource InventoryText}" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="130" Height="194" Foreground="Red" Width="700" />
 
-            <Label Visibility="Collapsed" Margin="1020,0,578,733" Content="{Binding itemInv.Count, Mode=TwoWay}" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="82" />
-
-            <Label Visibility="Collapsed" Margin="764,0,686,733" Content="You have " FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="230" />
-
-            <Label Visibility="Collapsed" Margin="1107,0,0,733" Content="items in your inventory" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48" Height="101" Foreground="Red" Width="573" />
-
-
-          
-
-            <!--        <ListView x:Name="ListView1"   VirtualizingStackPanel.IsVirtualizing="True"   Margin="548,0,642,198">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image x:Name="Image_GridViewColumnName" Width="150" Height="150" Source="{Binding ImageFileName}" />
-                            <CheckBox x:Name="trashare" Content="cestino?" Click="trashare_Click"></CheckBox>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="IsSelected" Value="{Binding IsGroovy}"/>
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>
--->
-
-           
-
-            <!--        <ListBox.ItemTemplate>
-                    <DataTemplate>
-
-                        <StackPanel Orientation="Horizontal" Height="200" >
-                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
-                        </StackPanel>
-                    </DataTemplate>
-                    </ListBox.ItemTemplate> -->
-
-          
-            <!--         <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Height="200" >
-                            <Image x:Name="Image_GridViewColumnName" Width="200" Height="200" Source="{Binding ItemsImagePath}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate> -->
-
             <Label Name="Dressed" Margin="418,160,829,605" Content="{StaticResource ItemsInventoryText}" FontSize="49" Background="Honeydew"></Label>
             <Label Name="NotDressed" Content="{StaticResource OutfitText}" Margin="1020,164,0,605" FontSize="49" Background="Honeydew"></Label>
             <ListBox Margin="418,255,788,116" Name="LeftListBox" Background="{x:Null}" Width="Auto">
@@ -143,9 +96,7 @@
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
                     <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="67" Text="{StaticResource AddText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
-                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
-
             </Button>
 
             <Button Name="RemoveButton" Height="101" Margin="0,518,466,231" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="RemoveButton_Click" Width="302">
@@ -154,24 +105,17 @@
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
                     <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="60" Text="{StaticResource RemoveText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
-                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
-
             </Button>
-
-            
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="49,126,1272,305" BorderThickness="2">
                 <ItemsControl Name="cluesList" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel >
-                                <!-- <Label x:Name="imaget" Width="300" Height="150" Content="{Binding}"></Label> -->
-
                                 <TextBox HorizontalAlignment="Center"  Padding="0,0,0,0" Text="{Binding Path=.}" FontFamily="Gill Sans Ultra Bold" TextAlignment="Center" TextWrapping="Wrap" 
                          FontSize="29.333" IsEnabled="False" MouseDoubleClick="EnterKeyCommand"  MouseLeftButtonDown="EnterKeyCommand"  
                   SelectionOpacity="0" BorderBrush="#FF23FF00" CaretBrush="{x:Null}" Background="#FFB9B4B4"  SelectionBrush="{x:Null}" BorderThickness="2"/>
-
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -185,7 +129,6 @@
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
                     <TextBlock Margin="5,29,50,28" VerticalAlignment="Center" FontSize="37" Text="{StaticResource CloseInventoryText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="285" />
-                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
@@ -214,17 +157,10 @@
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
                     <TextBlock Margin="5,0,50,0" VerticalAlignment="Center" FontSize="67" Text="{StaticResource SubmissionText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="637" Height="99" />
-                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
-
             </Button>
 
-
-            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1373,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}" >
-
-
-            </Button>
-
+            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1373,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}" />
 
             <Button Name="Trash_Button" Height="101" Margin="0,744,919,5" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="AddTrash_Click" Width="418">
                 <Button.Background>
@@ -232,9 +168,7 @@
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
                     <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="{StaticResource AddTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="99" />
-                    <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->
                 </StackPanel>
-
             </Button>
 
         </Grid>

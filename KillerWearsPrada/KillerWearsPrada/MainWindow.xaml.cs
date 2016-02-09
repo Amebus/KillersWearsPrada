@@ -198,7 +198,6 @@ namespace KillerWearsPrada
         /// which contains information passed by the event <see cref="GameController.UnloadGame"/></param>
         private void UnloadGame(GameController.UnloadGame.Arguments Parameters)
         {
-            //devo eliminare tutte le immagini nella directory degli sketches TODO
             txtDisplay.IsEnabled = true;
             txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Unload";
@@ -216,14 +215,25 @@ namespace KillerWearsPrada
             mainGrid.Children.Remove(startRoom);
             mainGrid.Children.Remove(room);
 
+            //set all the door buttons to null
+            startRoom.sxDoorButton = null;
+            startRoom.centerDoorButton = null;
+            startRoom.dxDoorButton = null;
+            
+            //try to set all the cloth buttons to null
+            for(int i = 0; i<room.listOfButtons.Count(); i++)
+            {
+                room.listOfButtons[i] = null;
+            }
+
             startRoom = null;
             room = null;
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            //  backgroundPath = Application.Current.Resources[E_GenericImages.Application_Start_Image.ToString()].ToString();
-            this.Background.Opacity = 1;
 
+            this.Background.Opacity = 1;
+            
             Delete_Sketches_Files();
         }
 
@@ -343,8 +353,8 @@ namespace KillerWearsPrada
 
         private void ResumeGameFinto()
         {
-           attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
-      //     attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
+      //     attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
+           attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
 
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";

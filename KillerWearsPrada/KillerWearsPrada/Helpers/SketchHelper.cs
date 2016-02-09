@@ -31,34 +31,12 @@ namespace KillerWearsPrada.Helpers
             //CreateSketches(Helpers.ResourcesHelper.MasksPaths("hat_1meleOk.png"), Helpers.ResourcesHelper.TexturesPath("redTartan.jpg"), "ciao.png");
         }
 
+       
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="mask"></param> is the path of the Mask image
-        /// <param name="texture"></param> is the path of the Texture image
-        /// <param name="nameSketch"></param> is the name of the image sketch created, like "ciao.png"
-        public static void CreateSketches(string mask, string texture, string nameSketch)
-        {
-
-            MagickImage Mask = new MagickImage(mask);
-
-            MagickImage Texture = new MagickImage(texture);
-
-            Texture.Crop(Mask.Width, Mask.Height);
-
-            Texture.Composite(Mask, CompositeOperator.CopyAlpha);
-            Mask.Composite(Texture, CompositeOperator.Multiply);
-            MagickImage sketch = Mask;
-            
-            sketch.Write(Helpers.ResourcesHelper.SketchesPath() + nameSketch);
-
-        }
-
-        /// <summary>
-        /// ritorna il path dell'oggetto creato        /// </summary>
-        /// <param name="mask"></param>
-        /// <param name="texture"></param>
-        /// <param name="nameSketch"></param>
+        /// Returns the path to the sketch image just created
+        /// <param name="mask">Mask image of the button</param>
+        /// <param name="texture">Texture image of the item</param>
+        /// <param name="nameSketch">Name of the image to create</param>
         public static string CreateSketchesPath(string mask, string texture, string nameSketch)
         {
 
@@ -90,10 +68,9 @@ namespace KillerWearsPrada.Helpers
 
             }
             sketch.Dispose();
-            
+            sketch = null;
             string path = Helpers.ResourcesHelper.SketchesPath() + nameSketch;
             return path;
-
         }
     }
 }

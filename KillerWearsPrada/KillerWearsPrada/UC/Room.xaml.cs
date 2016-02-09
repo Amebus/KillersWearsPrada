@@ -109,8 +109,15 @@ namespace KillerWearsPrada.UC
             listOfButtons.Add(shirt5);
             listOfButtons.Add(shirt6);
 
-            #region foreach per popolare bottoni stanze
-            //dovrei prendere dal controller tutti gli items e metterli nelle varie stanze!!!
+            setClothButtons();
+
+        }
+
+        /// <summary>
+        /// Get all the items in each room and set button.Tag to item.Barcode and set up the button background to the item sketch created
+        /// </summary>
+        private void setClothButtons()
+        {
             foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
             {
 
@@ -120,58 +127,40 @@ namespace KillerWearsPrada.UC
                         break;
                     case Model.E_RoomsName.LIVINGROOM:
                         {
-                            // devo fare il check per vedere che maschera usare!!!
-                            //TODO cambiare ordine caricamento cose
-                            //gurado che maschere hanno, e assegno le varie immagini e i vari tag ai vari bottoni
                             trousers1.Tag = r.Items[0].BarCode;
-                            //  trousers1.Tag = i.BarCode;
-                            //devo creare l'immagine giusta da mostrare nella stanza! mi serve la mask, e la texture
                             trousers1Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers1)), ResourcesHelper.TexturesPath(r.Items[0].TextureFilename), "panta1image.png");
-
-                            trousers3.Tag = r.Items[2].BarCode;
-                            trousers3Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers3)), ResourcesHelper.TexturesPath(r.Items[2].TextureFilename), "panta3image.png");
-
-                            //altri bottoni da aggiungere
                             trousers2.Tag = r.Items[1].BarCode;
                             trousers2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers2)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "panta2image.png");
+                            trousers3.Tag = r.Items[2].BarCode;
+                            trousers3Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers3)), ResourcesHelper.TexturesPath(r.Items[2].TextureFilename), "panta3image.png");
                             trousers4.Tag = r.Items[3].BarCode;
                             trousers4Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers4)), ResourcesHelper.TexturesPath(r.Items[3].TextureFilename), "panta4image.png");
                             trousers5.Tag = r.Items[4].BarCode;
                             trousers5Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers5)), ResourcesHelper.TexturesPath(r.Items[4].TextureFilename), "panta5image.png");
                             trousers6.Tag = r.Items[5].BarCode;
                             trousers6Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_LivingroomImages.Trousers6)), ResourcesHelper.TexturesPath(r.Items[5].TextureFilename), "panta6image.png");
-
-
                         }
                         break;
                     case Model.E_RoomsName.KITCHEN:
                         {
-                            /*         string[] hatmasks = new string[6] { "", "", "", "", "", "" };
-                                     for(int i =0; i<hatmasks.Count(); i++)
-                                     {
-                                         hatmasks[i] = ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.)
-                                     }
-                                     */
+
                             hat1.Tag = r.Items[0].BarCode;
                             if (r.Items[0].Shape == Model.E_Shape.LONG)
                                 hat1Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat1hat)), ResourcesHelper.TexturesPath(r.Items[0].TextureFilename), "hat1image.png");
                             else
                                 hat1Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat1cap)), ResourcesHelper.TexturesPath(r.Items[0].TextureFilename), "hat1image.png");
 
+                            hat2.Tag = r.Items[1].BarCode;
+                            if (r.Items[1].Shape == Model.E_Shape.LONG)
+                                hat2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat2hat)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "hat2image.png");
+                            else
+                                hat2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat2cap)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "hat2image.png");
 
                             hat3.Tag = r.Items[2].BarCode;
                             if (r.Items[2].Shape == Model.E_Shape.LONG)
                                 hat3Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat3hat)), ResourcesHelper.TexturesPath(r.Items[2].TextureFilename), "hat3image.png");
                             else
                                 hat3Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat3cap)), ResourcesHelper.TexturesPath(r.Items[2].TextureFilename), "hat3image.png");
-                            /*    hat6.Tag = r.Items[5].BarCode;
-                                hat6Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat6)), ResourcesHelper.TexturesPath(r.Items[5].TextureFilename), "hat6image.png");*/
-
-                            hat2.Tag = r.Items[1].BarCode;
-                            if (r.Items[1].Shape == Model.E_Shape.LONG)
-                                hat2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat2hat)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "hat2image.png");
-                            else
-                                hat2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_KitchenImages.Hat2cap)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "hat2image.png");
 
                             hat4.Tag = r.Items[3].BarCode;
                             if (r.Items[3].Shape == Model.E_Shape.LONG)
@@ -195,35 +184,29 @@ namespace KillerWearsPrada.UC
                         break;
                     default:
                         {
-                            //TODO cambiare ordine caricamento cose
+                            shirt1.Tag = r.Items[0].BarCode;
+                            shirt1Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_BedroomImages.Shirt1)), ResourcesHelper.TexturesPath(r.Items[0].TextureFilename), "shirt1image.png");
+                            shirt2.Tag = r.Items[1].BarCode;
+                            shirt2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_BedroomImages.Shirt2)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "shirt2image.png");
                             shirt3.Tag = r.Items[2].BarCode;
                             shirt3Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_BedroomImages.Shirt3)), ResourcesHelper.TexturesPath(r.Items[2].TextureFilename), "shirt3image.png");
                             shirt4.Tag = r.Items[3].BarCode;
                             shirt4Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_BedroomImages.Shirt4)), ResourcesHelper.TexturesPath(r.Items[3].TextureFilename), "shirt4image.png");
-
-                            //altri bottoni da aggiungere
                             shirt5.Tag = r.Items[4].BarCode;
                             shirt5Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_BedroomImages.Shirt5)), ResourcesHelper.TexturesPath(r.Items[4].TextureFilename), "shirt5image.png");
                             shirt6.Tag = r.Items[5].BarCode;
                             shirt6Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_BedroomImages.Shirt6)), ResourcesHelper.TexturesPath(r.Items[5].TextureFilename), "shirt6image.png");
-                            shirt2.Tag = r.Items[1].BarCode;
-                            shirt2Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_BedroomImages.Shirt2)), ResourcesHelper.TexturesPath(r.Items[1].TextureFilename), "shirt2image.png");
-                            shirt1.Tag = r.Items[0].BarCode;
-                            shirt1Image = SketchHelper.CreateSketchesPath(ResourcesHelper.MasksPaths(ResourcesHelper.GetResource(E_BedroomImages.Shirt1)), ResourcesHelper.TexturesPath(r.Items[0].TextureFilename), "shirt1image.png");
                         }
                         break;
                 }
             }
-            #endregion
-
         }
-
 
 
         /// <summary>
         /// Set canvas background acconrdingly to the door selected
         /// </summary>
-        /// <param name="roomImagePath"></param>
+        /// <param name="roomImagePath">Path of the </param>
         public void setBackgroundCanvas(string roomImagePath)
         {
             imageBackground = new ImageBrush();
