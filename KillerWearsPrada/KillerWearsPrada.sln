@@ -473,6 +473,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{FEAC7128-CDD4-4FAF-8692-8D954512C98F}"
 	ProjectSection(SolutionItems) = preProject
 		KillerWearsPrada\Documentation\AUI Final presentation.docx = KillerWearsPrada\Documentation\AUI Final presentation.docx
+		KillerWearsPrada\Documentation\AUI Final presentationModByMony.docx = KillerWearsPrada\Documentation\AUI Final presentationModByMony.docx
 	EndProjectSection
 EndProject
 Global
