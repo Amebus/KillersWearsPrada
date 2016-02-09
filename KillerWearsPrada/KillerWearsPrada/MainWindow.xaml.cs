@@ -214,18 +214,7 @@ namespace KillerWearsPrada
 
             mainGrid.Children.Remove(startRoom);
             mainGrid.Children.Remove(room);
-
-            //set all the door buttons to null
-            startRoom.sxDoorButton = null;
-            startRoom.centerDoorButton = null;
-            startRoom.dxDoorButton = null;
-            
-            //try to set all the cloth buttons to null
-            for(int i = 0; i<room.listOfButtons.Count(); i++)
-            {
-                room.listOfButtons[i] = null;
-            }
-
+ 
             startRoom = null;
             room = null;
 
@@ -353,8 +342,8 @@ namespace KillerWearsPrada
 
         private void ResumeGameFinto()
         {
-      //     attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
-           attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
+         // attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
+       //    attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
 
             //Player_Name = attGameController.NamePlayer;
             //name_player.Content = "Player Username" + "!";

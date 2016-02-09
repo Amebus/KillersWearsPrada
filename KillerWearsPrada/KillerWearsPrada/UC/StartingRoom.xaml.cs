@@ -69,6 +69,7 @@ namespace KillerWearsPrada.UC
         /// <param name="e"></param>
         private void door_Click(object sender, RoutedEventArgs e)
         {
+            Button b = (Button)sender;
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
 
             string button_content = b.Content.ToString();
@@ -85,6 +86,10 @@ namespace KillerWearsPrada.UC
             yourParentWindow.Room.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prepareRoom">Canvas related to the room the player has just entered </param>
         private void enable_RightRoom_Buttons(ref Canvas prepareRoom)
         {
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
