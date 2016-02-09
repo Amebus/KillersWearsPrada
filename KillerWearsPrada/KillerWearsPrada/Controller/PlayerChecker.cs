@@ -12,7 +12,7 @@ namespace KillerWearsPrada.Controller
     class PlayerChecker
     {
         
-        private string attIDCurrentPalyer;
+        private string attIDCurrentPlayer;
 
         private int attPreviousBodyCount;
 
@@ -27,7 +27,7 @@ namespace KillerWearsPrada.Controller
 
         public PlayerChecker()
         {
-            attIDCurrentPalyer = null;
+            attIDCurrentPlayer = null;
             attPreviousBodyCount = 0;
         }
 
@@ -36,21 +36,87 @@ namespace KillerWearsPrada.Controller
         /// </summary>
         public string IDCurrentPlayer
         {
-            get { return attIDCurrentPalyer; }
+            get { return attIDCurrentPlayer; }
         }
         
         /// <summary>
         /// Check if there is a palyer standing before the kinect and if so check if it is just arrived or if he was there since before
         /// </summary>
-        /// <param name="ID">A <see cref="string"/> representing the ID of the Player standing before the kinect,
+        /// <param name="IDFound">A <see cref="string"/> representing the ID of the Player standing before the kinect,
         ///  set to null if there is no player or if there is unkwon</param>
         /// <param name="BodyCount"></param>
-        public void CheckPlayer(string ID, int BodyCount)
+        public void CheckPlayer(string IDFound, int BodyCount)
         {
-            Relation wvRel = CheckRelation(attIDCurrentPalyer, ID);
+            Relation wvRel = CheckRelation(attIDCurrentPlayer, IDFound, BodyCount);
             switch (wvRel)
             {
-                case Relation.STILL_NOT_AVAILABLE:
+                case Relation.CP_NULL_NP_VALUE:
+                    attIDCurrentPlayer = IDFound;
+                    RaisePlayerEnterKinectSensorEvent(IDFound);
+                    break;
+                case Relation.CP_VALUE_NP_NULL:
+                    attIDCurrentPlayer = null;
+                    RaisePlayerLeaveKinectSensorEvent();
+                    break;
+                case Relation.CP_VALUE_NP_DIFF:
+                    attIDCurrentPlayer = null;
+                    RaisePlayerLeaveKinectSensorEvent();        
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        /*
+        private Relation CheckRelation(string ActualID, string NewID)
+        {
+            Relation wvRel;
+            if (ActualID == null)
+            { 
+                if (NewID == null)
+                    wvRel = Relation.CP_NULL_NP_NULL;
+                else
+                    wvRel = Relation.CP_NULL_NP_VALUE;
+            }
+            else
+            {
+                if (NewID == null)
+                    wvRel = Relation.CP_VALUE_NP_NULL;
+                else
+                    wvRel = Relation.CP_VALUE_NP_VALUE;
+            }
+            return wvRel;
+        }
+        */
+
+        private Relation CheckRelation(string ActualID, string NewID, int BodyCount)
+        {
+            Relation wvRel;
+            if (ActualID == null)
+            {
+                if (NewID == null)
+                    wvRel = Relation.CP_NULL_NP_NULL;
+                else
+                    wvRel = Relation.CP_NULL_NP_VALUE;
+            }
+            else
+            {
+                if (NewID == null && BodyCount < 1)
+                    wvRel = Relation.CP_VALUE_NP_NULL;
+                else if (NewID == null && BodyCount >= 1 )//this allow to play the game to a previously recognized player
+                    wvRel = Relation.CP_VALUE_NP_EQ;
+                else if (NewID == ActualID)
+                    wvRel = Relation.CP_VALUE_NP_EQ;
+                else
+                    wvRel = Relation.CP_VALUE_NP_DIFF;
+            }
+            return wvRel;
+        }
+
+
+        /*
+        case Relation.STILL_NOT_AVAILABLE:
                     break;
                 case Relation.CP_NULL_NP_NULL:   
                     if(attPreviousBodyCount > 0 && BodyCount>0)
@@ -90,30 +156,7 @@ namespace KillerWearsPrada.Controller
                     break;
                 default:
                     break;
-            }
-
-        }
-
-        private Relation CheckRelation(string ActualID, string NewID)
-        {
-            Relation wvRel;
-            if (ActualID == null)
-            { 
-                if (NewID == null)
-                    wvRel = Relation.CP_NULL_NP_NULL;
-                else
-                    wvRel = Relation.CP_NULL_NP_VALUE;
-            }
-            else
-            {
-                if (NewID == null)
-                    wvRel = Relation.CP_VALUE_NP_NULL;
-                else
-                    wvRel = Relation.CP_VALUE_NP_VALUE;
-            }
-            return wvRel;
-        }
-
+        */
 
         #region Section to raise the event PlayerEnterKinectSensor
         /// <summary>
@@ -203,10 +246,13 @@ namespace KillerWearsPrada.Controller
         public enum Relation
         {
             STILL_NOT_AVAILABLE=-1,
-            CP_NULL_NP_NULL=0,
-            CP_NULL_NP_VALUE=1,
-            CP_VALUE_NP_NULL=2,
-            CP_VALUE_NP_VALUE=4
+            CP_NULL_NP_NULL=0,//The actual player and the next one have both null ID
+            CP_NULL_NP_VALUE=1,//The actual player has null ID and the next player has an ID
+            CP_VALUE_NP_NULL=2,//The actual player has an ID and the next player has null ID
+            CP_VALUE_NP_VALUE=4,//Old value not used anymore 
+
+            CP_VALUE_NP_EQ=5,//The actual player and the next one have both the same ID
+            CP_VALUE_NP_DIFF=6//The actual player and th enext one have different ID
     }
         
     }
