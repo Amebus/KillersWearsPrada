@@ -269,7 +269,7 @@ namespace KillerWearsPrada.Model
     public class AlredyWearingAnItemException : Exception
     {
 
-        private const string BASE = "The killer is already wearing an ";
+        private const string BASE = "The killer is already wearing a ";
 
         public AlredyWearingAnItemException(E_ItemKind ItemKind)
         {
@@ -282,7 +282,7 @@ namespace KillerWearsPrada.Model
         {
             get
             {
-                return BASE + ItemKind.ToString().Replace('_', ' ');
+                return BASE + ItemKind.ToString().Replace('_', '-');
             }
         }
     }

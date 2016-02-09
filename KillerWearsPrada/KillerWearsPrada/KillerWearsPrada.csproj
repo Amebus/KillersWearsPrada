@@ -112,7 +112,6 @@
     <Compile Include="KWP_DB_TestDataSet.cs">
       <DependentUpon>KWP_DB_TestDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Model\Commenti.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\ISerializable.cs" />
     <Compile Include="Model\ItemGraficalProperties.cs" />

@@ -71,8 +71,6 @@ namespace KillerWearsPrada.Controller
         {
             attBackGroundWorkerBusy = true;
             attScreenshotWorker = new BackgroundWorker();
-            //attScreenshotWorker.WorkerReportsProgress = true;
-            //attScreenshotWorker.WorkerSupportsCancellation = true;
             attScreenshotWorker.DoWork += worker_DoWork;
             attScreenshotWorker.RunWorkerCompleted += worker_WorkEnded;
             attBackGroundWorkerBusy = false;
@@ -195,12 +193,7 @@ namespace KillerWearsPrada.Controller
         }
 
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void Reader_ColorFrameArrived(object sender, ColorFrameArrivedEventArgs e)
         {
             if (!attEnableTakingScreenshot)

@@ -361,7 +361,7 @@ namespace KillerWearsPrada.Controller
             
             wvRandom = attRandom.Next((int)E_PropertiesKind._NULL + 1 ,(int)E_PropertiesKind._END);
 
-            if (ItemKind == E_ItemKind.HAT)
+            if (ItemKind == E_ItemKind.HAT)//Because in our DB only HATS have the E_PropertyKind.SHAPE implemented
             {
                 for (int i = (int)E_PropertiesKind._NULL + 1; i < (int)E_PropertiesKind._END ; i++)
                 {
@@ -388,7 +388,7 @@ namespace KillerWearsPrada.Controller
 
                         #region Color from Gradiation
                         List<E_Color> wvColors = new List<E_Color>();
-                        if(wvGradiation == E_Gradiation._NULL)
+                        if(wvGradiation == E_Gradiation._NULL)//This because is no possible to have WHITE items with DARK graiation or DARK item with LIGHT gradaition
                         {
                             for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
                             {
@@ -399,7 +399,7 @@ namespace KillerWearsPrada.Controller
                         {
                             for (int i = (int)E_Color._NULL + 1; i < (int)E_Color._END; i++)
                             {
-                                if ((E_Color)i != E_Color.BLACK) //TODO E_Color.WHITE
+                                if ((E_Color)i != E_Color.BLACK && (E_Color)i != E_Color.WHITE)
                                     wvColors.Add((E_Color)i);
                             }
                         }
@@ -555,9 +555,7 @@ namespace KillerWearsPrada.Controller
             /// </summary>
             public void RaiseEvent()
             {
-                //TODO mettere l'ID del giocatore entrato
                 Arguments wvParameters = new Arguments();
-
 
                 OnUnloadGame(wvParameters);
             }

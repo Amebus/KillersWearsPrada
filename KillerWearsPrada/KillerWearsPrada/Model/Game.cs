@@ -131,6 +131,9 @@ namespace KillerWearsPrada.Model
             }
         }
 
+        /// <summary>
+        /// Reurn the <see cref="List{T}"/> of <see cref="Item"/> which represents the items dressed by the killer
+        /// </summary>
         public List<Item> ItemsDressed
         {
             get
@@ -147,7 +150,7 @@ namespace KillerWearsPrada.Model
         }
 
         /// <summary>
-        /// Represent a List of the Items placed in the player's inventory
+        /// Return a <see cref="List{T}"/> of <see cref="Item"/> which represents the items placed in the player's inventory
         /// </summary>
         public List<Item> ItemsInInventory
         {
@@ -164,6 +167,9 @@ namespace KillerWearsPrada.Model
             }
         }
 
+        /// <summary>
+        /// Return a <see cref="List{T}"/> of <see cref="Item"/> which represents the items not added to playre's inventory
+        /// </summary>
         public List<Item> ItemsNotInInventory
         {
             get
@@ -179,7 +185,7 @@ namespace KillerWearsPrada.Model
         }
 
         /// <summary>
-        /// Represent a List of the Items placed in the player's trash
+        /// Return a <see cref="List{T}"/> of <see cref="Item"/> which represents the Items placed in the player's trash
         /// </summary>
         public List<Item> ItemsInTrash
         {
@@ -279,9 +285,9 @@ namespace KillerWearsPrada.Model
         }
 
         /// <summary>
-        /// Return true if the item had been added to the inventory
+        /// Return true if the <see cref="Item"/> associated to the specified BarCode had been added to the inventory
         /// </summary>
-        /// <param name="BarCode"></param>
+        /// <param name="BarCode"><see cref="string"/> that represent the barcode of the <see cref="Item"/> to be added</param>
         /// <returns></returns>
         public bool SetInInventory(string BarCode)
         {
