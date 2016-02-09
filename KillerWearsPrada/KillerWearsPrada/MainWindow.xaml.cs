@@ -56,24 +56,19 @@ namespace KillerWearsPrada
         string backgroundPath;
         #endregion
 
-
-        public string provamw { get { return "ciaone"; } }
+        //Background of room
+        private ImageBrush ib;
 
         Window attDebug;
-
-
-
-
+        
         public MainWindow()
         {
             Thread.CurrentThread.Name = "KillersWearsPrada-Main Thread";
             Helpers.ResourcesHelper.SaveCurrentDirectory();
             Helpers.ResourcesHelper.ModifyMainBackgroundPath();
-
-            //imposta già tutti i path giusti, di tutte le immagini, forse è da mettere altrove
+            
             modifyAllPath();
             Helpers.SketchHelper.SetDirectories();
-            //txtDisplay.AppendText(dir_ok);
             InitializeComponent();
 
             this.DataContext = this;
@@ -181,13 +176,8 @@ namespace KillerWearsPrada
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
             txtDisplay.AppendText("\r\n" + attGameController.Game.IsGameStarted.ToString());
 
-            ResumeGameFinto();
-
-            // qui faccio allocare tutti gli user control?
-            //allocate_All_UC();
-
-            //nome della label di benvenuto
-            //name_player.Content = = attGameController.NamePlayer + "!";
+            ResumeGameMethod();
+            
         }
 
         /// <summary>
@@ -226,12 +216,15 @@ namespace KillerWearsPrada
             Delete_Sketches_Files();
         }
 
+        /// <summary>
+        /// Called by the delegate <see cref="UpdateInventorydHandler"/> to handle the event <see cref="GameController.UpdateInventory"/> 
+        /// that occure when an item is added to the inventory
+        /// </summary>
+        /// <param name="Parameters">Instance of an object repressenting the class <see cref="GameController.UpdateInventory.Arguments"/> 
+        /// which contains information passed by the event <see cref="GameController.UpdateInventory"/></param>
         private void UpdateInventory(GameController.UpdateInventory.Arguments Parameters)
         {
-            //se la ricerca del tizio è completato
             string cosamostrare = "Item added in Inventory";
-            // attGameController.Game.GetItem()
-            //  attGameController.Game.Rooms[]
             bool wasActualRoom = false;
             foreach (Model.Room r in attGameController.Game.Rooms)
             {
@@ -298,18 +291,23 @@ namespace KillerWearsPrada
 
         }
 
-        //Dovrebbe passare alla user control StartingRoom ma non lo fa e non so perchè
+        /// <summary>
+        /// Go to the <see cref="StartingRoom"/>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEntrance_Click(object sender, RoutedEventArgs e)
         {
-
             attGameController.SetGameStarted();
             this.Background.Opacity = 0;
             
             disable_Buttons_Labels();
             startRoom.Visibility = Visibility.Visible;
-            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void disable_Buttons_Labels()
         {
             title_game.Visibility = Visibility.Hidden;
@@ -320,7 +318,6 @@ namespace KillerWearsPrada
             goToEntrance.IsEnabled = false;
             exit.Visibility = Visibility.Hidden;
             exit.IsEnabled = false;
-            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -329,6 +326,7 @@ namespace KillerWearsPrada
             attDebug.Close();
         }
 
+        #region da eliminare quando tolgo bottone exit
         private void close_button(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Do you really want to exit this game?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -337,34 +335,33 @@ namespace KillerWearsPrada
                 Application.Current.Windows[0].Close();
             }
         }
+        #endregion
 
-        private ImageBrush ib;
-
-        private void ResumeGameFinto()
+        /// <summary>
+        /// Resume the game from where it was unload, or a new game if there is a new user
+        /// </summary>
+        private void ResumeGameMethod()
         {
-         // attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
-       //    attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
+            #region da eliminare quando non devo più giocare senza kinect
+         //      attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
+         //   attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
+            #endregion
 
-            //Player_Name = attGameController.NamePlayer;
-            //name_player.Content = "Player Username" + "!";
             name_player.Content = attGameController.Game.PlayerName + "!";
-            // qui faccio allocare tutti gli user control?
-            // con i rispettivi oggetti giusti!!!
-            // This method load all usercontrols and put their visibility to hidden
+           
             allocate_All_UC();
 
+            #region da eliminare dopo aver rimosso txtdisplay e bottone Giocatore riconosciuto
             txtDisplay.Visibility = Visibility.Collapsed;
             recognise.IsEnabled = false;
             recognise.Visibility = Visibility.Collapsed;
+            #endregion
 
-            //guardo se ha già iniziato a giocare o no
-            //quello giusto
+            //Check if she is a new player of if she's already started playing
             if (attGameController.Game.IsGameStarted == false)
-            //vai alla welcome home
-            //devo bindare lo username...
-            //  bool t = false;
-            //  if (t == false)
             {
+                //New player
+                //Load the Welcome Page
                 backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
                 ib = new ImageBrush();
                 ib.ImageSource = new BitmapImage(new Uri(@backgroundPath, UriKind.Absolute));
@@ -373,24 +370,23 @@ namespace KillerWearsPrada
             }
             else
             {
+                //Old player
                 this.Background.Opacity = 0;
                 disable_Buttons_Labels();
-
-                //guardo in che stanza era e carico quella, con le cose giuste...
+                
                 loadRoom();
             }
         }
 
+        /// <summary>
+        /// Resume the last room in which the player was before left the game
+        /// </summary>
         private void loadRoom()
-        {
-            //   string temp = "Livingroom";
+        { 
             switch (attGameController.Game.ActualRoom.Name)
-            //  switch (temp)
             {
                 case Model.E_RoomsName.START_ROOM:
                     {
-                        /*    StartRoom.change_Buttons_Status(true);
-                            changeDoorColor();*/
                         startRoom.Visibility = Visibility.Visible;
                         StartRoom.change_Buttons_Status(true);
                         changeDoorColor();
@@ -402,7 +398,7 @@ namespace KillerWearsPrada
                         room.Kitchen_Image.Visibility = Visibility;
                         Room.setBackgroundCanvas(Application.Current.Resources[E_RoomsImages.Kitchen_Image.ToString()].ToString());
 
-                        //qui devo abilitare solo i giusti bottoni...
+                        //Enable buttons in room
                         Room.change_KitchenButtons_Status(true);
                         Room.change_CommonButtons_Status(true);
                     }
@@ -413,6 +409,7 @@ namespace KillerWearsPrada
                         room.Livingroom_Image.Visibility = Visibility;
                         Room.setBackgroundCanvas(Application.Current.Resources[E_RoomsImages.Livingroom_Image.ToString()].ToString());
 
+                        //Enable buttons in room
                         Room.change_LivingroomButtons_Status(true);
                         Room.change_CommonButtons_Status(true);
                         
@@ -423,6 +420,8 @@ namespace KillerWearsPrada
                         room.Visibility = Visibility.Visible;
                         room.Bedroom_Image.Visibility = Visibility;
                         Room.setBackgroundCanvas(Application.Current.Resources[E_RoomsImages.Bedroom_Image.ToString()].ToString());
+
+                        //Enable buttons in room
                         Room.change_BedroomButtons_Status(true);
                         Room.change_CommonButtons_Status(true);
                     }
@@ -430,27 +429,17 @@ namespace KillerWearsPrada
             }
         }
 
+
+        #region da eliminare quando tolgo bottone "giocatore riconosciuto
         private void homepage(object sender, RoutedEventArgs e)
         {
-
-            //   attGameController.GetResumeGame.RaiseEvent();
-            ResumeGameFinto();
-            /*
-            
-            backgroundPath = Application.Current.Resources[E_GenericImages.Welcome_Background.ToString()].ToString();
-            ib = new ImageBrush();
-            ib.ImageSource = new BitmapImage(new Uri(@backgroundPath, UriKind.Absolute));
-            this.Background = ib;
-
-            
-            txtDisplay.Visibility = Visibility.Collapsed;
-            recognise.IsEnabled = false;
-            recognise.Visibility = Visibility.Collapsed;
-
-            Enable_Welcome_Obj();
-            */
+            ResumeGameMethod();
         }
+        #endregion
 
+        /// <summary>
+        /// Set all welcome objects to visible
+        /// </summary>
         private void Enable_Welcome_Obj()
         {
             name_player.Visibility = Visibility.Visible;
@@ -461,16 +450,18 @@ namespace KillerWearsPrada
             
         }
 
-
+        /// <summary>
+        /// Set the resource images to their absolute path
+        /// </summary>
         private void modifyAllPath()
         {
-            // path delle stanze
+            //Background rooms paths
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Doors_Image);
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Livingroom_Image);
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Kitchen_Image);
             Helpers.ResourcesHelper.ModifyRoomBackgroundPath(E_RoomsImages.Bedroom_Image);
 
-            // background welcome e inventary e selection display
+            // background images of welcome page, inventary and selection display
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Inventory_Background);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Welcome_Background);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Selection_Crime);
@@ -479,7 +470,7 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Trash_Full);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Fumetto);
 
-            //path delle immagini delle porte
+            //images paths of door
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.SXdoor_Image);
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.CENTERdoor_Image);
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.DXdoor_Image);
@@ -487,7 +478,7 @@ namespace KillerWearsPrada
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.CENTERdoorDisabled_Image);
             Helpers.ResourcesHelper.ModifyDoorsPath(E_DoorsImages.DXdoorDisabled_Image);
 
-            //immagini della welcome page
+            //Images of welcome page
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.Start_Image);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartOver_Image);
             Helpers.ResourcesHelper.ModifyGenericImagesPath(E_GenericImages.StartPressed_Image);
@@ -511,33 +502,29 @@ namespace KillerWearsPrada
         }
         #endregion
 
+        /// <summary>
+        /// Load all usercontrols and put their visibility to hidden
+        /// </summary>
         private void allocate_All_UC()
         {
-
             startRoom = new StartingRoom();
             room = new Room();
-            //   changeDoorColor();
-            // se uso hidden al posto di collapsed carica prima!
-
-
-            // aggiungo tutti gli usercontrol come figli della mainGrid
+            
+            // Add usercontrol as sons of MainWindow
             mainGrid.Children.Add(startRoom);
             mainGrid.Children.Add(room);
             startRoom.Visibility = Visibility.Hidden;
             room.Visibility = Visibility.Hidden;
-
-
-
-            /*       GC.Collect();
-                   GC.WaitForPendingFinalizers();*/
         }
 
+        /// <summary>
+        /// Change the colors of the doors in StartingRoom according to the state of each room
+        /// </summary>
         public void changeDoorColor()
         {
             foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
             {
                 switch (r.Name)
-                //  switch (temp)
                 {
                     case Model.E_RoomsName.BEDROOM:
                         {
@@ -613,15 +600,14 @@ namespace KillerWearsPrada
             }*/
         }
 
-
+        /// <summary>
+        /// Disable the selection in TextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EnterKeyCommand(object sender, EventArgs e)
         {
             ((TextBox)sender).SelectionLength = 0;
-        }
-
-        private void prova_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

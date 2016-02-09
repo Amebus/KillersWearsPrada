@@ -75,12 +75,12 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Button Name="Close" Margin="0,0,1262,0" Foreground="White" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Width="418" Height="106" VerticalAlignment="Top" >
+            <Button Name="Close" Margin="0,39,1216,0" Foreground="White" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Width="418" Height="106" VerticalAlignment="Top" >
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
-                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="{StaticResource CloseInventoryText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="99" />
+                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="89" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,5,2" VerticalAlignment="Bottom" FontSize="50" Text="{StaticResource CloseTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="84" />
 
                 </StackPanel>
                 <Button.Triggers>
@@ -105,23 +105,23 @@
 
             </Button>
 
-            <Button Name="Restore" Margin="0,59,39,550" Foreground="SeaShell" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="Restore_Click" Width="418">
+            <Button Name="Restore" Margin="0,39,39,591" Foreground="GreenYellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="Restore_Click" Width="418">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
-                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="233" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" FontSize="75" Text="{StaticResource RestoreElemText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" />
+                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="220" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,5,24" FontSize="75" Text="{StaticResource RestoreElemText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" />
 
                 </StackPanel>
 
             </Button>
 
-            <Button Name="EmptyTrash" Margin="0,560,39,34" Foreground="Tomato" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="EmptyTrash_Click" Width="418">
+            <Button Name="EmptyTrash" Margin="0,594,39,39" Foreground="Tomato" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="EmptyTrash_Click" Width="418">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
-                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="233" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" FontSize="75" Text="{StaticResource EmptyTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="233" VerticalAlignment="Top" />
+                <StackPanel HorizontalAlignment="Left" Width="Auto" Height="217" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,5,0" FontSize="75" Text="{StaticResource EmptyTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="207" VerticalAlignment="Top" />
 
                 </StackPanel>
 

@@ -22,30 +22,13 @@ namespace KillerWearsPrada.UC
     /// </summary>
     public partial class StartingRoom : UserControl
     {
-        //   private static int ok = 0;
-
         public InventoryUC inventory;
 
         public StartingRoom()
         {
-            /*
-            if(ok==0)
-            {
-                Helpers.ResourcesHelper.ModifyRoomBackgroundPath("Doors_Image");
-                ok =  1;
-            } */
-               
             InitializeComponent();
-
-            //metti i contenuti dei bottoni!!!
-            /*
-            sxDoorButton.Content = E_RoomsImages.Livingroom_Image;
-            centerDoorButton.Content = E_RoomsImages.Kitchen_Image;
-            dxDoorButton.Content = E_RoomsImages.Bedroom_Image;
-            */
-
-           
         }
+
 
         private void exit_button(object sender, RoutedEventArgs e)
         {
@@ -54,16 +37,10 @@ namespace KillerWearsPrada.UC
             {
                 Application.Current.Windows[0].Close();
             }
-
-
         }
-
-        // Unico metodo per il click dei bottoni delle porte
-        //manda nelle varie stanze a seconda del contenuto del bottone
-
-
+        
         /// <summary>
-        /// Unico metodo che gestisce la stanza in cui si va a seconda del bottone premuto
+        /// Take the button content and prepare the next room the player has chosen to go
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -87,9 +64,9 @@ namespace KillerWearsPrada.UC
         }
 
         /// <summary>
-        /// 
+        /// Enable buttons and set backgorund related to the room entered
         /// </summary>
-        /// <param name="prepareRoom">Canvas related to the room the player has just entered </param>
+        /// <param name="prepareRoom">Canvas related to the room the player has just entered</param>
         private void enable_RightRoom_Buttons(ref Canvas prepareRoom)
         {
             MainWindow yourParentWindow = (MainWindow)Window.GetWindow(this);
@@ -99,21 +76,14 @@ namespace KillerWearsPrada.UC
                     {
                         yourParentWindow.Room.change_KitchenButtons_Status(true);
                         yourParentWindow.Room.change_CommonButtons_Status(true);
-                        //imposto l'indice della room in cui sta andando il player
                         MainWindow.attGameController.Game.ActualRoomIndex = 2;
-                        // 2 credo sia la cucina
-                        //   MainWindow.attGameController.ActualRoomIndex = 2;
-                        //imposto anche la actualroom?
                     }
                     break;
                 case "Livingroom_Image":
                     {
                         yourParentWindow.Room.change_LivingroomButtons_Status(true);
                         yourParentWindow.Room.change_CommonButtons_Status(true);
-                        //imposto l'indice della room in cui sta andando il player
                         MainWindow.attGameController.Game.ActualRoomIndex = 1;
-                        // 1 credo sia la cucina
-                        //     MainWindow.attGameController.ActualRoomIndex = 1;
                     }
 
                     break;
@@ -121,15 +91,17 @@ namespace KillerWearsPrada.UC
                     {
                         yourParentWindow.Room.change_BedroomButtons_Status(true);
                         yourParentWindow.Room.change_CommonButtons_Status(true);
-                        //imposto l'indice della room in cui sta andando il player
                         MainWindow.attGameController.Game.ActualRoomIndex = 3;
-                        // 3 credo sia la cucina
-                        //  MainWindow.attGameController.ActualRoomIndex = 3;
                     }
                     break;
             }
         }
        
+        /// <summary>
+        /// Open the Inventory 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void inventory_button(object sender, RoutedEventArgs e)
         {
             //Disable all buttons
@@ -141,6 +113,12 @@ namespace KillerWearsPrada.UC
             inventory.Unloaded += UpdateButtonsStartroom;
         }
 
+        /// <summary>
+        /// Called after the Unload of the InventoryUC
+        /// Enables all the buttons in StartRoom
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateButtonsStartroom(object sender, RoutedEventArgs e)
         {
             change_Buttons_Status(true);

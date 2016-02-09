@@ -20,6 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using System.ComponentModel;
+using System.Collections.Specialized;
 
 namespace KillerWearsPrada.UC
 {
@@ -34,12 +35,18 @@ namespace KillerWearsPrada.UC
         // observable collection construita con tutti gli item nella lista nell'inventario
         public ObservableCollection<Item> itemInv { get; set; }
         public ObservableCollection<Item> itemOutfit { get; set; }
+
+        private ObservableCollection<Item> hatsDressed { get; set; }
+        private ObservableCollection<Item> shirtsDressed { get; set; }
+        private ObservableCollection<Item> trousersDressed { get; set; }
         
         public List<string> ListClues { get; set; }
         
         public string ImageFileNameOC { get; set; }
 
         public int countItems { get; set; }
+
+        private const string endGameString = "GAME FINISHED!!!\r\nThe percentage discount you earned is @p1 %\r\nMove away from the Kinect and go to the checkout to retrieve your discount!\r\nThank you to have played our game!";
 
         public InventoryUC()
         {
@@ -89,10 +96,7 @@ namespace KillerWearsPrada.UC
 
             //metto a true l'attributo has finished
             MainWindow.attGameController.Game.SetAsFinished();
-
-            string message = "GAME FINISHED!!!\r\nThe percentage discount you earned is " + score + "%\r\nGo away from the Kinect and go to the checkout to retrieve your discount!\r\nThank you to have played our game!";
-
-            LeaveGame lg = new LeaveGame(message);
+            LeaveGame lg = new LeaveGame(endGameString.Replace("@p1", score.ToString()));
             layoutRoot.Children.Add(lg);
             lg.Focus();
         }
@@ -147,8 +151,10 @@ namespace KillerWearsPrada.UC
                             try
                             {
                                 r.DressItem(ite.BarCode);
+                                
                                 itemOutfit.Add((Item)currentItemText);
                                 itemInv.RemoveAt(currentItemIndex);
+                                checkOrder();
                             }
                             catch (AlredyWearingAnItemException ex)
                             {
@@ -272,7 +278,7 @@ namespace KillerWearsPrada.UC
                 else
                 {
                     itemOutfit.RemoveAt(currentItemIndex);
-                    
+                    checkOrder();
                 }
             }
             
@@ -290,9 +296,14 @@ namespace KillerWearsPrada.UC
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            itemInv = null;
+            itemOutfit = null;
             itemInv = new ObservableCollection<Item>();
             itemOutfit = new ObservableCollection<Item>();
 
+        //    itemOutfit.CollectionChanged += change_Order_DressedItems;
+
+      
        
             //carico elementi da mettere nell'inventario, non indossati e non nel cestino
             // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
@@ -305,9 +316,31 @@ namespace KillerWearsPrada.UC
             //metto tutti gli elementi dressed nella listbox dei dressed!
             foreach (Item it in MainWindow.attGameController.Game.ItemsDressed)
             {
+           /*     switch (it.ItemKind)
+                {
+                    case E_ItemKind.HAT:
+                        {
+                            hatsDressed.Add(it);
+                            break;
+                        }
+                    case E_ItemKind.T_SHIRT:
+                        {
+                            shirtsDressed.Add(it);
+                            break;
+                        }
+                    default:
+                        {
+                            trousersDressed.Add(it);
+                            break;
+                        }
+                }*/
+
                 itemOutfit.Add(it);
             }
-            
+
+            checkOrder();
+           
+
             change_Status_Inventory_Buttons(true);
 
             change_TrashImage();
@@ -322,6 +355,70 @@ namespace KillerWearsPrada.UC
             cluesList.ItemsSource = MainWindow.attGameController.Game.DisclosedClues;
             #endregion
 
+        }
+
+        private void change_Order_DressedItems(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            checkOrder();
+        }
+        
+        private void checkOrder()
+        {
+            if(itemOutfit.Count == 0)
+            {
+                return;
+            }
+            if (itemOutfit.ElementAt(0).ItemKind == E_ItemKind.HAT)
+                {
+                    if (itemOutfit.Count > 1)
+                    {
+                        if (itemOutfit.ElementAt(1).ItemKind == E_ItemKind.T_SHIRT)
+                        {
+                            if (itemOutfit.Count > 2)
+                            {
+                                if (itemOutfit.ElementAt(2).ItemKind == E_ItemKind.TROUSERS)
+                                {
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            
+            Item hat1 = null;
+            Item shirt1 = null;
+            Item trouser1 = null;
+
+            foreach(Item i in itemOutfit)
+            {
+                if(i.ItemKind == E_ItemKind.HAT)
+                {
+                    hat1 = i;
+                }else if(i.ItemKind == E_ItemKind.T_SHIRT)
+                {
+                    shirt1 = i;
+                }
+                else
+                {
+                    trouser1 = i;
+                }
+            }
+
+            itemOutfit.Clear();
+            if(hat1 != null)
+                itemOutfit.Add(hat1);
+            if(shirt1 != null)
+                itemOutfit.Add(shirt1);
+            if(trouser1 != null)
+                itemOutfit.Add(trouser1);
         }
 
         /// <summary>
@@ -355,7 +452,6 @@ namespace KillerWearsPrada.UC
             LeftListBox.ItemsSource = itemInv;
             change_TrashImage();
         }
-        
         
     }
     

@@ -77,7 +77,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox Margin="0,258,135,124" Name="RightListBox" HorizontalAlignment="Right" Width="Auto">
+            <ListBox Margin="0,258,135,124" Name="RightListBox" HorizontalAlignment="Right" Width="250">
                 <ListBox.Background>
                     <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Sagoma}}" Stretch="Fill"></ImageBrush>
                 </ListBox.Background>
