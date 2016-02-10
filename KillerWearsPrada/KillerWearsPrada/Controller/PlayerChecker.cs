@@ -68,28 +68,6 @@ namespace KillerWearsPrada.Controller
 
         }
 
-        /*
-        private Relation CheckRelation(string ActualID, string NewID)
-        {
-            Relation wvRel;
-            if (ActualID == null)
-            { 
-                if (NewID == null)
-                    wvRel = Relation.CP_NULL_NP_NULL;
-                else
-                    wvRel = Relation.CP_NULL_NP_VALUE;
-            }
-            else
-            {
-                if (NewID == null)
-                    wvRel = Relation.CP_VALUE_NP_NULL;
-                else
-                    wvRel = Relation.CP_VALUE_NP_VALUE;
-            }
-            return wvRel;
-        }
-        */
-
         private Relation CheckRelation(string ActualID, string NewID, int BodyCount)
         {
             Relation wvRel;
@@ -114,49 +92,6 @@ namespace KillerWearsPrada.Controller
             return wvRel;
         }
 
-
-        /*
-        case Relation.STILL_NOT_AVAILABLE:
-                    break;
-                case Relation.CP_NULL_NP_NULL:   
-                    if(attPreviousBodyCount > 0 && BodyCount>0)
-                    {
-                        attPreviousBodyCount = BodyCount;
-                        break;
-                    }          
-                    if (attPreviousBodyCount > 0 && BodyCount < 1)
-                    {
-                        attPreviousBodyCount = 0;
-                        attIDCurrentPalyer = null;
-                        RaisePlayerLeaveKinectSensorEvent();
-                        break;
-                    }
-                    break;
-                case Relation.CP_NULL_NP_VALUE:
-                    attIDCurrentPalyer = ID;
-                    attPreviousBodyCount = BodyCount;
-                    RaisePlayerEnterKinectSensorEvent(ID);
-                    break;
-                case Relation.CP_VALUE_NP_NULL:
-                    if(BodyCount > 0)
-                    {
-                        attPreviousBodyCount = BodyCount;
-                        return;
-                    }
-                    attIDCurrentPalyer = null;
-                    RaisePlayerLeaveKinectSensorEvent();
-                    break;
-                case Relation.CP_VALUE_NP_VALUE:
-                    if (attIDCurrentPalyer != ID)
-                    {
-                        attPreviousBodyCount = 0;
-                        attIDCurrentPalyer = null;
-                        RaisePlayerLeaveKinectSensorEvent();
-                    }
-                    break;
-                default:
-                    break;
-        */
 
         #region Section to raise the event PlayerEnterKinectSensor
         /// <summary>

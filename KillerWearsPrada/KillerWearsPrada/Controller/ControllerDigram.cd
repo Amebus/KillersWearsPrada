@@ -38,9 +38,14 @@
           <NewMemberFileName>Controller\GameController.cs</NewMemberFileName>
         </TypeIdentifier>
       </Class>
+      <Class Name="KillerWearsPrada.Controller.GameController.NotifyItemException" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controller\GameController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAwIBAQCAACAxBCAAoUAwECwSTABCAAIGE=</HashCode>
+      <HashCode>AAAQAAAAAAAwIJAQCAACAxBCAAoUAwECwSTABCAAIGE=</HashCode>
       <FileName>Controller\GameController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -57,7 +62,7 @@
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>BCAABABABAASAgCAAACAIQKgIAAAAAABIAQAAAIAAJA=</HashCode>
+      <HashCode>BCAABABCBAISAgKAAACAIQKgIAAAAAABAAQAAAIAAJA=</HashCode>
       <FileName>Controller\KinectInterrogator.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -84,7 +89,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>gAgAAAAAAAAAAAAAEAEggAogAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAgAAAAAEAAAAAAAEAEIgAogAAAAAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Controller\PlayerChecker.cs</FileName>
     </TypeIdentifier>
   </Class>

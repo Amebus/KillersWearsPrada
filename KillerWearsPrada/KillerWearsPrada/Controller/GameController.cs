@@ -37,7 +37,7 @@ namespace KillerWearsPrada.Controller
         /// <param name="KinectSensor">The <see cref="Microsoft.Kinect.KinectSensor"/> associated to the game</param>
         public GameController(Microsoft.Kinect.KinectSensor KinectSensor)
         {
-            attRandom = new Random(0);
+            attRandom = new Random(1);
             attKinectInterrogator = new KinectInterrogator( KinectSensor, REFRESH_TIME );
 
             attDataBase = new Helpers.DBHelper();  

@@ -239,6 +239,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SavedGames\10-02-2016-10-08-23_Anacleto" />
     <None Include="SavedGames\26-01-2016-11-40-50_Giocatore1" />
   </ItemGroup>
   <ItemGroup>
