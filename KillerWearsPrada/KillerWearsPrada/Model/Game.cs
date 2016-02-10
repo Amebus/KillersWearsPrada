@@ -212,7 +212,7 @@ namespace KillerWearsPrada.Model
         /// </summary>
         public Solution Solution
         {
-            get { return Solution; }
+            get { return attSolution; }
         }
 
         #endregion
