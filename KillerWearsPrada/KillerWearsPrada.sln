@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KillerWearsPrada", "KillerWearsPrada\KillerWearsPrada.csproj", "{C46FAFB1-7165-4411-B23D-373A1A7FD239}"
 EndProject
@@ -465,9 +465,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML", "UML", "{A795DBCC-8BC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DigramImages", "DigramImages", "{3E0C3F2D-0E25-4CBA-936A-0E09A22FE33F}"
 	ProjectSection(SolutionItems) = preProject
+		KillerWearsPrada\UML\ControllerDigram.png = KillerWearsPrada\UML\ControllerDigram.png
 		KillerWearsPrada\UML\GameController-Helper_Interaction.png = KillerWearsPrada\UML\GameController-Helper_Interaction.png
 		KillerWearsPrada\UML\GameController-Model_Interaction.png = KillerWearsPrada\UML\GameController-Model_Interaction.png
+		KillerWearsPrada\UML\HelpersDiagram.png = KillerWearsPrada\UML\HelpersDiagram.png
 		KillerWearsPrada\UML\KinectInterrogator-Helper_Interaction.png = KillerWearsPrada\UML\KinectInterrogator-Helper_Interaction.png
+		KillerWearsPrada\UML\ModelDiagram.png = KillerWearsPrada\UML\ModelDiagram.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{FEAC7128-CDD4-4FAF-8692-8D954512C98F}"

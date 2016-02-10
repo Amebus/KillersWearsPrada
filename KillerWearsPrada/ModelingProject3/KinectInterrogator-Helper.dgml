@@ -1,209 +1,250 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DirectedGraph DataVirtualized="True" FilterState="CodeSchema_Field,CodeSchema_Namespace,CodeSchema_ReturnTypeLink,CodeMap_ProjectReference,CodeMap_ExternalReference,UncategorizedRelationship" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+<DirectedGraph DataVirtualized="True" FilterState="CodeSchema_Namespace,CodeSchema_ReturnTypeLink,CodeMap_ProjectReference,CodeMap_ExternalReference,UncategorizedRelationship,CodeSchema_Field" Layout="ForceDirected" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="(@1 @3 @19 Member=attScreen)" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="attScreen" UseManualLocation="True" />
-    <Node Id="(@1 @3 Type=(Name=PlayerEnterKinectSensor @9) @45)" Category="CodeSchema_Method" Bounds="230.009895731608,188.52943911095,163.646666666667,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="PlayerEnterKinectSensor" />
-    <Node Id="(@1 @3 Type=(Name=PlayerLeaveKinectSensor @9) @45)" Category="CodeSchema_Method" Bounds="554.399838053385,254.201079333119,166.326666666667,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="PlayerLeaveKinectSensor" />
-    <Node Id="(@1 @5 @23 @45)" Category="CodeSchema_Method" Bounds="12.1205003229777,-146.403954193493,124.506666666667,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="QRReaderHelper" UseManualLocation="True" />
-    <Node Id="(@1 @5 @23 Member=(Name=GenerateQRCode @30))" Category="CodeSchema_Method" Bounds="-98.8429018147787,-90.4438541934927,128.226666666667,25.96" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="GenerateQRCode" UseManualLocation="True" />
-    <Node Id="@10" Category="CodeSchema_Class" Bounds="230.00993231026,244.489574246871,119.333333333333,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Arguments" />
-    <Node Id="@11" Category="CodeSchema_Class" Bounds="554.399826284115,310.161203179192,119.333333333333,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Arguments" />
-    <Node Id="@12" Category="CodeSchema_Class" Bounds="-127.537133339921,-318.751803793071,119.333333333333,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Arguments" />
-    <Node Id="@13" Category="CodeSchema_Class" Bounds="414.690318622828,-262.602396535132,222.566666666666,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="BackgroundWorkerParameters" />
-    <Node Id="@14" Category="CodeSchema_Class" Bounds="210.009895731608,148.529339110951,203.646666666667,140.960335135921" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="2" Group="Expanded" Label="PlayerEnterKinectSensor" UseManualLocation="True" />
-    <Node Id="@15" Category="CodeSchema_Class" Bounds="534.399826284115,214.200979333118,206.326678435938,140.960323846074" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="2" Group="Expanded" Label="PlayerLeaveKinectSensor" UseManualLocation="True" />
-    <Node Id="@16" Category="CodeSchema_Enum" Bounds="95.5569769483886,320.914751872139,100.26,25" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Relation" UseManualLocation="True" />
-    <Node Id="@18" Category="CodeSchema_Class" Bounds="-264.132537536621,-470.672117318462,450.166706484104,198.307830526092" CodeSchemaProperty_IsInternal="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="5" Group="Expanded" Label="BarCodeRecognized" UseManualLocation="True" />
-    <Node Id="@2" Category="CodeSchema_Assembly" AssemblyTimestamp="01/27/2016 10:58:44" Bounds="-284.132537536621,-510.672220004191,1273.60140667896,905.83372433441" CodeSchemaProperty_StrongName="KillerWearsPrada, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" CommonLabel="KillerWearsPrada" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" FilePath="$(c46fafb1-7165-4411-b23d-373a1a7fd239.OutputPath)" Group="Expanded" Label="KillerWearsPrada.exe">
+    <Node Id="(@1 @6 @24 Member=(Name=GenerateQRCode OverloadingParameters=[@31]))" Category="CodeSchema_Method" Bounds="749.841927897135,183.13015541997,128.226666666667,25.96" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="GenerateQRCode" />
+    <Node Id="(@1 @6 @24 Member=.ctor)" Category="CodeSchema_Method" Bounds="749.841728922526,71.2099092957024,124.506666666667,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="QRReaderHelper" />
+    <Node Id="(@1 Namespace=::)" Category="CodeSchema_Namespace" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="::" />
+    <Node Id="@10" Category="CodeSchema_Namespace" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="KillerWearsPrada‎.Properties" />
+    <Node Id="@11" Category="CodeSchema_Namespace" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="KillerWearsPrada‎.UC" />
+    <Node Id="@12" Category="CodeSchema_Class" Bounds="848.082761669411,411.113986241406,119.333333333333,25.0000000000001" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Arguments" />
+    <Node Id="@13" Category="CodeSchema_Class" Bounds="40.0000000000001,351.879224245235,222.566666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="BackgroundWorkerParameters" />
+    <Node Id="@15" Category="CodeSchema_Class" Bounds="677.154894980526,781.272964619222,188.646666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerEnterKinectSensor" />
+    <Node Id="@16" Category="CodeSchema_Class" Bounds="306.190340475764,841.213508578034,191.326666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerLeaveKinectSensor" />
+    <Node Id="@17" Category="CodeSchema_Enum" Bounds="195.907248405764,582.79123564203,100.26,25" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Relation" UseManualLocation="True" />
+    <Node Id="@19" Category="CodeSchema_Class" Bounds="738.285026855468,314.09048904784,381.068217075116,197.983698535156" CodeSchemaProperty_IsInternal="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="5" Group="Expanded" Label="BarCodeRecognized" UseManualLocation="True" />
+    <Node Id="@2" Category="CodeSchema_Assembly" AssemblyTimestamp="01/27/2016 10:58:44" Bounds="-1.13686837721616E-13,-20.4547826898316,1139.35324393058,926.668491267865" CodeSchemaProperty_StrongName="KillerWearsPrada, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" CommonLabel="KillerWearsPrada" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="8" FilePath="$(c46fafb1-7165-4411-b23d-373a1a7fd239.OutputPath)" Group="Expanded" Label="KillerWearsPrada.exe">
       <Category Ref="CodeMap_WpfProject" />
     </Node>
-    <Node Id="@20" Category="CodeSchema_Class" Bounds="237.241979451935,-470.482657068836,723.100523533036,418.840681882003" CodeSchemaProperty_IsInternal="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="24" Group="Expanded" Label="KinectInterrogator" />
-    <Node Id="@22" Category="CodeSchema_Class" Bounds="-124.387920645509,-8.71142817063981,1093.85678978785,383.872832500859" CodeSchemaProperty_IsInternal="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="14" Group="Expanded" Label="PlayerChecker" UseManualLocation="True" />
-    <Node Id="@24" Category="CodeSchema_Class" Bounds="-118.843270314534,-242.36418679237,313.339484041782,197.880432598877" CodeSchemaProperty_IsInternal="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="7" Group="Expanded" Label="QRReaderHelper" UseManualLocation="True" />
-    <Node Id="@25" Category="CodeSchema_Method" Bounds="-11.6482828776044,98.247106887954,179.483333333334,25.96" CodeSchemaProperty_IsProtected="True" CodeSchemaProperty_IsVirtual="True" DelayedCrossGroupLinksState="Fetched" Label="OnPlayerEnterKinectSensor" UseManualLocation="True" />
-    <Node Id="@26" Category="CodeSchema_Method" Bounds="491.498777669271,143.208884203724,182.163333333333,25.96" CodeSchemaProperty_IsProtected="True" CodeSchemaProperty_IsVirtual="True" DelayedCrossGroupLinksState="Fetched" Label="OnPlayerLeaveKinectSensor" />
-    <Node Id="@27" Category="CodeSchema_Method" Bounds="-244.132537536621,-374.711903793071,158.36,25.96" CodeSchemaProperty_IsProtected="True" CodeSchemaProperty_IsVirtual="True" DelayedCrossGroupLinksState="Fetched" Label="OnBarCodeRecognized" />
-    <Node Id="@31" Category="CodeSchema_Method" Bounds="456.584067586263,31.2886706783333,99.9933333333335,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="CheckPlayer" />
-    <Node Id="@32" Category="CodeSchema_Method" Bounds="-101.207537536621,-430.672017318462,92.51,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="RaiseEvent" />
-    <Node Id="@33" Category="CodeSchema_Method" Bounds="200.502111002604,85.4629565670052,220.156666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="RaisePlayerEnterKinectSensorEvent" />
-    <Node Id="@34" Category="CodeSchema_Method" Bounds="11.1834311358134,-202.36408679237,80.0266666666667,25.96" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="QRCode" UseManualLocation="True" />
-    <Node Id="@36" Category="CodeSchema_Method" Bounds="-98.8428574625651,-146.403954193493,80.9633333333333,25.96" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="BarCode" UseManualLocation="True" />
-    <Node Id="@37" Category="CodeSchema_Method" Bounds="-98.8432703145345,-202.36408679237,80.0266666666667,25.96" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="QRCode" UseManualLocation="True" />
-    <Node Id="@39" Category="CodeSchema_Method" Bounds="257.241990031362,-318.562497864734,177.463333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="Reader_ColorFrameArrived" />
-    <Node Id="@4" Category="CodeSchema_Namespace" Bounds="-260.776925514406,-156.92,763.100517695478,478.84" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="KillerWearsPrada.Controller" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" Group="Expanded" Label="KillerWearsPrada.Controller" />
-    <Node Id="@41" Category="CodeSchema_Method" Bounds="465.428656698028,-318.562489013672,121.09,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="worker_DoWork" />
-    <Node Id="@42" Category="CodeSchema_Method" Bounds="279.628656698029,-430.482557068836,132.69,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="KinectInterrogator" />
-    <Node Id="@43" Category="CodeSchema_Method" Bounds="617.515231811961,-318.562489013672,138.916666666667,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="worker_WorkEnded" />
-    <Node Id="@44" Category="CodeSchema_Method" Bounds="450.948838704427,87.2487706783334,111.263333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="CheckRelation" />
-    <Node Id="@46" Category="CodeSchema_Method" Bounds="21.7962003835044,-318.32438679237,142.523333333333,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="BarCodeRecognized" UseManualLocation="True" />
-    <Node Id="@47" Category="CodeSchema_Method" Bounds="-74.3239005533852,319.629248001235,110.443333333333,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="PlayerChecker" UseManualLocation="True" />
-    <Node Id="@48" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attBackGroundWorkerBusy" UseManualLocation="True" />
-    <Node Id="@49" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attBarcodeChecker" UseManualLocation="True" />
-    <Node Id="@50" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attColorFrameReader" UseManualLocation="True" />
-    <Node Id="@51" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attEnableTakingScreenshot" UseManualLocation="True" />
-    <Node Id="@52" Category="CodeSchema_Field" Bounds="168.398040685436,329.357538779465,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attIDCurrentPalyer" UseManualLocation="True" />
-    <Node Id="@53" Category="CodeSchema_Field" Bounds="-1173.88664973025,105.09075280162,0,0" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="attImagePath" UseManualLocation="True" />
-    <Node Id="@54" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attKinectSensor" UseManualLocation="True" />
-    <Node Id="@55" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attLastcheck" UseManualLocation="True" />
-    <Node Id="@56" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attPlayerChecker" UseManualLocation="True" />
-    <Node Id="@57" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attScreenshotWorker" UseManualLocation="True" />
-    <Node Id="@58" Category="CodeSchema_Field" Bounds="1288.5477472356,167.526743812638,0,0" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attWaitingTime" UseManualLocation="True" />
-    <Node Id="@59" Category="CodeSchema_Event" Bounds="-23.9391643858512,-374.231803793071,189.973333333334,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="BarCodeRecognizedEvent" />
-    <Node Id="@6" Category="CodeSchema_Namespace" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="KillerWearsPrada.Helpers" DelayedChildNodesState="Incomplete" Group="Expanded" Label="KillerWearsPrada.Helpers" />
-    <Node Id="@60" Category="CodeSchema_Property" Bounds="257.241985256946,-151.642176516434,193.922394787382,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="BarCodeRecognizedEvent" />
-    <Node Id="@61" Category="CodeSchema_Property" Bounds="225.816976948389,319.489774246872,141.745728120715,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="IDCurrentPlayer" UseManualLocation="True" />
-    <Node Id="@62" Category="CodeSchema_Property" Bounds="59.3838189398654,-90.443852567189,115.112394787382,25.0000000000001" CodeSchemaProperty_IsStatic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ImagePath" UseManualLocation="True" />
-    <Node Id="@63" Category="CodeSchema_Property" Bounds="635.805323364695,-207.602179175638,156.549061454048,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="IsKinectConnected" />
-    <Node Id="@64" Category="CodeSchema_Property" Bounds="725.296774864256,-151.642179175638,215.045728120715,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerEnterKinectSensorEvent" />
-    <Node Id="@65" Category="CodeSchema_Event" Bounds="-104.387920645509,154.207226276742,211.096666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerEnterKinectSensorEvent" UseManualLocation="True" />
-    <Node Id="@66" Category="CodeSchema_Property" Bounds="257.241985256946,-96.6420765164341,217.725728120715,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerLeaveKinectSensorEvent" />
-    <Node Id="@67" Category="CodeSchema_Event" Bounds="735.692202475674,143.688547634582,213.776666666666,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerLeaveKinectSensorEvent" />
-    <Node Id="@68" Category="CodeSchema_Method" Bounds="593.162111002604,87.2486010982552,222.836666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="RaisePlayerLeaveKinectSensorEvent" />
-    <Node Id="@69" Category="CodeSchema_Property" Bounds="481.164380044329,-151.642177846036,214.132394787381,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ScreenshotWorkerCompleted" />
-    <Node Id="@70" Category="CodeSchema_Property" Bounds="504.967713377661,-96.6420778460362,248.842394787382,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ScreenshotWorkerProgressChanged" />
-    <Node Id="@71" Category="CodeSchema_Method" Bounds="448.496990031362,-374.522633056641,154.953333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="SetBackgroundWorker" />
-    <Node Id="@72" Category="CodeSchema_Method" Bounds="446.391990031362,-207.602297864734,159.413333333333,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="StartTakingScreenshots" />
-    <Node Id="@73" Category="CodeSchema_Method" Bounds="257.241979451935,-207.602296535132,159.15,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="StopTakingScreenshots" />
+    <Node Id="@21" Category="CodeSchema_Class" Bounds="19.9999999999999,19.5453173101684,674.80084391276,432.334106935067" CodeSchemaProperty_IsInternal="True" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="26" Group="Expanded" Label="KinectInterrogator" />
+    <Node Id="@23" Category="CodeSchema_Class" Bounds="150.106571300386,542.79113564203,870.957259749408,343.422472936004" CodeSchemaProperty_IsInternal="True" CommonLabel="PlayerChecker" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="15" Group="Expanded" Icon="CodeSchema_Class" Label="PlayerChecker" SourceLocation="(Assembly=file:///C:/Users/federico/SkyDrive/Documents/GitHubVisualStudio/KillersWearsPrada/KillerWearsPrada/KillerWearsPrada/Controller/PlayerChecker.cs StartLineNumber=11 StartCharacterOffset=10 EndLineNumber=11 EndCharacterOffset=23)" UseManualLocation="True" />
+    <Node Id="@25" Category="CodeSchema_Class" Bounds="729.841728922526,31.2098092957024,274.533390299479,252.880579752137" CodeSchemaProperty_IsInternal="True" CommonLabel="QRReaderHelper" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="7" Group="Expanded" Icon="CodeSchema_Class" Label="QRReaderHelper" SourceLocation="(Assembly=file:///C:/Users/federico/SkyDrive/Documents/GitHubVisualStudio/KillersWearsPrada/KillerWearsPrada/KillerWearsPrada/Helpers/QRReaderHelper.cs StartLineNumber=11 StartCharacterOffset=10 EndLineNumber=11 EndCharacterOffset=24)" UseManualLocation="True" />
+    <Node Id="@26" Category="CodeSchema_Method" Bounds="654.056459554036,669.352672100215,179.483333333333,25.96" CodeSchemaProperty_IsProtected="True" CodeSchemaProperty_IsVirtual="True" DelayedCrossGroupLinksState="Fetched" Label="OnPlayerEnterKinectSensor" />
+    <Node Id="@27" Category="CodeSchema_Method" Bounds="327.64690999349,729.293222694203,182.163333333333,25.96" CodeSchemaProperty_IsProtected="True" CodeSchemaProperty_IsVirtual="True" DelayedCrossGroupLinksState="Fetched" Label="OnPlayerLeaveKinectSensor" />
+    <Node Id="@28" Category="CodeSchema_Method" Bounds="758.285026855469,355.153821469715,158.36,25.96" CodeSchemaProperty_IsProtected="True" CodeSchemaProperty_IsVirtual="True" DelayedCrossGroupLinksState="Fetched" Label="OnBarCodeRecognized" />
+    <Node Id="@3" Category="CodeSchema_Namespace" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="KillerWearsPrada" />
+    <Node Id="@32" Category="CodeSchema_Method" Bounds="786.869877929688,466.114087582996,92.51,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="RaiseEvent" />
+    <Node Id="@33" Category="CodeSchema_Method" Bounds="539.810369059245,725.312816143183,220.156666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="RaisePlayerEnterKinectSensorEvent" />
+    <Node Id="@34" Category="CodeSchema_Method" Bounds="749.841799723307,127.170011377001,80.0266666666666,25.96" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="QRCode" />
+    <Node Id="@36" Category="CodeSchema_Method" Bounds="859.868461507161,127.170045709277,80.9633333333334,25.96" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="BarCode" />
+    <Node Id="@37" Category="CodeSchema_Method" Bounds="904.348452555339,71.2099092957024,80.0266666666666,25.96" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="QRCode" />
+    <Node Id="@40" Category="CodeSchema_Method" Bounds="309.710876261393,133.760943876771,175.676666666667,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="Reader_BodyFrameArrived" />
+    <Node Id="@41" Category="CodeSchema_Method" Bounds="161.975295918783,295.919116484193,177.463333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="Reader_ColorFrameArrived" />
+    <Node Id="@43" Category="CodeSchema_Method" Bounds="90.0462322998047,239.959016484193,121.09,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="worker_DoWork" />
+    <Node Id="@44" Category="CodeSchema_Method" Bounds="241.136353759766,209.340686308412,132.69,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="KinectInterrogator" />
+    <Node Id="@45" Category="CodeSchema_Method" Bounds="511.522910359701,669.352672100215,99.9933333333333,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="CheckPlayer" />
+    <Node Id="@46" Category="CodeSchema_Method" Bounds="71.2315584818522,73.5667168320935,138.916666666667,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="worker_WorkEnded" />
+    <Node Id="@47" Category="CodeSchema_Method" Bounds="500.857331746419,583.476390361933,111.263333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="CheckRelation" />
+    <Node Id="@48" Category="CodeSchema_Method" Bounds="952.055624593099,354.09058904784,142.523333333334,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="BarCodeRecognized" UseManualLocation="True" />
+    <Node Id="@49" Category="CodeSchema_Method" Bounds="334.148099568685,583.938626767566,110.443333333333,25.96" CodeSchemaProperty_IsConstructor="True" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsSpecialName="True" DelayedCrossGroupLinksState="Fetched" Label="PlayerChecker" UseManualLocation="True" />
+    <Node Id="@5" Category="CodeSchema_Namespace" Bounds="-260.776925514406,-156.92,763.100517695478,478.84" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="KillerWearsPrada.Controller" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" Group="Expanded" Label="KillerWearsPrada‎.Controller" />
+    <Node Id="@50" Category="CodeSchema_Field" Bounds="-993.673337629702,161.136300583113,179.213333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attBackGroundWorkerBusy" UseManualLocation="True" />
+    <Node Id="@51" Category="CodeSchema_Field" Bounds="-353.413037629699,161.136300583113,136.77,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attBarcodeChecker" UseManualLocation="True" />
+    <Node Id="@52" Category="CodeSchema_Field" Bounds="168.548930840813,105.176301556862,110.13,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attBodyCount" UseManualLocation="True" />
+    <Node Id="@53" Category="CodeSchema_Field" Bounds="629.311203628809,49.2163005831131,147.853333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attBodyFrameReader" UseManualLocation="True" />
+    <Node Id="@54" Category="CodeSchema_Field" Bounds="807.164636962143,49.2163005831132,149.64,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attColorFrameReader" UseManualLocation="True" />
+    <Node Id="@55" Category="CodeSchema_Field" Bounds="105.159072730091,161.136301556862,179.976666666667,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attEnableTakingScreenshot" UseManualLocation="True" />
+    <Node Id="@56" Category="CodeSchema_Field" Bounds="242.502197066972,373.977458675995,134.536666666667,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attIDCurrentPlayer" />
+    <Node Id="@57" Category="CodeSchema_Field" Bounds="-707.880772206003,400.997458675995,107.903333333333,25.96" CodeSchemaProperty_IsPrivate="True" CodeSchemaProperty_IsStatic="True" DelayedCrossGroupLinksState="Fetched" Label="attImagePath" />
+    <Node Id="@58" Category="CodeSchema_Field" Bounds="19.0288308408132,105.176301556862,119.52,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attKinectSensor" UseManualLocation="True" />
+    <Node Id="@59" Category="CodeSchema_Field" Bounds="-113.24460249252,105.176301556862,102.273333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attLastcheck" UseManualLocation="True" />
+    <Node Id="@60" Category="CodeSchema_Field" Bounds="-186.6429376297,161.136300583113,125.683333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attPlayerChecker" UseManualLocation="True" />
+    <Node Id="@61" Category="CodeSchema_Field" Bounds="57.3371970669727,373.977458675995,154.866666666667,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attPreviousBodyCount" />
+    <Node Id="@62" Category="CodeSchema_Field" Bounds="-784.459904296367,161.136300583113,148.48,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attScreenshotWorker" UseManualLocation="True" />
+    <Node Id="@63" Category="CodeSchema_Field" Bounds="-261.34470249252,105.176301556862,118.1,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="attWaitingTime" UseManualLocation="True" />
+    <Node Id="@64" Category="CodeSchema_Event" Bounds="909.379910597251,466.114100021224,189.973333333334,25.0000000000001" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="BarCodeRecognizedEvent" />
+    <Node Id="@65" Category="CodeSchema_Property" Bounds="471.603789274568,391.466029556981,193.922394787382,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="BarCodeRecognizedEvent" UseManualLocation="True" />
+    <Node Id="@66" Category="CodeSchema_Property" Bounds="199.407888674044,639.898726767566,141.745728120715,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="IDCurrentPlayer" UseManualLocation="True" />
+    <Node Id="@67" Category="CodeSchema_Property" Bounds="749.841837617807,239.09028904784,115.112394787381,25" CodeSchemaProperty_IsStatic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ImagePath" />
+    <Node Id="@68" Category="CodeSchema_Property" Bounds="515.387528340223,171.465629556981,156.549061454048,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="IsKinectConnected" />
+    <Node Id="@69" Category="CodeSchema_Property" Bounds="451.854612685352,336.465929556981,215.045728120715,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerEnterKinectSensorEvent" UseManualLocation="True" />
+    <Node Id="@7" Category="CodeSchema_Namespace" CodeSchemaProperty_IsPublic="True" CodeSchemaProperty_IsStatic="True" CommonLabel="KillerWearsPrada.Helpers" DelayedChildNodesState="Incomplete" DelayedCrossGroupLinksState="Fetched" Group="Expanded" Label="KillerWearsPrada‎.Helpers" />
+    <Node Id="@70" Category="CodeSchema_Event" Bounds="789.967164383128,726.27260432982,211.096666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerEnterKinectSensorEvent" />
+    <Node Id="@71" Category="CodeSchema_Property" Bounds="452.292592306001,281.465829556981,217.725728120715,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerLeaveKinectSensorEvent" UseManualLocation="True" />
+    <Node Id="@72" Category="CodeSchema_Event" Bounds="170.106571300386,786.213166916601,213.776666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="PlayerLeaveKinectSensorEvent" />
+    <Node Id="@73" Category="CodeSchema_Method" Bounds="413.88336344401,785.253366737172,222.836666666667,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="RaisePlayerLeaveKinectSensorEvent" />
+    <Node Id="@74" Category="CodeSchema_Property" Bounds="452.535598450083,226.465729556981,214.132394787382,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ScreenshotWorkerCompleted" UseManualLocation="True" />
+    <Node Id="@75" Category="CodeSchema_Property" Bounds="192.761394487186,406.879324245235,248.842394787382,25" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ScreenshotWorkerProgressChanged" UseManualLocation="True" />
+    <Node Id="@76" Category="CodeSchema_Method" Bounds="124.757422231038,153.380586308412,154.953333333333,25.96" CodeSchemaProperty_IsPrivate="True" DelayedCrossGroupLinksState="Fetched" Label="SetBackgroundWorker" />
+    <Node Id="@77" Category="CodeSchema_Method" Bounds="515.387510579427,115.50552892821,159.413333333333,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="StartTakingScreenshots" />
+    <Node Id="@78" Category="CodeSchema_Method" Bounds="515.387493896484,59.5454173101684,159.15,25.96" CodeSchemaProperty_IsPublic="True" DelayedCrossGroupLinksState="Fetched" Label="StopTakingScreenshots" />
+    <Node Id="@8" Category="CodeSchema_Namespace" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="KillerWearsPrada‎.KWP_DB_TestDataSetTableAdapters" />
+    <Node Id="@9" Category="CodeSchema_Namespace" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="KillerWearsPrada‎.Model" />
   </Nodes>
   <Links>
-    <Link Source="@14" Target="(@1 @3 Type=(Name=PlayerEnterKinectSensor @9) @45)" Category="Contains" FetchingParent="@14" />
-    <Link Source="@14" Target="@10" Category="Contains" FetchingParent="@14" />
-    <Link Source="@15" Target="(@1 @3 Type=(Name=PlayerLeaveKinectSensor @9) @45)" Category="Contains" FetchingParent="@15" />
-    <Link Source="@15" Target="@11" Category="Contains" FetchingParent="@15" />
-    <Link Source="@18" Target="@12" Category="Contains" FetchingParent="@18" />
-    <Link Source="@18" Target="@27" Category="Contains" FetchingParent="@18" />
-    <Link Source="@18" Target="@32" Category="Contains" FetchingParent="@18" />
-    <Link Source="@18" Target="@46" Category="Contains" FetchingParent="@18" />
-    <Link Source="@18" Target="@59" Category="Contains" FetchingParent="@18" />
-    <Link Source="@2" Target="@18" Category="Contains" />
-    <Link Source="@2" Target="@20" Category="Contains" />
-    <Link Source="@2" Target="@22" Category="Contains" />
-    <Link Source="@2" Target="@24" Category="Contains" />
-    <Link Source="@2" Target="@4" Category="Contains" FetchingParent="@2" />
-    <Link Source="@2" Target="@6" Category="Contains" FetchingParent="@2" />
-    <Link Source="@20" Target="(@1 @3 @19 Member=attScreen)" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@13" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@39" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@41" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@42" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@43" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@48" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@49" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@50" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@51" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@54" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@55" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@56" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@57" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@58" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@60" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@63" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@64" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@66" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@69" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@70" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@71" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@72" Category="Contains" FetchingParent="@20" />
-    <Link Source="@20" Target="@73" Category="Contains" FetchingParent="@20" />
-    <Link Source="@22" Target="@14" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@15" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@16" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@25" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@26" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@31" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@33" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@44" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@47" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@52" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@61" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@65" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@67" Category="Contains" FetchingParent="@22" />
-    <Link Source="@22" Target="@68" Category="Contains" FetchingParent="@22" />
-    <Link Source="@24" Target="(@1 @5 @23 @45)" Category="Contains" FetchingParent="@24" />
-    <Link Source="@24" Target="(@1 @5 @23 Member=(Name=GenerateQRCode @30))" Category="Contains" FetchingParent="@24" />
-    <Link Source="@24" Target="@34" Category="Contains" FetchingParent="@24" />
-    <Link Source="@24" Target="@36" Category="Contains" FetchingParent="@24" />
-    <Link Source="@24" Target="@37" Category="Contains" FetchingParent="@24" />
-    <Link Source="@24" Target="@53" Category="Contains" FetchingParent="@24" />
-    <Link Source="@24" Target="@62" Category="Contains" FetchingParent="@24" />
-    <Link Source="@25" Target="@10" Category="References" Bounds="92.0244696412865,123.675608108947,176.39878835979,164.355908591616" Weight="3" />
-    <Link Source="@26" Target="@11" Category="References" Weight="3" />
-    <Link Source="@27" Target="@12" Category="References" Bounds="-142.239433562286,-348.751903793071,44.6817650900708,25.5345685699527" Weight="3" />
-    <Link Source="@31" Target="@33" Category="CodeSchema_Calls" Bounds="366.216277347198,57.2486706783334,93.4033623312571,25.8165967817686" Weight="1" />
-    <Link Source="@31" Target="@44" Category="CodeSchema_Calls" Bounds="506.580595271268,57.2486706783334,8.58922954307673E-05,21.0001000000753" Weight="1" />
-    <Link Source="@31" Target="@52" Category="CodeSchema_FieldRead" Weight="4">
+    <Link Source="@11" Target="@3" Category="CodeSchema_Calls" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="42">
+      <Category Ref="CodeSchema_FieldRead" />
+    </Link>
+    <Link Source="@11" Target="@9" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="174">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@19" Target="@12" Category="Contains" FetchingParent="@19" />
+    <Link Source="@19" Target="@28" Category="Contains" FetchingParent="@19" />
+    <Link Source="@19" Target="@32" Category="Contains" FetchingParent="@19" />
+    <Link Source="@19" Target="@48" Category="Contains" FetchingParent="@19" />
+    <Link Source="@19" Target="@64" Category="Contains" FetchingParent="@19" />
+    <Link Source="@2" Target="(@1 Namespace=::)" Category="Contains" FetchingParent="@2" />
+    <Link Source="@2" Target="@10" Category="Contains" FetchingParent="@2" />
+    <Link Source="@2" Target="@11" Category="Contains" FetchingParent="@2" />
+    <Link Source="@2" Target="@19" Category="Contains" />
+    <Link Source="@2" Target="@23" Category="Contains" />
+    <Link Source="@2" Target="@25" Category="Contains" />
+    <Link Source="@2" Target="@3" Category="Contains" FetchingParent="@2" />
+    <Link Source="@2" Target="@5" Category="Contains" FetchingParent="@2" />
+    <Link Source="@2" Target="@7" Category="Contains" FetchingParent="@2" />
+    <Link Source="@2" Target="@8" Category="Contains" FetchingParent="@2" />
+    <Link Source="@2" Target="@9" Category="Contains" FetchingParent="@2" />
+    <Link Source="@21" Target="@13" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@40" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@41" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@43" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@44" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@46" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@50" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@51" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@52" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@53" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@54" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@55" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@58" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@59" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@60" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@62" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@63" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@65" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@68" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@69" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@71" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@74" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@75" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@76" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@77" Category="Contains" FetchingParent="@21" />
+    <Link Source="@21" Target="@78" Category="Contains" FetchingParent="@21" />
+    <Link Source="@23" Target="@15" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@16" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@17" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@26" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@27" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@33" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@45" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@47" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@49" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@56" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@61" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@66" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@70" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@72" Category="Contains" FetchingParent="@23" />
+    <Link Source="@23" Target="@73" Category="Contains" FetchingParent="@23" />
+    <Link Source="@25" Target="(@1 @6 @24 Member=(Name=GenerateQRCode OverloadingParameters=[@31]))" Category="Contains" FetchingParent="@25" />
+    <Link Source="@25" Target="(@1 @6 @24 Member=.ctor)" Category="Contains" FetchingParent="@25" />
+    <Link Source="@25" Target="@34" Category="Contains" FetchingParent="@25" />
+    <Link Source="@25" Target="@36" Category="Contains" FetchingParent="@25" />
+    <Link Source="@25" Target="@37" Category="Contains" FetchingParent="@25" />
+    <Link Source="@25" Target="@57" Category="Contains" FetchingParent="@25" />
+    <Link Source="@25" Target="@67" Category="Contains" FetchingParent="@25" />
+    <Link Source="@26" Target="@15" Category="References" Bounds="754.192565917969,695.312683105469,14.0140380859375,77.0636596679688" IsTargetVirtualized="True" Weight="3" />
+    <Link Source="@27" Target="@16" Category="References" Bounds="405.093961453054,755.253222694203,11.669112002677,77.0617282402394" IsTargetVirtualized="True" Weight="3" />
+    <Link Source="@28" Target="@12" Category="References" Bounds="853.908588891964,381.113821469715,30.9410473203798,24.4238318514666" Weight="3" />
+    <Link Source="@3" Target="@11" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="33">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_FieldRead" />
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@3" Target="@9" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="32">
+      <Category Ref="CodeSchema_Calls" />
+    </Link>
+    <Link Source="@32" Target="@12" Category="CodeSchema_Calls" Bounds="850.58387026842,441.483691049459,33.129576608549,24.6303965335364" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@32" Target="@28" Category="CodeSchema_Calls" Bounds="833.63258339066,390.106944631388,2.97297700688932,76.0071429516078" Weight="1" />
+    <Link Source="@33" Target="@15" Category="CodeSchema_Calls" Bounds="678.335490844816,751.27281616211,57.5600032780285,26.2640840389853" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@33" Target="@26" Category="CodeSchema_Calls" Bounds="671.671068076861,699.919775685137,42.6132891760554,25.3930404769725" Weight="1" />
+    <Link Source="@34" Target="@57" Category="CodeSchema_FieldRead" Bounds="-653.929077148438,370.997467041016,0,21" Weight="1" />
+    <Link Source="@40" Target="@52" Category="CodeSchema_FieldRead" Bounds="254.413990995837,107.011964258385,157.274758935194,30.5743451432197" Weight="3">
       <Category Ref="CodeSchema_FieldWrite" />
     </Link>
-    <Link Source="@31" Target="@68" Category="CodeSchema_Calls" Bounds="552.507100093487,57.2486706783334,97.486233733426,27.5521759821553" Weight="2" />
-    <Link Source="@32" Target="@12" Category="CodeSchema_Calls" Bounds="-65.3851684937526,-404.712017318461,8.92801502999806,77.0200773496522" IsTargetVirtualized="True" Weight="1" />
-    <Link Source="@32" Target="@27" Category="CodeSchema_Calls" Bounds="-131.416292269581,-404.712017318461,50.9491531703281,25.9192763221279" Weight="1" />
-    <Link Source="@33" Target="@10" Category="CodeSchema_Calls" IsTargetVirtualized="True" Weight="1" />
-    <Link Source="@33" Target="@25" Category="CodeSchema_Calls" Bounds="176.8214743522,104.496015851692,23.6806366504038,1.30216631378283" Weight="1" />
-    <Link Source="@34" Target="@53" Category="CodeSchema_FieldRead" Weight="1" />
-    <Link Source="@39" Target="@13" Category="CodeSchema_Calls" Bounds="388.086120605469,-292.602355957031,88.7316589355469,27.3490905761719" IsTargetVirtualized="True" Weight="2" />
-    <Link Source="@39" Target="@48" Category="CodeSchema_FieldRead" Weight="2">
+    <Link Source="@41" Target="@13" Category="CodeSchema_Calls" Bounds="181.543259492621,321.879116484193,45.9027766135422,25.6145446732036" IsTargetVirtualized="True" Weight="3" />
+    <Link Source="@41" Target="@50" Category="CodeSchema_FieldRead" Bounds="-839.16357421875,104.733390808105,343.087036132813,88.2418594360352" Weight="2">
       <Category Ref="CodeSchema_FieldWrite" />
     </Link>
-    <Link Source="@39" Target="@51" Category="CodeSchema_FieldRead" Weight="1" />
-    <Link Source="@39" Target="@54" Category="CodeSchema_FieldRead" Weight="1" />
-    <Link Source="@39" Target="@55" Category="CodeSchema_FieldRead" Weight="2">
+    <Link Source="@41" Target="@52" Category="CodeSchema_FieldRead" Bounds="-346.448852539063,107.011962890625,473.102264404297,32.4580535888672" Weight="1" />
+    <Link Source="@41" Target="@55" Category="CodeSchema_FieldRead" Bounds="-319.460266113281,106.006446838379,382.652050018311,89.7429275512695" Weight="1" />
+    <Link Source="@41" Target="@58" Category="CodeSchema_FieldRead" Bounds="-318.717926025391,104.327919006348,295.905214309692,33.6535720825195" Weight="1" />
+    <Link Source="@41" Target="@59" Category="CodeSchema_FieldRead" Bounds="-334.99211983103,107.011964258385,179.873843619734,32.229942909089" Weight="2">
       <Category Ref="CodeSchema_FieldWrite" />
     </Link>
-    <Link Source="@39" Target="@57" Category="CodeSchema_FieldRead" Weight="1" />
-    <Link Source="@39" Target="@58" Category="CodeSchema_FieldRead" Weight="1" />
-    <Link Source="@41" Target="@13" Category="CodeSchema_Calls" Bounds="525.9736328125,-292.602355957031,0,21.0000305175781" IsTargetVirtualized="True" Weight="1" />
-    <Link Source="@41" Target="@31" Category="CodeSchema_Calls" Weight="1" />
-    <Link Source="@41" Target="@32" Category="CodeSchema_Calls" Weight="1" />
-    <Link Source="@41" Target="@36" Category="CodeSchema_Calls" Weight="1" />
-    <Link Source="@41" Target="@37" Category="CodeSchema_Calls" Bounds="468.764277481363,184.775626917537,492.442030811617,121.571732025693" Weight="1" />
-    <Link Source="@41" Target="@48" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@41" Target="@49" Category="CodeSchema_FieldRead" Weight="1" />
-    <Link Source="@41" Target="@56" Category="CodeSchema_FieldRead" Weight="1" />
-    <Link Source="@42" Target="@39" Category="CodeSchema_FunctionPointer" Bounds="345.973663330078,-404.522338867188,0,76.9599914550781" Weight="1" />
-    <Link Source="@42" Target="@46" Category="CodeSchema_Calls" Bounds="123.723998038892,-405.180184865283,157.030280773005,29.6688749514253" Weight="1" />
-    <Link Source="@42" Target="@47" Category="CodeSchema_Calls" Bounds="-8.85660918122221,-404.522548217773,347.658567758127,715.095339546399" Weight="1" />
-    <Link Source="@42" Target="@49" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@42" Target="@50" Category="CodeSchema_FieldRead" Weight="2">
+    <Link Source="@41" Target="@62" Category="CodeSchema_FieldRead" Bounds="-660.717224121094,107.011962890625,206.831878662109,85.724365234375" Weight="1" />
+    <Link Source="@41" Target="@63" Category="CodeSchema_FieldRead" Bounds="-367.508635759074,107.011964258385,83.715883006148,27.2173312330699" Weight="1" />
+    <Link Source="@43" Target="@13" Category="CodeSchema_Calls" Bounds="150.67184477887,265.919016484193,0.477963569206395,76.9603813232314" IsTargetVirtualized="True" Weight="2" />
+    <Link Source="@43" Target="@32" Category="CodeSchema_Calls" Bounds="172.589455829784,272.352299194336,686.789518963582,405.238538648299" Weight="1" />
+    <Link Source="@43" Target="@36" Category="CodeSchema_Calls" Bounds="211.136232299805,266.269821172259,701.68905753827,79.9391476759144" Weight="1" />
+    <Link Source="@43" Target="@37" Category="CodeSchema_Calls" Bounds="211.136232299805,261.955447128549,746.119448272579,31.8331309188501" Weight="1" />
+    <Link Source="@43" Target="@45" Category="CodeSchema_Calls" Bounds="154.709798844397,272.352299194336,140.646205120817,443.25804201591" Weight="1" />
+    <Link Source="@43" Target="@50" Category="CodeSchema_FieldWrite" Bounds="-852.070371127598,160.310264100245,182.717448129783,31.1492221188585" Weight="1" />
+    <Link Source="@43" Target="@51" Category="CodeSchema_FieldRead" Bounds="-548.734631406575,161.556455220305,155.409913516416,29.9078731800695" Weight="1" />
+    <Link Source="@43" Target="@60" Category="CodeSchema_FieldRead" Bounds="-548.282043457031,159.36067199707,319.721008300781,35.9861145019531" Weight="1" />
+    <Link Source="@44" Target="@40" Category="CodeSchema_FunctionPointer" Bounds="322.949529902271,165.506204751332,52.2372482157407,43.8344815570802" Weight="1" />
+    <Link Source="@44" Target="@41" Category="CodeSchema_FunctionPointer" Bounds="264.153998344496,235.300686308412,34.8156326230407,53.092296645238" Weight="1" />
+    <Link Source="@44" Target="@48" Category="CodeSchema_Calls" Bounds="346.644378662109,236.095703125,626.895538330078,123.663146972656" Weight="1" />
+    <Link Source="@44" Target="@49" Category="CodeSchema_Calls" Bounds="317.393341064453,236.095703125,134.767120361328,340.238586425781" Weight="1" />
+    <Link Source="@44" Target="@51" Category="CodeSchema_FieldWrite" Bounds="-249.211486816406,51.0519638061523,294.683746337891,140.017356872559" Weight="1" />
+    <Link Source="@44" Target="@52" Category="CodeSchema_FieldWrite" Bounds="135.822891235352,51.0519638061523,52.9794158935547,76.9900131225586" Weight="1" />
+    <Link Source="@44" Target="@53" Category="CodeSchema_FieldRead" Bounds="172.013275146484,43.7098083496094,430.467254638672,36.5801010131836" Weight="2">
       <Category Ref="CodeSchema_FieldWrite" />
     </Link>
-    <Link Source="@42" Target="@51" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@42" Target="@54" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@42" Target="@55" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@42" Target="@56" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@42" Target="@58" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@42" Target="@71" Category="CodeSchema_Calls" Bounds="387.724914550781,-404.522338867188,87.9032287597656,27.328125" Weight="1" />
-    <Link Source="@43" Target="@48" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@44" Target="@16" Category="CodeSchema_ReturnTypeLink" Weight="1" />
-    <Link Source="@47" Target="@52" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@49" Target="@18" Category="References" Weight="1" />
-    <Link Source="@56" Target="@22" Category="References" Weight="1" />
-    <Link Source="@59" Target="@12" Category="References" Bounds="-28.2132590119755,-349.231803793071,67.9616514887922,27.1420065596038" IsSourceVirtualized="True" Weight="6" />
-    <Link Source="@60" Target="@12" Category="References" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@60" Target="@49" Category="CodeSchema_FieldRead" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@60" Target="@59" Category="CodeSchema_Calls" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
-    <Link Source="@61" Target="@52" Category="CodeSchema_FieldRead" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@62" Target="@53" Category="CodeSchema_FieldWrite" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@63" Target="@54" Category="CodeSchema_FieldRead" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@64" Target="@10" Category="References" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@64" Target="@56" Category="CodeSchema_FieldRead" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@64" Target="@65" Category="CodeSchema_Calls" Bounds="43.8776812851944,-124.856525500978,753.818379959614,275.016803787536" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
-    <Link Source="@65" Target="@10" Category="References" Bounds="40.3320273541271,178.244889896601,201.598923944855,64.3319549316026" IsSourceVirtualized="True" Weight="6" />
-    <Link Source="@66" Target="@11" Category="References" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@66" Target="@56" Category="CodeSchema_FieldRead" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@66" Target="@67" Category="CodeSchema_Calls" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
-    <Link Source="@67" Target="@11" Category="References" IsSourceVirtualized="True" Weight="6" />
-    <Link Source="@68" Target="@11" Category="CodeSchema_Calls" IsTargetVirtualized="True" Weight="1" />
-    <Link Source="@68" Target="@26" Category="CodeSchema_Calls" Bounds="619.058846528223,113.208601098255,57.2236709188268,26.2479739750142" Weight="1" />
-    <Link Source="@69" Target="@57" Category="CodeSchema_FieldRead" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@70" Target="@57" Category="CodeSchema_FieldRead" IsSourceVirtualized="True" Weight="1" />
-    <Link Source="@71" Target="@41" Category="CodeSchema_FunctionPointer" Bounds="525.9736328125,-348.562347412109,0,21" Weight="1" />
-    <Link Source="@71" Target="@43" Category="CodeSchema_FunctionPointer" Bounds="563.317810058594,-348.562347412109,77.810546875,27.0451965332031" Weight="1" />
-    <Link Source="@71" Target="@48" Category="CodeSchema_FieldWrite" Weight="2" />
-    <Link Source="@71" Target="@57" Category="CodeSchema_FieldRead" Weight="3">
+    <Link Source="@44" Target="@54" Category="CodeSchema_FieldRead" Bounds="172.013275146484,42.2754554748535,603.039581298828,38.2074241638184" Weight="2">
       <Category Ref="CodeSchema_FieldWrite" />
     </Link>
-    <Link Source="@72" Target="@51" Category="CodeSchema_FieldWrite" Weight="1" />
-    <Link Source="@73" Target="@51" Category="CodeSchema_FieldWrite" Weight="1" />
+    <Link Source="@44" Target="@55" Category="CodeSchema_FieldWrite" Bounds="125.39998626709,51.0519638061523,58.8046035766602,134.394660949707" Weight="1" />
+    <Link Source="@44" Target="@58" Category="CodeSchema_FieldRead" Bounds="109.235420227051,51.0519638061523,74.9691696166992,83.8803176879883" Weight="3">
+      <Category Ref="CodeSchema_FieldWrite" />
+    </Link>
+    <Link Source="@44" Target="@59" Category="CodeSchema_FieldWrite" Bounds="-82.4380264282227,51.0519638061523,127.910285949707,78.2900466918945" Weight="1" />
+    <Link Source="@44" Target="@60" Category="CodeSchema_FieldWrite" Bounds="-156.698593139648,51.0519638061523,202.170852661133,132.920127868652" Weight="1" />
+    <Link Source="@44" Target="@63" Category="CodeSchema_FieldWrite" Bounds="-167.622894287109,51.0519638061523,213.095153808594,86.1971664428711" Weight="1" />
+    <Link Source="@44" Target="@76" Category="CodeSchema_Calls" Bounds="234.59285041475,183.565779552562,48.4762971854563,25.77490675585" Weight="1" />
+    <Link Source="@45" Target="@33" Category="CodeSchema_Calls" Bounds="582.01686606788,695.312672119141,39.7709045761111,25.1851032764586" Weight="1" />
+    <Link Source="@45" Target="@47" Category="CodeSchema_Calls" Bounds="557.775670741398,618.420988067358,2.98354604255167,50.9316840517824" Weight="1" />
+    <Link Source="@45" Target="@56" Category="CodeSchema_FieldRead" Bounds="366.707366943359,343.862579345703,103.244262695313,27.7766723632813" Weight="4">
+      <Category Ref="CodeSchema_FieldWrite" />
+    </Link>
+    <Link Source="@45" Target="@73" Category="CodeSchema_Calls" Bounds="526.458740234375,695.312683105469,22.4769897460938,80.953125" Weight="2" />
+    <Link Source="@46" Target="@50" Category="CodeSchema_FieldWrite" Bounds="-889.515361529996,162.971963284636,81.6588294654912,27.1595991522455" Weight="1" />
+    <Link Source="@47" Target="@17" Category="CodeSchema_ReturnTypeLink" Weight="1" />
+    <Link Source="@49" Target="@56" Category="CodeSchema_FieldWrite" Bounds="189.186904907227,343.977447509766,75.6896820068359,26.9783325195313" Weight="1" />
+    <Link Source="@49" Target="@61" Category="CodeSchema_FieldWrite" Bounds="141.701522827148,343.977447509766,6.89387512207031,21.4323425292969" Weight="1" />
+    <Link Source="@5" Target="@21" Category="Contains" FetchingParent="@5" />
+    <Link Source="@51" Target="@19" Category="References" Weight="1" />
+    <Link Source="@60" Target="@23" Category="References" Weight="1" />
+    <Link Source="@64" Target="@12" Category="References" Bounds="937.529315858563,440.566434334344,44.878863893073,25.5476656868805" IsSourceVirtualized="True" Weight="6" />
+    <Link Source="@65" Target="@12" Category="References" Bounds="664.931884765625,394.390350341797,175.20849609375,24.5137329101563" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@65" Target="@51" Category="CodeSchema_FieldRead" Bounds="-398.051573603455,162.971963284636,47.9176095102846,25.7409123645155" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@65" Target="@64" Category="CodeSchema_Calls" Bounds="626.299682617188,417.182861328125,281.453002929688,49.74853515625" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@66" Target="@56" Category="CodeSchema_FieldRead" Bounds="309.770538330078,343.497467041016,0,21.47998046875" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@67" Target="@57" Category="CodeSchema_FieldWrite" Bounds="-753.337280273438,370.517456054688,61.4720458984375,26.8747863769531" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@68" Target="@58" Category="CodeSchema_FieldRead" Bounds="109.884054690206,107.011964258385,119.16003145717,27.9450956915781" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@69" Target="@15" Category="References" Bounds="496.082733154297,364.295104980469,193.197113037109,481.04296875" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@69" Target="@60" Category="CodeSchema_FieldRead" Bounds="-99.5290908813477,107.011962890625,131.05989074707,83.6330871582031" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@69" Target="@70" Category="CodeSchema_Calls" Bounds="612.8994140625,364.295104980469,189.252868652344,426.002319335938" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@70" Target="@15" Category="References" Bounds="807.8957672338,751.27260432982,59.4296266474458,26.3521673221034" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="6" />
+    <Link Source="@71" Target="@16" Category="References" Bounds="174.63395690918,314.117523193359,339.422561645508,612.810211181641" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@71" Target="@60" Category="CodeSchema_FieldRead" Bounds="-177.255919110371,107.011964258385,15.9375169043704,77.1461173110753" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@71" Target="@72" Category="CodeSchema_Calls" Bounds="182.773834228516,314.117523193359,339.258026123047,529.060211181641" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@72" Target="@16" Category="References" Bounds="305.371721350599,811.213166916601,59.8688205703672,26.372241276959" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="6" />
+    <Link Source="@73" Target="@16" Category="CodeSchema_Calls" Bounds="437.876305494672,811.213366737172,58.5437899572104,26.3108123777981" IsTargetVirtualized="True" Weight="1" />
+    <Link Source="@73" Target="@27" Category="CodeSchema_Calls" Bounds="451.416593072257,759.437270297282,49.16538357608,25.8160964398896" Weight="1" />
+    <Link Source="@74" Target="@62" Category="CodeSchema_FieldRead" Bounds="-923.056894234823,162.971963284636,116.762307377766,27.9078065579267" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@75" Target="@62" Category="CodeSchema_FieldRead" Bounds="-1115.388671875,162.540100097656,290.250854492188,29.5191955566406" IsSourceVirtualized="True" Weight="1" />
+    <Link Source="@76" Target="@43" Category="CodeSchema_FunctionPointer" Bounds="162.94410305821,179.340586308412,31.5475922978269,52.8890382311358" Weight="1" />
+    <Link Source="@76" Target="@46" Category="CodeSchema_FunctionPointer" Bounds="156.194471970371,106.65390151324,36.0307840844639,46.7266847951717" Weight="1" />
+    <Link Source="@76" Target="@50" Category="CodeSchema_FieldWrite" Bounds="-897.593078613281,104.424285888672,216.503540039063,85.0632476806641" Weight="2" />
+    <Link Source="@76" Target="@62" Category="CodeSchema_FieldRead" Bounds="-723.058837890625,107.011962890625,89.437255859375,79.7587280273438" Weight="3">
+      <Category Ref="CodeSchema_FieldWrite" />
+    </Link>
+    <Link Source="@77" Target="@55" Category="CodeSchema_FieldWrite" Bounds="258.881788742793,161.587417491188,206.404674361018,30.2059524705326" Weight="1" />
+    <Link Source="@78" Target="@55" Category="CodeSchema_FieldWrite" Bounds="215.568347624609,162.971964258385,94.8795711167889,27.4949697133187" Weight="1" />
+    <Link Source="@8" Target="@10" Category="CodeSchema_Calls" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="16" />
+    <Link Source="@8" Target="@3" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="68">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
   </Links>
   <Categories>
     <Category Id="CodeMap_WpfProject" Label="WPF Project" CanBeDataDriven="True" IsProviderRoot="False" NavigationActionLabel="WPF Projects" />
@@ -265,6 +306,7 @@
     <Property Id="Layout" DataType="System.String" />
     <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
     <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="SourceLocation" Label="Start Line Number" DataType="Microsoft.VisualStudio.GraphModel.CodeSchema.SourceLocation" />
     <Property Id="TargetType" DataType="System.Type" />
     <Property Id="UseManualLocation" DataType="System.Boolean" />
     <Property Id="Value" DataType="System.String" />
@@ -286,75 +328,82 @@
   <IdentifierAliases>
     <Alias n="1" Uri="Assembly=$(c46fafb1-7165-4411-b23d-373a1a7fd239.OutputPathUri)" />
     <Alias n="2" Id="(@1)" />
-    <Alias n="3" Id="Namespace=KillerWearsPrada.Controller" />
-    <Alias n="4" Id="(@1 @3)" />
-    <Alias n="5" Id="Namespace=KillerWearsPrada.Helpers" />
-    <Alias n="6" Id="(@1 @5)" />
-    <Alias n="9" Id="ParentType=PlayerChecker" />
-    <Alias n="10" Id="(@1 @3 Type=(Name=Arguments ParentType=(Name=PlayerEnterKinectSensor @9)))" />
-    <Alias n="11" Id="(@1 @3 Type=(Name=Arguments ParentType=(Name=PlayerLeaveKinectSensor @9)))" />
-    <Alias n="12" Id="(@1 @3 Type=(Name=Arguments ParentType=BarCodeRecognized))" />
-    <Alias n="13" Id="(@1 @3 Type=(Name=BackgroundWorkerParameters ParentType=KinectInterrogator))" />
-    <Alias n="14" Id="(@1 @3 Type=(Name=PlayerEnterKinectSensor @9))" />
-    <Alias n="15" Id="(@1 @3 Type=(Name=PlayerLeaveKinectSensor @9))" />
-    <Alias n="16" Id="(@1 @3 Type=(Name=Relation @9))" />
-    <Alias n="17" Id="Type=BarCodeRecognized" />
-    <Alias n="18" Id="(@1 @3 @17)" />
-    <Alias n="19" Id="Type=KinectInterrogator" />
-    <Alias n="20" Id="(@1 @3 @19)" />
-    <Alias n="21" Id="Type=PlayerChecker" />
-    <Alias n="22" Id="(@1 @3 @21)" />
-    <Alias n="23" Id="Type=QRReaderHelper" />
-    <Alias n="24" Id="(@1 @5 @23)" />
-    <Alias n="25" Id="(@1 @3 @21 Member=(Name=OnPlayerEnterKinectSensor OverloadingParameters=[@10]))" />
-    <Alias n="26" Id="(@1 @3 @21 Member=(Name=OnPlayerLeaveKinectSensor OverloadingParameters=[@11]))" />
-    <Alias n="27" Id="(@1 @3 @17 Member=(Name=OnBarCodeRecognized OverloadingParameters=[@12]))" />
-    <Alias n="28" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.5.2/mscorlib.dll" />
-    <Alias n="29" Id="Namespace=System" />
-    <Alias n="30" Id="OverloadingParameters=[(@28 @29 Type=String)]" />
-    <Alias n="31" Id="(@1 @3 @21 Member=(Name=CheckPlayer @30))" />
-    <Alias n="32" Id="(@1 @3 @17 Member=(Name=RaiseEvent @30))" />
-    <Alias n="33" Id="(@1 @3 @21 Member=(Name=RaisePlayerEnterKinectSensorEvent @30))" />
-    <Alias n="34" Id="(@1 @5 @23 Member=(Name=QRCode OverloadingParameters=[(@28 @29 Type=Boolean ParamKind=Ref)]))" />
+    <Alias n="3" Id="(@1 Namespace=KillerWearsPrada)" />
+    <Alias n="4" Id="Namespace=KillerWearsPrada.Controller" />
+    <Alias n="5" Id="(@1 @4)" />
+    <Alias n="6" Id="Namespace=KillerWearsPrada.Helpers" />
+    <Alias n="7" Id="(@1 @6)" />
+    <Alias n="8" Id="(@1 Namespace=KillerWearsPrada.KWP_DB_TestDataSetTableAdapters)" />
+    <Alias n="9" Id="(@1 Namespace=KillerWearsPrada.Model)" />
+    <Alias n="10" Id="(@1 Namespace=KillerWearsPrada.Properties)" />
+    <Alias n="11" Id="(@1 Namespace=KillerWearsPrada.UC)" />
+    <Alias n="12" Id="(@1 @4 Type=(Name=Arguments ParentType=BarCodeRecognized))" />
+    <Alias n="13" Id="(@1 @4 Type=(Name=BackgroundWorkerParameters ParentType=KinectInterrogator))" />
+    <Alias n="14" Id="ParentType=PlayerChecker" />
+    <Alias n="15" Id="(@1 @4 Type=(Name=PlayerEnterKinectSensor @14))" />
+    <Alias n="16" Id="(@1 @4 Type=(Name=PlayerLeaveKinectSensor @14))" />
+    <Alias n="17" Id="(@1 @4 Type=(Name=Relation @14))" />
+    <Alias n="18" Id="Type=BarCodeRecognized" />
+    <Alias n="19" Id="(@1 @4 @18)" />
+    <Alias n="20" Id="Type=KinectInterrogator" />
+    <Alias n="21" Id="(@1 @4 @20)" />
+    <Alias n="22" Id="Type=PlayerChecker" />
+    <Alias n="23" Id="(@1 @4 @22)" />
+    <Alias n="24" Id="Type=QRReaderHelper" />
+    <Alias n="25" Id="(@1 @6 @24)" />
+    <Alias n="26" Id="(@1 @4 @22 Member=(Name=OnPlayerEnterKinectSensor OverloadingParameters=[(@1 @4 Type=(Name=Arguments ParentType=(Name=PlayerEnterKinectSensor @14)))]))" />
+    <Alias n="27" Id="(@1 @4 @22 Member=(Name=OnPlayerLeaveKinectSensor OverloadingParameters=[(@1 @4 Type=(Name=Arguments ParentType=(Name=PlayerLeaveKinectSensor @14)))]))" />
+    <Alias n="28" Id="(@1 @4 @18 Member=(Name=OnBarCodeRecognized OverloadingParameters=[@12]))" />
+    <Alias n="29" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.5.2/mscorlib.dll" />
+    <Alias n="30" Id="Namespace=System" />
+    <Alias n="31" Id="(@29 @30 Type=String)" />
+    <Alias n="32" Id="(@1 @4 @18 Member=(Name=RaiseEvent OverloadingParameters=[@31]))" />
+    <Alias n="33" Id="(@1 @4 @22 Member=(Name=RaisePlayerEnterKinectSensorEvent OverloadingParameters=[@31]))" />
+    <Alias n="34" Id="(@1 @6 @24 Member=(Name=QRCode OverloadingParameters=[(@29 @30 Type=Boolean ParamKind=Ref)]))" />
     <Alias n="35" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.5.2/System.Drawing.dll" />
-    <Alias n="36" Id="(@1 @5 @23 Member=(Name=BarCode OverloadingParameters=[(@28 @29 Type=Boolean ParamKind=Ref),(@35 Namespace=System.Drawing Type=Bitmap)]))" />
-    <Alias n="37" Id="(@1 @5 @23 Member=(Name=QRCode OverloadingParameters=[(@28 @29 Type=Boolean ParamKind=Ref),(@35 Namespace=System.Drawing Type=Bitmap)]))" />
-    <Alias n="38" Uri="Assembly=file:///C:/Program Files/Microsoft SDKs/Kinect/v2.0_1409/Assemblies/Microsoft.Kinect.dll" />
-    <Alias n="39" Id="(@1 @3 @19 Member=(Name=Reader_ColorFrameArrived OverloadingParameters=[(@28 @29 Type=Object),(@38 Namespace=Microsoft.Kinect Type=ColorFrameArrivedEventArgs)]))" />
-    <Alias n="40" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.5.2/System.dll" />
-    <Alias n="41" Id="(@1 @3 @19 Member=(Name=worker_DoWork OverloadingParameters=[(@28 @29 Type=Object),(@40 Namespace=System.ComponentModel Type=DoWorkEventArgs)]))" />
-    <Alias n="42" Id="(@1 @3 @19 Member=(Name=.ctor OverloadingParameters=[(@38 Namespace=Microsoft.Kinect Type=KinectSensor),(@28 @29 Type=Int32)]))" />
-    <Alias n="43" Id="(@1 @3 @19 Member=(Name=worker_WorkEnded OverloadingParameters=[(@28 @29 Type=Object),(@40 Namespace=System.ComponentModel Type=RunWorkerCompletedEventArgs)]))" />
-    <Alias n="44" Id="(@1 @3 @21 Member=(Name=CheckRelation OverloadingParameters=[(@28 @29 Type=String),(@28 @29 Type=String)]))" />
-    <Alias n="45" Id="Member=.ctor" />
-    <Alias n="46" Id="(@1 @3 @17 @45)" />
-    <Alias n="47" Id="(@1 @3 @21 @45)" />
-    <Alias n="48" Id="(@1 @3 @19 Member=attBackGroundWorkerBusy)" />
-    <Alias n="49" Id="(@1 @3 @19 Member=attBarcodeChecker)" />
-    <Alias n="50" Id="(@1 @3 @19 Member=attColorFrameReader)" />
-    <Alias n="51" Id="(@1 @3 @19 Member=attEnableTakingScreenshot)" />
-    <Alias n="52" Id="(@1 @3 @21 Member=attIDCurrentPalyer)" />
-    <Alias n="53" Id="(@1 @5 @23 Member=attImagePath)" />
-    <Alias n="54" Id="(@1 @3 @19 Member=attKinectSensor)" />
-    <Alias n="55" Id="(@1 @3 @19 Member=attLastcheck)" />
-    <Alias n="56" Id="(@1 @3 @19 Member=attPlayerChecker)" />
-    <Alias n="57" Id="(@1 @3 @19 Member=attScreenshotWorker)" />
-    <Alias n="58" Id="(@1 @3 @19 Member=attWaitingTime)" />
-    <Alias n="59" Id="(@1 @3 @17 Member=BarCodeRecognizedEvent)" />
-    <Alias n="60" Id="(@1 @3 @19 Member=BarCodeRecognizedEvent)" />
-    <Alias n="61" Id="(@1 @3 @21 Member=IDCurrentPlayer)" />
-    <Alias n="62" Id="(@1 @5 @23 Member=ImagePath)" />
-    <Alias n="63" Id="(@1 @3 @19 Member=IsKinectConnected)" />
-    <Alias n="64" Id="(@1 @3 @19 Member=PlayerEnterKinectSensorEvent)" />
-    <Alias n="65" Id="(@1 @3 @21 Member=PlayerEnterKinectSensorEvent)" />
-    <Alias n="66" Id="(@1 @3 @19 Member=PlayerLeaveKinectSensorEvent)" />
-    <Alias n="67" Id="(@1 @3 @21 Member=PlayerLeaveKinectSensorEvent)" />
-    <Alias n="68" Id="(@1 @3 @21 Member=RaisePlayerLeaveKinectSensorEvent)" />
-    <Alias n="69" Id="(@1 @3 @19 Member=ScreenshotWorkerCompleted)" />
-    <Alias n="70" Id="(@1 @3 @19 Member=ScreenshotWorkerProgressChanged)" />
-    <Alias n="71" Id="(@1 @3 @19 Member=SetBackgroundWorker)" />
-    <Alias n="72" Id="(@1 @3 @19 Member=StartTakingScreenshots)" />
-    <Alias n="73" Id="(@1 @3 @19 Member=StopTakingScreenshots)" />
+    <Alias n="36" Id="(@1 @6 @24 Member=(Name=BarCode OverloadingParameters=[(@29 @30 Type=Boolean ParamKind=Ref),(@35 Namespace=System.Drawing Type=Bitmap)]))" />
+    <Alias n="37" Id="(@1 @6 @24 Member=(Name=QRCode OverloadingParameters=[(@29 @30 Type=Boolean ParamKind=Ref),(@35 Namespace=System.Drawing Type=Bitmap)]))" />
+    <Alias n="38" Id="(@29 @30 Type=Object)" />
+    <Alias n="39" Uri="Assembly=file:///C:/Program Files/Microsoft SDKs/Kinect/v2.0_1409/Assemblies/Microsoft.Kinect.dll" />
+    <Alias n="40" Id="(@1 @4 @20 Member=(Name=Reader_BodyFrameArrived OverloadingParameters=[@38,(@39 Namespace=Microsoft.Kinect Type=BodyFrameArrivedEventArgs)]))" />
+    <Alias n="41" Id="(@1 @4 @20 Member=(Name=Reader_ColorFrameArrived OverloadingParameters=[@38,(@39 Namespace=Microsoft.Kinect Type=ColorFrameArrivedEventArgs)]))" />
+    <Alias n="42" Uri="Assembly=$(FxReferenceAssembliesUri)/.NETFramework/v4.5.2/System.dll" />
+    <Alias n="43" Id="(@1 @4 @20 Member=(Name=worker_DoWork OverloadingParameters=[@38,(@42 Namespace=System.ComponentModel Type=DoWorkEventArgs)]))" />
+    <Alias n="44" Id="(@1 @4 @20 Member=(Name=.ctor OverloadingParameters=[(@39 Namespace=Microsoft.Kinect Type=KinectSensor),(@29 @30 Type=Int32)]))" />
+    <Alias n="45" Id="(@1 @4 @22 Member=(Name=CheckPlayer OverloadingParameters=[@31,(@29 @30 Type=Int32)]))" />
+    <Alias n="46" Id="(@1 @4 @20 Member=(Name=worker_WorkEnded OverloadingParameters=[@38,(@42 Namespace=System.ComponentModel Type=RunWorkerCompletedEventArgs)]))" />
+    <Alias n="47" Id="(@1 @4 @22 Member=(Name=CheckRelation OverloadingParameters=[@31,@31,(@29 @30 Type=Int32)]))" />
+    <Alias n="48" Id="(@1 @4 @18 Member=.ctor)" />
+    <Alias n="49" Id="(@1 @4 @22 Member=.ctor)" />
+    <Alias n="50" Id="(@1 @4 @20 Member=attBackGroundWorkerBusy)" />
+    <Alias n="51" Id="(@1 @4 @20 Member=attBarcodeChecker)" />
+    <Alias n="52" Id="(@1 @4 @20 Member=attBodyCount)" />
+    <Alias n="53" Id="(@1 @4 @20 Member=attBodyFrameReader)" />
+    <Alias n="54" Id="(@1 @4 @20 Member=attColorFrameReader)" />
+    <Alias n="55" Id="(@1 @4 @20 Member=attEnableTakingScreenshot)" />
+    <Alias n="56" Id="(@1 @4 @22 Member=attIDCurrentPlayer)" />
+    <Alias n="57" Id="(@1 @6 @24 Member=attImagePath)" />
+    <Alias n="58" Id="(@1 @4 @20 Member=attKinectSensor)" />
+    <Alias n="59" Id="(@1 @4 @20 Member=attLastcheck)" />
+    <Alias n="60" Id="(@1 @4 @20 Member=attPlayerChecker)" />
+    <Alias n="61" Id="(@1 @4 @22 Member=attPreviousBodyCount)" />
+    <Alias n="62" Id="(@1 @4 @20 Member=attScreenshotWorker)" />
+    <Alias n="63" Id="(@1 @4 @20 Member=attWaitingTime)" />
+    <Alias n="64" Id="(@1 @4 @18 Member=BarCodeRecognizedEvent)" />
+    <Alias n="65" Id="(@1 @4 @20 Member=BarCodeRecognizedEvent)" />
+    <Alias n="66" Id="(@1 @4 @22 Member=IDCurrentPlayer)" />
+    <Alias n="67" Id="(@1 @6 @24 Member=ImagePath)" />
+    <Alias n="68" Id="(@1 @4 @20 Member=IsKinectConnected)" />
+    <Alias n="69" Id="(@1 @4 @20 Member=PlayerEnterKinectSensorEvent)" />
+    <Alias n="70" Id="(@1 @4 @22 Member=PlayerEnterKinectSensorEvent)" />
+    <Alias n="71" Id="(@1 @4 @20 Member=PlayerLeaveKinectSensorEvent)" />
+    <Alias n="72" Id="(@1 @4 @22 Member=PlayerLeaveKinectSensorEvent)" />
+    <Alias n="73" Id="(@1 @4 @22 Member=RaisePlayerLeaveKinectSensorEvent)" />
+    <Alias n="74" Id="(@1 @4 @20 Member=ScreenshotWorkerCompleted)" />
+    <Alias n="75" Id="(@1 @4 @20 Member=ScreenshotWorkerProgressChanged)" />
+    <Alias n="76" Id="(@1 @4 @20 Member=SetBackgroundWorker)" />
+    <Alias n="77" Id="(@1 @4 @20 Member=StartTakingScreenshots)" />
+    <Alias n="78" Id="(@1 @4 @20 Member=StopTakingScreenshots)" />
   </IdentifierAliases>
   <Styles>
     <Style TargetType="Node" GroupLabel="Results" ValueLabel="True">
