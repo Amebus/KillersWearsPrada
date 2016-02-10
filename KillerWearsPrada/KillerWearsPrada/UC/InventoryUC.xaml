@@ -63,7 +63,7 @@
 
             <Label Name="Dressed" Margin="418,160,829,605" Content="{StaticResource ItemsInventoryText}" FontSize="49" Background="Honeydew"></Label>
             <Label Name="NotDressed" Content="{StaticResource OutfitText}" Margin="1020,164,0,605" FontSize="49" Background="Honeydew"></Label>
-            <ListBox Margin="418,255,788,116" Name="LeftListBox" Background="{x:Null}" Width="Auto">
+            <ListBox Margin="418,255,788,116" Name="LeftListBox" Background="{x:Null}" Width="Auto" >
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="2"/>

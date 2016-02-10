@@ -102,7 +102,7 @@ namespace KillerWearsPrada
 
             attGameController.StartTakingScreenshots();
 
-            recognise.Visibility = Visibility.Visible;
+           //recognise.Visibility = Visibility.Visible;
         }
 
         private void CaptureNotifyItemException(object sender, GameController.NotifyItemException.Arguments Parameters)
@@ -216,6 +216,10 @@ namespace KillerWearsPrada
             this.Background.Opacity = 1;
             
             Delete_Sketches_Files();
+
+            System.Windows.Forms.Application.Restart();
+            Thread.Sleep(2000);
+            Application.Current.Shutdown();
         }
 
         /// <summary>
@@ -347,7 +351,7 @@ namespace KillerWearsPrada
             #region da eliminare quando non devo più giocare senza kinect
             //      attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
             //   attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
-            attGameController.LoadGame("10-02-2016-10-08-23_Anacleto");
+         //   attGameController.LoadGame("10-02-2016-10-08-23_Anacleto");
             #endregion
 
             name_player.Content = attGameController.Game.PlayerName + "!";

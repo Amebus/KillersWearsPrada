@@ -20,7 +20,7 @@
             <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Doors_Image}}"/>
         </Canvas.Background>
 
-        <Button Name="exit"  Click="exit_button" Height="116" Width="227" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}">
+        <Button Name="exit"  Click="exit_button" Height="116" Width="227" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
             </StackPanel>
