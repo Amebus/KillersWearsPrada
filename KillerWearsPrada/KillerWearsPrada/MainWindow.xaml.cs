@@ -262,7 +262,7 @@ namespace KillerWearsPrada
                     }
                 if (r.IsRoomCompleted == true && r.IsLastClueAlreadyShown == false)
                 {
-                    cosamostrare += "\r\n" + r.LastClue;
+                    cosamostrare = r.LastClue;
                     Popup lastc = new Popup(cosamostrare);
                     mainGrid.Children.Add(lastc);
                     lastc.Focus();

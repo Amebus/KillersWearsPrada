@@ -95,7 +95,7 @@
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="67" Text="{StaticResource AddText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="55" Text="{StaticResource AddText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
                 </StackPanel>
             </Button>
 
@@ -104,7 +104,7 @@
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="60" Text="{StaticResource RemoveText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="55" Text="{StaticResource RemoveText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="274" Height="99" />
                 </StackPanel>
             </Button>
 
