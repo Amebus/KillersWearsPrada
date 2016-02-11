@@ -46,7 +46,7 @@ namespace KillerWearsPrada.UC
 
         public int countItems { get; set; }
 
-        private const string endGameString = "GAME FINISHED!!!\r\nThe percentage discount you earned is @p1 %\r\nMove away from the Kinect and go to the checkout to retrieve your discount!\r\nThank you to have played our game!";
+        private const string endGameString = "GAME FINISHED!!!\r\nThe percentage discount you earned is @p1%\r\nMove away from the Kinect and go to the checkout to retrieve your discount!\r\nThank you to have played our game!";
 
         public InventoryUC()
         {

@@ -75,12 +75,12 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Button Name="Close" Margin="0,39,1216,0" Foreground="White" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Width="418" Height="106" VerticalAlignment="Top" >
+            <Button Name="Close" Margin="-58,-39,1367,0" Foreground="White" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Width="371" Height="106" VerticalAlignment="Top" >
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="89" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,2" VerticalAlignment="Bottom" FontSize="50" Text="{StaticResource CloseTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="84" />
+                    <TextBlock Margin="5,0,5,2" VerticalAlignment="Bottom" FontSize="50" Text="{StaticResource CloseTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="332" Height="84" />
 
                 </StackPanel>
                 <Button.Triggers>

@@ -44,7 +44,7 @@
     </UserControl.Triggers>
 
     <UserControl.Background>
-        <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Selection_Background}}" Opacity="0.5"/>
+        <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Selection_Background}}" Opacity="0.75"/>
     </UserControl.Background>
 
     <Grid x:Name="layoutRoot" Height="800" Width="1200">
@@ -93,7 +93,7 @@
                   SelectionOpacity="0"></TextBox>
             </Label>
 
-            <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-352,-50,1254,725">
+            <Button Name="CloseSelectedItem" Width="298" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="-293,-66,1195,741">
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
                     <TextBlock Margin="5,30,50,29" VerticalAlignment="Center" FontSize="33" Text="{StaticResource BackRoomText}" TextWrapping="Wrap" FontStyle="Italic" FontFamily="Comic Sans MS" />
                     <!--   <Image Width="20" Height="20" Source="ie.png" Stretch="Fill"/>  -->

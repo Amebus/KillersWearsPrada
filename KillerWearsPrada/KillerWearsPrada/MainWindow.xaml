@@ -35,9 +35,9 @@
         <Grid HorizontalAlignment="Left" Height="1080" VerticalAlignment="Top" Width="1920" Name="mainGrid">
 
 
-            <Label Content="{StaticResource ResourceKey=ApplicationTitleMaiusc}" x:Name="title_game" FontFamily="Chiller" FontSize="200" FontWeight="ExtraBold" Margin="0,0,0,857" Foreground="#FF720000" FontStretch="UltraExpanded" >
+            <Label Content="{StaticResource ResourceKey=ApplicationTitleMaiusc}" x:Name="title_game" FontFamily="Chiller" FontSize="200" FontWeight="ExtraBold" Foreground="#FF720000" FontStretch="UltraExpanded" >
                 <Label.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.7">
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" Opacity="0.2">
                         <GradientStop Color="Black" Offset="0"/>
                         <GradientStop Color="White" Offset="1"/>
                     </LinearGradientBrush>

@@ -266,6 +266,7 @@ namespace KillerWearsPrada
                     Popup lastc = new Popup(cosamostrare);
                     mainGrid.Children.Add(lastc);
                     lastc.Focus();
+                    changeDoorColor();
                 }
             }
         }

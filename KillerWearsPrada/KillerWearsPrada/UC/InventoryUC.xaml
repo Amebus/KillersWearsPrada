@@ -41,7 +41,7 @@
     </UserControl.Triggers>
 
     <UserControl.Background>
-        <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Selection_Background}}" Opacity="0.5"/>
+        <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Selection_Background}}" Opacity="0.75"/>
     </UserControl.Background>
 
     <Grid x:Name="layoutRoot" Height="850" Width="1680" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -61,7 +61,7 @@
 
             <Label Margin="588,-39,392,695" Content="{StaticResource InventoryText}" FontFamily="MV Boli" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="130" Height="194" Foreground="Red" Width="700" />
 
-            <Label Name="Dressed" Margin="418,160,829,605" Content="{StaticResource ItemsInventoryText}" FontSize="49" Background="Honeydew"></Label>
+            <Label Name="Dressed" Margin="418,160,788,605" Content="{StaticResource ItemsInventoryText}" FontSize="49" Background="Honeydew"></Label>
             <Label Name="NotDressed" Content="{StaticResource OutfitText}" Margin="1020,164,0,605" FontSize="49" Background="Honeydew"></Label>
             <ListBox Margin="418,255,788,116" Name="LeftListBox" Background="{x:Null}" Width="Auto" >
                 <ListBox.ItemsPanel>
@@ -77,7 +77,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <ListBox Margin="0,258,135,124" Name="RightListBox" HorizontalAlignment="Right" Width="250">
+            <ListBox Margin="0,253,113,129" Name="RightListBox" HorizontalAlignment="Right" Width="250">
                 <ListBox.Background>
                     <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Sagoma}}" Stretch="Fill"></ImageBrush>
                 </ListBox.Background>
@@ -90,7 +90,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Button Name="AddButton" Height="101" Margin="0,342,476,407" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="AddButton_Click" Width="292">
+            <Button Name="AddButton" Height="101" Margin="0,344,427,405" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="AddButton_Click" Width="292">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
@@ -99,7 +99,7 @@
                 </StackPanel>
             </Button>
 
-            <Button Name="RemoveButton" Height="101" Margin="0,518,466,231" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="RemoveButton_Click" Width="302">
+            <Button Name="RemoveButton" Height="101" Margin="0,523,427,226" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="RemoveButton_Click" Width="292">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
@@ -108,7 +108,7 @@
                 </StackPanel>
             </Button>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="49,126,1272,305" BorderThickness="2">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,126,1272,305" BorderThickness="2">
                 <ItemsControl Name="cluesList" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -151,7 +151,7 @@
                 </Button.Triggers>
             </Button>
 
-            <Button Name="submission" Width="645" Foreground="Gold" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,726,58,10" Click="submission_Click">
+            <Button Name="submission" Width="645" Foreground="Gold" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right" Margin="0,726,74,10" Click="submission_Click">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
@@ -160,14 +160,14 @@
                 </StackPanel>
             </Button>
 
-            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1373,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}" />
+            <Button Name="trash" Width="258"  HorizontalAlignment="Right" Margin="0,586,1412,10" Click="trashare_Click" BorderBrush="{x:Null}" Style="{StaticResource trash_Style}" />
 
-            <Button Name="Trash_Button" Height="101" Margin="0,744,919,5" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="AddTrash_Click" Width="418">
+            <Button Name="Trash_Button" Height="101" Margin="0,739,1052,10" Foreground="Yellow" Style="{StaticResource GlassButtonKinect}" HorizontalAlignment="Right"  Click="AddTrash_Click" Width="355">
                 <Button.Background>
                     <ImageBrush/>
                 </Button.Background>
                 <StackPanel HorizontalAlignment="Left" Width="Auto" Height="99" Orientation="Horizontal">
-                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="{StaticResource AddTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="406" Height="99" />
+                    <TextBlock Margin="5,0,5,0" VerticalAlignment="Center" FontSize="50" Text="{StaticResource AddTrashText}" TextWrapping="Wrap" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Width="349" Height="99" />
                 </StackPanel>
             </Button>
 
