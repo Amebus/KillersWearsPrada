@@ -109,12 +109,10 @@ namespace KillerWearsPrada
          {
              if (this.Dispatcher.CheckAccess())
              {
-                 //Se siamo su quello dei controlli, chiama il delegato normalmente
                  attNotifyItemExceptionDelegate.Invoke(Parameters);
              }
              else
              {
-                 //Altrimenti invoca il delegato sul thread corretto
                  this.Dispatcher.Invoke(attNotifyItemExceptionDelegate, Parameters);
             }
          }
@@ -125,12 +123,10 @@ namespace KillerWearsPrada
             //this.Invoke(d, new object[] { e });
             if (this.Dispatcher.CheckAccess())
             {
-                //Se siamo su quello dei controlli, chiama il delegato normalmente
                 attUpdateInventoryDelegate.Invoke(Parameters);
             }
             else
             {
-                //Altrimenti invoca il delegato sul thread corretto
                 this.Dispatcher.Invoke(attUpdateInventoryDelegate, Parameters);
             }
         }
@@ -141,12 +137,10 @@ namespace KillerWearsPrada
             //this.Invoke(d, new object[] { e });
             if (this.Dispatcher.CheckAccess())
             {
-                //Se siamo su quello dei controlli, chiama il delegato normalmente
                 attResumeGameHandlerDelegate.Invoke(Parameters);
             }
             else
             {
-                //Altrimenti invoca il delegato sul thread corretto
                 this.Dispatcher.Invoke(attResumeGameHandlerDelegate, Parameters);
             }
         }
@@ -172,7 +166,8 @@ namespace KillerWearsPrada
         /// which contains information passed by the event <see cref="Controller.GameController.ResumeGame"/></param>
         private void ResumeGame(GameController.ResumeGame.Arguments Parameters)
         {
-            Delete_Sketches_Files();
+            //Delete_Sketches_Files();
+            Delete_Sketches_Files_On_Resume();
             txtDisplay.IsEnabled = true;
             txtDisplay.Visibility = Visibility.Visible;
             txtDisplay.Text = Thread.CurrentThread.Name + " --- Resume  --------";
@@ -215,11 +210,11 @@ namespace KillerWearsPrada
 
             this.Background.Opacity = 1;
             
-            Delete_Sketches_Files();
+            Delete_Sketches_Files_On_Unload();
 
-            System.Windows.Forms.Application.Restart();
+            /*System.Windows.Forms.Application.Restart();
             Thread.Sleep(2000);
-            Application.Current.Shutdown();
+            Application.Current.Shutdown();*/
         }
 
         /// <summary>
@@ -579,8 +574,9 @@ namespace KillerWearsPrada
         /// <summary>
         /// Deletes all the sketches files in directory Sketches
         /// </summary>
-        private void Delete_Sketches_Files()
+        private void Delete_Sketches_Files_On_Unload()
         {
+            bool wvExit = false;
             //delete all sketches files
             System.IO.DirectoryInfo di = new DirectoryInfo(SketchesPathsFile());
 
@@ -591,21 +587,41 @@ namespace KillerWearsPrada
                     File.Delete(file.FullName);
                     //file.Delete();
                 }
-                catch { }
-            }
-            /*
-            foreach (DirectoryInfo dir in di.GetDirectories())
-            {
-                try
+                catch
                 {
-                    dir.Delete(true);
+                    wvExit = true;
+                    break;
+                }
+            }
+
+            if(wvExit)
+            {
+                System.Windows.Forms.Application.Restart();
+                Thread.Sleep(2000);
+                Application.Current.Shutdown();
+            }
+           
+        }
+
+        private void Delete_Sketches_Files_On_Resume()
+        {
+            //delete all sketches files
+            System.IO.DirectoryInfo di = new DirectoryInfo(SketchesPathsFile());
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                File.Delete(file.FullName);
+                /*try
+                {
+                    File.Delete(file.FullName);
+                    //file.Delete();
                 }
                 catch
                 {
 
-                }
+                }*/
+            }
 
-            }*/
         }
 
         /// <summary>

@@ -56,7 +56,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
-            <TextBlock x:Name="messageTextBlock" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" TextWrapping="Wrap" >
+            <TextBlock x:Name="messageTextBlock" Foreground="White"  Margin="0,0,0,0" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center">
                 <TextBlock.Background>
                     <SolidColorBrush Color="Black" Opacity="0.5"/>
                 </TextBlock.Background>
