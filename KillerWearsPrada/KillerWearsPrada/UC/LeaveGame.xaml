@@ -16,7 +16,6 @@
                 <ResourceDictionary Source="pack://application:,,,/KillerWearsPrada;component/Helpers/GraphicStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        <!-- Completed="OnLoadedStoryboardCompleted" -->
     </UserControl.Resources>
 
     <UserControl.Triggers>

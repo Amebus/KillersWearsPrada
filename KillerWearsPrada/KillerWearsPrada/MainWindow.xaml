@@ -77,7 +77,7 @@
 
             
             
-            <!-- Per ora lo lascio attivo anche qui -->
+
             <Button Name="exit"  Click="close_button" Canvas.Left="1693" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Margin="81,889,1566,53" Visibility="Hidden">
                 <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />

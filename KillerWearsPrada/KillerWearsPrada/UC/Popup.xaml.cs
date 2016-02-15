@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace KillerWearsPrada.UC
 {
     /// <summary>
-    /// Logica di interazione per Popup.xaml
+    /// Interaction Logic for Popup.xaml
     /// </summary>
     public partial class Popup : UserControl
     {

@@ -20,32 +20,21 @@
         <Button Name="exit"  Click="moving" Height="116" Width="227" Foreground="#FFF3FF00" Style="{StaticResource GlassButtonKinect}" Canvas.Left="819" Canvas.Top="838" Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="275"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="40" Text="Exit Game" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="275"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
-                <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
             </StackPanel>
         </Button>
-
-        <!--     <Button x:Name="close" Click="close_button" Content="Close Game" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215" Height="93" FontSize="32" Canvas.Left="1678" Canvas.Top="22"/>  -->
 
         <Button x:Name="back" Click="back_button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="362" Height="93" FontSize="48" Canvas.Left="173" Style="{StaticResource GlassButtonKinect}" Foreground="#FFE8FF00" Canvas.Top="65">
             <StackPanel HorizontalAlignment="Center" Height="118" Width="300"  Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,33,50,31" FontSize="40" Text="{StaticResource GoToEntranceText}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="297"  TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
-                <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
             </StackPanel>
         </Button>
 
         <Button x:Name="inventory_btn" Width="425" Foreground="#FFFFFFFF" Style="{StaticResource GlassButtonKinect}"  Click="inventory_button" Canvas.Left="1460" Canvas.Top="914" Height="134">
             <StackPanel HorizontalAlignment="Center" Width="429" Height="138" Orientation="Horizontal" VerticalAlignment="Center">
                 <TextBlock Margin="5,10,50,8" FontSize="70" Text="{StaticResource InventoryText}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Width="422" TextAlignment="Center" FontStyle="Italic" FontFamily="Comic Sans MS" />
-                <!--  <Image Width="20" Height="20" Source="Images/start.png" Stretch="Fill" RenderTransformOrigin="3.7,1.6"/> -->
             </StackPanel>
         </Button>
 
-
-        <!--
-        <Canvas.Background>
-            <ImageBrush ImageSource="{Binding Mode=OneWay, Source={StaticResource Livingroom_Image}}"/>
-        </Canvas.Background>
--->
         <Canvas x:Name="Livingroom_Image" Width="1920" Height="1080" Visibility="Hidden">
 
             <Button x:Name ="trousers1" Click="trousers_btn" Height="155" Canvas.Top="503" Width="265" Canvas.Left="260" Style="{StaticResource KinectButtonZoomTrousers1}" Tag="trousers1"/>
@@ -54,9 +43,6 @@
             <Button x:Name ="trousers4" Click="trousers_btn" Canvas.Left="1030" Canvas.Top="750" Height="296" Width="352" Style="{StaticResource KinectButtonZoomTrousers4}" Tag="trousers4"/>
             <Button x:Name ="trousers5" Click="trousers_btn" Canvas.Left="660" Canvas.Top="21" Height="327" Width="123" Style="{StaticResource KinectButtonZoomTrousers5}" Tag="trousers5"/>
             <Button x:Name ="trousers6" Click="trousers_btn" Canvas.Left="1451" Canvas.Top="210" Height="168" Width="97" Style="{StaticResource KinectButtonZoomTrousers6}" Tag="trousers6" />
-
-
-
 
         </Canvas>
         <Canvas x:Name="Kitchen_Image"  Width="1920" Height="1080" Visibility="Hidden" >

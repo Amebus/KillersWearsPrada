@@ -67,30 +67,7 @@
 
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <!--        <Border Opacity="0" HorizontalAlignment="Stretch" x:Name="glow" Width="Auto" Grid.RowSpan="2" CornerRadius="4,4,4,4">
-                            <Border.Background>
-                                <RadialGradientBrush>
-                                    <RadialGradientBrush.RelativeTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform ScaleX="1.702" ScaleY="2.243"/>
-                                            <SkewTransform AngleX="0" AngleY="0"/>
-                                            <RotateTransform Angle="0"/>
-                                            <TranslateTransform X="-0.368" Y="-0.152"/>
-                                        </TransformGroup>
-                                    </RadialGradientBrush.RelativeTransform>
-                                    <GradientStop Color="#B28DBDFF" Offset="0"/>
-                                    <GradientStop Color="#008DBDFF" Offset="1"/>
-                                </RadialGradientBrush>
-                            </Border.Background>
-                        </Border>
-                        <Border HorizontalAlignment="Stretch" Margin="0,0,0,0" x:Name="shine" Width="Auto" CornerRadius="4,4,0,0">
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.494,0.889" StartPoint="0.494,0.028">
-                                    <GradientStop Color="#99FFFFFF" Offset="0"/>
-                                    <GradientStop Color="#33FFFFFF" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                        </Border> -->
+                        
                         <Image x:Name="emptyTr" Source="{Binding Mode=OneWay, Source={StaticResource Trash_Empty}}"  Stretch="UniformToFill" />
                         <Image x:Name="trashFull" Source="{Binding Mode=OneWay, Source={StaticResource Trash_Full}}" Opacity="0" Stretch="UniformToFill">
                             <Image.Effect>
@@ -358,23 +335,7 @@
 
     <!--#endregion-->
 
-    <!--  <Style x:Key="RedBlink" TargetType="{x:Type Button}" BasedOn="{StaticResource RedBlinkCenter}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid>
-                        <Image x:Name="centerDoor" Source="{Binding Mode=OneWay, Source={StaticResource DXdoor_Image}}"  RenderTransformOrigin="0.5,0.5" >
-                            <Image.Effect>
-                                <DropShadowEffect Color="{DynamicResource BlinkColor}" x:Name="dropShadow" ShadowDepth="1" BlurRadius="70" />
-                            </Image.Effect>
-                        </Image>
-                        <Image x:Name="doorDisabled" Source="{Binding Mode=OneWay, Source={StaticResource DXdoor_Image}}" Opacity="0"  />
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-
-        </Setter>
-    </Style> -->
+  
 
     <!--#region Styles for hat buttons-->
     <Style x:Key="KinectButtonZoomHat1" TargetType="{x:Type Button}" >

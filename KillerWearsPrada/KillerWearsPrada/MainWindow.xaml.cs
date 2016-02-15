@@ -51,10 +51,10 @@ namespace KillerWearsPrada
         #region User Controls
         private StartingRoom startRoom;
         private Room room;
-
-        //perchè mi da questo errore???!
-        string backgroundPath;
         #endregion
+
+        string backgroundPath;
+        
 
         //Background of room
         private ImageBrush ib;
@@ -328,7 +328,7 @@ namespace KillerWearsPrada
             attDebug.Close();
         }
 
-        #region da eliminare quando tolgo bottone exit
+        #region Exit button (for debug)
         private void close_button(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Do you really want to exit this game?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -344,7 +344,7 @@ namespace KillerWearsPrada
         /// </summary>
         private void ResumeGameMethod()
         {
-            #region da eliminare quando non devo più giocare senza kinect
+            #region For playing play without Kinect
             //      attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1");
             //   attGameController.LoadGame("26-01-2016-11-40-50_Giocatore1conitemininventory");
          //   attGameController.LoadGame("10-02-2016-10-08-23_Anacleto");
@@ -354,7 +354,7 @@ namespace KillerWearsPrada
            
             allocate_All_UC();
 
-            #region da eliminare dopo aver rimosso txtdisplay e bottone Giocatore riconosciuto
+            #region Collapsed txtDisplay
             txtDisplay.Visibility = Visibility.Collapsed;
             recognise.IsEnabled = false;
             recognise.Visibility = Visibility.Collapsed;

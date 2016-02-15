@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace KillerWearsPrada.UC
 {
     /// <summary>
-    /// Logica di interazione per LeaveGame.xaml
+    /// Interaction Logic for LeaveGame.xaml
     /// </summary>
     public partial class LeaveGame : UserControl
     {

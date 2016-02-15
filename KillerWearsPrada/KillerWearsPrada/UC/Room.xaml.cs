@@ -214,26 +214,7 @@ namespace KillerWearsPrada.UC
             room_Canvas.Background = imageBackground;
         }
 
-        /*
-        public void setImageBrush1(string roomImagePath)
-        {
-            ib1 = new ImageBrush();
-            ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
-        }
 
-        public void setImageBrush2(string roomImagePath)
-        {
-            ib1 = new ImageBrush();
-            ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
-        }
-
-        public void setImageBrush3(string roomImagePath)
-        {
-            ib1 = new ImageBrush();
-            ib1.ImageSource = new BitmapImage(new Uri(@roomImagePath, UriKind.Absolute));
-        }
-
-            */
 
         private void exit_button(object sender, RoutedEventArgs e)
         {
@@ -251,28 +232,9 @@ namespace KillerWearsPrada.UC
 
         private void back_button(object sender, RoutedEventArgs e)
         {
-            // cambio colore ora
-
-            /*         Color c = new Color();
-                     c = Color.FromRgb(0, 255, 255);
-                     Application.Current.Resources["BlinkColor"] = c; */
-            /*
-            StartingRoom ucstart = new StartingRoom();
-            Window parentWindow = Window.GetWindow(this);
-            Grid maingrid = (Grid)parentWindow.FindName("mainGrid");
-            maingrid.Children.Remove(this);
-            maingrid.Children.Add(ucstart); */
-
-            //imposto l'indice della room in cui sta andando il player
-            // 0 credo sia l'entrata
-            // MainWindow.attGameController.ActualRoomIndex = 0;
-            //funziona
-
             MainWindow.attGameController.Game.ActualRoomIndex = 0;
             disable_buttons();
-
             
-
             Livingroom_Image.Visibility = Visibility.Hidden;
             Kitchen_Image.Visibility = Visibility.Hidden;
             Bedroom_Image.Visibility = Visibility.Hidden;
@@ -281,8 +243,6 @@ namespace KillerWearsPrada.UC
             yourParentWindow.Room.Visibility = Visibility.Hidden;
             yourParentWindow.StartRoom.Visibility = Visibility.Visible;
 
-            // abilito i bottoni delle 3 porte e gli altri
-           
             yourParentWindow.StartRoom.change_Buttons_Status(true);
             yourParentWindow.changeDoorColor();
         }
@@ -314,7 +274,6 @@ namespace KillerWearsPrada.UC
                 Bedroom_Image.Children.Add(inventory);
                 
             inventory.Focus();
-            //lo devo fare dopo perchè mi serve sapere cosa c'era di visibile al momento!!!
             disable_buttons();
             inventory.Unloaded += UpdateButtons;
         }
@@ -377,8 +336,6 @@ namespace KillerWearsPrada.UC
             selectionDisplay.Unloaded += UpdateButtons;
         }
 
-        
-        // se chiamato da qui, inventario non può essere stato aperto da startroom!!!
         private void enable_Right_Buttons()
         {
             switch (MainWindow.attGameController.Game.ActualRoom.Name)
@@ -420,13 +377,14 @@ namespace KillerWearsPrada.UC
             enable_Right_Buttons();
         }
 
-       
 
+        #region For testing the animations
         private void moving(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(shirt6, "Moving", true);
             
         }
+        #endregion
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {

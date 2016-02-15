@@ -22,13 +22,11 @@ namespace KillerWearsPrada.Helpers
 
             System.IO.Directory.CreateDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.GhostscriptDirectory.ToString()]);
             MagickNET.SetGhostscriptDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.GhostscriptDirectory.ToString()]);
-            // MagickNET.Initialize(@"C:\Users\Monica\Documents\MagickTestFilesVari\MyImageMagickXmlFiles");
+
             System.IO.Directory.CreateDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.TempDirectory.ToString()]);
             MagickNET.SetTempDirectory((string)Application.Current.Resources[ResourcesHelper.E_Magick_Dirs.TempDirectory.ToString()]);
-            // questi sopra vanno bene
-            // Samples.MagickNET.CombiningImagesSamples.MergeMultipleImages();
+
             System.IO.Directory.CreateDirectory(ResourcesHelper.SketchesPathsFile());
-            //CreateSketches(Helpers.ResourcesHelper.MasksPaths("hat_1meleOk.png"), Helpers.ResourcesHelper.TexturesPath("redTartan.jpg"), "ciao.png");
         }
 
        

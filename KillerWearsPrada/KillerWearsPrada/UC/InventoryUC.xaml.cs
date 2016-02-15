@@ -32,7 +32,6 @@ namespace KillerWearsPrada.UC
         
         public Trash attTrash;
         
-        // observable collection construita con tutti gli item nella lista nell'inventario
         public ObservableCollection<Item> itemInv { get; set; }
         public ObservableCollection<Item> itemOutfit { get; set; }
 
@@ -94,7 +93,6 @@ namespace KillerWearsPrada.UC
             change_Status_Inventory_Buttons(false);
             int score =  MainWindow.attGameController.ComputeScore();
 
-            //metto a true l'attributo has finished
             MainWindow.attGameController.Game.SetAsFinished();
             LeaveGame lg = new LeaveGame(endGameString.Replace("@p1", score.ToString()));
             layoutRoot.Children.Add(lg);
@@ -123,7 +121,7 @@ namespace KillerWearsPrada.UC
         }
 
       
-        #region Gestione aggiunta rimozione vestiti a Outfit killer e Cestino
+        #region Manage the addition and the remove of clothes of the killer and the trash
         public Item currentItemText;
         public int currentItemIndex;
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -209,25 +207,12 @@ namespace KillerWearsPrada.UC
         private void AddTrash_Click(object sender, RoutedEventArgs e)
         {
                ListBox l = null;
-           //    l = (ListBox)sender;
-            // Find the right item and it's value and index
-            /*   try
-               {
-                   l = (ListBox)sender;
-
-               }
-               catch (System.InvalidCastException ex)
-               {
-                   return; //non è una delle 2 listbox, quindi non fa nulla
-               }*/
-
-
+          
             currentItemIndexLeft = LeftListBox.SelectedIndex;
             currentItemIndexRight = RightListBox.SelectedIndex;
             currentItemTextLeft = (Item)LeftListBox.SelectedValue;
             currentItemTextRight = (Item)RightListBox.SelectedValue;
-
-            //non ho selezionato nessun item dalle 2 liste, quindi concludo
+            
             if (currentItemIndexLeft < 0 && currentItemIndexRight < 0)
             {
                 return;
@@ -246,12 +231,6 @@ namespace KillerWearsPrada.UC
                 currentItemIndex = currentItemIndexRight;
             }
 
-      /*      currentItemText = (Item)l.SelectedValue;
-            currentItemIndex = l.SelectedIndex;*/
-
-            //     currentItemText = (Item)LeftListBox.SelectedValue;
-            //     currentItemIndex = LeftListBox.SelectedIndex;
-        //  RightListBox.Items.Add(currentItemText);
                 if (currentItemText != null)
                 {
                     foreach (Model.Room r in MainWindow.attGameController.Game.Rooms)
@@ -261,7 +240,6 @@ namespace KillerWearsPrada.UC
                             if (ite.BarCode == currentItemText.BarCode)
                             {
                                 ite.SetAsTrashed();
-                            //finisce la scansione in questa stanza, ma le altre le fa cmq...
                                 VisualStateManager.GoToState(trash, "trashFull33", true);
                                 trash.IsEnabled = true;
                                 break;
@@ -271,8 +249,6 @@ namespace KillerWearsPrada.UC
                     }
                 if (currentItemIndexRight < 0)
                 {
-                    /*    l.Items.RemoveAt(currentItemIndex);
-                            itemOutfit.RemoveAt(currentItemIndex); */
                     itemInv.RemoveAt(currentItemIndex);
                 }
                 else
@@ -281,9 +257,6 @@ namespace KillerWearsPrada.UC
                     checkOrder();
                 }
             }
-            
-            // Refresh data binding
-            // ApplyDataBinding();
         }
         #endregion
 
@@ -301,40 +274,14 @@ namespace KillerWearsPrada.UC
             itemInv = new ObservableCollection<Item>();
             itemOutfit = new ObservableCollection<Item>();
 
-        //    itemOutfit.CollectionChanged += change_Order_DressedItems;
-
-      
-       
-            //carico elementi da mettere nell'inventario, non indossati e non nel cestino
-            // copio tutti i capi nella lista dell'inventario nella mia Observable collection, per mostrarli
             foreach (Item it in MainWindow.attGameController.Game.ItemsInInventory)
             {
                 if (it.IsDressed == false)
                     itemInv.Add(it);
             }
-            
-            //metto tutti gli elementi dressed nella listbox dei dressed!
+
             foreach (Item it in MainWindow.attGameController.Game.ItemsDressed)
             {
-           /*     switch (it.ItemKind)
-                {
-                    case E_ItemKind.HAT:
-                        {
-                            hatsDressed.Add(it);
-                            break;
-                        }
-                    case E_ItemKind.T_SHIRT:
-                        {
-                            shirtsDressed.Add(it);
-                            break;
-                        }
-                    default:
-                        {
-                            trousersDressed.Add(it);
-                            break;
-                        }
-                }*/
-
                 itemOutfit.Add(it);
             }
 
@@ -344,14 +291,10 @@ namespace KillerWearsPrada.UC
             change_Status_Inventory_Buttons(true);
 
             change_TrashImage();
-
-            // Get data from somewhere and fill in my local ArrayList
-            //myDataList = LoadListBoxData();
-            // Bind ArrayList with the ListBox
             LeftListBox.ItemsSource = itemInv;
             RightListBox.ItemsSource = itemOutfit;
 
-            #region popolo la lista di tutte le clues trovate fino ad allora
+            #region Populate the list of all clues found so far
             cluesList.ItemsSource = MainWindow.attGameController.Game.DisclosedClues;
             #endregion
 

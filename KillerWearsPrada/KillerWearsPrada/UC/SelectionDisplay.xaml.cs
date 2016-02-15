@@ -54,7 +54,6 @@ namespace KillerWearsPrada.UC
         /// <param name="itemId"></param> is the barcode of the item associated to the button pressed
         public SelectionDisplay(string itemId)
         {
-          //  itemId = idItem;
             #region Load information related to the button selected, found by barcode, which is the tag button pressed
             Model.Item it = MainWindow.attGameController.Game.ActualRoom.GetItem(itemId);
             ClothName = it.ItemName;
@@ -73,16 +72,13 @@ namespace KillerWearsPrada.UC
 
             ItemClue = it.Clue;
 
-            ImagePath = it.ItemsImagePath; //calcolo l'image path se non l'ho già fatto! però con la giusta directory in cui ci saranno tutti i capi
+            ImagePath = it.ItemsImagePath;
 
             #endregion
 
 
             InitializeComponent();
 
-            //Importantissimo!!!
-            //ma mi serve quello della mainwindow??? 
-            // devo metterlo dopo InitializeComponent(), se no non si vede nulla
             this.DataContext = this;
 
         }
@@ -124,7 +120,7 @@ namespace KillerWearsPrada.UC
             }
         }
 
-        // per scroll textbox...
+        // For disabling scroll textbox...
         private void EnterKeyCommand(object sender, MouseButtonEventArgs e)
         {
 

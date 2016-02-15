@@ -104,22 +104,12 @@ namespace KillerWearsPrada.Helpers
             Shirt6
         }
 
-        /*
-        public enum E_WelcomeImages
-        {
-            Start_Image,
-            StartOver_Image,
-            StartPressed_Image,
-            Welcome_Image
-        }
-        */
-
         /// <summary>
-        /// Aggiungo \ davanti al path se non presente
+        /// Add \ in front of the path, if not present
         /// 
-        /// NB: non passare percorsi assoluti, ma solo relativi
+        /// NB: do not pass absolute path, but only relative ones
         /// </summary>
-        /// <param name="Directory">Path da modificare</param>
+        /// <param name="Directory">Path to modify</param>
         /// <returns></returns>
         private static string CreatePath(string Directory)
         {
@@ -232,7 +222,7 @@ namespace KillerWearsPrada.Helpers
         #endregion
 
         /// <summary>
-        /// Ottiene la Directory di lavoro corrente del programma come stringa
+        /// Obtain the current working Directory of the program, as a string
         /// </summary>
         public static string CurrentDirectory
         {
@@ -267,82 +257,6 @@ namespace KillerWearsPrada.Helpers
             }
         }
 
-        #region path per magick directories (da rimuovere credo)
-        /*     /// <summary>
-             /// 
-             /// </summary>
-             public static string MagicksDirectory
-             {
-                 get
-                 {
-                     string wvPath = GetResource(E_Direcetories.CurrentDirectory);
-                     wvPath += CreatePath(GetResource(E_Direcetories.MagickDir));
-                     return wvPath;
-                 }
-             }
-
-             /// <summary>
-             /// 
-             /// </summary>
-             public static string SkecthesDirectory
-             {
-                 get
-                 {
-                     string wvPath = GetResource(E_Direcetories.CurrentDirectory);
-                     wvPath += CreatePath(GetResource(E_Direcetories.SketchesImages));
-                     return wvPath;
-                 }
-             }
-
-             /// <summary>
-             /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.TexturesDir"/> directory plus \
-             /// </summary>
-             public static string TexturesDirectory
-             {
-                 get
-                 {
-                     string wvPath = GetResource(E_Direcetories.CurrentDirectory);
-                     wvPath += CreatePath(GetResource(E_Direcetories.TexturesDir));
-                     return wvPath;
-                 }
-             }
-
-             /// <summary>
-             /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.ItemsImagesDir"/> directory
-             /// </summary>
-             public static string ItemsImagesDirectory
-             {
-                 get
-                 {
-                     string wvPath = GetResource(E_Direcetories.CurrentDirectory);
-                     wvPath += CreatePath(GetResource(E_Direcetories.ItemsImagesDir));
-                     return wvPath;
-                 }
-             }
-
-             /// <summary>
-             /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.MasksDir"/> directory
-             /// </summary>
-             public static string MasksDirectory
-             {
-                 get
-                 {
-                     string wvPath = GetResource(E_Direcetories.CurrentDirectory);
-                     wvPath += CreatePath(GetResource(E_Direcetories.MasksDir));
-                     return wvPath;
-                 }
-             }
-
-             public static void SaveAllMagickPaths()
-             {
-
-                 string wvRightPath = CurrentDirectory;
-                 wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
-                 wvRightPath += CreatePath(GetResource(E_GenericImages.Application_Start_Image));
-                 SetResource(E_GenericImages.Application_Start_Image, wvRightPath);
-             }*/
-        #endregion
-
         /// <summary>
         /// Return a <see cref="string "/> which represent the absolute path of the <see cref="E_Direcetories.SavesDir"/> directory
         /// </summary>
@@ -357,11 +271,10 @@ namespace KillerWearsPrada.Helpers
         }
 
 
-
-
+        
 
         /// <summary>
-        /// Salva la directory corrente nella risorsa ["CurrentDirectory"]
+        /// Save current directory in resource ["CurrentDirectory"]
         /// </summary>
         public static void SaveCurrentDirectory()
         {
@@ -370,18 +283,11 @@ namespace KillerWearsPrada.Helpers
         }
 
         /// <summary>
-        /// Imposta il Path relativo per 
+        /// Set the relative path for MainWindow Background 
         /// </summary>
         public static void ModifyMainBackgroundPath()
         {
             string wvRightPath = CurrentDirectory;
-            //string dir = CurrentDirectory;    
-            /*
-            string[] dirs = dir.Split('\\');
-            dir_ok = dirs[0];
-            for (int i = 1; i < dirs.Length - 2; i++)
-                dir_ok = dir_ok + "\\" + dirs[i];
-            */
             wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
             wvRightPath += CreatePath(GetResource(E_GenericImages.Application_Start_Image));
             SetResource(E_GenericImages.Application_Start_Image, wvRightPath);
@@ -451,12 +357,7 @@ namespace KillerWearsPrada.Helpers
 
         public static void ModifyAllMagickPath()
         {
-            //setto il giusto path per arrivare a Magick directory
             string wvRightPath = CurrentDirectory;
-       /*     wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
-            wvRightPath += CreatePath(GetResource(E_Direcetories.MagickDir));
-            SetResource(E_Direcetories.MagickDir, wvRightPath);*/
-            //     Application.Current.Resources[roomImage] = wvRightPath;
             ModifyOthersMagickPaths(E_Magick_Dirs.CacheDirectoryMagick);
             ModifyOthersMagickPaths(E_Magick_Dirs.GhostscriptDirectory);
             ModifyOthersMagickPaths(E_Magick_Dirs.TempDirectory);
@@ -488,15 +389,6 @@ namespace KillerWearsPrada.Helpers
             wvRightPath += "\\";
             return wvRightPath;
         }
-        /*
-                public static string CachePath()
-                {
-                    string wvRightPath = CurrentDirectory;
-                    wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
-                    wvRightPath += CreatePath(GetResource(E_Direcetories.MagickDir));
-                    wvRightPath += "\\" + E_Magick_Dirs.CacheDirectoryMagick.ToString();
-                    return wvRightPath;
-                }*/
 
         public static string ItemsImagesPaths()
         {
@@ -559,22 +451,10 @@ namespace KillerWearsPrada.Helpers
             return wvRightPath;
         }
 
-        /*      public static void ModifyMagickPath()
-              {
-                  string wvRightPath = CurrentDirectory;
-                  wvRightPath += CreatePath(GetResource(E_Direcetories.ImagesDir));
-                  wvRightPath += CreatePath(GetResource(E_Direcetories.MagickDir));
-                  SetResource(E_Direcetories.MagickDir, wvRightPath);
-              }
 
-              public static string GetResourceMagick(E_Magick_Dirs ResourceName)
-              {
-                  return GetResource(ResourceName.ToString()).ToString();
-              }
-              */
         #endregion
 
-            // mi sa che non mi serve
+        // not used
         /// <summary>
         /// Method to set the right path to the resources of the sketches in the kitchen room
         /// </summary>
